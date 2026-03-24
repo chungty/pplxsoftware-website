@@ -2,11 +2,515 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0;url=https://chungty.github.io/teamops-docs/privacy-policy">
-<title>Privacy Policy — PPLX Software</title>
-<link rel="canonical" href="https://chungty.github.io/teamops-docs/privacy-policy">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — TeamOps | PPLX Software</title>
+<meta name="description" content="TeamOps Privacy Policy. Learn how your data is stored, accessed, and protected within Atlassian's Forge platform.">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/privacy-policy">
+
+<meta property="og:title" content="Privacy Policy — TeamOps | PPLX Software">
+<meta property="og:description" content="TeamOps Privacy Policy. Your data never leaves Atlassian's infrastructure.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pplxsoftware.com/privacy-policy">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0f172a;
+  --navy-light: #1e293b;
+  --navy-mid: #162036;
+  --slate: #334155;
+  --slate-light: #475569;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --white: #ffffff;
+  --blue: #60a5fa;
+  --blue-dim: #3b82f6;
+  --blue-glow: rgba(96, 165, 250, 0.15);
+  --green: #34d399;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --max-width: 1120px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--navy);
+  color: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(96, 165, 250, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(96, 165, 250, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 16px 0;
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.nav-logo {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--blue), #818cf8);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--white);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--gray-400);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.nav-links a:hover { color: var(--white); }
+
+.nav-cta {
+  background: var(--blue);
+  color: var(--navy) !important;
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  font-weight: 600 !important;
+  transition: background var(--transition), transform var(--transition) !important;
+}
+
+.nav-cta:hover {
+  background: #93c5fd !important;
+  transform: translateY(-1px);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--gray-400);
+  margin: 5px 0;
+  transition: var(--transition);
+  border-radius: 1px;
+}
+
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(15, 23, 42, 0.97);
+    backdrop-filter: blur(16px);
+    padding: 8px 24px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { width: 100%; }
+  .nav-links a {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+  .nav-cta { display: inline-block; margin-top: 8px; text-align: center; }
+}
+
+.doc-wrapper {
+  position: relative;
+  z-index: 1;
+  padding-top: 100px;
+  padding-bottom: 80px;
+}
+
+.doc-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.doc-content h1 {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.doc-meta {
+  color: var(--gray-400);
+  font-size: 0.9rem;
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.doc-content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-top: 48px;
+  margin-bottom: 16px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.doc-content h2:first-of-type { border-top: none; padding-top: 0; }
+
+.doc-content h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-top: 32px;
+  margin-bottom: 12px;
+  color: var(--gray-300);
+}
+
+.doc-content p {
+  color: var(--gray-300);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.doc-content ul, .doc-content ol {
+  color: var(--gray-300);
+  margin-bottom: 16px;
+  padding-left: 24px;
+}
+
+.doc-content li { margin-bottom: 8px; line-height: 1.7; }
+
+.doc-content strong { color: var(--white); font-weight: 600; }
+
+.doc-content a {
+  color: var(--blue);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.doc-content a:hover { color: #93c5fd; text-decoration: underline; }
+
+.doc-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.9rem;
+}
+
+.doc-content th {
+  text-align: left;
+  padding: 12px 16px;
+  background: var(--navy-light);
+  color: var(--white);
+  font-weight: 600;
+  border-bottom: 2px solid rgba(96, 165, 250, 0.2);
+}
+
+.doc-content td {
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: var(--gray-300);
+}
+
+.doc-content tr:hover td { background: rgba(255, 255, 255, 0.02); }
+
+footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 40px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gray-400);
+}
+
+.footer-brand .nav-logo { width: 24px; height: 24px; font-size: 0.65rem; border-radius: 6px; }
+
+.footer-links { display: flex; gap: 24px; list-style: none; }
+
+.footer-links a {
+  color: var(--gray-500);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color var(--transition);
+}
+
+.footer-links a:hover { color: var(--gray-300); }
+
+.footer-copy {
+  width: 100%;
+  text-align: center;
+  padding-top: 24px;
+  margin-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 0.8rem;
+  color: var(--gray-500);
+}
+
+@media (max-width: 768px) {
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .footer-links { flex-wrap: wrap; gap: 16px; }
+}
+</style>
 </head>
 <body>
-<p>Redirecting to <a href="https://chungty.github.io/teamops-docs/privacy-policy">Privacy Policy</a>...</p>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home">
+      <div class="nav-logo">T</div>
+      TeamOps
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="doc-wrapper">
+  <div class="doc-content">
+    <h1>TeamOps Privacy Policy</h1>
+    <p class="doc-meta"><strong>Effective Date:</strong> February 24, 2026 &nbsp;&bull;&nbsp; <strong>Last Updated:</strong> February 24, 2026 &nbsp;&bull;&nbsp; <strong>Publisher:</strong> PPLX Software</p>
+
+    <h2>1. Introduction</h2>
+    <p>TeamOps is a Forge-native Jira application that provides integrated leave management and employee onboarding capabilities directly within Atlassian Jira. The app runs entirely on Atlassian's infrastructure and carries the "Runs on Atlassian" trust badge.</p>
+    <p><strong>Data Controller:</strong> The organization that installs TeamOps on their Atlassian site is the data controller. PPLX Software, as the app publisher, acts as a data processor on behalf of the installing organization.</p>
+    <p>This Privacy Policy explains what data TeamOps collects, how it is stored, who can access it, and what rights you have regarding your data.</p>
+
+    <h2>2. Data We Collect</h2>
+    <p>TeamOps collects and stores the following categories of personal data:</p>
+    <table>
+      <thead>
+        <tr><th>Data Category</th><th>Specific Fields</th><th>Purpose</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Employee Identity</strong></td><td>Full name, email address</td><td>Identify employees within leave and onboarding workflows</td></tr>
+        <tr><td><strong>Leave Records</strong></td><td>Leave dates, leave type (e.g., annual, sick, personal), leave status, approval history</td><td>Process and track leave requests</td></tr>
+        <tr><td><strong>Onboarding Data</strong></td><td>Task assignments, completion status, onboarding checklist progress, department assignment</td><td>Manage employee onboarding workflows</td></tr>
+        <tr><td><strong>Role Assignments</strong></td><td>RBAC role (HR Admin, Manager, Employee), team/group membership</td><td>Enforce access control within the app</td></tr>
+      </tbody>
+    </table>
+    <p>TeamOps does <strong>not</strong> collect:</p>
+    <ul>
+      <li>Financial or banking information</li>
+      <li>Government-issued identification numbers</li>
+      <li>Health or medical records beyond leave type categorization</li>
+      <li>Biometric data</li>
+      <li>Location or geolocation data</li>
+      <li>Browser fingerprints or device identifiers</li>
+    </ul>
+
+    <h2>3. How We Collect Data</h2>
+    <p>All data is collected exclusively through direct user input within the Jira interface. Specifically:</p>
+    <ul>
+      <li><strong>Employee-initiated:</strong> Employees submit leave requests and update onboarding tasks through Jira UI panels and forms.</li>
+      <li><strong>Manager/HR-initiated:</strong> Managers approve or deny leave requests. HR Admins configure onboarding templates, assign tasks, and manage employee records.</li>
+      <li><strong>Atlassian platform data:</strong> TeamOps reads user identity information (name, email, account ID) from the Atlassian user profile via authorized Jira API scopes.</li>
+    </ul>
+    <p>TeamOps makes <strong>zero external network calls</strong>. No data is collected from third-party sources, external APIs, advertising networks, or analytics services.</p>
+
+    <h2>4. Where Data Is Stored</h2>
+    <p>All application data is stored in the <strong>Forge Custom Entity Store</strong>, which is part of Atlassian's Forge platform infrastructure.</p>
+    <p>Key storage characteristics:</p>
+    <ul>
+      <li><strong>Data Residency:</strong> Data follows the Atlassian tenant's configured data residency region. If your Atlassian site is pinned to a specific region (e.g., EU, US, AU), TeamOps data resides in that same region.</li>
+      <li><strong>Infrastructure:</strong> Atlassian manages the underlying infrastructure, including physical security, network security, and platform-level encryption.</li>
+      <li><strong>No External Storage:</strong> TeamOps does not transmit or replicate data to any external databases, cloud services, or third-party storage systems.</li>
+      <li><strong>No Local Storage:</strong> TeamOps does not store data in browser local storage, session storage, or cookies.</li>
+    </ul>
+
+    <h2>5. Who Can Access Data</h2>
+    <p>TeamOps enforces role-based access control (RBAC) with three roles, validated on every API resolver call:</p>
+    <table>
+      <thead>
+        <tr><th>Role</th><th>Data Access Scope</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>HR Admin</strong></td><td>Full read/write access to all employee leave records, onboarding data, and app configuration. Can export and delete employee data.</td></tr>
+        <tr><td><strong>Manager</strong></td><td>Read/write access to leave requests and onboarding progress for employees within their assigned team only.</td></tr>
+        <tr><td><strong>Employee</strong></td><td>Read/write access to their own leave requests and onboarding tasks only. No access to other employees' data.</td></tr>
+      </tbody>
+    </table>
+    <p>Role assignments are managed through Atlassian group membership. Every data request is checked against the requesting user's role before data is returned.</p>
+    <p>PPLX Software personnel do <strong>not</strong> have access to customer data stored within TeamOps. The Forge platform does not provide app publishers with access to tenant data.</p>
+
+    <h2>6. Data Retention</h2>
+    <ul>
+      <li><strong>Active Use:</strong> Data persists in the Forge Custom Entity Store for as long as the app remains installed on the Atlassian site.</li>
+      <li><strong>HR Admin Deletion:</strong> HR Admins can delete individual employee records at any time through the app's built-in data management features, including the GDPR data erasure function.</li>
+      <li><strong>App Uninstallation:</strong> When TeamOps is uninstalled from an Atlassian site, all data stored in the Forge Custom Entity Store for that tenant is deleted by the Atlassian platform in accordance with Atlassian's data retention policies.</li>
+      <li><strong>No Backups by Publisher:</strong> PPLX Software does not maintain separate backups or copies of customer data. All data lifecycle management is handled by the Forge platform.</li>
+    </ul>
+
+    <h2>7. Your Rights</h2>
+    <p>TeamOps is designed with data subject rights built directly into the application:</p>
+    <h3>Right of Access</h3>
+    <p>Employees can view all of their own leave records and onboarding data through the app interface at any time. HR Admins can generate a complete data export for any employee.</p>
+    <h3>Right to Data Portability (Export)</h3>
+    <p>The app includes a <strong>data export</strong> feature that produces a structured export of all data associated with a specific employee. This can be initiated by HR Admins to fulfill data access requests.</p>
+    <h3>Right to Erasure (Right to Be Forgotten)</h3>
+    <p>The app includes a <strong>right-to-erasure</strong> feature that permanently deletes all data associated with a specific employee from the Forge Custom Entity Store. This can be initiated by HR Admins to fulfill deletion requests.</p>
+    <h3>Right to Rectification</h3>
+    <p>Employees can update their own leave requests (where workflow rules permit). HR Admins can modify any employee record.</p>
+    <h3>How to Exercise Your Rights</h3>
+    <p>Contact your organization's HR administrator to initiate a data export or erasure request through the TeamOps interface. For questions directed to the app publisher, see the Contact Information section below.</p>
+
+    <h2>8. Third-Party Data Sharing</h2>
+    <p><strong>TeamOps shares no data with any third party.</strong></p>
+    <ul>
+      <li>The app makes <strong>zero external network calls</strong>. There are no external fetch declarations in the app manifest.</li>
+      <li>No data is sent to analytics services, advertising platforms, error tracking services, or any external API.</li>
+      <li>No data is shared with PPLX Software or any affiliated entity.</li>
+      <li>The only data transmission occurs between the Forge app runtime and the Forge Custom Entity Store, both of which operate entirely within Atlassian's infrastructure.</li>
+    </ul>
+
+    <h2>9. Cookies and Tracking</h2>
+    <p><strong>TeamOps uses no cookies and performs no tracking.</strong></p>
+    <ul>
+      <li>The app runs as a Forge UI Kit application within the Jira interface. It does not set, read, or rely on browser cookies.</li>
+      <li>No analytics scripts, tracking pixels, or fingerprinting techniques are used.</li>
+      <li>No session tokens are managed by the app; authentication is handled entirely by the Atlassian platform.</li>
+    </ul>
+
+    <h2>10. Security</h2>
+    <h3>Platform Security</h3>
+    <p>TeamOps runs on Atlassian's Forge platform, which provides:</p>
+    <ul>
+      <li><strong>Encryption at Rest:</strong> All data in the Forge Custom Entity Store is encrypted at rest using AES-256 encryption.</li>
+      <li><strong>Encryption in Transit:</strong> All communication between Forge components uses TLS 1.2 or higher.</li>
+      <li><strong>Platform Certifications:</strong> The Atlassian Forge platform operates under Atlassian's SOC 2 Type II and ISO 27001 certifications.</li>
+      <li><strong>Sandboxed Execution:</strong> Forge apps run in isolated sandboxes with no direct access to the underlying infrastructure.</li>
+    </ul>
+    <h3>Application Security</h3>
+    <ul>
+      <li><strong>No Hardcoded Secrets:</strong> All sensitive configuration values are managed through Forge encrypted environment variables, never stored in source code.</li>
+      <li><strong>No PII in Logs:</strong> The application is designed to exclude personally identifiable information from all log output.</li>
+      <li><strong>No Vulnerable Dependencies:</strong> Dependencies are regularly scanned for known vulnerabilities.</li>
+      <li><strong>Input Validation:</strong> All user inputs are validated before processing.</li>
+      <li><strong>RBAC Enforcement:</strong> Access control checks are performed on every resolver call, not just at the UI layer.</li>
+    </ul>
+
+    <h2>11. Changes to This Policy</h2>
+    <p>We may update this Privacy Policy to reflect changes in the app's functionality, legal requirements, or industry best practices. When we make material changes:</p>
+    <ul>
+      <li>The "Last Updated" date at the top of this policy will be revised.</li>
+      <li>A notice will be included in the app's release notes on the Atlassian Marketplace.</li>
+      <li>For significant changes affecting data collection or sharing, we will provide advance notice through the Marketplace listing.</li>
+    </ul>
+    <p>We encourage you to review this policy periodically.</p>
+
+    <h2>12. Contact Information</h2>
+    <p>For questions, concerns, or requests related to this Privacy Policy or your personal data:</p>
+    <p><strong>PPLX Software</strong><br>
+    Email: <a href="mailto:pplx.teamops@gmail.com">pplx.teamops@gmail.com</a><br>
+    Address: PPLX Software, 5432 Geary Blvd, Unit #898, San Francisco, CA 94121, USA</p>
+    <p>For data export or erasure requests, please contact your organization's HR administrator, who can initiate these actions directly within the TeamOps application.</p>
+    <p>For issues related to the Atlassian platform infrastructure, refer to <a href="https://www.atlassian.com/legal/privacy-policy">Atlassian's Privacy Policy</a> and <a href="https://www.atlassian.com/trust">Atlassian's Trust Center</a>.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="nav-logo">T</div>
+      PPLX Software
+    </div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="mailto:pplx.teamops@gmail.com">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
+  </div>
+</footer>
+
 </body>
 </html>

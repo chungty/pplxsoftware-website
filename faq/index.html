@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — TeamOps | PPLX Software</title>
+<meta name="description" content="Frequently asked questions about TeamOps — setup, leave management, onboarding, security, pricing, and troubleshooting.">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/faq">
+
+<meta property="og:title" content="FAQ — TeamOps | PPLX Software">
+<meta property="og:description" content="Common questions about TeamOps installation, features, security, and pricing.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pplxsoftware.com/faq">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0f172a;
+  --navy-light: #1e293b;
+  --navy-mid: #162036;
+  --slate: #334155;
+  --slate-light: #475569;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --white: #ffffff;
+  --blue: #60a5fa;
+  --blue-dim: #3b82f6;
+  --blue-glow: rgba(96, 165, 250, 0.15);
+  --green: #34d399;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --max-width: 1120px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--navy);
+  color: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(96, 165, 250, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(96, 165, 250, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 16px 0;
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.nav-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+.nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--white); font-weight: 700; font-size: 1.05rem; }
+.nav-logo { width: 32px; height: 32px; background: linear-gradient(135deg, var(--blue), #818cf8); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; color: var(--white); }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a { color: var(--gray-400); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color var(--transition); }
+.nav-links a:hover { color: var(--white); }
+.nav-cta { background: var(--blue); color: var(--navy) !important; padding: 8px 18px; border-radius: var(--radius-sm); font-weight: 600 !important; transition: background var(--transition), transform var(--transition) !important; }
+.nav-cta:hover { background: #93c5fd !important; transform: translateY(-1px); }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--gray-400); margin: 5px 0; transition: var(--transition); border-radius: 1px; }
+
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; background: rgba(15, 23, 42, 0.97); backdrop-filter: blur(16px); padding: 8px 24px 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+  .nav-links.open { display: flex; }
+  .nav-links li { width: 100%; }
+  .nav-links a { display: block; padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
+  .nav-cta { display: inline-block; margin-top: 8px; text-align: center; }
+}
+
+.doc-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
+.doc-content { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+.doc-content h1 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 8px; }
+.doc-subtitle { color: var(--gray-400); font-size: 1.05rem; margin-bottom: 40px; line-height: 1.6; }
+
+.faq-category { margin-top: 48px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.06); }
+.faq-category:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+.faq-category h2 { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 20px; color: var(--blue); }
+
+.faq-item { border: 1px solid rgba(255, 255, 255, 0.06); border-radius: var(--radius-sm); margin-bottom: 8px; overflow: hidden; background: var(--navy-light); transition: border-color var(--transition); }
+.faq-item:hover { border-color: rgba(96, 165, 250, 0.2); }
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  padding: 18px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: color var(--transition);
+}
+
+.faq-question:hover { color: var(--blue); }
+
+.faq-question::after {
+  content: '+';
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--gray-400);
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+
+.faq-item.open .faq-question::after {
+  content: '-';
+  transform: rotate(0deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 800px;
+}
+
+.faq-answer-inner {
+  padding: 0 20px 20px;
+  color: var(--gray-300);
+  line-height: 1.7;
+}
+
+.faq-answer-inner p { margin-bottom: 12px; color: var(--gray-300); }
+.faq-answer-inner ul, .faq-answer-inner ol { margin-bottom: 12px; padding-left: 24px; }
+.faq-answer-inner li { margin-bottom: 6px; }
+.faq-answer-inner strong { color: var(--white); }
+.faq-answer-inner a { color: var(--blue); text-decoration: none; }
+.faq-answer-inner a:hover { text-decoration: underline; }
+
+.faq-answer-inner table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.9rem; }
+.faq-answer-inner th { text-align: left; padding: 10px 14px; background: var(--navy); color: var(--white); font-weight: 600; border-bottom: 2px solid rgba(96, 165, 250, 0.2); }
+.faq-answer-inner td { padding: 8px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); color: var(--gray-300); }
+
+footer { border-top: 1px solid rgba(255, 255, 255, 0.05); padding: 40px 0; position: relative; z-index: 1; }
+.footer-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+.footer-brand { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 600; color: var(--gray-400); }
+.footer-brand .nav-logo { width: 24px; height: 24px; font-size: 0.65rem; border-radius: 6px; }
+.footer-links { display: flex; gap: 24px; list-style: none; }
+.footer-links a { color: var(--gray-500); text-decoration: none; font-size: 0.85rem; transition: color var(--transition); }
+.footer-links a:hover { color: var(--gray-300); }
+.footer-copy { width: 100%; text-align: center; padding-top: 24px; margin-top: 8px; border-top: 1px solid rgba(255, 255, 255, 0.04); font-size: 0.8rem; color: var(--gray-500); }
+
+@media (max-width: 768px) {
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .footer-links { flex-wrap: wrap; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home"><div class="nav-logo">T</div>TeamOps</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="doc-wrapper">
+  <div class="doc-content">
+    <h1>Frequently Asked Questions</h1>
+    <p class="doc-subtitle">Find answers to common questions about TeamOps installation, features, security, pricing, and troubleshooting.</p>
+
+    <div class="faq-category">
+      <h2>Setup &amp; Access</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I install TeamOps?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>TeamOps is installed from the Atlassian Marketplace by a Jira site administrator:</p>
+          <ol>
+            <li>Go to <a href="https://marketplace.atlassian.com" target="_blank" rel="noopener">Atlassian Marketplace</a> and search for "TeamOps."</li>
+            <li>Click <strong>Get it now</strong> (or <strong>Try it free</strong> if using a paid tier).</li>
+            <li>Select your Jira site and confirm the installation.</li>
+            <li>Once installed, all users can access TeamOps through <strong>Apps &gt; TeamOps HR Portal</strong>.</li>
+          </ol>
+          <p>Only Jira site administrators can install apps. If you are not a site admin, ask your Jira administrator to install it for you.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What happens on first launch?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>TeamOps auto-configures itself the first time it is opened:</p>
+          <ul>
+            <li><strong>Country detection:</strong> Identifies your country from your Jira locale.</li>
+            <li><strong>Public holidays:</strong> Loads the current year's public holidays for your country.</li>
+            <li><strong>Default leave types:</strong> Creates Annual Leave, Sick Leave, and Personal Leave with standard allocations.</li>
+            <li><strong>Work week:</strong> Sets Monday through Friday as the default.</li>
+            <li><strong>Onboarding templates:</strong> Makes five built-in templates available (Engineering, Sales, General, HR, Executive).</li>
+          </ul>
+          <p>No manual setup is required to start using the app.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I become an HR Admin?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>The person who installs TeamOps is automatically the first HR Admin. After that, any existing HR Admin can add others via <strong>TeamOps Settings</strong> &gt; <strong>Access &amp; Roles</strong> &gt; <strong>Add Member</strong>.</p>
+          <p>HR Admin access in TeamOps is separate from Jira site administration.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Does TeamOps work with Jira Service Management?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Yes. TeamOps works on both Jira Software and Jira Service Management (JSM). It is installed at the site level and is available to all Jira products on your site.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Can I use TeamOps with multiple Jira projects?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Yes. When starting an onboarding, you can link it to any Jira project on your site. Different onboardings can be linked to different projects. Leave management is not project-specific -- it works across your entire Jira site.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <h2>Leave Management</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How many leave types can I create?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>There is no hard limit. You can create as many as your organization needs (Annual Leave, Sick Leave, Parental Leave, Bereavement Leave, etc.). We recommend keeping the list to 5-10 types for simplicity.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How are business days calculated?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>TeamOps counts all days between your start and end date (inclusive), then subtracts:</p>
+          <ol>
+            <li>Weekend days (or your configured non-work days)</li>
+            <li>Any public or custom holidays in that range</li>
+          </ol>
+          <p>Example: Monday to Friday with a Wednesday public holiday = 4 business days.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Can I cancel a leave request?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Yes, as long as the leave period has not already started. Go to <strong>Leave Requests</strong>, find the request, and click <strong>Cancel</strong>. If it was already approved, the days are returned to your balance. You cannot cancel leave that is in progress or in the past.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Who gets notified when I submit, approve, or reject leave?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <table>
+            <thead><tr><th>Action</th><th>Who Is Notified</th></tr></thead>
+            <tbody>
+              <tr><td>Employee submits a request</td><td>The employee's manager</td></tr>
+              <tr><td>Manager approves a request</td><td>The employee who submitted it</td></tr>
+              <tr><td>Manager rejects a request</td><td>The employee (with manager's comment)</td></tr>
+              <tr><td>Employee cancels a request</td><td>The employee's manager</td></tr>
+            </tbody>
+          </table>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What happens to my leave balance if my request is rejected?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Nothing. Your balance is only reduced when a request is approved. Pending and rejected requests do not affect your available balance.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Can a manager see leave balances for their team?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Yes. Managers can view leave balances for their direct reports. They cannot see balances for employees outside their team. HR Admins can see balances for all employees.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <h2>Onboarding</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Can I create my own onboarding templates?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Yes. HR Admins can create custom templates from scratch or by duplicating one of the five built-in templates. See the <a href="/admin-guide#onboarding-templates">Admin Guide</a> for step-by-step instructions.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What happens when I link a Jira project to an onboarding?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>When you link a Jira project:</p>
+          <ul>
+            <li>A Jira issue is created for each onboarding task.</li>
+            <li>Task status syncs in both directions between TeamOps and Jira.</li>
+            <li>Tasks appear on the project's board and backlog.</li>
+            <li>Assignees receive standard Jira notifications.</li>
+          </ul>
+          <p>Linking a project is optional. Without it, tasks are tracked entirely within TeamOps.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do task reminders work?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>TeamOps runs a daily check for overdue tasks. When a task is overdue: the task is highlighted in red, the assigned person gets a Jira notification, and the manager and HR Admin are also notified. Reminders repeat daily until the task is completed.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Can I reassign an onboarding task?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Yes. HR Admins and Managers can reassign any task by clicking <strong>Edit</strong> on the task and changing the assignee. The new assignee receives a notification.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <h2>Security &amp; Privacy</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Where is my data stored?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>All data is stored within Atlassian's Forge platform on Atlassian's infrastructure (AWS). Your data:</p>
+          <ul>
+            <li>Lives within the same security boundary as Jira itself</li>
+            <li>Inherits Atlassian's data residency controls</li>
+            <li>Never leaves Atlassian's infrastructure</li>
+            <li>Is isolated per Jira site</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Is TeamOps GDPR compliant?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Yes. TeamOps includes built-in GDPR tools:</p>
+          <ul>
+            <li><strong>Right of Access:</strong> HR Admins can export all data for any employee.</li>
+            <li><strong>Right to Erasure:</strong> HR Admins can permanently delete all data for an employee.</li>
+            <li><strong>Data Minimization:</strong> Only necessary data is stored.</li>
+            <li><strong>Audit Trail:</strong> All exports and deletions are logged.</li>
+          </ul>
+          <p>See our <a href="/privacy-policy">Privacy Policy</a> for full details.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Who can see my leave requests?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <ul>
+            <li><strong>You</strong> can see all your own requests.</li>
+            <li><strong>Your manager</strong> can see your requests (since they approve them).</li>
+            <li><strong>HR Admins</strong> can see all requests across the organization.</li>
+            <li><strong>Other employees</strong> can see on the calendar that you are out, but not the details (leave type, notes).</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Can I export my data?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Yes. HR Admins can export all data for a specific employee (profile, leave history, balances, onboarding records) via <strong>Settings</strong> &gt; <strong>GDPR &amp; Privacy</strong> &gt; <strong>Export Employee Data</strong>.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <h2>Billing &amp; Pricing</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Is there a free tier?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Yes. TeamOps is free for up to 10 users with all features included -- leave management, onboarding, templates, dashboard gadget, GDPR tools, and analytics. No restrictions, no time limit.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How does per-user pricing work?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Pricing is based on the number of Jira users on your site:</p>
+          <table>
+            <thead><tr><th>Tier</th><th>Users</th><th>Price</th></tr></thead>
+            <tbody>
+              <tr><td>Free</td><td>1-10</td><td>$0/month</td></tr>
+              <tr><td>Standard</td><td>11-100</td><td>$3 per user/month</td></tr>
+              <tr><td>Growth</td><td>101-500</td><td>$2 per user/month</td></tr>
+            </tbody>
+          </table>
+          <p>Billing is handled through the Atlassian Marketplace.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Do I get charged during the evaluation period?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>No. Atlassian Marketplace apps include a free evaluation period (usually 30 days) during which you can try the full app without being charged.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What happens if I exceed 10 users?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>TeamOps will prompt your Jira administrator to upgrade to the Standard tier. The app continues to work during a grace period so there is no disruption.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <h2>Troubleshooting</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">TeamOps is not showing up in the Apps menu</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <ul>
+            <li>Make sure the app has been installed by your Jira site administrator.</li>
+            <li>Try refreshing your browser or clearing your cache.</li>
+            <li>Check that you have permission to access apps on your Jira site.</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">My country's holidays are incorrect or missing</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Your HR Admin can fix this in <strong>TeamOps Settings</strong> &gt; <strong>Holidays</strong>. Verify the correct country is selected, then add, remove, or edit individual holidays as needed.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">I submitted a leave request but my manager did not receive a notification</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <ul>
+            <li>Ask your manager to check their Jira notification bell.</li>
+            <li>Confirm your manager is set as your manager in TeamOps (your HR Admin can verify this).</li>
+            <li>Check that leave notifications are enabled in <strong>TeamOps Settings</strong> &gt; <strong>Notifications</strong>.</li>
+            <li>Verify your manager's Jira notification preferences allow email delivery.</li>
+          </ul>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">My leave balance looks wrong</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <ul>
+            <li>Pending requests reduce your displayed "Available" balance even though they have not been approved yet.</li>
+            <li>If your HR Admin recently changed your allocation, the balance updates immediately.</li>
+            <li>Check your leave history for any requests you may have forgotten about.</li>
+            <li>Contact your HR Admin if the numbers still do not match your expectation.</li>
+          </ul>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="faq-category" style="margin-top: 48px; padding-top: 32px;">
+      <h2 style="color: var(--white);">Still Have Questions?</h2>
+      <p style="color: var(--gray-300); line-height: 1.7;">Check the <a href="/user-guide" style="color: var(--blue); text-decoration: none;">User Guide</a> for step-by-step instructions, the <a href="/admin-guide" style="color: var(--blue); text-decoration: none;">Admin Guide</a> for configuration help, or <a href="mailto:pplx.teamops@gmail.com" style="color: var(--blue); text-decoration: none;">contact support</a> for technical issues.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="nav-logo">T</div>PPLX Software</div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="mailto:pplx.teamops@gmail.com">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
+  </div>
+</footer>
+
+</body>
+</html>

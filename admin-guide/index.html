@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Guide — TeamOps | PPLX Software</title>
+<meta name="description" content="TeamOps Admin Guide. Configure leave types, holidays, onboarding templates, GDPR compliance, and more.">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/admin-guide">
+
+<meta property="og:title" content="Admin Guide — TeamOps | PPLX Software">
+<meta property="og:description" content="Complete guide for HR Administrators managing TeamOps settings, policies, and employee data.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pplxsoftware.com/admin-guide">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0f172a;
+  --navy-light: #1e293b;
+  --navy-mid: #162036;
+  --slate: #334155;
+  --slate-light: #475569;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --white: #ffffff;
+  --blue: #60a5fa;
+  --blue-dim: #3b82f6;
+  --blue-glow: rgba(96, 165, 250, 0.15);
+  --green: #34d399;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --max-width: 1120px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--navy);
+  color: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(96, 165, 250, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(96, 165, 250, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 16px 0;
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.nav-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+.nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--white); font-weight: 700; font-size: 1.05rem; }
+.nav-logo { width: 32px; height: 32px; background: linear-gradient(135deg, var(--blue), #818cf8); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; color: var(--white); }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a { color: var(--gray-400); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color var(--transition); }
+.nav-links a:hover { color: var(--white); }
+.nav-cta { background: var(--blue); color: var(--navy) !important; padding: 8px 18px; border-radius: var(--radius-sm); font-weight: 600 !important; transition: background var(--transition), transform var(--transition) !important; }
+.nav-cta:hover { background: #93c5fd !important; transform: translateY(-1px); }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--gray-400); margin: 5px 0; transition: var(--transition); border-radius: 1px; }
+
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; background: rgba(15, 23, 42, 0.97); backdrop-filter: blur(16px); padding: 8px 24px 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+  .nav-links.open { display: flex; }
+  .nav-links li { width: 100%; }
+  .nav-links a { display: block; padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
+  .nav-cta { display: inline-block; margin-top: 8px; text-align: center; }
+}
+
+.doc-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
+.doc-content { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+.doc-content h1 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 8px; }
+.doc-subtitle { color: var(--gray-400); font-size: 1.05rem; margin-bottom: 32px; line-height: 1.6; }
+.doc-toc { background: var(--navy-light); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: var(--radius); padding: 24px 28px; margin-bottom: 48px; }
+.doc-toc h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-400); margin-bottom: 12px; }
+.doc-toc ol { padding-left: 20px; color: var(--gray-300); }
+.doc-toc li { margin-bottom: 6px; }
+.doc-toc a { color: var(--blue); text-decoration: none; font-size: 0.95rem; }
+.doc-toc a:hover { text-decoration: underline; }
+.doc-content h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.06); }
+.doc-content h3 { font-size: 1.15rem; font-weight: 600; margin-top: 32px; margin-bottom: 12px; color: var(--gray-300); }
+.doc-content p { color: var(--gray-300); line-height: 1.7; margin-bottom: 16px; }
+.doc-content ul, .doc-content ol { color: var(--gray-300); margin-bottom: 16px; padding-left: 24px; }
+.doc-content li { margin-bottom: 8px; line-height: 1.7; }
+.doc-content strong { color: var(--white); font-weight: 600; }
+.doc-content a { color: var(--blue); text-decoration: none; transition: color var(--transition); }
+.doc-content a:hover { color: #93c5fd; text-decoration: underline; }
+.doc-content table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; }
+.doc-content th { text-align: left; padding: 12px 16px; background: var(--navy-light); color: var(--white); font-weight: 600; border-bottom: 2px solid rgba(96, 165, 250, 0.2); }
+.doc-content td { padding: 10px 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); color: var(--gray-300); }
+.doc-content tr:hover td { background: rgba(255, 255, 255, 0.02); }
+
+footer { border-top: 1px solid rgba(255, 255, 255, 0.05); padding: 40px 0; position: relative; z-index: 1; }
+.footer-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+.footer-brand { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 600; color: var(--gray-400); }
+.footer-brand .nav-logo { width: 24px; height: 24px; font-size: 0.65rem; border-radius: 6px; }
+.footer-links { display: flex; gap: 24px; list-style: none; }
+.footer-links a { color: var(--gray-500); text-decoration: none; font-size: 0.85rem; transition: color var(--transition); }
+.footer-links a:hover { color: var(--gray-300); }
+.footer-copy { width: 100%; text-align: center; padding-top: 24px; margin-top: 8px; border-top: 1px solid rgba(255, 255, 255, 0.04); font-size: 0.8rem; color: var(--gray-500); }
+
+@media (max-width: 768px) {
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .footer-links { flex-wrap: wrap; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home"><div class="nav-logo">T</div>TeamOps</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="doc-wrapper">
+  <div class="doc-content">
+    <h1>TeamOps Admin Guide</h1>
+    <p class="doc-subtitle">This guide is for HR Administrators who manage TeamOps settings, leave policies, onboarding templates, and employee data. It covers everything from first-time setup to GDPR compliance.</p>
+
+    <div class="doc-toc">
+      <h4>Table of Contents</h4>
+      <ol>
+        <li><a href="#first-time-setup">First-Time Setup</a></li>
+        <li><a href="#hr-admin-group">Managing the HR Admin Group</a></li>
+        <li><a href="#leave-types">Configuring Leave Types</a></li>
+        <li><a href="#holidays">Managing Holidays</a></li>
+        <li><a href="#work-week">Setting the Work Week</a></li>
+        <li><a href="#departments">Department Mapping</a></li>
+        <li><a href="#onboarding-templates">Onboarding Templates</a></li>
+        <li><a href="#starting-onboarding">Starting an Onboarding</a></li>
+        <li><a href="#monitoring-onboardings">Monitoring Active Onboardings</a></li>
+        <li><a href="#leave-approvals">Managing Leave Approvals</a></li>
+        <li><a href="#gdpr">GDPR: Exporting and Deleting Employee Data</a></li>
+        <li><a href="#analytics">Analytics and Feedback</a></li>
+        <li><a href="#general-settings">General Settings</a></li>
+      </ol>
+    </div>
+
+    <h2 id="first-time-setup">1. First-Time Setup</h2>
+    <h3>What Auto-Initializes</h3>
+    <p>When TeamOps is installed and opened for the first time, it automatically configures itself based on your Jira site's locale:</p>
+    <ul>
+      <li><strong>Country detection</strong> -- Identifies your country from the installing user's Jira locale settings.</li>
+      <li><strong>Public holidays</strong> -- Pre-loads the current year's public holidays for your detected country.</li>
+      <li><strong>Default leave types</strong> -- Creates standard leave types: Annual Leave, Sick Leave, and Personal Leave with typical allocations for your country.</li>
+      <li><strong>Work week</strong> -- Sets the default work week (Monday through Friday for most countries).</li>
+      <li><strong>Onboarding templates</strong> -- Makes five built-in templates available: Engineering, Sales, General, HR, and Executive.</li>
+    </ul>
+
+    <h3>Setup Checklist</h3>
+    <p>Even though TeamOps works out of the box, you should review these settings in your first session:</p>
+    <ol>
+      <li><strong>Verify your country and holidays</strong> -- Go to Settings and confirm the detected country is correct. Add or remove holidays as needed.</li>
+      <li><strong>Review default leave types</strong> -- Check that the leave types and allocations match your company policy. Add, edit, or remove types as needed.</li>
+      <li><strong>Set up the HR Admin group</strong> -- Add other HR team members so they also have full admin access.</li>
+      <li><strong>Map departments</strong> -- Connect your company's departments to Jira users and groups so team availability and reporting work correctly.</li>
+      <li><strong>Review onboarding templates</strong> -- Look at the built-in templates and customize them to match your onboarding process.</li>
+      <li><strong>Configure notification preferences</strong> -- Decide which notifications should be active for your organization.</li>
+    </ol>
+
+    <h3>Accessing Admin Settings</h3>
+    <ol>
+      <li>Click <strong>Apps</strong> in the top navigation bar.</li>
+      <li>Select <strong>TeamOps HR Portal</strong>.</li>
+      <li>Click the <strong>Settings</strong> gear icon (visible only to HR Admins), or</li>
+      <li>Go to <strong>Jira Administration</strong> &gt; <strong>Apps</strong> &gt; <strong>TeamOps Settings</strong> for the dedicated admin page.</li>
+    </ol>
+
+    <h2 id="hr-admin-group">2. Managing the HR Admin Group</h2>
+    <p>HR Admins have full access to all TeamOps features, including settings, all employee data, analytics, and GDPR tools.</p>
+    <h3>Adding an HR Admin</h3>
+    <ol>
+      <li>Open <strong>TeamOps Settings</strong>.</li>
+      <li>Go to the <strong>Access &amp; Roles</strong> section.</li>
+      <li>Under <strong>HR Admins</strong>, click <strong>Add Member</strong>.</li>
+      <li>Search for the Jira user by name or email.</li>
+      <li>Select the user and click <strong>Add</strong>.</li>
+    </ol>
+    <h3>Removing an HR Admin</h3>
+    <ol>
+      <li>Open <strong>TeamOps Settings</strong> &gt; <strong>Access &amp; Roles</strong>.</li>
+      <li>Find the user in the HR Admins list.</li>
+      <li>Click the <strong>Remove</strong> button next to their name.</li>
+      <li>Confirm the removal.</li>
+    </ol>
+    <h3>Important Notes</h3>
+    <ul>
+      <li>At least one HR Admin must exist at all times. TeamOps will not allow you to remove the last HR Admin.</li>
+      <li>The person who installs TeamOps is automatically added as the first HR Admin.</li>
+      <li>HR Admin access is separate from Jira's built-in admin roles. A person can be a TeamOps HR Admin without being a Jira site administrator.</li>
+    </ul>
+
+    <h2 id="leave-types">3. Configuring Leave Types</h2>
+    <p>Leave types define the categories of leave your employees can request (e.g., Annual Leave, Sick Leave, Parental Leave).</p>
+    <h3>Adding a New Leave Type</h3>
+    <ol>
+      <li>Open <strong>TeamOps Settings</strong> &gt; <strong>Leave Types</strong>.</li>
+      <li>Click <strong>Add Leave Type</strong>.</li>
+      <li>Fill in the fields:</li>
+    </ol>
+    <table>
+      <thead><tr><th>Field</th><th>Description</th><th>Required?</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Name</strong></td><td>Display name (e.g., "Parental Leave," "Bereavement Leave")</td><td>Yes</td></tr>
+        <tr><td><strong>Default Allocation</strong></td><td>Number of days per year granted to each employee by default</td><td>Yes</td></tr>
+        <tr><td><strong>Description</strong></td><td>Brief explanation shown to employees when they select this type</td><td>No</td></tr>
+        <tr><td><strong>Requires Approval</strong></td><td>Whether requests of this type need manager approval (most do)</td><td>Yes</td></tr>
+        <tr><td><strong>Active</strong></td><td>Whether this type is available for employees to select</td><td>Yes</td></tr>
+      </tbody>
+    </table>
+    <h3>Editing and Deleting Leave Types</h3>
+    <p>Click the <strong>Edit</strong> (pencil) or <strong>Delete</strong> (trash) icon next to any leave type. Changes apply going forward -- existing approved requests are not affected. You cannot delete a leave type with active (Pending or Approved future) requests; deactivate it instead.</p>
+    <h3>Setting Individual Allocations</h3>
+    <p>The default allocation applies to all employees. For specific employees with different entitlements (e.g., senior staff with extra vacation days), go to the employee's profile in TeamOps, click <strong>Edit Allocations</strong>, override the allocation, and save.</p>
+
+    <h2 id="holidays">4. Managing Holidays</h2>
+    <p>Holidays are non-working days that are automatically excluded when calculating leave duration. They also appear on the Team Availability calendar.</p>
+    <h3>Country Selection</h3>
+    <p>Open <strong>TeamOps Settings</strong> &gt; <strong>Holidays</strong>. The detected country is shown at the top. To change it, click <strong>Change Country</strong> and select from the dropdown. Public holidays for the selected country are loaded automatically.</p>
+    <h3>Adding a Custom Holiday</h3>
+    <ol>
+      <li>Click <strong>Add Holiday</strong>.</li>
+      <li>Enter the <strong>Date</strong> and <strong>Name</strong>.</li>
+      <li>Click <strong>Save</strong>.</li>
+    </ol>
+    <p>Use this for company-specific days off (e.g., "Company Founder's Day," "Office Closure Dec 24").</p>
+    <h3>Multi-Location Support</h3>
+    <p>If your company has offices in multiple countries, you can add holidays from multiple country calendars. Employees see holidays based on their assigned location (set in their employee profile or department mapping).</p>
+
+    <h2 id="work-week">5. Setting the Work Week</h2>
+    <p>The work week defines which days are considered working days. This affects how leave duration is calculated and how the Team Availability calendar displays.</p>
+    <ol>
+      <li>Open <strong>TeamOps Settings</strong> &gt; <strong>Work Week</strong>.</li>
+      <li>Toggle on/off each day of the week.</li>
+      <li>Click <strong>Save</strong>.</li>
+    </ol>
+    <p>The default is Monday through Friday. Non-work days (e.g., weekends) are automatically excluded from leave calculations.</p>
+
+    <h2 id="departments">6. Department Mapping</h2>
+    <p>Department mapping connects your organizational structure to Jira users, enabling department-based filtering and analytics.</p>
+    <h3>Setting Up Departments</h3>
+    <ol>
+      <li>Open <strong>TeamOps Settings</strong> &gt; <strong>Departments</strong>.</li>
+      <li>Click <strong>Add Department</strong>.</li>
+      <li>Enter the <strong>Department Name</strong> and click <strong>Save</strong>.</li>
+    </ol>
+    <h3>Assigning Users</h3>
+    <p>Two options:</p>
+    <ul>
+      <li><strong>Individual assignment:</strong> Go to a department, click <strong>Add Members</strong>, search for users, and add them.</li>
+      <li><strong>Map a Jira group:</strong> Go to a department, click <strong>Link Jira Group</strong>, and select an existing group. Members stay in sync automatically.</li>
+    </ul>
+
+    <h2 id="onboarding-templates">7. Onboarding Templates</h2>
+    <p>Onboarding templates are pre-built checklists that define the tasks a new hire (and supporting teams) need to complete.</p>
+    <h3>Built-In Templates</h3>
+    <table>
+      <thead><tr><th>Template</th><th>Best For</th><th>Example Tasks</th></tr></thead>
+      <tbody>
+        <tr><td><strong>General</strong></td><td>Any new hire</td><td>Complete tax forms, review employee handbook, set up email, office tour</td></tr>
+        <tr><td><strong>Engineering</strong></td><td>Developers and technical staff</td><td>Set up dev environment, code repository access, architecture walkthrough</td></tr>
+        <tr><td><strong>Sales</strong></td><td>Sales and business development</td><td>CRM access, product training, shadow calls, meet key accounts</td></tr>
+        <tr><td><strong>HR</strong></td><td>HR team members</td><td>HRIS system access, benefits training, policy review</td></tr>
+        <tr><td><strong>Executive</strong></td><td>Directors and above</td><td>Board introductions, strategy briefing, leadership team meetings</td></tr>
+      </tbody>
+    </table>
+    <h3>Creating a Custom Template</h3>
+    <ol>
+      <li>Open <strong>TeamOps Settings</strong> &gt; <strong>Onboarding Templates</strong>.</li>
+      <li>Click <strong>Create Template</strong>.</li>
+      <li>Enter a name and description.</li>
+      <li>Add tasks organized by phase (Before Day 1, First Day, First Week, First Month, First 90 Days).</li>
+      <li>Each task has: Task Name, Description, Phase, Default Assignee Role, and Days Offset.</li>
+      <li>Click <strong>Save Template</strong>.</li>
+    </ol>
+    <p>Changes to a template do not affect onboardings already in progress. You can also <strong>Duplicate</strong> an existing template and modify the copy.</p>
+
+    <h2 id="starting-onboarding">8. Starting an Onboarding</h2>
+    <ol>
+      <li>Open <strong>TeamOps HR Portal</strong> &gt; <strong>Onboarding</strong> tab.</li>
+      <li>Click <strong>Start New Onboarding</strong>.</li>
+      <li>Fill in details:</li>
+    </ol>
+    <table>
+      <thead><tr><th>Field</th><th>Description</th><th>Required?</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Employee</strong></td><td>Search for and select the Jira user account for the new hire</td><td>Yes</td></tr>
+        <tr><td><strong>Template</strong></td><td>Select the onboarding template to use</td><td>Yes</td></tr>
+        <tr><td><strong>Start Date</strong></td><td>The employee's first day at the company</td><td>Yes</td></tr>
+        <tr><td><strong>Department</strong></td><td>The department the employee is joining</td><td>Yes</td></tr>
+        <tr><td><strong>Manager</strong></td><td>The employee's direct manager</td><td>Yes</td></tr>
+        <tr><td><strong>Jira Project</strong></td><td>Optionally link to a Jira project for task tracking</td><td>No</td></tr>
+      </tbody>
+    </table>
+    <p>Click <strong>Start Onboarding</strong>. Tasks are created, assigned, and notifications sent to all assignees.</p>
+
+    <h2 id="monitoring-onboardings">9. Monitoring Active Onboardings</h2>
+    <p>Open <strong>TeamOps HR Portal</strong> &gt; <strong>Onboarding</strong> tab to see all in-progress onboardings with progress bars, task counts, and overdue highlights.</p>
+    <p>Click any onboarding to see the full task list grouped by phase. For overdue tasks, reach out to the assignee or reassign the task.</p>
+    <p>When all tasks are completed, the onboarding is automatically marked as "Complete." You can also manually mark it complete if remaining tasks are no longer relevant.</p>
+
+    <h2 id="leave-approvals">10. Managing Leave Approvals</h2>
+    <h3>For Managers</h3>
+    <ol>
+      <li>Open <strong>TeamOps HR Portal</strong> &gt; <strong>Leave Requests</strong>.</li>
+      <li>Click <strong>Pending Approvals</strong> to see waiting requests.</li>
+      <li>Review each request with the Team Availability calendar for scheduling conflicts.</li>
+      <li>Click <strong>Approve</strong> or <strong>Reject</strong>. If rejecting, add a comment explaining why.</li>
+    </ol>
+    <h3>For HR Admins</h3>
+    <p>Use the <strong>All Requests</strong> view to see all leave requests across the organization. Filter by department, status, date range, or leave type. HR Admins can override a manager's decision if needed.</p>
+
+    <h2 id="gdpr">11. GDPR: Exporting and Deleting Employee Data</h2>
+    <h3>Exporting Employee Data</h3>
+    <ol>
+      <li>Open <strong>TeamOps Settings</strong> &gt; <strong>GDPR &amp; Privacy</strong>.</li>
+      <li>Click <strong>Export Employee Data</strong>.</li>
+      <li>Search for and select the employee.</li>
+      <li>Click <strong>Export</strong>.</li>
+    </ol>
+    <p>The export includes employee profile, leave request history, leave balances, and onboarding records.</p>
+    <h3>Deleting Employee Data</h3>
+    <ol>
+      <li>Open <strong>TeamOps Settings</strong> &gt; <strong>GDPR &amp; Privacy</strong>.</li>
+      <li>Click <strong>Delete Employee Data</strong>.</li>
+      <li>Search for and select the employee.</li>
+      <li>Type the employee's name to confirm.</li>
+      <li>Click <strong>Permanently Delete</strong>.</li>
+    </ol>
+    <p>This action is irreversible. All profile data, leave requests, balances, and onboarding records are permanently removed.</p>
+    <h3>Audit Trail</h3>
+    <p>All data exports and deletions are logged in the GDPR audit trail with timestamps and the identity of who performed the action.</p>
+
+    <h2 id="analytics">12. Analytics and Feedback</h2>
+    <p>Open <strong>TeamOps Settings</strong> &gt; <strong>Analytics</strong> to view:</p>
+    <ul>
+      <li><strong>Leave type usage</strong> -- Which types are most and least used</li>
+      <li><strong>Average approval time</strong> -- How long managers take to respond</li>
+      <li><strong>Leave trends</strong> -- Monthly and quarterly usage patterns</li>
+      <li><strong>Onboarding completion rates</strong> -- On-time completion and bottleneck phases</li>
+      <li><strong>Department breakdown</strong> -- Leave and onboarding data by department</li>
+      <li><strong>Feature adoption</strong> -- Active users, requests submitted, onboardings started</li>
+    </ul>
+
+    <h2 id="general-settings">13. General Settings</h2>
+    <h3>Notification Preferences</h3>
+    <p>Control which notifications are sent at the organization level. Open <strong>TeamOps Settings</strong> &gt; <strong>Notifications</strong> and toggle each event type on or off.</p>
+    <h3>Leave Allocation Period</h3>
+    <p>Choose between Calendar year, Fiscal year (set your start month), or Employee anniversary. Go to <strong>Settings</strong> &gt; <strong>Leave Policies</strong>.</p>
+    <h3>Locale Settings</h3>
+    <p>Override auto-detected country and date format in <strong>Settings</strong> &gt; <strong>General</strong>.</p>
+
+    <h2>Quick Reference</h2>
+    <table>
+      <thead><tr><th>What You Need</th><th>Where to Go</th></tr></thead>
+      <tbody>
+        <tr><td>All TeamOps settings</td><td>Apps &gt; TeamOps HR Portal &gt; Settings gear</td></tr>
+        <tr><td>Add HR Admins</td><td>Settings &gt; Access &amp; Roles</td></tr>
+        <tr><td>Configure leave types</td><td>Settings &gt; Leave Types</td></tr>
+        <tr><td>Manage holidays</td><td>Settings &gt; Holidays</td></tr>
+        <tr><td>Set work week</td><td>Settings &gt; Work Week</td></tr>
+        <tr><td>Map departments</td><td>Settings &gt; Departments</td></tr>
+        <tr><td>Edit onboarding templates</td><td>Settings &gt; Onboarding Templates</td></tr>
+        <tr><td>Start a new onboarding</td><td>TeamOps HR Portal &gt; Onboarding &gt; Start New Onboarding</td></tr>
+        <tr><td>View all leave requests</td><td>TeamOps HR Portal &gt; Leave Requests &gt; All Requests</td></tr>
+        <tr><td>Export/delete employee data</td><td>Settings &gt; GDPR &amp; Privacy</td></tr>
+        <tr><td>View analytics</td><td>Settings &gt; Analytics</td></tr>
+        <tr><td>Notification settings</td><td>Settings &gt; Notifications</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Need Help?</h2>
+    <ul>
+      <li><strong>For technical issues or bugs:</strong> Contact TeamOps support through the <a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">Atlassian Marketplace listing</a>.</li>
+      <li><strong>For Jira administration help:</strong> Consult your Jira site administrator.</li>
+      <li><strong>For feature requests:</strong> Submit feedback through TeamOps Settings &gt; Feedback or the Marketplace listing.</li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="nav-logo">T</div>PPLX Software</div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="mailto:pplx.teamops@gmail.com">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
+  </div>
+</footer>
+
+</body>
+</html>
