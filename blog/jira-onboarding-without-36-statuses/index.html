@@ -599,11 +599,11 @@ footer {
       <span class="tag">Jira</span>
     </div>
 
-    <p>Your team already lives in Jira. Projects, sprints, bug tracking, release planning &mdash; it all runs through Atlassian. So when HR asks "can we manage employee onboarding in Jira too?", the answer feels obvious: <strong>of course we can</strong>.</p>
+    <p>Your team already runs on Jira. Sprints, bug tracking, releases. So when someone from HR asks if they can manage new-hire onboarding in Jira too, you say yes. Obviously.</p>
 
-    <p>Then reality hits. A new hire needs 30+ tasks across IT, HR, Finance, Facilities, and their own team. Equipment provisioning. Account setup. Benefits enrollment. Compliance training. A manager introduction. And somehow, all of it needs to be tracked, assigned to different people, and completed within someone's first two weeks.</p>
+    <p>Then you actually try it. A single new hire generates 30+ tasks across IT, HR, Finance, Facilities, and the hiring manager's team. Laptops need ordering. Accounts need provisioning. Benefits forms need filing. Compliance training needs scheduling. All of it assigned to different people, all of it due within two weeks.</p>
 
-    <p>Jira can track work. But onboarding isn't just work &mdash; it's a <em>checklist-shaped process</em> that spans departments, timelines, and owners. And Jira's core model was never designed for that.</p>
+    <p>Jira tracks work. It does that well. But onboarding is not a single piece of work &mdash; it's a checklist that crosses six departments, spans multiple timelines, and has a different owner on every line. Jira's status-and-transition model was built for issues moving through a pipeline, not for coordinating parallel workstreams around one person.</p>
 
     <div class="stat-row">
       <div class="stat-card">
@@ -622,11 +622,11 @@ footer {
 
     <h2>The fundamental mismatch</h2>
 
-    <p>Jira is built around <strong>statuses and transitions</strong>. An issue moves from "To Do" to "In Progress" to "Done." That model works beautifully for software development, where a task has a clear lifecycle with a single owner.</p>
+    <p>Jira's data model has one job: move an issue through statuses. To Do, In Progress, Done. That works for bugs and stories because each issue has one owner and one lifecycle.</p>
 
-    <p>Employee onboarding is different. It's a <strong>checklist</strong> with dozens of items, each assigned to a different person, grouped by department, and phased over days or weeks. The new hire isn't moving through a pipeline &mdash; multiple parallel workstreams are converging around a single person.</p>
+    <p>Onboarding does not look like that. It is a checklist with dozens of items, each assigned to a different person, grouped by department, phased over days or weeks. The new hire is not moving through a pipeline. Multiple parallel workstreams are converging around a single person, and no single status can represent the state of all of them at once.</p>
 
-    <p>When you try to force a checklist-shaped process into a status-shaped tool, you get one of three outcomes &mdash; none of them good.</p>
+    <p>When you try to force a checklist-shaped process into a status-shaped tool, you get workarounds. The workarounds all fail in predictable ways.</p>
 
     <h2>Why the common workarounds fail</h2>
 
@@ -634,43 +634,43 @@ footer {
       <div class="workaround-card">
         <h4>Workaround 1: Create a status for every step</h4>
         <span class="verdict verdict-bad">Breaks at scale</span>
-        <p>You create a workflow with statuses like "Laptop Ordered," "Accounts Created," "Benefits Enrolled," "Badge Printed," and "Training Scheduled." Congratulations &mdash; you now have a 36-status workflow that nobody can maintain. Every new checklist item means a new status, a new transition, and another conversation with your Jira admin. Worse, the workflow is linear, but onboarding isn't. IT can provision accounts while HR processes benefits simultaneously. A 36-status chain forces everything into a single lane.</p>
+        <p>You add statuses like "Laptop Ordered," "Accounts Created," "Benefits Enrolled," "Badge Printed." Before long you have a 36-status workflow that nobody can read. Every new checklist item means another status, another transition, another conversation with your Jira admin. The deeper problem: onboarding is parallel, but a status chain is linear. IT can provision accounts while HR processes benefits. A 36-status workflow forces everything into a single lane.</p>
       </div>
 
       <div class="workaround-card">
         <h4>Workaround 2: Create a sub-task for every checklist item</h4>
         <span class="verdict verdict-bad">Gets noisy fast</span>
-        <p>Every onboarding step becomes a sub-task under a parent "Onboard Jane Smith" issue. This is closer to the right idea, but it falls apart in practice. Sub-tasks flood the backlog and sprint boards. They need to be manually created for every new hire (unless you build automation). There's no way to group them by department or phase. And when you're onboarding five people in the same week, your board becomes a wall of 150+ sub-tasks that nobody wants to look at.</p>
+        <p>Every onboarding step becomes a sub-task under a parent "Onboard Jane Smith" issue. Closer to the right idea. Falls apart in practice. Sub-tasks flood the backlog and sprint boards. They need manual creation for every hire unless you build automation. There is no way to group them by department or phase. Onboard five people in the same week and your board becomes a wall of 150+ sub-tasks that nobody wants to open.</p>
       </div>
 
       <div class="workaround-card">
         <h4>Workaround 3: Use a spreadsheet alongside Jira</h4>
         <span class="verdict verdict-bad">Defeats the purpose</span>
-        <p>The most common "solution." HR maintains a Google Sheet or Excel file with the real onboarding checklist, and Jira gets a single issue that says "Onboard New Hire &mdash; see spreadsheet for details." The new hire's actual progress lives outside the system of record. Nothing is searchable, auditable, or reportable. You've just added Jira overhead without getting any Jira value.</p>
+        <p>This is the most common approach. HR maintains a Google Sheet with the real checklist. Jira gets a single issue that says "Onboard New Hire &mdash; see spreadsheet for details." The new hire's actual progress lives outside the system of record. Nothing is searchable, auditable, or reportable. You have added Jira overhead without getting any Jira value.</p>
       </div>
 
       <div class="workaround-card">
         <h4>Workaround 4: Use Jira Service Management forms</h4>
         <span class="verdict verdict-bad">Partial solution, wrong tool</span>
-        <p>JSM can intake an onboarding request, but it still doesn't solve the "30 tasks across 6 departments" problem. You end up building complex automation rules to spawn and assign tickets &mdash; which works until someone changes a template, breaks a rule, and three new hires fall through the cracks. JSM also means onboarding lives in a service desk project, away from the teams that are doing the actual onboarding work.</p>
+        <p>JSM can intake an onboarding request. It still does not solve the "30 tasks across 6 departments" problem. You end up building automation rules to spawn and assign tickets, which works until someone changes a template, breaks a rule, and three new hires fall through the cracks. JSM also puts onboarding in a service desk project, away from the teams doing the actual work.</p>
       </div>
     </div>
 
     <div class="callout">
-      <p><strong>The pattern here is clear.</strong> Every workaround is trying to bend Jira's issue/status model into a checklist model. The tool isn't wrong &mdash; the approach is. You need a purpose-built layer on top of Jira that thinks in checklists, phases, and departments.</p>
+      <p><strong>Every workaround follows the same pattern:</strong> bending Jira's issue/status model into a checklist model. The tool is not the problem. The approach is. What you need is a purpose-built layer on top of Jira that thinks in checklists, phases, and departments.</p>
     </div>
 
     <h2>What good onboarding in Jira actually looks like</h2>
 
-    <p>Forget statuses and sub-tasks for a moment. Here's what HR teams actually need from an onboarding system:</p>
+    <p>Set aside statuses and sub-tasks for a moment. Here is what HR teams actually need.</p>
 
-    <p><strong>Templates that can be reused.</strong> When you hire a new engineer, the onboarding checklist should be mostly the same every time. IT access, dev environment setup, code review training, security policies. You shouldn't be building this from scratch for each hire.</p>
+    <p><strong>Reusable templates.</strong> When you hire an engineer, the onboarding checklist is mostly the same every time. IT access, dev environment, code review training, security policies. Nobody should be rebuilding this from scratch for each hire.</p>
 
-    <p><strong>Phases that match the timeline.</strong> Some tasks happen on Day 1 (badge, laptop, accounts). Others happen in Week 1 (team introductions, initial training). Others in Month 1 (first project assignment, 30-day check-in). Good onboarding is phased, not a flat list.</p>
+    <p><strong>Phases that match the real timeline.</strong> Some tasks happen on Day 1: badge, laptop, accounts. Others happen in Week 1: team introductions, initial training. Others in Month 1: first project assignment, 30-day check-in. Onboarding is phased. A flat list misses that structure entirely.</p>
 
-    <p><strong>Department ownership.</strong> IT owns the equipment provisioning. HR owns benefits enrollment. The hiring manager owns the welcome meeting. Each department should see only their tasks, without wading through everyone else's.</p>
+    <p><strong>Department ownership.</strong> IT owns equipment provisioning. HR owns benefits enrollment. The hiring manager owns the welcome meeting. Each department should see their tasks without wading through everyone else's.</p>
 
-    <p><strong>Milestone tracking.</strong> "How is the new hire's onboarding going?" should be answerable in seconds, not by opening a spreadsheet and counting rows. A progress indicator &mdash; 14 of 28 tasks complete, 50% &mdash; tells you immediately if someone is falling behind.</p>
+    <p><strong>Milestone tracking.</strong> "How is the new hire's onboarding going?" should be answerable in seconds. A progress indicator (14 of 28 tasks complete, 50%) tells you immediately if someone is falling behind. Opening a spreadsheet and counting rows does not.</p>
 
     <div class="checklist-visual">
       <h4>Example: Engineering onboarding template</h4>
@@ -700,46 +700,47 @@ footer {
       </div>
     </div>
 
-    <p>This is the model that works. Templates per role, phases per timeline, tasks grouped by department, and a single dashboard view showing progress across all active onboardings. The question is: how do you get this inside Jira without the workaround circus?</p>
+    <p>That is the model that works. Templates per role, phases per timeline, tasks grouped by department, a single dashboard showing progress across all active onboardings. The question is how to get this inside Jira without the workaround circus.</p>
 
     <h2>How TeamOps approaches this</h2>
 
-    <p><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">TeamOps</a> is a Forge-native Jira app built specifically for this problem. Instead of fighting Jira's status model, it adds a purpose-built onboarding layer that lives inside your Jira instance.</p>
+    <p><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">TeamOps</a> is a Forge-native Jira app built for this specific problem. It does not try to repurpose Jira's status model. It adds a dedicated onboarding layer that runs inside your Jira instance.</p>
 
-    <p>Here's what that means in practice:</p>
+    <p>In practice, that means four things:</p>
 
     <ul>
-      <li><strong>Onboarding templates</strong> &mdash; Create a template once for each role (Engineering, Sales, Marketing, etc.) with all the tasks, phases, and department assignments. When a new hire starts, launch the template and everything is created automatically.</li>
-      <li><strong>Phase-based organization</strong> &mdash; Tasks are grouped by timeline (Day 1, Week 1, Month 1) and by department (IT, HR, Finance). Each department sees only their slice of the onboarding.</li>
-      <li><strong>Progress tracking</strong> &mdash; A single dashboard shows every active onboarding with a progress bar. "Jane Smith &mdash; Engineering &mdash; 67% complete." No spreadsheets. No counting sub-tasks.</li>
-      <li><strong>Role-based access</strong> &mdash; HR admins see everything. Managers see their team. Employees see their own tasks. The right people see the right information.</li>
+      <li><strong>Onboarding templates</strong> &mdash; You create a template once per role (Engineering, Sales, Marketing) with tasks, phases, and department assignments already mapped out. When a new hire starts, you launch the template. Everything is created and assigned automatically.</li>
+      <li><strong>Phase-based organization</strong> &mdash; Tasks are grouped by timeline (Day 1, Week 1, Month 1) and by department. Each department sees only their slice.</li>
+      <li><strong>Progress tracking</strong> &mdash; A single dashboard shows every active onboarding with a progress bar. "Jane Smith, Engineering, 67% complete." No spreadsheets involved.</li>
+      <li><strong>Role-based access</strong> &mdash; HR admins see everything. Managers see their team. Employees see their own tasks. The right people see the right information, which matters when onboarding data includes personal details.</li>
     </ul>
 
-    <p>The key distinction: TeamOps doesn't try to make Jira's workflow engine do something it wasn't designed to do. It adds a dedicated data model for onboarding &mdash; with templates, phases, departments, and milestone tracking &mdash; that runs natively on Jira's Forge platform.</p>
+    <p>The key distinction: TeamOps does not try to make Jira's workflow engine do something it was not designed to do. It adds a separate data model for onboarding: templates, phases, departments, and milestone tracking. All of it runs natively on Jira's Forge platform.</p>
 
     <div class="callout callout-success">
-      <p><strong>Because it's Forge-native, your data never leaves Atlassian's infrastructure.</strong> TeamOps runs entirely within Jira &mdash; no external servers, no data exports, no third-party integrations. It carries the "Runs on Atlassian" trust badge, which means your onboarding data is stored and encrypted by Atlassian, not by a third party.</p>
+      <p><strong>Because it's Forge-native, your data never leaves Atlassian's infrastructure.</strong> No external servers, no data exports, no third-party integrations to audit. TeamOps carries the "Runs on Atlassian" trust badge. Your onboarding data is stored and encrypted by Atlassian, not by us.</p>
     </div>
 
     <h2>Getting started</h2>
 
-    <p>TeamOps is <strong>free for teams of 10 users or fewer</strong>. Setup takes about 60 seconds: install from the Atlassian Marketplace, open any Jira project, and you'll see the TeamOps panel in your sidebar.</p>
+    <p>TeamOps is <strong>free for teams of 10 users or fewer</strong>. Install from the Atlassian Marketplace, open any Jira project, and the TeamOps panel appears in your sidebar. Setup takes about 60 seconds.</p>
 
     <p>From there:</p>
 
     <ol>
-      <li><strong>Create your first template</strong> &mdash; Start with a role you hire for frequently. Add the tasks, group them by phase and department.</li>
-      <li><strong>Launch an onboarding</strong> &mdash; Select a new hire and apply the template. All tasks are created and assigned automatically.</li>
-      <li><strong>Track progress</strong> &mdash; Use the dashboard to monitor completion across all active onboardings. Identify bottlenecks before they become problems.</li>
+      <li><strong>Create your first template</strong> &mdash; Pick a role you hire for frequently. Add the tasks, group them by phase and department.</li>
+      <li><strong>Launch an onboarding</strong> &mdash; Select a new hire and apply the template. Tasks are created and assigned automatically.</li>
+      <li><strong>Track progress</strong> &mdash; Use the dashboard to see completion across all active onboardings. Spot bottlenecks before they become problems.</li>
     </ol>
 
-    <p>No Jira workflow changes needed. No custom fields. No automation rules to maintain. Just a purpose-built onboarding system that works the way HR teams actually think about onboarding &mdash; in checklists, phases, and milestones.</p>
+    <p>No Jira workflow changes. No custom fields. No automation rules to maintain. Just a purpose-built onboarding system that works the way HR teams actually think &mdash; in checklists, phases, and milestones.</p>
 
     <div class="article-cta">
       <h3>Stop fighting Jira's workflow engine</h3>
       <p>TeamOps gives your team proper onboarding inside the tool you already use. Free for teams up to 10 users.</p>
       <a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="cta-button" target="_blank" rel="noopener">Install TeamOps Free</a>
     </div>
+
 
   </article>
 </main>
