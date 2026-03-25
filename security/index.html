@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security — TeamOps | PPLX Software</title>
+<meta name="description" content="TeamOps Security Policy. Learn how TeamOps protects your data on Atlassian's Forge platform — zero external servers, zero data egress, full sandbox isolation.">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/security">
+
+<meta property="og:title" content="Security — TeamOps | PPLX Software">
+<meta property="og:description" content="TeamOps runs entirely on Atlassian's Forge platform. No external servers, no data egress, no access to customer data.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pplxsoftware.com/security">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0f172a;
+  --navy-light: #1e293b;
+  --navy-mid: #162036;
+  --slate: #334155;
+  --slate-light: #475569;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --white: #ffffff;
+  --blue: #60a5fa;
+  --blue-dim: #3b82f6;
+  --blue-glow: rgba(96, 165, 250, 0.15);
+  --green: #34d399;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --max-width: 1120px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--navy);
+  color: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(96, 165, 250, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(96, 165, 250, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 16px 0;
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.nav-logo {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--blue), #818cf8);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--white);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--gray-400);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.nav-links a:hover { color: var(--white); }
+
+.nav-cta {
+  background: var(--blue);
+  color: var(--navy) !important;
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  font-weight: 600 !important;
+  transition: background var(--transition), transform var(--transition) !important;
+}
+
+.nav-cta:hover {
+  background: #93c5fd !important;
+  transform: translateY(-1px);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--gray-400);
+  margin: 5px 0;
+  transition: var(--transition);
+  border-radius: 1px;
+}
+
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(15, 23, 42, 0.97);
+    backdrop-filter: blur(16px);
+    padding: 8px 24px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { width: 100%; }
+  .nav-links a {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+  .nav-cta { display: inline-block; margin-top: 8px; text-align: center; }
+}
+
+.doc-wrapper {
+  position: relative;
+  z-index: 1;
+  padding-top: 100px;
+  padding-bottom: 80px;
+}
+
+.doc-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.doc-content h1 {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.doc-meta {
+  color: var(--gray-400);
+  font-size: 0.9rem;
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.doc-content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-top: 48px;
+  margin-bottom: 16px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.doc-content h2:first-of-type { border-top: none; padding-top: 0; }
+
+.doc-content h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-top: 32px;
+  margin-bottom: 12px;
+  color: var(--gray-300);
+}
+
+.doc-content p {
+  color: var(--gray-300);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.doc-content ul, .doc-content ol {
+  color: var(--gray-300);
+  margin-bottom: 16px;
+  padding-left: 24px;
+}
+
+.doc-content li { margin-bottom: 8px; line-height: 1.7; }
+
+.doc-content strong { color: var(--white); font-weight: 600; }
+
+.doc-content a {
+  color: var(--blue);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.doc-content a:hover { color: #93c5fd; text-decoration: underline; }
+
+.doc-content code {
+  background: var(--navy-light);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.88em;
+  color: var(--blue);
+}
+
+.doc-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.9rem;
+}
+
+.doc-content th {
+  text-align: left;
+  padding: 12px 16px;
+  background: var(--navy-light);
+  color: var(--white);
+  font-weight: 600;
+  border-bottom: 2px solid rgba(96, 165, 250, 0.2);
+}
+
+.doc-content td {
+  padding: 10px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: var(--gray-300);
+}
+
+.doc-content tr:hover td { background: rgba(255, 255, 255, 0.02); }
+
+.highlight-box {
+  background: var(--navy-light);
+  border: 1px solid rgba(96, 165, 250, 0.15);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin: 24px 0;
+}
+
+.highlight-box p { margin-bottom: 8px; }
+.highlight-box p:last-child { margin-bottom: 0; }
+
+footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 40px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gray-400);
+}
+
+.footer-brand .nav-logo { width: 24px; height: 24px; font-size: 0.65rem; border-radius: 6px; }
+
+.footer-links { display: flex; gap: 24px; list-style: none; }
+
+.footer-links a {
+  color: var(--gray-500);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color var(--transition);
+}
+
+.footer-links a:hover { color: var(--gray-300); }
+
+.footer-copy {
+  width: 100%;
+  text-align: center;
+  padding-top: 24px;
+  margin-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 0.8rem;
+  color: var(--gray-500);
+}
+
+@media (max-width: 768px) {
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .footer-links { flex-wrap: wrap; gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home">
+      <div class="nav-logo">T</div>
+      TeamOps
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="doc-wrapper">
+  <div class="doc-content">
+    <h1>Security Policy</h1>
+    <p class="doc-meta"><strong>Last Updated:</strong> March 24, 2026 &nbsp;&bull;&nbsp; <strong>Publisher:</strong> PPLX Software</p>
+
+    <h2>1. Overview</h2>
+    <p>TeamOps is a <strong>Forge-native</strong> Jira application that runs entirely on Atlassian's infrastructure. It carries the <strong>"Runs on Atlassian"</strong> trust badge, meaning there are no external servers, no third-party hosting, and no data leaving Atlassian's platform.</p>
+    <div class="highlight-box">
+      <p><strong>Key facts:</strong></p>
+      <ul>
+        <li>Zero external servers or databases</li>
+        <li>Zero external network calls or data egress</li>
+        <li>PPLX Software has no access to your data</li>
+        <li>All data stays on Atlassian's infrastructure, in your data residency region</li>
+      </ul>
+    </div>
+
+    <h2>2. Data Storage &amp; Residency</h2>
+    <p>All TeamOps data is stored in the <strong>Forge Custom Entity Store</strong>, a managed storage service provided by Atlassian as part of the Forge platform.</p>
+    <ul>
+      <li><strong>Data Residency:</strong> Data follows your Atlassian tenant's configured data residency region. If your site is pinned to a specific region (EU, US, AU, etc.), all TeamOps data resides in that same region.</li>
+      <li><strong>Encryption at Rest:</strong> All data is encrypted at rest using AES-256 encryption, managed by Atlassian's infrastructure.</li>
+      <li><strong>Encryption in Transit:</strong> All communication within the Forge platform uses TLS 1.2 or higher.</li>
+      <li><strong>No External Storage:</strong> TeamOps does not store data in any external database, cloud service, browser local storage, or cookies.</li>
+    </ul>
+
+    <h2>3. Access Controls</h2>
+    <h3>PPLX Software Has No Access to Customer Data</h3>
+    <p>The Forge platform runs app code inside an isolated sandbox. PPLX Software, as the app publisher, <strong>cannot access, view, or retrieve</strong> any data stored by TeamOps on your Atlassian site. There is no admin backdoor, no remote access, and no telemetry that transmits customer data.</p>
+    <h3>Role-Based Access Within Your Organization</h3>
+    <p>TeamOps enforces role-based access control (RBAC) with three roles, checked on <strong>every server-side API call</strong>:</p>
+    <table>
+      <thead>
+        <tr><th>Role</th><th>Assignment</th><th>Data Access</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>HR Admin</strong></td><td>Jira group membership</td><td>Full access to all employee data, configuration, data export, and erasure</td></tr>
+        <tr><td><strong>Manager</strong></td><td>Jira group membership</td><td>Team members' leave requests and onboarding progress only</td></tr>
+        <tr><td><strong>Employee</strong></td><td>Default for all authenticated users</td><td>Own leave requests and onboarding tasks only</td></tr>
+      </tbody>
+    </table>
+    <h3>Authentication</h3>
+    <p>TeamOps relies entirely on <strong>Atlassian OAuth 2.0</strong> for authentication. The app does not collect credentials, manage sessions, or implement its own login flow. Users are authenticated by Atlassian before any app code executes.</p>
+
+    <h2>4. Platform Security</h2>
+    <p>TeamOps runs on Atlassian's Forge platform, which provides enterprise-grade security infrastructure:</p>
+    <table>
+      <thead>
+        <tr><th>Certification / Standard</th><th>Holder</th><th>Coverage</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>SOC 2 Type II</strong></td><td>Atlassian</td><td>Infrastructure, compute environment, and data storage used by Forge apps</td></tr>
+        <tr><td><strong>ISO 27001</strong></td><td>Atlassian</td><td>Information security management across Atlassian's platform</td></tr>
+        <tr><td><strong>AES-256 Encryption</strong></td><td>Atlassian</td><td>All data at rest in the Forge Custom Entity Store</td></tr>
+        <tr><td><strong>TLS 1.2+</strong></td><td>Atlassian</td><td>All data in transit within the Forge platform</td></tr>
+      </tbody>
+    </table>
+    <p>PPLX Software does not hold independent SOC 2 or ISO 27001 certification. Because TeamOps is Forge-native with no external infrastructure, Atlassian's platform certifications cover the entire runtime and storage environment that the app uses.</p>
+    <p>For details on Atlassian's security posture, see the <a href="https://www.atlassian.com/trust" target="_blank" rel="noopener">Atlassian Trust Center</a>.</p>
+
+    <h2>5. Data Processing</h2>
+    <h3>What Data Is Collected</h3>
+    <p>TeamOps collects only the data necessary for leave management and employee onboarding:</p>
+    <ul>
+      <li>Employee names and email addresses (from Atlassian user profiles)</li>
+      <li>Leave dates, leave types, and approval status</li>
+      <li>Onboarding task assignments and completion progress</li>
+      <li>Role assignments for access control</li>
+    </ul>
+    <h3>How Data Is Used</h3>
+    <ul>
+      <li>Data is used <strong>exclusively</strong> for leave management and onboarding workflows within Jira.</li>
+      <li>No data is shared with third parties, analytics services, or advertising networks.</li>
+      <li>No data is used for profiling, automated decision-making, or purposes beyond the app's stated functionality.</li>
+    </ul>
+    <h3>GDPR Compliance</h3>
+    <p>TeamOps includes built-in GDPR features: data export (right of access / portability) and data erasure (right to be forgotten), both available to HR Admins directly within the app.</p>
+    <p>For full details, see our <a href="/privacy-policy">Privacy Policy</a>.</p>
+
+    <h2>6. Incident Response</h2>
+    <p>PPLX Software follows a structured incident response process:</p>
+    <ol>
+      <li><strong>Detection &amp; Triage</strong> — Potential security issues are assessed for severity and scope within 24 hours of identification.</li>
+      <li><strong>Containment</strong> — For critical vulnerabilities, a patched version is submitted to the Atlassian Marketplace as an expedited update.</li>
+      <li><strong>Notification</strong> — Affected customers are notified through the Marketplace listing and direct communication for critical issues.</li>
+      <li><strong>Remediation</strong> — Root cause analysis is performed and preventive measures are implemented.</li>
+      <li><strong>Disclosure</strong> — Material security issues are disclosed responsibly with appropriate timelines.</li>
+    </ol>
+
+    <h2>7. Vulnerability Reporting</h2>
+    <p>If you discover a security vulnerability in TeamOps, please report it to us so we can address it promptly.</p>
+    <div class="highlight-box">
+      <p><strong>Contact:</strong> <a href="mailto:pplx.teamops@gmail.com">pplx.teamops@gmail.com</a></p>
+      <p>Please include a description of the vulnerability, steps to reproduce, and any relevant screenshots or logs. We aim to acknowledge reports within 48 hours and provide a resolution timeline within 5 business days.</p>
+    </div>
+
+    <h2>8. App Architecture</h2>
+    <p>TeamOps is built on <strong>Atlassian Forge</strong>, a serverless app platform where all code runs inside Atlassian's infrastructure. This architecture provides inherent security advantages over traditional Atlassian Connect apps:</p>
+    <table>
+      <thead>
+        <tr><th>Property</th><th>TeamOps (Forge)</th><th>Connect Apps (Traditional)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Code execution</strong></td><td>Atlassian's servers</td><td>Publisher's external servers</td></tr>
+        <tr><td><strong>Data storage</strong></td><td>Atlassian's infrastructure</td><td>Publisher's external databases</td></tr>
+        <tr><td><strong>Network calls</strong></td><td>None (zero external fetch)</td><td>Typically many external calls</td></tr>
+        <tr><td><strong>Data egress</strong></td><td>None</td><td>Data may leave Atlassian</td></tr>
+        <tr><td><strong>Publisher data access</strong></td><td>None (sandbox isolation)</td><td>Full access to hosted data</td></tr>
+      </tbody>
+    </table>
+    <h3>Additional Security Measures</h3>
+    <ul>
+      <li><strong>No Hardcoded Secrets:</strong> All sensitive configuration is managed through Forge encrypted environment variables.</li>
+      <li><strong>No PII in Logs:</strong> Application logs reference only entity IDs and account IDs, never names or email addresses.</li>
+      <li><strong>Dependency Scanning:</strong> All dependencies are scanned with <code>npm audit</code> and validated with <code>forge lint</code> before every deployment.</li>
+      <li><strong>Least Privilege:</strong> The app requests only the 7 Atlassian API scopes necessary for its functionality, each with a documented justification.</li>
+      <li><strong>No Cookies or Tracking:</strong> TeamOps sets no cookies, uses no analytics scripts, and performs no user tracking.</li>
+    </ul>
+
+    <h2>Questions?</h2>
+    <p>For security-related questions or concerns, contact us at <a href="mailto:pplx.teamops@gmail.com">pplx.teamops@gmail.com</a>.</p>
+    <p>For information about Atlassian's platform security, visit the <a href="https://www.atlassian.com/trust" target="_blank" rel="noopener">Atlassian Trust Center</a>.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="nav-logo">T</div>
+      PPLX Software
+    </div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="mailto:pplx.teamops@gmail.com">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
+  </div>
+</footer>
+
+</body>
+</html>
