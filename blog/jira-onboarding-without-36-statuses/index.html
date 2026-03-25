@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Manage Employee Onboarding in Jira Without Creating 36 Statuses | TeamOps Blog</title>
+<meta name="description" content="Jira's status-based workflows don't match HR's checklist-based onboarding. Learn why common workarounds fail and what actually works for employee onboarding in Jira.">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/blog/jira-onboarding-without-36-statuses">
+
+<meta property="og:title" content="How to Manage Employee Onboarding in Jira Without Creating 36 Statuses">
+<meta property="og:description" content="Jira's status-based workflows don't match HR's checklist-based onboarding. Learn why common workarounds fail and what actually works.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pplxsoftware.com/blog/jira-onboarding-without-36-statuses">
+<meta property="og:site_name" content="TeamOps Blog | PPLX Software">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Manage Employee Onboarding in Jira Without Creating 36 Statuses">
+<meta name="twitter:description" content="Jira's status-based workflows don't match HR's checklist-based onboarding. Learn why common workarounds fail and what actually works.">
+
+<meta name="article:published_time" content="2026-03-24">
+<meta name="author" content="PPLX Software">
+<meta name="keywords" content="jira employee onboarding, jira onboarding template, employee onboarding jira, onboarding workflow jira, jira hr onboarding">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to Manage Employee Onboarding in Jira Without Creating 36 Statuses",
+  "description": "Jira's status-based workflows don't match HR's checklist-based onboarding. Learn why common workarounds fail and what actually works for employee onboarding in Jira.",
+  "author": {
+    "@type": "Organization",
+    "name": "PPLX Software"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PPLX Software"
+  },
+  "datePublished": "2026-03-24",
+  "dateModified": "2026-03-24",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pplxsoftware.com/blog/jira-onboarding-without-36-statuses"
+  }
+}
+</script>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0f172a;
+  --navy-light: #1e293b;
+  --navy-mid: #162036;
+  --slate: #334155;
+  --slate-light: #475569;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --white: #ffffff;
+  --blue: #60a5fa;
+  --blue-dim: #3b82f6;
+  --blue-glow: rgba(96, 165, 250, 0.15);
+  --green: #34d399;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --max-width: 1120px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--navy);
+  color: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(96, 165, 250, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(96, 165, 250, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 16px 0;
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.nav-logo {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--blue), #818cf8);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--white);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--gray-400);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.nav-links a:hover { color: var(--white); }
+
+.nav-cta {
+  background: var(--blue);
+  color: var(--navy) !important;
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  font-weight: 600 !important;
+  transition: background var(--transition), transform var(--transition) !important;
+}
+
+.nav-cta:hover {
+  background: #93c5fd !important;
+  transform: translateY(-1px);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--gray-400);
+  margin: 5px 0;
+  transition: var(--transition);
+  border-radius: 1px;
+}
+
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(15, 23, 42, 0.97);
+    backdrop-filter: blur(16px);
+    padding: 8px 24px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { width: 100%; }
+  .nav-links a {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+  .nav-cta { display: inline-block; margin-top: 8px; text-align: center; }
+}
+
+/* Article Layout */
+.article-wrapper {
+  position: relative;
+  z-index: 1;
+  padding-top: 100px;
+  padding-bottom: 80px;
+}
+
+.article-content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.article-breadcrumb {
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  margin-bottom: 24px;
+}
+
+.article-breadcrumb a {
+  color: var(--gray-400);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.article-breadcrumb a:hover { color: var(--blue); }
+
+.article-content h1 {
+  font-size: clamp(1.75rem, 4vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.article-meta {
+  color: var(--gray-400);
+  font-size: 0.9rem;
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.article-meta .tag {
+  background: var(--blue-glow);
+  color: var(--blue);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-top: 48px;
+  margin-bottom: 16px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.article-content h2:first-of-type { border-top: none; padding-top: 0; }
+
+.article-content h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-top: 32px;
+  margin-bottom: 12px;
+  color: var(--gray-300);
+}
+
+.article-content p {
+  color: var(--gray-300);
+  line-height: 1.8;
+  margin-bottom: 18px;
+  font-size: 1.05rem;
+}
+
+.article-content ul, .article-content ol {
+  color: var(--gray-300);
+  margin-bottom: 18px;
+  padding-left: 24px;
+}
+
+.article-content li {
+  margin-bottom: 10px;
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.article-content strong { color: var(--white); font-weight: 600; }
+
+.article-content a {
+  color: var(--blue);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.article-content a:hover { color: #93c5fd; text-decoration: underline; }
+
+/* Callout boxes */
+.callout {
+  background: var(--navy-light);
+  border-left: 3px solid var(--blue);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  margin: 28px 0;
+}
+
+.callout p {
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+.callout-warning {
+  border-left-color: #fbbf24;
+}
+
+.callout-success {
+  border-left-color: var(--green);
+}
+
+/* Stats highlight */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 28px 0;
+}
+
+.stat-card {
+  background: var(--navy-light);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.stat-card .number {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--blue);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.stat-card .label {
+  font-size: 0.85rem;
+  color: var(--gray-400);
+}
+
+/* Workaround comparison */
+.workaround-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.workaround-card {
+  background: var(--navy-light);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.workaround-card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--white);
+}
+
+.workaround-card .verdict {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.verdict-bad {
+  background: rgba(248, 113, 113, 0.12);
+  color: #f87171;
+}
+
+.workaround-card p {
+  font-size: 0.92rem;
+  margin-bottom: 0;
+}
+
+/* Checklist visual */
+.checklist-visual {
+  background: var(--navy-light);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin: 28px 0;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.checklist-visual h4 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gray-400);
+  margin-bottom: 16px;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 0.95rem;
+  color: var(--gray-300);
+}
+
+.checklist-item:last-child { border-bottom: none; }
+
+.check-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.7rem;
+}
+
+.check-done {
+  background: rgba(52, 211, 153, 0.15);
+  color: var(--green);
+}
+
+.check-pending {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--gray-500);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* CTA section */
+.article-cta {
+  background: linear-gradient(135deg, var(--navy-light) 0%, rgba(96, 165, 250, 0.06) 100%);
+  border: 1px solid rgba(96, 165, 250, 0.15);
+  border-radius: var(--radius);
+  padding: 32px;
+  margin: 48px 0 24px;
+  text-align: center;
+}
+
+.article-cta h3 {
+  color: var(--white);
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  margin-top: 0;
+}
+
+.article-cta p {
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  display: inline-block;
+  background: var(--blue);
+  color: var(--navy);
+  padding: 12px 28px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.cta-button:hover {
+  background: #93c5fd;
+  color: var(--navy) !important;
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 40px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--gray-400);
+}
+
+.footer-brand .nav-logo { width: 24px; height: 24px; font-size: 0.65rem; border-radius: 6px; }
+
+.footer-links { display: flex; gap: 24px; list-style: none; }
+
+.footer-links a {
+  color: var(--gray-500);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color var(--transition);
+}
+
+.footer-links a:hover { color: var(--gray-300); }
+
+.footer-copy {
+  width: 100%;
+  text-align: center;
+  padding-top: 24px;
+  margin-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 0.8rem;
+  color: var(--gray-500);
+}
+
+@media (max-width: 768px) {
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .footer-links { flex-wrap: wrap; gap: 16px; }
+  .stat-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home">
+      <div class="nav-logo">T</div>
+      TeamOps
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="article-wrapper">
+  <article class="article-content">
+    <div class="article-breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/blog">Blog</a> &rsaquo; Jira Onboarding Without 36 Statuses
+    </div>
+
+    <h1>How to Manage Employee Onboarding in Jira Without Creating 36 Statuses</h1>
+
+    <div class="article-meta">
+      <span>March 24, 2026</span>
+      <span>&bull;</span>
+      <span>8 min read</span>
+      <span class="tag">Onboarding</span>
+      <span class="tag">Jira</span>
+    </div>
+
+    <p>Your team already lives in Jira. Projects, sprints, bug tracking, release planning &mdash; it all runs through Atlassian. So when HR asks "can we manage employee onboarding in Jira too?", the answer feels obvious: <strong>of course we can</strong>.</p>
+
+    <p>Then reality hits. A new hire needs 30+ tasks across IT, HR, Finance, Facilities, and their own team. Equipment provisioning. Account setup. Benefits enrollment. Compliance training. A manager introduction. And somehow, all of it needs to be tracked, assigned to different people, and completed within someone's first two weeks.</p>
+
+    <p>Jira can track work. But onboarding isn't just work &mdash; it's a <em>checklist-shaped process</em> that spans departments, timelines, and owners. And Jira's core model was never designed for that.</p>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <span class="number">40+</span>
+        <span class="label">Atlassian Community threads on this topic</span>
+      </div>
+      <div class="stat-card">
+        <span class="number">115K+</span>
+        <span class="label">combined views on those threads</span>
+      </div>
+      <div class="stat-card">
+        <span class="number">0</span>
+        <span class="label">native Jira features for HR onboarding</span>
+      </div>
+    </div>
+
+    <h2>The fundamental mismatch</h2>
+
+    <p>Jira is built around <strong>statuses and transitions</strong>. An issue moves from "To Do" to "In Progress" to "Done." That model works beautifully for software development, where a task has a clear lifecycle with a single owner.</p>
+
+    <p>Employee onboarding is different. It's a <strong>checklist</strong> with dozens of items, each assigned to a different person, grouped by department, and phased over days or weeks. The new hire isn't moving through a pipeline &mdash; multiple parallel workstreams are converging around a single person.</p>
+
+    <p>When you try to force a checklist-shaped process into a status-shaped tool, you get one of three outcomes &mdash; none of them good.</p>
+
+    <h2>Why the common workarounds fail</h2>
+
+    <div class="workaround-grid">
+      <div class="workaround-card">
+        <h4>Workaround 1: Create a status for every step</h4>
+        <span class="verdict verdict-bad">Breaks at scale</span>
+        <p>You create a workflow with statuses like "Laptop Ordered," "Accounts Created," "Benefits Enrolled," "Badge Printed," and "Training Scheduled." Congratulations &mdash; you now have a 36-status workflow that nobody can maintain. Every new checklist item means a new status, a new transition, and another conversation with your Jira admin. Worse, the workflow is linear, but onboarding isn't. IT can provision accounts while HR processes benefits simultaneously. A 36-status chain forces everything into a single lane.</p>
+      </div>
+
+      <div class="workaround-card">
+        <h4>Workaround 2: Create a sub-task for every checklist item</h4>
+        <span class="verdict verdict-bad">Gets noisy fast</span>
+        <p>Every onboarding step becomes a sub-task under a parent "Onboard Jane Smith" issue. This is closer to the right idea, but it falls apart in practice. Sub-tasks flood the backlog and sprint boards. They need to be manually created for every new hire (unless you build automation). There's no way to group them by department or phase. And when you're onboarding five people in the same week, your board becomes a wall of 150+ sub-tasks that nobody wants to look at.</p>
+      </div>
+
+      <div class="workaround-card">
+        <h4>Workaround 3: Use a spreadsheet alongside Jira</h4>
+        <span class="verdict verdict-bad">Defeats the purpose</span>
+        <p>The most common "solution." HR maintains a Google Sheet or Excel file with the real onboarding checklist, and Jira gets a single issue that says "Onboard New Hire &mdash; see spreadsheet for details." The new hire's actual progress lives outside the system of record. Nothing is searchable, auditable, or reportable. You've just added Jira overhead without getting any Jira value.</p>
+      </div>
+
+      <div class="workaround-card">
+        <h4>Workaround 4: Use Jira Service Management forms</h4>
+        <span class="verdict verdict-bad">Partial solution, wrong tool</span>
+        <p>JSM can intake an onboarding request, but it still doesn't solve the "30 tasks across 6 departments" problem. You end up building complex automation rules to spawn and assign tickets &mdash; which works until someone changes a template, breaks a rule, and three new hires fall through the cracks. JSM also means onboarding lives in a service desk project, away from the teams that are doing the actual onboarding work.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p><strong>The pattern here is clear.</strong> Every workaround is trying to bend Jira's issue/status model into a checklist model. The tool isn't wrong &mdash; the approach is. You need a purpose-built layer on top of Jira that thinks in checklists, phases, and departments.</p>
+    </div>
+
+    <h2>What good onboarding in Jira actually looks like</h2>
+
+    <p>Forget statuses and sub-tasks for a moment. Here's what HR teams actually need from an onboarding system:</p>
+
+    <p><strong>Templates that can be reused.</strong> When you hire a new engineer, the onboarding checklist should be mostly the same every time. IT access, dev environment setup, code review training, security policies. You shouldn't be building this from scratch for each hire.</p>
+
+    <p><strong>Phases that match the timeline.</strong> Some tasks happen on Day 1 (badge, laptop, accounts). Others happen in Week 1 (team introductions, initial training). Others in Month 1 (first project assignment, 30-day check-in). Good onboarding is phased, not a flat list.</p>
+
+    <p><strong>Department ownership.</strong> IT owns the equipment provisioning. HR owns benefits enrollment. The hiring manager owns the welcome meeting. Each department should see only their tasks, without wading through everyone else's.</p>
+
+    <p><strong>Milestone tracking.</strong> "How is the new hire's onboarding going?" should be answerable in seconds, not by opening a spreadsheet and counting rows. A progress indicator &mdash; 14 of 28 tasks complete, 50% &mdash; tells you immediately if someone is falling behind.</p>
+
+    <div class="checklist-visual">
+      <h4>Example: Engineering onboarding template</h4>
+      <div class="checklist-item">
+        <span class="check-icon check-done">&#10003;</span>
+        <span><strong>Day 1 &mdash; IT Setup:</strong> Laptop configured, accounts created, VPN access granted</span>
+      </div>
+      <div class="checklist-item">
+        <span class="check-icon check-done">&#10003;</span>
+        <span><strong>Day 1 &mdash; HR:</strong> Benefits enrollment, emergency contacts, policy acknowledgment</span>
+      </div>
+      <div class="checklist-item">
+        <span class="check-icon check-done">&#10003;</span>
+        <span><strong>Day 1 &mdash; Manager:</strong> Welcome meeting, team introductions, buddy assignment</span>
+      </div>
+      <div class="checklist-item">
+        <span class="check-icon check-pending">&#9675;</span>
+        <span><strong>Week 1 &mdash; Engineering:</strong> Dev environment setup, code review walkthrough, CI/CD intro</span>
+      </div>
+      <div class="checklist-item">
+        <span class="check-icon check-pending">&#9675;</span>
+        <span><strong>Week 1 &mdash; Security:</strong> Security training, access review, compliance acknowledgment</span>
+      </div>
+      <div class="checklist-item">
+        <span class="check-icon check-pending">&#9675;</span>
+        <span><strong>Month 1 &mdash; Manager:</strong> First project assignment, 30-day check-in, goals discussion</span>
+      </div>
+    </div>
+
+    <p>This is the model that works. Templates per role, phases per timeline, tasks grouped by department, and a single dashboard view showing progress across all active onboardings. The question is: how do you get this inside Jira without the workaround circus?</p>
+
+    <h2>How TeamOps approaches this</h2>
+
+    <p><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">TeamOps</a> is a Forge-native Jira app built specifically for this problem. Instead of fighting Jira's status model, it adds a purpose-built onboarding layer that lives inside your Jira instance.</p>
+
+    <p>Here's what that means in practice:</p>
+
+    <ul>
+      <li><strong>Onboarding templates</strong> &mdash; Create a template once for each role (Engineering, Sales, Marketing, etc.) with all the tasks, phases, and department assignments. When a new hire starts, launch the template and everything is created automatically.</li>
+      <li><strong>Phase-based organization</strong> &mdash; Tasks are grouped by timeline (Day 1, Week 1, Month 1) and by department (IT, HR, Finance). Each department sees only their slice of the onboarding.</li>
+      <li><strong>Progress tracking</strong> &mdash; A single dashboard shows every active onboarding with a progress bar. "Jane Smith &mdash; Engineering &mdash; 67% complete." No spreadsheets. No counting sub-tasks.</li>
+      <li><strong>Role-based access</strong> &mdash; HR admins see everything. Managers see their team. Employees see their own tasks. The right people see the right information.</li>
+    </ul>
+
+    <p>The key distinction: TeamOps doesn't try to make Jira's workflow engine do something it wasn't designed to do. It adds a dedicated data model for onboarding &mdash; with templates, phases, departments, and milestone tracking &mdash; that runs natively on Jira's Forge platform.</p>
+
+    <div class="callout callout-success">
+      <p><strong>Because it's Forge-native, your data never leaves Atlassian's infrastructure.</strong> TeamOps runs entirely within Jira &mdash; no external servers, no data exports, no third-party integrations. It carries the "Runs on Atlassian" trust badge, which means your onboarding data is stored and encrypted by Atlassian, not by a third party.</p>
+    </div>
+
+    <h2>Getting started</h2>
+
+    <p>TeamOps is <strong>free for teams of 10 users or fewer</strong>. Setup takes about 60 seconds: install from the Atlassian Marketplace, open any Jira project, and you'll see the TeamOps panel in your sidebar.</p>
+
+    <p>From there:</p>
+
+    <ol>
+      <li><strong>Create your first template</strong> &mdash; Start with a role you hire for frequently. Add the tasks, group them by phase and department.</li>
+      <li><strong>Launch an onboarding</strong> &mdash; Select a new hire and apply the template. All tasks are created and assigned automatically.</li>
+      <li><strong>Track progress</strong> &mdash; Use the dashboard to monitor completion across all active onboardings. Identify bottlenecks before they become problems.</li>
+    </ol>
+
+    <p>No Jira workflow changes needed. No custom fields. No automation rules to maintain. Just a purpose-built onboarding system that works the way HR teams actually think about onboarding &mdash; in checklists, phases, and milestones.</p>
+
+    <div class="article-cta">
+      <h3>Stop fighting Jira's workflow engine</h3>
+      <p>TeamOps gives your team proper onboarding inside the tool you already use. Free for teams up to 10 users.</p>
+      <a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="cta-button" target="_blank" rel="noopener">Install TeamOps Free</a>
+    </div>
+
+  </article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="nav-logo">T</div>
+      PPLX Software
+    </div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="mailto:pplx.teamops@gmail.com">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
+  </div>
+</footer>
+
+</body>
+</html>
