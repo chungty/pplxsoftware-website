@@ -3,521 +3,599 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Support — TeamOps by PPLX Software</title>
-<meta name="description" content="Get help with TeamOps — onboarding and leave management for Jira. Contact support, browse FAQs, and report issues.">
+<title>Support — TeamOps | PPLX Software</title>
+<meta name="description" content="Get help with TeamOps — onboarding, offboarding, and leave management for Jira. Contact support, browse FAQs, and access documentation.">
 <meta name="theme-color" content="#0f172a">
 <link rel="canonical" href="https://pplxsoftware.com/support">
-<meta property="og:title" content="Support — TeamOps by PPLX Software">
-<meta property="og:description" content="Get help with TeamOps — onboarding and leave management for Jira.">
+
+<meta property="og:title" content="Support — TeamOps | PPLX Software">
+<meta property="og:description" content="Get help with TeamOps — onboarding, offboarding, and leave management for Jira. Contact support, browse FAQs, and access documentation.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pplxsoftware.com/support">
-<style>
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I get started?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Install from Atlassian Marketplace. Works in 60 seconds, zero configuration."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I add employees?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Apps > TeamOps > Team Directory > Add Employee."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I start onboarding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Apps > TeamOps > Onboarding > Start Onboarding > pick a template."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I start offboarding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Apps > TeamOps > Offboarding > select a template > enter last day."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I upgrade to Pro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your Jira admin can upgrade from the Atlassian Marketplace billing page."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is my data stored?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All data is stored in Atlassian's Forge infrastructure, encrypted at rest, following your organization's data residency settings. PPLX Software has zero access to your data. No employee information leaves Atlassian's cloud."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to my data if I uninstall?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your data is stored in Forge's Custom Entity Store, which is managed by Atlassian. Uninstalling removes the app UI but data retention follows Atlassian's Forge data policies. Contact support if you need data exported before uninstalling."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What Jira permissions does the app need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TeamOps requires: storage:app, read/write:jira-work, read:jira-user, read:group:jira, manage:jira-project, and manage:jira-configuration. Each scope is documented in our security page."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it work with Jira Service Management?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. TeamOps works with both Jira Software and Jira Service Management on Atlassian Cloud."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the system requirements?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Atlassian Cloud only (Jira Software or JSM). No Data Center or Server support. Works in all modern browsers."
+      }
+    }
+  ]
 }
+</script>
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
   --navy: #0f172a;
   --navy-light: #1e293b;
-  --blue: #3b82f6;
-  --blue-hover: #2563eb;
-  --white: #ffffff;
-  --gray-50: #f8fafc;
-  --gray-100: #f1f5f9;
-  --gray-200: #e2e8f0;
+  --navy-mid: #162036;
+  --slate: #334155;
+  --slate-light: #475569;
   --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
   --gray-500: #64748b;
-  --gray-600: #475569;
-  --gray-700: #334155;
-  --gray-800: #1e293b;
-  --gray-900: #0f172a;
+  --white: #ffffff;
+  --blue: #60a5fa;
+  --blue-dim: #3b82f6;
+  --blue-glow: rgba(96, 165, 250, 0.15);
+  --green: #34d399;
   --radius: 12px;
   --radius-sm: 8px;
-  --max-width: 800px;
-  --transition: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --max-width: 1120px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--white);
-  color: var(--gray-700);
+  background-color: var(--navy);
+  color: var(--white);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
-a {
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(96, 165, 250, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(96, 165, 250, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 16px 0;
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.nav-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+.nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--white); font-weight: 700; font-size: 1.05rem; }
+.nav-logo { width: 32px; height: 32px; background: linear-gradient(135deg, var(--blue), #818cf8); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; color: var(--white); }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a { color: var(--gray-400); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color var(--transition); }
+.nav-links a:hover { color: var(--white); }
+.nav-cta { background: var(--blue); color: var(--navy) !important; padding: 8px 18px; border-radius: var(--radius-sm); font-weight: 600 !important; transition: background var(--transition), transform var(--transition) !important; }
+.nav-cta:hover { background: #93c5fd !important; transform: translateY(-1px); }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--gray-400); margin: 5px 0; transition: var(--transition); border-radius: 1px; }
+
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; background: rgba(15, 23, 42, 0.97); backdrop-filter: blur(16px); padding: 8px 24px 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+  .nav-links.open { display: flex; }
+  .nav-links li { width: 100%; }
+  .nav-links a { display: block; padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
+  .nav-cta { display: inline-block; margin-top: 8px; text-align: center; }
+}
+
+.doc-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
+.doc-content { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+.doc-content h1 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 8px; }
+.doc-subtitle { color: var(--gray-400); font-size: 1.05rem; margin-bottom: 40px; line-height: 1.6; }
+
+/* Help cards grid */
+.help-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 48px; }
+
+.help-card {
+  background: var(--navy-light);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: border-color var(--transition);
+}
+
+.help-card:hover { border-color: rgba(96, 165, 250, 0.2); }
+
+.help-card-icon {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+.help-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.help-card-title a {
   color: var(--blue);
   text-decoration: none;
   transition: color var(--transition);
 }
 
-a:hover {
-  color: var(--blue-hover);
-}
+.help-card-title a:hover { color: #93c5fd; text-decoration: underline; }
 
-/* --- HEADER --- */
-.header {
-  background: var(--navy);
-  padding: 80px 24px 64px;
-  text-align: center;
-}
-
-.header-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
-
-.header-logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 32px;
-  text-decoration: none;
-}
-
-.header-logo-icon {
-  width: 32px;
-  height: 32px;
-  background: var(--blue);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 800;
-  color: var(--white);
-}
-
-.header-logo-text {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--gray-300);
-  letter-spacing: -0.01em;
-}
-
-.header h1 {
-  font-size: clamp(32px, 5vw, 44px);
-  font-weight: 700;
-  color: var(--white);
-  letter-spacing: -0.03em;
-  line-height: 1.15;
-  margin-bottom: 12px;
-}
-
-.header p {
-  font-size: 18px;
-  color: var(--gray-300);
-  font-weight: 400;
-}
-
-/* --- MAIN CONTENT --- */
-.content {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 64px 24px 80px;
-}
-
-/* --- SECTION --- */
-.section {
-  margin-bottom: 64px;
-}
-
-.section:last-child {
-  margin-bottom: 0;
-}
-
-.section-title {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--gray-900);
-  letter-spacing: -0.02em;
-  margin-bottom: 24px;
-  padding-bottom: 12px;
-  border-bottom: 2px solid var(--gray-100);
-}
-
-/* --- GET HELP --- */
-.help-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.help-card {
-  background: var(--gray-50);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius);
-  padding: 28px;
-  transition: border-color var(--transition);
-}
-
-.help-card:hover {
-  border-color: var(--gray-300);
-}
-
-.help-card-label {
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--gray-500);
-  margin-bottom: 8px;
-}
-
-.help-card-value {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--gray-900);
-  word-break: break-all;
-}
-
-.help-card-value a {
-  color: var(--blue);
-}
-
-.help-card-note {
-  font-size: 14px;
-  color: var(--gray-500);
-  margin-top: 8px;
+.help-card-desc {
+  font-size: 0.9rem;
+  color: var(--gray-400);
   line-height: 1.5;
 }
 
-/* --- FAQ --- */
-.faq-list {
-  list-style: none;
+@media (max-width: 768px) {
+  .help-grid { grid-template-columns: 1fr; }
 }
 
-.faq-item {
-  border-bottom: 1px solid var(--gray-100);
+/* Section headings */
+.section-heading {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  color: var(--white);
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 48px;
 }
 
-.faq-item:last-child {
-  border-bottom: none;
-}
+/* FAQ accordion — matches /faq exactly */
+.faq-category { margin-top: 48px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.06); }
+.faq-category:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+.faq-category h2 { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 20px; color: var(--blue); }
+
+.faq-item { border: 1px solid rgba(255, 255, 255, 0.06); border-radius: var(--radius-sm); margin-bottom: 8px; overflow: hidden; background: var(--navy-light); transition: border-color var(--transition); }
+.faq-item:hover { border-color: rgba(96, 165, 250, 0.2); }
 
 .faq-question {
   width: 100%;
   background: none;
   border: none;
-  text-align: left;
-  padding: 20px 40px 20px 0;
+  color: var(--white);
   font-family: inherit;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
-  color: var(--gray-900);
+  text-align: left;
+  padding: 18px 20px;
   cursor: pointer;
-  position: relative;
-  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
   transition: color var(--transition);
 }
 
-.faq-question:hover {
-  color: var(--blue);
-}
+.faq-question:hover { color: var(--blue); }
 
 .faq-question::after {
   content: '+';
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 22px;
-  font-weight: 300;
+  font-size: 1.3rem;
+  font-weight: 400;
   color: var(--gray-400);
+  flex-shrink: 0;
   transition: transform var(--transition);
 }
 
 .faq-item.open .faq-question::after {
   content: '-';
+  transform: rotate(0deg);
 }
 
 .faq-answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
-}
-
-.faq-answer-inner {
-  padding: 0 0 20px 0;
-  font-size: 15px;
-  color: var(--gray-600);
-  line-height: 1.65;
+  transition: max-height 0.4s ease, padding 0.3s ease;
 }
 
 .faq-item.open .faq-answer {
-  max-height: 200px;
+  max-height: 800px;
 }
 
-/* --- REPORT ISSUE --- */
-.report-intro {
-  font-size: 15px;
-  color: var(--gray-600);
+.faq-answer-inner {
+  padding: 0 20px 20px;
+  color: var(--gray-300);
+  line-height: 1.7;
+}
+
+.faq-answer-inner p { margin-bottom: 12px; color: var(--gray-300); }
+.faq-answer-inner ul, .faq-answer-inner ol { margin-bottom: 12px; padding-left: 24px; }
+.faq-answer-inner li { margin-bottom: 6px; }
+.faq-answer-inner strong { color: var(--white); }
+.faq-answer-inner a { color: var(--blue); text-decoration: none; }
+.faq-answer-inner a:hover { text-decoration: underline; }
+.faq-answer-inner code { background: var(--navy); padding: 2px 6px; border-radius: 4px; font-size: 0.88em; color: var(--blue); }
+
+/* Report section */
+.report-box {
+  background: var(--navy-light);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-top: 16px;
+}
+
+.report-box p {
+  color: var(--gray-300);
+  line-height: 1.7;
   margin-bottom: 16px;
-  line-height: 1.65;
 }
 
-.report-intro a {
-  font-weight: 600;
-}
+.report-box p:last-child { margin-bottom: 0; }
 
-.report-list {
+.report-box a { color: var(--blue); text-decoration: none; font-weight: 600; }
+.report-box a:hover { text-decoration: underline; }
+
+.report-box ul {
   list-style: none;
   padding: 0;
+  margin-bottom: 20px;
 }
 
-.report-list li {
+.report-box ul li {
   position: relative;
-  padding: 10px 0 10px 28px;
-  font-size: 15px;
-  color: var(--gray-700);
-  line-height: 1.5;
+  padding: 6px 0 6px 20px;
+  color: var(--gray-300);
+  line-height: 1.6;
 }
 
-.report-list li::before {
+.report-box ul li::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 18px;
-  width: 8px;
-  height: 8px;
+  top: 14px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--blue);
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
-/* --- FOOTER --- */
-.footer {
-  background: var(--navy);
-  padding: 40px 24px;
-}
-
-.footer-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.footer-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.footer-logo {
-  width: 24px;
-  height: 24px;
+.report-cta {
+  display: inline-block;
   background: var(--blue);
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 800;
-  color: var(--white);
-}
-
-.footer-brand-name {
-  font-size: 14px;
+  color: var(--navy);
+  padding: 10px 22px;
+  border-radius: var(--radius-sm);
   font-weight: 600;
-  color: var(--gray-300);
-}
-
-.footer-copy {
-  font-size: 13px;
-  color: var(--gray-500);
-}
-
-.footer-links {
-  display: flex;
-  gap: 28px;
-  list-style: none;
-}
-
-.footer-links a {
-  font-size: 13px;
-  color: var(--gray-500);
+  font-size: 0.95rem;
   text-decoration: none;
-  transition: color var(--transition);
+  transition: background var(--transition), transform var(--transition);
 }
 
-.footer-links a:hover {
+.report-cta:hover {
+  background: #93c5fd;
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+/* Links section */
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.link-item {
   color: var(--gray-300);
+  text-decoration: none;
+  padding: 16px 20px;
+  background: var(--navy-light);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition), color var(--transition);
+  display: block;
 }
 
-/* --- RESPONSIVE --- */
-@media (max-width: 600px) {
-  .header {
-    padding: 60px 20px 48px;
-  }
+.link-item:hover {
+  border-color: rgba(96, 165, 250, 0.2);
+  color: var(--white);
+  text-decoration: none;
+}
 
-  .header h1 {
-    font-size: 28px;
-  }
+.link-item-title {
+  font-weight: 600;
+  color: var(--blue);
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
 
-  .content {
-    padding: 48px 20px 64px;
-  }
+.link-item-desc {
+  font-size: 0.85rem;
+  color: var(--gray-400);
+}
 
-  .help-grid {
-    grid-template-columns: 1fr;
-  }
+@media (max-width: 768px) {
+  .links-grid { grid-template-columns: 1fr; }
+}
 
-  .footer-inner {
-    flex-direction: column;
-    text-align: center;
-  }
+footer { border-top: 1px solid rgba(255, 255, 255, 0.05); padding: 40px 0; position: relative; z-index: 1; }
+.footer-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+.footer-brand { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 600; color: var(--gray-400); }
+.footer-brand .nav-logo { width: 24px; height: 24px; font-size: 0.65rem; border-radius: 6px; }
+.footer-links { display: flex; gap: 24px; list-style: none; }
+.footer-links a { color: var(--gray-500); text-decoration: none; font-size: 0.85rem; transition: color var(--transition); }
+.footer-links a:hover { color: var(--gray-300); }
+.footer-copy { width: 100%; text-align: center; padding-top: 24px; margin-top: 8px; border-top: 1px solid rgba(255, 255, 255, 0.04); font-size: 0.8rem; color: var(--gray-500); }
 
-  .footer-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
-  }
+@media (max-width: 768px) {
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .footer-links { flex-wrap: wrap; gap: 16px; }
 }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="header-inner">
-    <a href="https://pplxsoftware.com" class="header-logo">
-      <div class="header-logo-icon">T</div>
-      <span class="header-logo-text">PPLX Software</span>
-    </a>
-    <h1>TeamOps Support</h1>
-    <p>We're here to help.</p>
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home"><div class="nav-logo">T</div>TeamOps</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
   </div>
-</header>
+</nav>
 
-<!-- MAIN CONTENT -->
-<main class="content">
+<main class="doc-wrapper">
+  <div class="doc-content">
+    <h1>Support</h1>
+    <p class="doc-subtitle">Email a human, not a ticket system. I'm Thomas, the founder of TeamOps. I read every support email personally.</p>
 
-  <!-- GET HELP -->
-  <div class="section">
-    <h2 class="section-title">Get Help</h2>
+    <!-- GET HELP -->
     <div class="help-grid">
       <div class="help-card">
-        <div class="help-card-label">Email</div>
-        <div class="help-card-value">
-          <a href="mailto:support@pplxsoftware.com">support@pplxsoftware.com</a>
-        </div>
-        <div class="help-card-note">We typically respond within 24 hours on business days.</div>
+        <div class="help-card-icon">&#9993;</div>
+        <div class="help-card-title"><a href="mailto:support@pplxsoftware.com">support@pplxsoftware.com</a></div>
+        <div class="help-card-desc">We respond within one business day.</div>
       </div>
       <div class="help-card">
-        <div class="help-card-label">Documentation</div>
-        <div class="help-card-value">
-          <a href="https://chungty.github.io/teamops-docs" target="_blank" rel="noopener">TeamOps Docs</a>
-        </div>
-        <div class="help-card-note">Setup guides, feature walkthroughs, and troubleshooting.</div>
+        <div class="help-card-icon">&#128214;</div>
+        <div class="help-card-title"><a href="/docs">Documentation</a></div>
+        <div class="help-card-desc">Setup guides, feature walkthroughs, and troubleshooting.</div>
+      </div>
+      <div class="help-card">
+        <div class="help-card-icon">&#128101;</div>
+        <div class="help-card-title"><a href="https://community.atlassian.com/t5/Marketplace-Apps-Integrations/ct-p/marketplace-apps-integrations" target="_blank" rel="noopener">Atlassian Community</a></div>
+        <div class="help-card-desc">Ask questions and connect with other Jira admins.</div>
       </div>
     </div>
-  </div>
 
-  <!-- COMMON QUESTIONS -->
-  <div class="section">
-    <h2 class="section-title">Common Questions</h2>
-    <ul class="faq-list">
-      <li class="faq-item">
-        <button class="faq-question" aria-expanded="false">How do I get started?</button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">Install TeamOps from the Atlassian Marketplace. It works in 60 seconds with zero configuration.</div>
-        </div>
-      </li>
-      <li class="faq-item">
-        <button class="faq-question" aria-expanded="false">How do I add employees?</button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">Go to Apps > TeamOps > Team Directory > Add Employee.</div>
-        </div>
-      </li>
-      <li class="faq-item">
-        <button class="faq-question" aria-expanded="false">How do I start onboarding?</button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">Go to Apps > TeamOps > Onboarding > Start Onboarding > pick a template.</div>
-        </div>
-      </li>
-      <li class="faq-item">
-        <button class="faq-question" aria-expanded="false">How do I start offboarding?</button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">Go to Apps > TeamOps > Offboarding > select a template > enter the employee's last day.</div>
-        </div>
-      </li>
-      <li class="faq-item">
-        <button class="faq-question" aria-expanded="false">Where is my data stored?</button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">All data stays within Atlassian's infrastructure. TeamOps is Forge-native. PPLX Software has zero access to your data.</div>
-        </div>
-      </li>
-      <li class="faq-item">
-        <button class="faq-question" aria-expanded="false">How do I upgrade to Pro?</button>
-        <div class="faq-answer">
-          <div class="faq-answer-inner">Your Jira admin can upgrade from the Atlassian Marketplace billing page.</div>
-        </div>
-      </li>
-    </ul>
-  </div>
+    <!-- COMMON QUESTIONS -->
+    <div class="section-heading">Common Questions</div>
 
-  <!-- REPORT AN ISSUE -->
-  <div class="section">
-    <h2 class="section-title">Report an Issue</h2>
-    <p class="report-intro">Found a bug or something confusing? Email us at <a href="mailto:support@pplxsoftware.com">support@pplxsoftware.com</a> with:</p>
-    <ul class="report-list">
-      <li>What you expected to happen</li>
-      <li>What actually happened</li>
-      <li>Your Jira site URL (e.g., yourcompany.atlassian.net)</li>
-    </ul>
-  </div>
+    <div class="faq-category" style="margin-top: 0; padding-top: 0; border-top: none;">
+      <h2>Getting Started</h2>
 
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I get started?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Install from Atlassian Marketplace. Works in 60 seconds, zero configuration.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I add employees?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p><strong>Apps</strong> &gt; <strong>TeamOps</strong> &gt; <strong>Team Directory</strong> &gt; <strong>Add Employee</strong>.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I start onboarding?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p><strong>Apps</strong> &gt; <strong>TeamOps</strong> &gt; <strong>Onboarding</strong> &gt; <strong>Start Onboarding</strong> &gt; pick a template.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I start offboarding?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p><strong>Apps</strong> &gt; <strong>TeamOps</strong> &gt; <strong>Offboarding</strong> &gt; select a template &gt; enter last day.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I upgrade to Pro?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Your Jira admin can upgrade from the Atlassian Marketplace billing page.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="faq-category">
+      <h2>Security &amp; Administration</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Where is my data stored?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>All data is stored in Atlassian's Forge infrastructure, encrypted at rest, following your organization's data residency settings. PPLX Software has zero access to your data. No employee information leaves Atlassian's cloud.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What happens to my data if I uninstall?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Your data is stored in Forge's Custom Entity Store, which is managed by Atlassian. Uninstalling removes the app UI but data retention follows Atlassian's Forge data policies. Contact support if you need data exported before uninstalling.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What Jira permissions does the app need?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>TeamOps requires: <code>storage:app</code>, <code>read/write:jira-work</code>, <code>read:jira-user</code>, <code>read:group:jira</code>, <code>manage:jira-project</code>, and <code>manage:jira-configuration</code>. Each scope is documented in our <a href="/security">security page</a>.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Does it work with Jira Service Management?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Yes. TeamOps works with both Jira Software and Jira Service Management on Atlassian Cloud.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What are the system requirements?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Atlassian Cloud only (Jira Software or JSM). No Data Center or Server support. Works in all modern browsers.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- REPORT AN ISSUE -->
+    <div class="section-heading" style="margin-top: 48px;">Report an Issue</div>
+    <div class="report-box">
+      <p>Found a bug or something not working right? Email us at <a href="mailto:support@pplxsoftware.com">support@pplxsoftware.com</a> with:</p>
+      <ul>
+        <li>What you expected to happen</li>
+        <li>What actually happened</li>
+        <li>Steps to reproduce</li>
+        <li>Your Jira site URL (e.g., yourcompany.atlassian.net)</li>
+        <li>Screenshots (if applicable)</li>
+      </ul>
+      <a href="mailto:support@pplxsoftware.com?subject=TeamOps%20Bug%20Report&body=Expected%20behavior%3A%0A%0AActual%20behavior%3A%0A%0ASteps%20to%20reproduce%3A%0A%0AJira%20site%20URL%3A%0A%0AScreenshots%3A%0A" class="report-cta">Report a Bug</a>
+    </div>
+
+    <!-- LINKS -->
+    <div class="section-heading" style="margin-top: 48px;">Links</div>
+    <div class="links-grid">
+      <a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78/versions" target="_blank" rel="noopener" class="link-item">
+        <div class="link-item-title">Changelog</div>
+        <div class="link-item-desc">See what's new</div>
+      </a>
+      <a href="mailto:support@pplxsoftware.com?subject=Feature%20Request" class="link-item">
+        <div class="link-item-title">Feature Requests</div>
+        <div class="link-item-desc">Have an idea?</div>
+      </a>
+      <a href="/security" class="link-item">
+        <div class="link-item-title">Security</div>
+        <div class="link-item-desc">Read our security policy</div>
+      </a>
+    </div>
+
+  </div>
 </main>
 
-<!-- FOOTER -->
-<footer class="footer">
+<footer>
   <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="footer-logo">T</div>
-      <span class="footer-brand-name">TeamOps by PPLX Software</span>
-      <span class="footer-copy">&copy; 2026</span>
-    </div>
+    <div class="footer-brand"><div class="nav-logo">T</div>PPLX Software</div>
     <ul class="footer-links">
-      <li><a href="https://chungty.github.io/teamops-docs">Documentation</a></li>
-      <li><a href="https://chungty.github.io/teamops-docs/privacy-policy">Privacy Policy</a></li>
-      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78">Marketplace Listing</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="mailto:support@pplxsoftware.com">Support</a></li>
     </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
   </div>
 </footer>
-
-<script>
-// FAQ accordion
-(function() {
-  var items = document.querySelectorAll('.faq-item');
-  items.forEach(function(item) {
-    var btn = item.querySelector('.faq-question');
-    btn.addEventListener('click', function() {
-      var isOpen = item.classList.contains('open');
-      // Close all
-      items.forEach(function(i) {
-        i.classList.remove('open');
-        i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-      });
-      // Toggle current
-      if (!isOpen) {
-        item.classList.add('open');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
-})();
-</script>
 
 </body>
 </html>
