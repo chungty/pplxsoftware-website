@@ -13,362 +13,19 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pplxsoftware.com/security">
 
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --navy: #0f172a;
-  --navy-light: #1e293b;
-  --navy-mid: #162036;
-  --slate: #334155;
-  --slate-light: #475569;
-  --gray-300: #cbd5e1;
-  --gray-400: #94a3b8;
-  --gray-500: #64748b;
-  --white: #ffffff;
-  --blue: #60a5fa;
-  --blue-dim: #3b82f6;
-  --blue-glow: rgba(96, 165, 250, 0.15);
-  --green: #34d399;
-  --radius: 12px;
-  --radius-sm: 8px;
-  --max-width: 1120px;
-  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-
-body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: var(--navy);
-  color: var(--white);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(96, 165, 250, 0.06) 1px, transparent 1px);
-  background-size: 32px 32px;
-  pointer-events: none;
-  z-index: 0;
-}
-
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(96, 165, 250, 0.04) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  padding: 16px 0;
-  background: rgba(15, 23, 42, 0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
-}
-
-.nav-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: var(--white);
-  font-weight: 700;
-  font-size: 1.05rem;
-}
-
-.nav-logo {
-  width: 32px;
-  height: 32px;
-  background: linear-gradient(135deg, var(--blue), #818cf8);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 0.85rem;
-  color: var(--white);
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  list-style: none;
-}
-
-.nav-links a {
-  color: var(--gray-400);
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: color var(--transition);
-}
-
-.nav-links a:hover { color: var(--white); }
-
-.nav-cta {
-  background: var(--blue);
-  color: var(--navy) !important;
-  padding: 8px 18px;
-  border-radius: var(--radius-sm);
-  font-weight: 600 !important;
-  transition: background var(--transition), transform var(--transition) !important;
-}
-
-.nav-cta:hover {
-  background: #93c5fd !important;
-  transform: translateY(-1px);
-}
-
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-}
-
-.nav-toggle span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--gray-400);
-  margin: 5px 0;
-  transition: var(--transition);
-  border-radius: 1px;
-}
-
-@media (max-width: 768px) {
-  .nav-toggle { display: block; }
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%; left: 0; right: 0;
-    flex-direction: column;
-    gap: 0;
-    background: rgba(15, 23, 42, 0.97);
-    backdrop-filter: blur(16px);
-    padding: 8px 24px 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
-  .nav-links.open { display: flex; }
-  .nav-links li { width: 100%; }
-  .nav-links a {
-    display: block;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  }
-  .nav-cta { display: inline-block; margin-top: 8px; text-align: center; }
-}
-
-.doc-wrapper {
-  position: relative;
-  z-index: 1;
-  padding-top: 100px;
-  padding-bottom: 80px;
-}
-
-.doc-content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.doc-content h1 {
-  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  margin-bottom: 8px;
-}
-
-.doc-meta {
-  color: var(--gray-400);
-  font-size: 0.9rem;
-  margin-bottom: 40px;
-  padding-bottom: 32px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.doc-content h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  margin-top: 48px;
-  margin-bottom: 16px;
-  padding-top: 32px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.doc-content h2:first-of-type { border-top: none; padding-top: 0; }
-
-.doc-content h3 {
-  font-size: 1.15rem;
-  font-weight: 600;
-  margin-top: 32px;
-  margin-bottom: 12px;
-  color: var(--gray-300);
-}
-
-.doc-content p {
-  color: var(--gray-300);
-  line-height: 1.7;
-  margin-bottom: 16px;
-}
-
-.doc-content ul, .doc-content ol {
-  color: var(--gray-300);
-  margin-bottom: 16px;
-  padding-left: 24px;
-}
-
-.doc-content li { margin-bottom: 8px; line-height: 1.7; }
-
-.doc-content strong { color: var(--white); font-weight: 600; }
-
-.doc-content a {
-  color: var(--blue);
-  text-decoration: none;
-  transition: color var(--transition);
-}
-
-.doc-content a:hover { color: #93c5fd; text-decoration: underline; }
-
-.doc-content code {
-  background: var(--navy-light);
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 0.88em;
-  color: var(--blue);
-}
-
-.doc-content table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 20px 0;
-  font-size: 0.9rem;
-}
-
-.doc-content th {
-  text-align: left;
-  padding: 12px 16px;
-  background: var(--navy-light);
-  color: var(--white);
-  font-weight: 600;
-  border-bottom: 2px solid rgba(96, 165, 250, 0.2);
-}
-
-.doc-content td {
-  padding: 10px 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  color: var(--gray-300);
-}
-
-.doc-content tr:hover td { background: rgba(255, 255, 255, 0.02); }
-
-.highlight-box {
-  background: var(--navy-light);
-  border: 1px solid rgba(96, 165, 250, 0.15);
-  border-radius: var(--radius);
-  padding: 24px;
-  margin: 24px 0;
-}
-
-.highlight-box p { margin-bottom: 8px; }
-.highlight-box p:last-child { margin-bottom: 0; }
-
-footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 40px 0;
-  position: relative;
-  z-index: 1;
-}
-
-.footer-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.footer-brand {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--gray-400);
-}
-
-.footer-brand .nav-logo { width: 24px; height: 24px; font-size: 0.65rem; border-radius: 6px; }
-
-.footer-links { display: flex; gap: 24px; list-style: none; }
-
-.footer-links a {
-  color: var(--gray-500);
-  text-decoration: none;
-  font-size: 0.85rem;
-  transition: color var(--transition);
-}
-
-.footer-links a:hover { color: var(--gray-300); }
-
-.footer-copy {
-  width: 100%;
-  text-align: center;
-  padding-top: 24px;
-  margin-top: 8px;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
-  font-size: 0.8rem;
-  color: var(--gray-500);
-}
-
-@media (max-width: 768px) {
-  .footer-inner { flex-direction: column; align-items: flex-start; }
-  .footer-links { flex-wrap: wrap; gap: 16px; }
-}
-</style>
+<link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 
 <nav aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="/" class="nav-brand" aria-label="PPLX Software Home">
-      <div class="nav-logo">T</div>
-      TeamOps
-    </a>
-    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')">
-      <span></span><span></span><span></span>
-    </button>
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home"><div class="nav-logo">T</div>TeamOps</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"><span></span><span></span><span></span></button>
     <ul class="nav-links">
       <li><a href="/">Home</a></li>
       <li><a href="/docs">Docs</a></li>
+      <li><a href="/support">Support</a></li>
       <li><a href="/privacy-policy">Privacy Policy</a></li>
-      <li><a href="/security">Security</a></li>
       <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
     </ul>
   </div>
@@ -380,7 +37,7 @@ footer {
     <p class="doc-meta"><strong>Last Updated:</strong> March 24, 2026 &nbsp;&bull;&nbsp; <strong>Publisher:</strong> PPLX Software</p>
 
     <h2>1. Overview</h2>
-    <p>TeamOps is a <strong>Forge-native</strong> Jira application that runs entirely on Atlassian's infrastructure. It carries the <strong>"Runs on Atlassian"</strong> trust badge, meaning there are no external servers, no third-party hosting, and no data leaving Atlassian's platform.</p>
+    <p>TeamOps is a <strong>Forge-native</strong> Jira application for onboarding, offboarding, and leave management that runs entirely on Atlassian's infrastructure. It carries the <strong>"Runs on Atlassian"</strong> trust badge, meaning there are no external servers, no third-party hosting, and no data leaving Atlassian's platform.</p>
     <div class="highlight-box">
       <p><strong>Key facts:</strong></p>
       <ul>
@@ -411,8 +68,8 @@ footer {
       </thead>
       <tbody>
         <tr><td><strong>HR Admin</strong></td><td>Jira group membership</td><td>Full access to all employee data, configuration, data export, and erasure</td></tr>
-        <tr><td><strong>Manager</strong></td><td>Jira group membership</td><td>Team members' leave requests and onboarding progress only</td></tr>
-        <tr><td><strong>Employee</strong></td><td>Default for all authenticated users</td><td>Own leave requests and onboarding tasks only</td></tr>
+        <tr><td><strong>Manager</strong></td><td>Jira group membership</td><td>Team members' leave requests, onboarding, and offboarding progress only</td></tr>
+        <tr><td><strong>Employee</strong></td><td>Default for all authenticated users</td><td>Own leave requests, onboarding, and offboarding tasks only</td></tr>
       </tbody>
     </table>
     <h3>Authentication</h3>
@@ -436,16 +93,16 @@ footer {
 
     <h2>5. Data Processing</h2>
     <h3>What Data Is Collected</h3>
-    <p>TeamOps collects only the data necessary for leave management and employee onboarding:</p>
+    <p>TeamOps collects only the data necessary for leave management, employee onboarding, and offboarding:</p>
     <ul>
       <li>Employee names and email addresses (from Atlassian user profiles)</li>
       <li>Leave dates, leave types, and approval status</li>
-      <li>Onboarding task assignments and completion progress</li>
+      <li>Onboarding and offboarding task assignments and completion progress</li>
       <li>Role assignments for access control</li>
     </ul>
     <h3>How Data Is Used</h3>
     <ul>
-      <li>Data is used <strong>exclusively</strong> for leave management and onboarding workflows within Jira.</li>
+      <li>Data is used <strong>exclusively</strong> for leave management, onboarding, and offboarding workflows within Jira.</li>
       <li>No data is shared with third parties, analytics services, or advertising networks.</li>
       <li>No data is used for profiling, automated decision-making, or purposes beyond the app's stated functionality.</li>
     </ul>
@@ -501,16 +158,13 @@ footer {
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="nav-logo">T</div>
-      PPLX Software
-    </div>
+    <div class="footer-brand"><div class="nav-logo">T</div>PPLX Software</div>
     <ul class="footer-links">
       <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">Marketplace</a></li>
       <li><a href="/docs">Documentation</a></li>
       <li><a href="/privacy-policy">Privacy Policy</a></li>
       <li><a href="/security">Security</a></li>
-      <li><a href="mailto:support@pplxsoftware.com">Support</a></li>
+      <li><a href="/support">Support</a></li>
     </ul>
     <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
   </div>

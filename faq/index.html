@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FAQ — TeamOps | PPLX Software</title>
-<meta name="description" content="Frequently asked questions about TeamOps — setup, leave management, onboarding, security, pricing, and troubleshooting.">
+<meta name="description" content="Frequently asked questions about TeamOps — setup, leave management, onboarding, offboarding, security, pricing, and troubleshooting.">
 <meta name="theme-color" content="#0f172a">
 <link rel="canonical" href="https://pplxsoftware.com/faq">
 
@@ -13,6 +13,231 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pplxsoftware.com/faq">
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I install TeamOps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TeamOps is installed from the Atlassian Marketplace by a Jira site administrator. Go to Atlassian Marketplace, search for TeamOps, click Get it now, select your Jira site, and confirm the installation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens on first launch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TeamOps auto-configures itself: detects your country, loads public holidays, creates default leave types (Annual, Sick, Personal), sets Monday-Friday work week, and makes five built-in onboarding templates available."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I become an HR Admin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The person who installs TeamOps is automatically the first HR Admin. After that, any existing HR Admin can add others via TeamOps Settings > Access & Roles > Add Member."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does TeamOps work with Jira Service Management?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. TeamOps works on both Jira Software and Jira Service Management (JSM). It is installed at the site level and is available to all Jira products on your site."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use TeamOps with multiple Jira projects?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. When starting an onboarding or offboarding, you can link it to any Jira project on your site. Different onboardings and offboardings can be linked to different projects."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many leave types can I create?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is no hard limit. You can create as many as your organization needs (Annual Leave, Sick Leave, Parental Leave, Bereavement Leave, etc.)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How are business days calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TeamOps counts all days between your start and end date (inclusive), then subtracts weekend days (or your configured non-work days) and any public or custom holidays in that range."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I cancel a leave request?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, as long as the leave period has not already started. Go to Leave Requests, find the request, and click Cancel. If it was already approved, the days are returned to your balance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who gets notified when I submit, approve, or reject leave?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "When you submit, your manager is notified. When approved, you are notified. When rejected, you receive the rejection with the manager's comment. When you cancel, your manager is notified."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to my leave balance if my request is rejected?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nothing. Your balance is only reduced when a request is approved. Pending and rejected requests do not affect your available balance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a manager see leave balances for their team?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Managers can view leave balances for their direct reports. They cannot see balances for employees outside their team. HR Admins can see balances for all employees."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I create my own onboarding templates?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. HR Admins can create custom templates from scratch or by duplicating one of the five built-in templates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens when I link a Jira project to an onboarding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Jira issue is created for each onboarding task. Task status syncs in both directions between TeamOps and Jira. Tasks appear on the project's board and backlog. Assignees receive standard Jira notifications."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do task reminders work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TeamOps runs a daily check for overdue tasks. When a task is overdue, it is highlighted in red, the assigned person gets a Jira notification, and the manager and HR Admin are also notified."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I reassign an onboarding task?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. HR Admins and Managers can reassign any task by clicking Edit on the task and changing the assignee."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is my data stored?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "All data is stored within Atlassian's Forge platform on Atlassian's infrastructure (AWS). Your data lives within the same security boundary as Jira itself, inherits Atlassian's data residency controls, never leaves Atlassian's infrastructure, and is isolated per Jira site."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is TeamOps GDPR compliant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. TeamOps includes built-in GDPR tools: Right of Access (data export), Right to Erasure (data deletion), Data Minimization, and Audit Trail for all exports and deletions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who can see my leave requests?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can see all your own requests. Your manager can see your requests. HR Admins can see all requests. Other employees can see on the calendar that you are out, but not the details."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I export my data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. HR Admins can export all data for a specific employee via Settings > GDPR & Privacy > Export Employee Data."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a free tier?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. TeamOps is free for up to 10 users with core features included -- onboarding, offboarding, leave management, employee directory, and the dashboard gadget. No time limit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does per-user pricing work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Free for 1-10 users ($0/month). Pro for 11-499 users ($2/user/month early adopter, $4/user/month standard). Enterprise for 500+ users (contact us). Billing is handled through the Atlassian Marketplace."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I get charged during the evaluation period?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Atlassian Marketplace apps include a free evaluation period (usually 30 days) during which you can try the full app without being charged."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if I exceed 10 users?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TeamOps will prompt your Jira administrator to upgrade to the Pro tier. The app continues to work during a grace period so there is no disruption."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I start an offboarding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "HR Admins can start an offboarding by going to TeamOps HR Portal > Offboarding > Start Offboarding. Select the departing employee, choose an offboarding template, and enter their last day."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to an employee's data after offboarding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Offboarding completion does not delete employee data. Records remain for compliance and audit purposes. HR Admins can use the GDPR data erasure feature to permanently delete all records when appropriate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I create custom offboarding templates?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Offboarding templates work the same way as onboarding templates. You can create role-specific templates with tasks like equipment return, access revocation, exit interviews, and knowledge transfer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How are offboarding tasks different from onboarding tasks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Offboarding tasks are structured around the employee's last day rather than their start date. Phases typically include Before Last Day, Last Day, and After Departure."
+      }
+    }
+  ]
+}
+</script>
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -24,6 +249,7 @@
     <ul class="nav-links">
       <li><a href="/">Home</a></li>
       <li><a href="/docs">Docs</a></li>
+      <li><a href="/support">Support</a></li>
       <li><a href="/privacy-policy">Privacy Policy</a></li>
       <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
     </ul>
@@ -33,7 +259,7 @@
 <main class="doc-wrapper">
   <div class="doc-content">
     <h1>Frequently Asked Questions</h1>
-    <p class="doc-subtitle">Find answers to common questions about TeamOps installation, features, security, pricing, and troubleshooting.</p>
+    <p class="doc-subtitle">Find answers to common questions about TeamOps installation, features, security, pricing, offboarding, and troubleshooting.</p>
 
     <div class="faq-category">
       <h2>Setup &amp; Access</h2>
@@ -85,7 +311,7 @@
       <div class="faq-item">
         <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Can I use TeamOps with multiple Jira projects?</button>
         <div class="faq-answer"><div class="faq-answer-inner">
-          <p>Yes. When starting an onboarding, you can link it to any Jira project on your site. Different onboardings can be linked to different projects. Leave management is not project-specific -- it works across your entire Jira site.</p>
+          <p>Yes. When starting an onboarding or offboarding, you can link it to any Jira project on your site. Different onboardings and offboardings can be linked to different projects. Leave management is not project-specific -- it works across your entire Jira site.</p>
         </div></div>
       </div>
     </div>
@@ -244,7 +470,7 @@
       <div class="faq-item">
         <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Is there a free tier?</button>
         <div class="faq-answer"><div class="faq-answer-inner">
-          <p>Yes. TeamOps is free for up to 10 users with all features included -- leave management, onboarding, templates, dashboard gadget, GDPR tools, and analytics. No restrictions, no time limit.</p>
+          <p>Yes. TeamOps is free for up to 10 users with core features included -- onboarding, offboarding, leave management, employee directory, and the dashboard gadget. No time limit.</p>
         </div></div>
       </div>
 
@@ -256,11 +482,11 @@
             <thead><tr><th>Tier</th><th>Users</th><th>Price</th></tr></thead>
             <tbody>
               <tr><td>Free</td><td>1-10</td><td>$0/month</td></tr>
-              <tr><td>Standard</td><td>11-100</td><td>$3 per user/month</td></tr>
-              <tr><td>Growth</td><td>101-500</td><td>$2 per user/month</td></tr>
+              <tr><td>Pro</td><td>11-499</td><td>$2/user/month (early adopter), $4/user/month standard</td></tr>
+              <tr><td>Enterprise</td><td>500+</td><td>Contact us</td></tr>
             </tbody>
           </table>
-          <p>Billing is handled through the Atlassian Marketplace.</p>
+          <p>The Pro tier includes unlimited custom templates, full leave history, advanced analytics, and priority support. Billing is handled through the Atlassian Marketplace.</p>
         </div></div>
       </div>
 
@@ -274,7 +500,7 @@
       <div class="faq-item">
         <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What happens if I exceed 10 users?</button>
         <div class="faq-answer"><div class="faq-answer-inner">
-          <p>TeamOps will prompt your Jira administrator to upgrade to the Standard tier. The app continues to work during a grace period so there is no disruption.</p>
+          <p>TeamOps will prompt your Jira administrator to upgrade to the Pro tier. The app continues to work during a grace period so there is no disruption.</p>
         </div></div>
       </div>
     </div>
@@ -325,6 +551,38 @@
       </div>
     </div>
 
+    <div class="faq-category">
+      <h2>Offboarding</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How do I start an offboarding?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>HR Admins can start an offboarding by going to <strong>TeamOps HR Portal</strong> &gt; <strong>Offboarding</strong> &gt; <strong>Start Offboarding</strong>. Select the departing employee, choose an offboarding template, and enter their last day. Tasks are created and assigned automatically.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">What happens to an employee's data after offboarding?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Offboarding completion does not delete employee data. Their leave history, onboarding records, and profile remain in TeamOps for compliance and audit purposes. HR Admins can use the GDPR data erasure feature to permanently delete all records when appropriate.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Can I create custom offboarding templates?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Yes. Offboarding templates work the same way as onboarding templates. You can create role-specific templates with tasks like equipment return, access revocation, exit interviews, and knowledge transfer — each assigned to the appropriate department.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">How are offboarding tasks different from onboarding tasks?</button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Offboarding tasks are structured around the employee's last day rather than their start date. Phases typically include "Before Last Day" (knowledge transfer, project handoff), "Last Day" (equipment return, access revocation), and "After Departure" (final payroll, benefit termination, exit interview follow-up).</p>
+        </div></div>
+      </div>
+    </div>
+
     <div class="faq-category" style="margin-top: 48px; padding-top: 32px;">
       <h2 style="color: var(--white);">Still Have Questions?</h2>
       <p style="color: var(--gray-300); line-height: 1.7;">Check the <a href="/user-guide" style="color: var(--blue); text-decoration: none;">User Guide</a> for step-by-step instructions, the <a href="/admin-guide" style="color: var(--blue); text-decoration: none;">Admin Guide</a> for configuration help, or <a href="mailto:support@pplxsoftware.com" style="color: var(--blue); text-decoration: none;">contact support</a> for technical issues.</p>
@@ -339,7 +597,8 @@
       <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">Marketplace</a></li>
       <li><a href="/docs">Documentation</a></li>
       <li><a href="/privacy-policy">Privacy Policy</a></li>
-      <li><a href="mailto:support@pplxsoftware.com">Support</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="/support">Support</a></li>
     </ul>
     <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
   </div>
