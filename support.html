@@ -143,24 +143,7 @@
 .report-box ul li { position: relative; padding: 6px 0 6px 20px; color: var(--gray-300); line-height: 1.6; }
 .report-box ul li::before { content: ''; position: absolute; left: 0; top: 14px; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); opacity: 0.6; }
 
-.report-cta {
-  display: inline-block;
-  background: var(--white);
-  color: var(--navy);
-  padding: 12px 28px;
-  border-radius: var(--radius-sm);
-  font-weight: 700;
-  font-size: 0.95rem;
-  text-decoration: none;
-  transition: background var(--transition), transform var(--transition);
-}
 
-.report-cta:hover {
-  background: #93c5fd;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(96, 165, 250, 0.25);
-  text-decoration: none;
-}
 
 /* Links section */
 .links-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
@@ -316,7 +299,7 @@
         <li>Your Jira site URL (e.g., yourcompany.atlassian.net)</li>
         <li>Screenshots (if applicable)</li>
       </ul>
-      <a href="mailto:support@pplxsoftware.com?subject=TeamOps%20Bug%20Report&body=Expected%20behavior%3A%0A%0AActual%20behavior%3A%0A%0ASteps%20to%20reproduce%3A%0A%0AJira%20site%20URL%3A%0A%0AScreenshots%3A%0A" class="report-cta">Report a Bug</a>
+      <a href="mailto:support@pplxsoftware.com?subject=TeamOps%20Bug%20Report&body=Expected%20behavior%3A%0A%0AActual%20behavior%3A%0A%0ASteps%20to%20reproduce%3A%0A%0AJira%20site%20URL%3A%0A%0AScreenshots%3A%0A" class="btn-cta" style="margin-top:16px">Report a Bug</a>
     </div>
 
     <!-- LINKS -->
