@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYNC13TQKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PYNC13TQKF');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What's New — TeamOps Changelog | PPLX Software</title>
+<meta name="description" content="See what's new in TeamOps — the latest features, improvements, and updates to leave management, onboarding, and the Rovo AI Agent for Jira.">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/whats-new">
+
+<meta property="og:title" content="What's New — TeamOps Changelog | PPLX Software">
+<meta property="og:description" content="Latest features, improvements, and updates to TeamOps for Jira. Rovo AI Agent upgrades, leave management, and onboarding improvements.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pplxsoftware.com/whats-new">
+
+<link rel="stylesheet" href="/styles.css">
+<style>
+/* Changelog page-specific styles */
+.changelog-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
+.changelog-header { max-width: var(--max-width); margin: 0 auto; padding: 0 24px 48px; }
+.changelog-header h1 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px; }
+.changelog-header p { color: var(--gray-400); font-size: 1.1rem; max-width: 600px; }
+
+.changelog-timeline { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; position: relative; }
+.changelog-timeline::before { content: ''; position: absolute; left: 48px; top: 0; bottom: 0; width: 2px; background: rgba(96, 165, 250, 0.12); }
+
+@media (max-width: 768px) {
+  .changelog-timeline::before { left: 24px; }
+}
+
+.changelog-entry { position: relative; padding-left: 88px; margin-bottom: 64px; }
+.changelog-entry:last-child { margin-bottom: 0; }
+
+@media (max-width: 768px) {
+  .changelog-entry { padding-left: 56px; }
+}
+
+.changelog-dot { position: absolute; left: 40px; top: 6px; width: 18px; height: 18px; border-radius: 50%; background: var(--navy); border: 3px solid var(--blue); z-index: 2; }
+
+@media (max-width: 768px) {
+  .changelog-dot { left: 16px; }
+}
+
+.changelog-entry--latest .changelog-dot { background: var(--blue); box-shadow: 0 0 12px rgba(96, 165, 250, 0.4); }
+
+.changelog-version { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em; color: var(--white); margin-bottom: 4px; }
+.changelog-date { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 20px; }
+.changelog-title { font-size: 1.1rem; font-weight: 600; color: var(--blue); margin-bottom: 16px; }
+
+.changelog-body { background: var(--navy-light); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: var(--radius); padding: 28px; }
+.changelog-body h4 { font-size: 0.9rem; font-weight: 700; color: var(--white); margin-bottom: 12px; margin-top: 20px; }
+.changelog-body h4:first-child { margin-top: 0; }
+.changelog-body ul { list-style: none; padding: 0; }
+.changelog-body li { position: relative; padding-left: 20px; margin-bottom: 8px; color: var(--gray-300); font-size: 0.92rem; line-height: 1.6; }
+.changelog-body li::before { content: ''; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); opacity: 0.6; }
+
+.changelog-badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin-right: 6px; }
+.changelog-badge--new { background: rgba(52, 211, 153, 0.12); color: var(--green); }
+.changelog-badge--improved { background: var(--blue-glow); color: var(--blue); }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home"><div class="nav-logo">T</div>TeamOps</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="changelog-wrapper">
+  <div class="changelog-header">
+    <h1>What's New</h1>
+    <p>A running changelog of everything we ship. Each release is available on the Atlassian Marketplace the same day it appears here.</p>
+  </div>
+
+  <div class="changelog-timeline">
+
+    <!-- v3.5.0 -->
+    <div class="changelog-entry changelog-entry--latest">
+      <div class="changelog-dot"></div>
+      <div class="changelog-version">v3.5.0</div>
+      <div class="changelog-date">April 2026</div>
+      <div class="changelog-title">Strategic Workforce Intelligence</div>
+      <div class="changelog-body">
+        <h4>Rovo AI Agent &mdash; 9 Actions, 3 Personas</h4>
+        <ul>
+          <li><span class="changelog-badge changelog-badge--improved">Improved</span> Rovo AI Agent upgraded from 6 to 9 actions serving 3 distinct personas</li>
+          <li><strong>Employee:</strong> personalized onboarding coaching, smart leave context with team availability, offboarding guidance</li>
+          <li><strong>Manager:</strong> department capacity analysis with Jira sprint integration, coverage warnings when the team is thin</li>
+          <li><strong>HR Admin:</strong> severity-triaged recommendations &mdash; URGENT security risks, ACTION NEEDED operational gaps, TREND patterns</li>
+        </ul>
+
+        <h4>New Capabilities</h4>
+        <ul>
+          <li><span class="changelog-badge changelog-badge--new">New</span> Submit and approve leave requests through natural language</li>
+          <li><span class="changelog-badge changelog-badge--new">New</span> &ldquo;Who reports to me?&rdquo; org structure queries</li>
+          <li>Holiday surfacing with country-aware public holiday detection</li>
+          <li>Anniversary and milestone detection</li>
+          <li>Approval velocity statistics for managers</li>
+        </ul>
+
+        <h4>Under the Hood</h4>
+        <ul>
+          <li>All 9 agent actions instrumented with usage analytics</li>
+          <li>Jira sprint data integration for capacity intelligence</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- v3.4.0 -->
+    <div class="changelog-entry">
+      <div class="changelog-dot"></div>
+      <div class="changelog-version">v3.4.0</div>
+      <div class="changelog-date">April 2026</div>
+      <div class="changelog-title">Initial Marketplace Release</div>
+      <div class="changelog-body">
+        <h4>Core Features</h4>
+        <ul>
+          <li><span class="changelog-badge changelog-badge--new">New</span> Employee onboarding and offboarding with 2 templates and compliance tracking</li>
+          <li><span class="changelog-badge changelog-badge--new">New</span> Rovo AI Agent with 6 HR actions</li>
+          <li><span class="changelog-badge changelog-badge--new">New</span> Leave management with one-click approvals</li>
+          <li><span class="changelog-badge changelog-badge--new">New</span> Team availability dashboard</li>
+          <li>7 pre-built onboarding and offboarding templates covering 140 tasks</li>
+          <li>Free tier for teams up to 10 users, Pro tier at $2/user/month</li>
+        </ul>
+
+        <h4>Platform</h4>
+        <ul>
+          <li>Forge-native &mdash; runs entirely on Atlassian infrastructure</li>
+          <li>Zero data egress, zero vendor data access</li>
+          <li>Multi-country holiday support (US, UK, CA, AU, IN, DE)</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="nav-logo">T</div>PPLX Software</div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="/support">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
+  </div>
+</footer>
+
+</body>
+</html>
