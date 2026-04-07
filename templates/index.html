@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYNC13TQKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PYNC13TQKF');
+</script><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Jira Onboarding &amp; Offboarding Checklist Templates | TeamOps</title>
+<meta name="description" content="Free Jira onboarding checklist templates for Engineering, Sales, HR, Executive, and General roles. Plus offboarding templates with access revocation, knowledge transfer, and exit checklists. Install TeamOps to get all 7 templates instantly.">
+<meta name="keywords" content="jira onboarding checklist template, employee onboarding template jira, offboarding checklist template, jira onboarding tasks, employee offboarding jira">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/templates">
+
+<meta property="og:title" content="Free Jira Onboarding &amp; Offboarding Checklist Templates | TeamOps">
+<meta property="og:description" content="7 free HR checklist templates for Jira — onboarding and offboarding. Engineering, Sales, HR, Executive, and General roles. 140 tasks ready to use.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pplxsoftware.com/templates">
+<meta property="og:site_name" content="PPLX Software">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Free Jira Onboarding &amp; Offboarding Checklist Templates | TeamOps">
+<meta name="twitter:description" content="7 free HR checklist templates for Jira — onboarding and offboarding. 140 tasks ready to use.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Free HR Templates for Jira",
+  "description": "7 pre-built onboarding and offboarding checklist templates for Jira, included free with TeamOps.",
+  "url": "https://pplxsoftware.com/templates",
+  "numberOfItems": 7,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Engineering New Hire Onboarding",
+      "description": "22-task onboarding checklist for Software Engineers, DevOps, QA, and Data Engineers. Covers dev environment setup, codebase onboarding, first PR milestone, and 30/60/90-day check-ins."
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "General / Corporate New Hire Onboarding",
+      "description": "20-task onboarding checklist for Operations, Finance, Legal, Admin, and other non-engineering roles. Standard corporate onboarding with cross-functional introductions."
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Sales / Customer-Facing New Hire Onboarding",
+      "description": "23-task onboarding checklist for Account Executives, SDRs, Customer Success, and Solutions Engineers. Includes product certification, demo practice, and pipeline building."
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "HR-Specific New Hire Onboarding",
+      "description": "21-task onboarding checklist for HR Generalists, HR Business Partners, Recruiters, and People Ops. Includes enhanced data privacy training and HRIS system access."
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "Executive New Hire Onboarding",
+      "description": "19-task onboarding checklist for VPs, Directors, and C-level Executives. Includes board materials review, stakeholder meetings, and 90-day strategic plan."
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "General Offboarding",
+      "description": "15-task offboarding checklist for all departing employees. Covers IT revocation, knowledge transfer, exit interview, and post-departure admin."
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "name": "Engineering Offboarding",
+      "description": "20-task offboarding checklist for engineering roles. Includes code access removal, secrets rotation, repository permissions, and infrastructure handoff."
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="/styles.css">
+<style>
+  /* --- Template Cards --- */
+  .template-card {
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-sm);
+    margin-bottom: 12px;
+    overflow: hidden;
+    background: var(--navy-light);
+    transition: border-color var(--transition);
+  }
+  .template-card:hover {
+    border-color: rgba(96, 165, 250, 0.2);
+  }
+
+  .template-header {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    transition: color var(--transition);
+  }
+  .template-header:hover { color: var(--blue); }
+
+  .template-header::after {
+    content: '+';
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--gray-400);
+    flex-shrink: 0;
+    transition: transform var(--transition);
+    line-height: 1;
+    margin-top: 2px;
+  }
+  .template-card.open .template-header::after {
+    content: '\2212';
+  }
+
+  .template-header-content {
+    flex: 1;
+  }
+  .template-name {
+    display: block;
+    margin-bottom: 6px;
+  }
+  .template-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .template-badge {
+    display: inline-block;
+    background: rgba(96, 165, 250, 0.12);
+    color: var(--blue);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .template-desc {
+    color: var(--gray-400);
+    font-size: 0.88rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .template-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+  }
+  .template-card.open .template-body {
+    max-height: 3000px;
+  }
+
+  .template-body-inner {
+    padding: 0 20px 24px;
+  }
+
+  .phase-group {
+    margin-bottom: 20px;
+  }
+  .phase-group:last-child {
+    margin-bottom: 0;
+  }
+  .phase-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--blue);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(96, 165, 250, 0.12);
+  }
+  .task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .task-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    font-size: 0.9rem;
+    color: var(--gray-300);
+    line-height: 1.5;
+  }
+  .task-item:last-child {
+    border-bottom: none;
+  }
+  .task-check {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--slate-light);
+    border-radius: 4px;
+    margin-top: 2px;
+  }
+  .task-info {
+    flex: 1;
+  }
+  .task-name {
+    color: var(--white);
+    font-weight: 500;
+  }
+  .task-detail {
+    font-size: 0.82rem;
+    color: var(--gray-400);
+    margin-top: 2px;
+  }
+  .task-dept {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--gray-500);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 1px 7px;
+    border-radius: 4px;
+    margin-left: 6px;
+  }
+
+  /* --- CTA Section --- */
+  .cta-section {
+    text-align: center;
+    padding: 40px 0;
+  }
+  .cta-section p {
+    color: var(--gray-400);
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+  }
+
+  /* --- Hero Stats --- */
+  .template-stats {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  .stat-item {
+    text-align: center;
+  }
+  .stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--blue);
+    letter-spacing: -0.03em;
+  }
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--gray-400);
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .template-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .template-stats {
+      gap: 24px;
+    }
+    .stat-number {
+      font-size: 1.6rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home"><div class="nav-logo">T</div>TeamOps</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/support">Support</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="doc-wrapper">
+  <div class="doc-content">
+    <h1>Free HR Templates for Jira</h1>
+    <p class="doc-subtitle">7 pre-built onboarding and offboarding checklist templates, ready to use in Jira.</p>
+
+    <p style="color: var(--gray-300); line-height: 1.7; margin-bottom: 32px;">Every company onboards differently — but the first 30 days follow the same patterns. We studied hundreds of onboarding checklists and built 7 templates that cover 90% of what teams need. Each template includes phased tasks with clear ownership, department assignments, and due dates. Use them as-is, or customize them to fit your organization.</p>
+
+    <div class="template-stats">
+      <div class="stat-item">
+        <span class="stat-number">7</span>
+        <span class="stat-label">Templates</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">140</span>
+        <span class="stat-label">Total Tasks</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">5</span>
+        <span class="stat-label">Role Types</span>
+      </div>
+    </div>
+
+    <div class="cta-section" style="padding-top: 0;">
+      <a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="btn-cta" target="_blank" rel="noopener">Get These Templates Instantly — Install TeamOps Free</a>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- ONBOARDING TEMPLATES -->
+    <!-- ============================================================ -->
+    <div class="faq-category">
+      <h2>Onboarding Templates</h2>
+
+      <!-- 1. Engineering New Hire (22 tasks) -->
+      <div class="template-card" id="engineering">
+        <button class="template-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="template-header-content">
+            <span class="template-name">Engineering New Hire</span>
+            <div class="template-meta">
+              <span class="template-badge">22 tasks</span>
+              <span class="template-desc">For Software Engineers, DevOps, QA, and Data Engineers. Includes dev environment setup, codebase onboarding, first PR milestone, and 30/60/90-day check-ins.</span>
+            </div>
+          </div>
+        </button>
+        <div class="template-body"><div class="template-body-inner">
+
+          <div class="phase-group">
+            <div class="phase-label">Pre-boarding</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Send offer letter and employment agreement</span><span class="task-dept">HR</span><div class="task-detail">Send official offer letter, NDA, IP assignment agreement, and any equity/benefits documents for signature</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Collect signed paperwork (I-9, W-4, direct deposit)</span><span class="task-dept">HR</span><div class="task-detail">Ensure all tax forms, identification documents, and banking info are submitted</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Order laptop and peripherals</span><span class="task-dept">IT</span><div class="task-detail">Order company laptop (spec per engineering standards), monitor, keyboard, mouse, headset</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Create corporate email and accounts</span><span class="task-dept">IT</span><div class="task-detail">Set up email, Slack, Jira, Confluence, GitHub/Bitbucket, VPN, SSO accounts</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Assign onboarding buddy</span><span class="task-dept">Manager</span><div class="task-detail">Select an experienced team member as the new hire's go-to person for questions</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Prepare welcome message for team channel</span><span class="task-dept">Manager</span><div class="task-detail">Draft and schedule a welcome announcement in the team Slack/Teams channel</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Set up workstation and ship equipment</span><span class="task-dept">IT</span><div class="task-detail">Configure laptop with required software, ship to remote employees or set up desk for in-office</div></div></li>
+            </ul>
+          </div>
+
+          <div class="phase-group">
+            <div class="phase-label">Week 1</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Complete Day 1 orientation session</span><span class="task-dept">HR</span><div class="task-detail">Company overview, mission/values, org structure, benefits enrollment walkthrough</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Meet with direct manager (role expectations)</span><span class="task-dept">Manager</span><div class="task-detail">Discuss role responsibilities, team structure, communication norms, first-week goals</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Set up development environment</span><span class="task-dept">Employee</span><div class="task-detail">Install IDE, clone repositories, configure local dev environment, run build successfully</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Complete security and compliance training</span><span class="task-dept">Employee</span><div class="task-detail">Complete required security awareness training, acceptable use policy, data handling procedures</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Meet the team (introductory meetings)</span><span class="task-dept">Buddy</span><div class="task-detail">Buddy schedules 1:1 coffee chats with each team member (15 min each)</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Review codebase architecture documentation</span><span class="task-dept">Employee</span><div class="task-detail">Read architecture docs in Confluence, review system diagrams, understand service boundaries</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Complete first code review (as reviewer)</span><span class="task-dept">Employee</span><div class="task-detail">Shadow a team member on a code review to understand standards and process</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Attend first sprint ceremony</span><span class="task-dept">Employee</span><div class="task-detail">Observe and participate in at least one sprint ceremony</div></div></li>
+            </ul>
+          </div>
+
+          <div class="phase-group">
+            <div class="phase-label">Month 1</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Complete HR benefits enrollment</span><span class="task-dept">Employee</span><div class="task-detail">Enroll in health insurance, 401k, and other benefits before the enrollment deadline</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Submit first pull request</span><span class="task-dept">Employee</span><div class="task-detail">Complete a starter task (bug fix or small feature) and submit for review</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Complete product overview training</span><span class="task-dept">Manager</span><div class="task-detail">Walk through the product from a user perspective, demo key features, explain roadmap</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">1:1 with skip-level manager</span><span class="task-dept">Manager</span><div class="task-detail">Meet with manager's manager for broader context on team direction and career path</div></div></li>
+            </ul>
+          </div>
+
+          <div class="phase-group">
+            <div class="phase-label">Milestones</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">30-Day Check-in</span><span class="task-dept">Manager</span><div class="task-detail">Formal check-in: review first month, discuss what went well, identify any blockers or concerns</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">60-Day Check-in</span><span class="task-dept">Manager</span><div class="task-detail">Mid-probation review: assess progress against role expectations, adjust goals if needed</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">90-Day Check-in</span><span class="task-dept">Manager</span><div class="task-detail">End of onboarding: confirm successful ramp-up, set ongoing performance goals, close onboarding</div></div></li>
+            </ul>
+          </div>
+
+        </div></div>
+      </div>
+
+      <!-- 2. General / Corporate New Hire (20 tasks) -->
+      <div class="template-card" id="general">
+        <button class="template-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="template-header-content">
+            <span class="template-name">General / Corporate New Hire</span>
+            <div class="template-meta">
+              <span class="template-badge">20 tasks</span>
+              <span class="template-desc">For Operations, Finance, Legal, Admin, and other non-engineering roles. Standard corporate onboarding with cross-functional introductions.</span>
+            </div>
+          </div>
+        </button>
+        <div class="template-body"><div class="template-body-inner">
+
+          <div class="phase-group">
+            <div class="phase-label">Pre-boarding</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Send offer letter and employment agreement</span><span class="task-dept">HR</span><div class="task-detail">Official offer, NDA, and policy acknowledgment forms</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Collect signed paperwork (I-9, W-4, direct deposit)</span><span class="task-dept">HR</span><div class="task-detail">Tax forms, identification, banking setup</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Order laptop and standard peripherals</span><span class="task-dept">IT</span><div class="task-detail">Standard corporate laptop, mouse, headset</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Create corporate email and accounts</span><span class="task-dept">IT</span><div class="task-detail">Email, Slack/Teams, Jira (if applicable), SSO, VPN</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Prepare physical workspace (if in-office)</span><span class="task-dept">Facilities</span><div class="task-detail">Desk assignment, building access badge, parking pass, office supplies</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Assign onboarding buddy</span><span class="task-dept">Manager</span><div class="task-detail">Pair with a peer who can answer day-to-day questions</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Welcome message to team</span><span class="task-dept">Manager</span><div class="task-detail">Announce the new hire and share their background with the team</div></div></li>
+            </ul>
+          </div>
+
+          <div class="phase-group">
+            <div class="phase-label">Week 1</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Day 1 orientation and company overview</span><span class="task-dept">HR</span><div class="task-detail">Company history, mission, values, org chart, office tour (virtual or in-person)</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Meet with direct manager (role and expectations)</span><span class="task-dept">Manager</span><div class="task-detail">Discuss responsibilities, team workflows, communication preferences, 30-day goals</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Set up core software tools</span><span class="task-dept">Employee</span><div class="task-detail">Configure email, calendar, Slack, and any role-specific software</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Complete security and compliance training</span><span class="task-dept">Employee</span><div class="task-detail">Security awareness, data handling, workplace harassment prevention</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Meet key cross-functional partners</span><span class="task-dept">Buddy</span><div class="task-detail">Buddy introduces new hire to 3-5 key people they will collaborate with regularly</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Review team processes and documentation</span><span class="task-dept">Employee</span><div class="task-detail">Read through team Confluence space, understand SOPs, review recent meeting notes</div></div></li>
+            </ul>
+          </div>
+
+          <div class="phase-group">
+            <div class="phase-label">Month 1</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Complete HR benefits enrollment</span><span class="task-dept">Employee</span><div class="task-detail">Health insurance, retirement, and other benefits enrollment</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Shadow a team member on a typical workday</span><span class="task-dept">Employee</span><div class="task-detail">Observe a colleague performing core job functions to learn by example</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Complete first independent task</span><span class="task-dept">Employee</span><div class="task-detail">Manager assigns a low-stakes task to be completed independently</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Attend department all-hands or town hall</span><span class="task-dept">Employee</span><div class="task-detail">Participate in a broader team meeting to understand department priorities</div></div></li>
+            </ul>
+          </div>
+
+          <div class="phase-group">
+            <div class="phase-label">Milestones</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">30-Day Check-in</span><span class="task-dept">Manager</span><div class="task-detail">Review first month, discuss impressions, address questions, adjust onboarding plan</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">60-Day Check-in</span><span class="task-dept">Manager</span><div class="task-detail">Progress review, identify skill gaps, discuss training needs</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">90-Day Check-in</span><span class="task-dept">Manager</span><div class="task-detail">Formal end-of-onboarding review, set forward-looking goals, transition to regular cadence</div></div></li>
+            </ul>
+          </div>
+
+        </div></div>
+      </div>
+
+      <!-- 3. Sales / Customer-Facing New Hire (23 tasks) -->
+      <div class="template-card" id="sales">
+        <button class="template-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="template-header-content">
+            <span class="template-name">Sales / Customer-Facing New Hire</span>
+            <div class="template-meta">
+              <span class="template-badge">23 tasks</span>
+              <span class="template-desc">For Account Executives, SDRs, Customer Success, and Solutions Engineers. Includes product certification, demo practice, and pipeline building.</span>
+            </div>
+          </div>
+        </button>
+        <div class="template-body"><div class="template-body-inner">
+
+          <div class="phase-group">
+            <div class="phase-label">Pre-boarding</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Send offer letter and employment agreement</span><span class="task-dept">HR</span><div class="task-detail">Offer letter, commission/bonus plan, NDA, non-compete (if applicable)</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Collect signed paperwork</span><span class="task-dept">HR</span><div class="task-detail">Tax forms, identification, banking for commission payments</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Order laptop and sales tools hardware</span><span class="task-dept">IT</span><div class="task-detail">Laptop, external webcam (for demos), headset, second monitor</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Create accounts (CRM, email, Slack, demo environments)</span><span class="task-dept">IT</span><div class="task-detail">Salesforce/HubSpot, email, Slack, product demo/sandbox environments, Zoom</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Set up CRM access and territory assignment</span><span class="task-dept">Sales Ops</span><div class="task-detail">Configure CRM views, assign territory/accounts, set up pipeline tracking</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Assign sales mentor/buddy</span><span class="task-dept">Manager</span><div class="task-detail">Pair with a top-performing peer for shadowing and coaching</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Welcome message to sales team</span><span class="task-dept">Manager</span><div class="task-detail">Announce in sales channel with background and territory info</div></div></li>
+            </ul>
+          </div>
+
+          <div class="phase-group">
+            <div class="phase-label">Week 1</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Day 1 orientation and company overview</span><span class="task-dept">HR</span><div class="task-detail">Company story, mission, competitive positioning, org structure</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Meet with sales manager (quota, territory, expectations)</span><span class="task-dept">Manager</span><div class="task-detail">Review quota, territory assignment, ramp expectations, compensation plan details</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Product deep dive session 1 (core product)</span><span class="task-dept">Manager</span><div class="task-detail">Hands-on product walkthrough covering core features and value propositions</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Complete security and compliance training</span><span class="task-dept">Employee</span><div class="task-detail">Security, data handling, customer data privacy, acceptable use</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Review sales playbook and battle cards</span><span class="task-dept">Employee</span><div class="task-detail">Study competitive battle cards, objection handling guides, pricing frameworks</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Shadow 3 sales calls with buddy</span><span class="task-dept">Buddy</span><div class="task-detail">Observe discovery calls, demos, and negotiation techniques</div></div></li>
+            </ul>
+          </div>
+
+          <div class="phase-group">
+            <div class="phase-label">Month 1</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Product deep dive session 2 (advanced features)</span><span class="task-dept">Manager</span><div class="task-detail">Deep technical features, integration points, and common customer architectures</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Complete product certification quiz</span><span class="task-dept">Employee</span><div class="task-detail">Pass internal product knowledge assessment (80% minimum score)</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Complete HR benefits enrollment</span><span class="task-dept">Employee</span><div class="task-detail">Health, retirement, and other benefits</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Deliver first practice demo (internal)</span><span class="task-dept">Employee</span><div class="task-detail">Deliver a mock demo to manager and buddy; receive structured feedback</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Make first prospecting calls (supervised)</span><span class="task-dept">Employee</span><div class="task-detail">Begin outreach under buddy supervision</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Meet key partners (SE, CS, Marketing)</span><span class="task-dept">Buddy</span><div class="task-detail">Introductions to teams the rep will collaborate with on deals</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Complete CRM hygiene training</span><span class="task-dept">Sales Ops</span><div class="task-detail">Learn CRM data entry standards, pipeline stages, forecasting methodology</div></div></li>
+            </ul>
+          </div>
+
+          <div class="phase-group">
+            <div class="phase-label">Milestones</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">30-Day Check-in</span><span class="task-dept">Manager</span><div class="task-detail">Review ramp progress, pipeline building, knowledge assessment results</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">60-Day Check-in</span><span class="task-dept">Manager</span><div class="task-detail">Evaluate first deals in pipeline, demo quality, customer interaction feedback</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">90-Day Check-in</span><span class="task-dept">Manager</span><div class="task-detail">Full ramp assessment: pipeline health, quota attainment trajectory, independent deal management</div></div></li>
+            </ul>
+          </div>
+
+        </div></div>
+      </div>
+
+      <!-- 4. HR-Specific New Hire (21 tasks) -->
+      <div class="template-card" id="hr">
+        <button class="template-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="template-header-content">
+            <span class="template-name">HR-Specific New Hire</span>
+            <div class="template-meta">
+              <span class="template-badge">21 tasks</span>
+              <span class="template-desc">For HR Generalists, HR Business Partners, Recruiters, and People Ops. Includes enhanced data privacy training and HRIS system access.</span>
+            </div>
+          </div>
+        </button>
+        <div class="template-body"><div class="template-body-inner">
+
+          <div class="phase-group">
+            <div class="phase-label">Pre-boarding</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Send offer letter and employment agreement</span><span class="task-dept">HR</span><div class="task-detail">Offer letter with confidentiality clause regarding employee data</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Collect signed paperwork</span><span class="task-dept">HR</span><div class="task-detail">Standard new hire paperwork plus data access acknowledgment</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Order laptop and peripherals</span><span class="task-dept">IT</span><div class="task-detail">Standard corporate setup</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Create accounts with elevated HR system access</span><span class="task-dept">IT</span><div class="task-detail">Email, Slack, Jira, HRIS system access, payroll system view access, background check platform</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Assign HR buddy/mentor</span><span class="task-dept">Manager</span><div class="task-detail">Pair with experienced HR team member</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Grant access to confidential HR shared drives</span><span class="task-dept">IT</span><div class="task-detail">Employee files, compensation data, investigation records (read-only initially)</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Welcome message to HR team</span><span class="task-dept">Manager</span><div class="task-detail">Announce in HR channel</div></div></li>
+            </ul>
+          </div>
+
+          <div class="phase-group">
+            <div class="phase-label">Week 1</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Day 1 orientation (company overview)</span><span class="task-dept">HR</span><div class="task-detail">Standard company orientation (experience it as an employee first)</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Meet with HR manager (team structure)</span><span class="task-dept">Manager</span><div class="task-detail">Review HR team structure, individual responsibilities, current priorities, open cases</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Review employee handbook and HR policies</span><span class="task-dept">Employee</span><div class="task-detail">Read current handbook, leave policies, code of conduct, disciplinary procedures</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Complete security and data privacy training (enhanced)</span><span class="task-dept">Employee</span><div class="task-detail">Enhanced training: GDPR/CCPA requirements, employee data handling, confidentiality obligations</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">HRIS system training session</span><span class="task-dept">Buddy</span><div class="task-detail">Hands-on training with HRIS for employee record management</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Review current open HR initiatives</span><span class="task-dept">Employee</span><div class="task-detail">Read briefs on ongoing projects: open roles, policy updates, compliance initiatives</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Meet cross-functional partners (Legal, Finance, IT)</span><span class="task-dept">Buddy</span><div class="task-detail">Meet key contacts in Legal, Finance (payroll), IT (access management)</div></div></li>
+            </ul>
+          </div>
+
+          <div class="phase-group">
+            <div class="phase-label">Month 1</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Shadow an employee relations conversation</span><span class="task-dept">Buddy</span><div class="task-detail">Observe buddy handling an HR inquiry or case to learn approach and tone</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Complete benefits administration training</span><span class="task-dept">Manager</span><div class="task-detail">Learn how to administer benefits enrollment, changes, and terminations</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Review employment law basics</span><span class="task-dept">Legal</span><div class="task-detail">Briefing from legal on relevant employment laws, at-will status, protected classes</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Process first employee request independently</span><span class="task-dept">Employee</span><div class="task-detail">Handle a routine HR request end-to-end</div></div></li>
+            </ul>
+          </div>
+
+          <div class="phase-group">
+            <div class="phase-label">Milestones</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">30-Day Check-in</span><span class="task-dept">Manager</span><div class="task-detail">Review systems proficiency, comfort with confidential information handling, initial impressions</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">60-Day Check-in</span><span class="task-dept">Manager</span><div class="task-detail">Assess independent case handling, policy knowledge depth, cross-functional relationships</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">90-Day Check-in</span><span class="task-dept">Manager</span><div class="task-detail">Full competency review, discuss specialization interests, set professional development goals</div></div></li>
+            </ul>
+          </div>
+
+        </div></div>
+      </div>
+
+      <!-- 5. Executive New Hire (19 tasks) -->
+      <div class="template-card" id="executive">
+        <button class="template-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="template-header-content">
+            <span class="template-name">Executive New Hire</span>
+            <div class="template-meta">
+              <span class="template-badge">19 tasks</span>
+              <span class="template-desc">For VPs, Directors, and C-level Executives. Includes board materials review, stakeholder meetings, and 90-day strategic plan.</span>
+            </div>
+          </div>
+        </button>
+        <div class="template-body"><div class="template-body-inner">
+
+          <div class="phase-group">
+            <div class="phase-label">Pre-boarding</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Send offer letter with executive compensation package</span><span class="task-dept">HR</span><div class="task-detail">Offer letter including equity vesting schedule, bonus structure, benefits, severance terms</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Complete executive background check</span><span class="task-dept">HR</span><div class="task-detail">Enhanced background and reference checks per executive hiring policy</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Collect signed paperwork (including non-compete)</span><span class="task-dept">HR</span><div class="task-detail">Full legal document package reviewed by counsel</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Order executive-grade equipment</span><span class="task-dept">IT</span><div class="task-detail">Premium laptop, dual monitors, executive-level mobile plan, home office stipend if remote</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Create accounts with appropriate admin access</span><span class="task-dept">IT</span><div class="task-detail">Email, Slack (with private leadership channels), Jira, financial reporting tools, board portal</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Prepare org chart and direct reports summary</span><span class="task-dept">HR</span><div class="task-detail">Detailed overview of reporting structure, team bios, headcount, open roles, budget summary</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Schedule first-week meetings with leadership</span><span class="task-dept">Executive Assistant</span><div class="task-detail">Book 1:1s with all C-suite/VP peers, key board members (if C-level), and direct reports</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Company-wide announcement of new executive</span><span class="task-dept">HR</span><div class="task-detail">Internal announcement email with bio, background, and first-day details</div></div></li>
+            </ul>
+          </div>
+
+          <div class="phase-group">
+            <div class="phase-label">Week 1</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">CEO/Board welcome and strategic context</span><span class="task-dept">Manager</span><div class="task-detail">CEO (or hiring manager) provides company strategy overview, key metrics, current challenges</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Meet direct reports (group introduction)</span><span class="task-dept">Employee</span><div class="task-detail">Town hall-style meeting with the new executive's team</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Review strategic plan, board materials, financials</span><span class="task-dept">Employee</span><div class="task-detail">Deep dive into company strategy, recent board decks, P&amp;L, key metrics</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">1:1 meetings with all peer executives</span><span class="task-dept">Employee</span><div class="task-detail">Individual meetings with each C-suite/VP peer to understand priorities and interdependencies</div></div></li>
+            </ul>
+          </div>
+
+          <div class="phase-group">
+            <div class="phase-label">Month 1</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Meet top 10 customers or key stakeholders</span><span class="task-dept">Employee</span><div class="task-detail">Introductions to the most important customer relationships and partner contacts</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Complete compliance and governance training</span><span class="task-dept">Employee</span><div class="task-detail">Insider trading policy, code of ethics, regulatory requirements specific to the executive role</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Conduct team assessment and identify quick wins</span><span class="task-dept">Employee</span><div class="task-detail">Assess current team capabilities, processes, and identify 2-3 improvements to pursue</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Present 90-day plan to CEO/Board</span><span class="task-dept">Employee</span><div class="task-detail">Draft and present strategic priorities for the first 90 days with measurable objectives</div></div></li>
+            </ul>
+          </div>
+
+          <div class="phase-group">
+            <div class="phase-label">Milestones</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">30-Day Check-in (CEO/Board)</span><span class="task-dept">Manager</span><div class="task-detail">Review cultural integration, stakeholder impressions, initial strategic observations</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">60-Day Check-in (CEO/Board)</span><span class="task-dept">Manager</span><div class="task-detail">Evaluate progress on 90-day plan, team engagement, cross-functional effectiveness</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">90-Day Check-in (CEO/Board)</span><span class="task-dept">Manager</span><div class="task-detail">Comprehensive review: strategic impact, team morale, stakeholder confidence, forward plan</div></div></li>
+            </ul>
+          </div>
+
+        </div></div>
+      </div>
+
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- OFFBOARDING TEMPLATES -->
+    <!-- ============================================================ -->
+    <div class="faq-category">
+      <h2>Offboarding Templates</h2>
+
+      <!-- 6. General Offboarding (15 tasks) -->
+      <div class="template-card" id="offboarding-general">
+        <button class="template-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="template-header-content">
+            <span class="template-name">General Offboarding</span>
+            <div class="template-meta">
+              <span class="template-badge">15 tasks</span>
+              <span class="template-desc">Standard offboarding for all departing employees. Covers IT revocation, knowledge transfer, exit interview, and post-departure admin.</span>
+            </div>
+          </div>
+        </button>
+        <div class="template-body"><div class="template-body-inner">
+
+          <div class="phase-group">
+            <div class="phase-label">Pre-departure</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Notify IT of departure</span><span class="task-dept">IT</span><div class="task-detail">Inform IT department of the upcoming departure so they can prepare for access revocation and equipment collection</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Schedule exit interview</span><span class="task-dept">HR</span><div class="task-detail">Schedule a confidential exit interview to gather feedback and discuss transition details</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Knowledge transfer documentation</span><span class="task-dept">Employee</span><div class="task-detail">Document key processes, project status, passwords/credentials (in vault), and outstanding work items</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Identify handoff recipients</span><span class="task-dept">Manager</span><div class="task-detail">Assign team members to take over responsibilities, projects, and client relationships</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Notify payroll of departure</span><span class="task-dept">HR</span><div class="task-detail">Inform payroll of last working day, final pay calculation, and any outstanding expenses or reimbursements</div></div></li>
+            </ul>
+          </div>
+
+          <div class="phase-group">
+            <div class="phase-label">Last Day</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Revoke badge/building access</span><span class="task-dept">Facilities</span><div class="task-detail">Deactivate badge access, collect physical keys, and remove from building access lists</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Collect company equipment</span><span class="task-dept">IT</span><div class="task-detail">Collect laptop, phone, monitors, peripherals, and any other company-owned equipment</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Revoke email and system access</span><span class="task-dept">IT</span><div class="task-detail">Disable email account, SSO, VPN, and all application access. Set up email forwarding if needed</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Conduct exit interview</span><span class="task-dept">HR</span><div class="task-detail">Conduct the exit interview, document feedback, and discuss any outstanding concerns</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Remove from distribution lists</span><span class="task-dept">IT</span><div class="task-detail">Remove from email distribution lists, Slack channels, and team communication groups</div></div></li>
+            </ul>
+          </div>
+
+          <div class="phase-group">
+            <div class="phase-label">Post-departure</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Process final paycheck</span><span class="task-dept">HR</span><div class="task-detail">Process final paycheck including unused PTO payout, bonuses, and expense reimbursements</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Send benefits continuation info</span><span class="task-dept">HR</span><div class="task-detail">Send COBRA/benefits continuation information, 401k rollover options, and related documentation</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Archive employee files</span><span class="task-dept">HR</span><div class="task-detail">Archive personnel files, move shared documents to team ownership, preserve work product</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Remove software licenses</span><span class="task-dept">IT</span><div class="task-detail">Reclaim or cancel assigned software licenses (SaaS seats, IDE licenses, cloud accounts)</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Update org chart</span><span class="task-dept">HR</span><div class="task-detail">Update organizational chart, team directory, and internal documentation to reflect departure</div></div></li>
+            </ul>
+          </div>
+
+        </div></div>
+      </div>
+
+      <!-- 7. Engineering Offboarding (20 tasks) -->
+      <div class="template-card" id="offboarding-engineering">
+        <button class="template-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="template-header-content">
+            <span class="template-name">Engineering Offboarding</span>
+            <div class="template-meta">
+              <span class="template-badge">20 tasks</span>
+              <span class="template-desc">Extended offboarding for engineering roles. Includes all general tasks plus code access removal, secrets rotation, repository permissions, and infrastructure handoff.</span>
+            </div>
+          </div>
+        </button>
+        <div class="template-body"><div class="template-body-inner">
+
+          <div class="phase-group">
+            <div class="phase-label">Pre-departure</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Notify IT of departure</span><span class="task-dept">IT</span><div class="task-detail">Inform IT department of the upcoming departure so they can prepare for access revocation and equipment collection</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Schedule exit interview</span><span class="task-dept">HR</span><div class="task-detail">Schedule a confidential exit interview to gather feedback and discuss transition details</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Knowledge transfer documentation</span><span class="task-dept">Employee</span><div class="task-detail">Document key processes, project status, architecture decisions, and outstanding work items</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Identify handoff recipients</span><span class="task-dept">Manager</span><div class="task-detail">Assign team members to take over responsibilities, projects, and client relationships</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Notify payroll of departure</span><span class="task-dept">HR</span><div class="task-detail">Inform payroll of last working day, final pay calculation, and any outstanding expenses</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Transfer repo ownership</span><span class="task-dept">Employee</span><div class="task-detail">Transfer ownership of personal repos, update CODEOWNERS files, reassign PR reviewers</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Revoke cloud access</span><span class="task-dept">IT</span><div class="task-detail">Remove access to AWS/GCP/Azure consoles, CI/CD pipelines, and production environments</div></div></li>
+            </ul>
+          </div>
+
+          <div class="phase-group">
+            <div class="phase-label">Last Day</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Revoke badge/building access</span><span class="task-dept">Facilities</span><div class="task-detail">Deactivate badge access, collect physical keys, and remove from building access lists</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Collect company equipment</span><span class="task-dept">IT</span><div class="task-detail">Collect laptop, phone, monitors, peripherals, and any other company-owned equipment</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Revoke email and system access</span><span class="task-dept">IT</span><div class="task-detail">Disable email account, SSO, VPN, and all application access</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Conduct exit interview</span><span class="task-dept">HR</span><div class="task-detail">Conduct the exit interview, document feedback, and discuss any outstanding concerns</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Remove from distribution lists</span><span class="task-dept">IT</span><div class="task-detail">Remove from email distribution lists, Slack channels, and team communication groups</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Rotate secrets and credentials</span><span class="task-dept">IT</span><div class="task-detail">Rotate any API keys, tokens, or credentials the departing employee had access to</div></div></li>
+            </ul>
+          </div>
+
+          <div class="phase-group">
+            <div class="phase-label">Post-departure</div>
+            <ul class="task-list">
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Update on-call rotation</span><span class="task-dept">Manager</span><div class="task-detail">Remove from PagerDuty/on-call schedules and redistribute rotation slots</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Process final paycheck</span><span class="task-dept">HR</span><div class="task-detail">Process final paycheck including unused PTO payout, bonuses, and expense reimbursements</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Archive branches</span><span class="task-dept">IT</span><div class="task-detail">Archive or close open branches and pull requests authored by the departing employee</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Send benefits continuation info</span><span class="task-dept">HR</span><div class="task-detail">Send COBRA/benefits continuation information, 401k rollover options, and related documentation</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Archive employee files</span><span class="task-dept">HR</span><div class="task-detail">Archive personnel files, move shared documents to team ownership, preserve work product</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Remove software licenses</span><span class="task-dept">IT</span><div class="task-detail">Reclaim or cancel assigned software licenses (SaaS seats, IDE licenses, cloud accounts)</div></div></li>
+              <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Update org chart</span><span class="task-dept">HR</span><div class="task-detail">Update organizational chart, team directory, and internal documentation to reflect departure</div></div></li>
+            </ul>
+          </div>
+
+        </div></div>
+      </div>
+
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="cta-section" style="margin-top: 48px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.06);">
+      <h2 style="color: var(--white); font-size: 1.4rem; margin-bottom: 8px; border: none; padding: 0;">Ready to use these templates?</h2>
+      <p>Install TeamOps and all 7 templates are available instantly in your Jira instance. Free for teams up to 10 users.</p>
+      <a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="btn-cta" target="_blank" rel="noopener">Install TeamOps Free on Atlassian Marketplace</a>
+      <p style="margin-top: 16px; font-size: 0.85rem;">Or explore the <a href="/docs" style="color: var(--blue); text-decoration: none;">documentation</a> and <a href="/faq" style="color: var(--blue); text-decoration: none;">FAQ</a> first.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="nav-logo">T</div>PPLX Software</div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="/support">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
+  </div>
+</footer>
+
+</body>
+</html>
