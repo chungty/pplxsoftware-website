@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYNC13TQKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PYNC13TQKF');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TeamOps vs Tempo vs Manual Jira — HR & Leave Management Comparison</title>
+<meta name="description" content="Compare TeamOps vs Tempo Timesheets, Calamari, manual Jira issues, and Google Sheets for Jira leave management and onboarding. Feature-by-feature comparison with honest recommendations.">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/comparison">
+
+<meta property="og:title" content="TeamOps vs Tempo vs Manual Jira — HR & Leave Management Comparison">
+<meta property="og:description" content="Feature-by-feature comparison of Jira HR and leave management tools. TeamOps, Tempo Timesheets, Calamari, manual Jira issues, and Google Sheets.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pplxsoftware.com/comparison">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "TeamOps vs Alternatives — HR & Leave Management Comparison for Jira",
+  "description": "Feature-by-feature comparison of Jira HR and leave management tools including TeamOps, Tempo Timesheets, Calamari, manual Jira issues, and Google Sheets.",
+  "url": "https://pplxsoftware.com/comparison",
+  "publisher": {
+    "@type": "Organization",
+    "name": "PPLX Software"
+  },
+  "mainEntity": {
+    "@type": "Table",
+    "about": "Comparison of HR and leave management tools for Jira teams"
+  }
+}
+</script>
+<link rel="stylesheet" href="/styles.css">
+<style>
+  /* --- Comparison Page Styles --- */
+  .comparison-table-wrap {
+    overflow-x: auto;
+    margin: 32px 0 48px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius);
+    background: var(--navy-light);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .comparison-table {
+    width: 100%;
+    min-width: 780px;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+
+  .comparison-table thead th {
+    position: sticky;
+    top: 0;
+    background: var(--navy);
+    color: var(--white);
+    font-weight: 700;
+    padding: 14px 16px;
+    text-align: center;
+    border-bottom: 2px solid rgba(96, 165, 250, 0.2);
+    white-space: nowrap;
+    font-size: 0.85rem;
+    letter-spacing: -0.01em;
+  }
+
+  .comparison-table thead th:first-child {
+    text-align: left;
+    min-width: 200px;
+    padding-left: 20px;
+  }
+
+  .comparison-table thead th.highlight-col {
+    background: rgba(96, 165, 250, 0.12);
+    color: var(--blue);
+    border-bottom-color: var(--blue);
+  }
+
+  .comparison-table tbody td {
+    padding: 12px 16px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    color: var(--gray-300);
+    vertical-align: middle;
+    line-height: 1.5;
+  }
+
+  .comparison-table tbody td:first-child {
+    text-align: left;
+    font-weight: 600;
+    color: var(--white);
+    padding-left: 20px;
+  }
+
+  .comparison-table tbody td.highlight-col {
+    background: rgba(96, 165, 250, 0.05);
+  }
+
+  .comparison-table tbody tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .comparison-table tbody tr:hover td.highlight-col {
+    background: rgba(96, 165, 250, 0.08);
+  }
+
+  .comparison-table tbody tr:last-child td {
+    border-bottom: none;
+    padding-bottom: 16px;
+  }
+
+  .check { color: var(--green); font-weight: 700; font-size: 1.1rem; }
+  .cross { color: #f87171; font-weight: 700; font-size: 1.1rem; }
+  .partial { color: #fbbf24; font-size: 0.82rem; font-weight: 600; }
+  .cell-note { display: block; font-size: 0.78rem; color: var(--gray-500); margin-top: 2px; font-weight: 400; }
+
+  .scroll-hint {
+    display: none;
+    text-align: center;
+    color: var(--gray-500);
+    font-size: 0.82rem;
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 840px) {
+    .scroll-hint { display: block; }
+  }
+
+  .rec-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 24px;
+    margin-bottom: 48px;
+  }
+
+  .rec-card {
+    background: var(--navy-light);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: border-color var(--transition);
+  }
+
+  .rec-card:hover {
+    border-color: rgba(96, 165, 250, 0.15);
+  }
+
+  .rec-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: var(--white);
+  }
+
+  .rec-card .rec-best-for {
+    font-size: 0.85rem;
+    color: var(--blue);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .rec-card p {
+    font-size: 0.92rem;
+    color: var(--gray-300);
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: 48px 0 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    margin-top: 48px;
+  }
+
+  .cta-section h2 {
+    border-bottom: none;
+    padding-bottom: 0;
+    text-align: center;
+  }
+
+  .cta-section p {
+    text-align: center;
+    max-width: 540px;
+    margin: 0 auto 24px;
+  }
+
+  .comparison-page .doc-content {
+    max-width: 960px;
+  }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home"><div class="nav-logo">T</div>TeamOps</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/support">Support</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="doc-wrapper comparison-page">
+  <div class="doc-content">
+    <h1>TeamOps vs Alternatives</h1>
+    <p class="doc-subtitle">An honest, feature-by-feature comparison of the most common ways Jira teams handle HR tasks like leave management, onboarding, and offboarding.</p>
+
+    <p style="color: var(--gray-300); line-height: 1.7; margin-bottom: 32px;">Every Jira team eventually runs into the same problem: leave requests end up as Jira issues that clutter your boards. Onboarding lives in a doc that nobody updates. Offboarding is a checklist someone emails around. The usual fixes create new problems — Tempo is a full time-tracking suite when you only need PTO. Calamari sends your HR data outside Atlassian. Google Sheets drift out of date by day two. TeamOps exists because this gap should not require a compromise between functionality, privacy, and price.</p>
+
+    <p class="scroll-hint">Scroll right to see all columns &rarr;</p>
+
+    <div class="comparison-table-wrap">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Manual Jira Issues</th>
+            <th>Tempo Timesheets</th>
+            <th>Calamari</th>
+            <th>Google Sheets</th>
+            <th class="highlight-col">TeamOps</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Leave request &amp; approval workflow</td>
+            <td><span class="partial">Partial</span><span class="cell-note">DIY with issue transitions</span></td>
+            <td><span class="check" aria-label="Yes">&#10003;</span><span class="cell-note">Mature PTO module</span></td>
+            <td><span class="check" aria-label="Yes">&#10003;</span></td>
+            <td><span class="partial">Partial</span><span class="cell-note">Manual, error-prone</span></td>
+            <td class="highlight-col"><span class="check" aria-label="Yes">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td>Team availability calendar</td>
+            <td><span class="cross" aria-label="No">&#10007;</span></td>
+            <td><span class="check" aria-label="Yes">&#10003;</span></td>
+            <td><span class="check" aria-label="Yes">&#10003;</span></td>
+            <td><span class="cross" aria-label="No">&#10007;</span></td>
+            <td class="highlight-col"><span class="check" aria-label="Yes">&#10003;</span></td>
+          </tr>
+          <tr>
+            <td>Onboarding checklists</td>
+            <td><span class="partial">Partial</span><span class="cell-note">Manual issue creation</span></td>
+            <td><span class="cross" aria-label="No">&#10007;</span></td>
+            <td><span class="partial">Partial</span><span class="cell-note">Basic HR workflows</span></td>
+            <td><span class="partial">Partial</span><span class="cell-note">Static checklist</span></td>
+            <td class="highlight-col"><span class="check" aria-label="Yes">&#10003;</span><span class="cell-note">Templates + Jira sync</span></td>
+          </tr>
+          <tr>
+            <td>Offboarding checklists</td>
+            <td><span class="partial">Partial</span><span class="cell-note">Manual issue creation</span></td>
+            <td><span class="cross" aria-label="No">&#10007;</span></td>
+            <td><span class="partial">Partial</span><span class="cell-note">Basic HR workflows</span></td>
+            <td><span class="partial">Partial</span><span class="cell-note">Static checklist</span></td>
+            <td class="highlight-col"><span class="check" aria-label="Yes">&#10003;</span><span class="cell-note">Templates + Jira sync</span></td>
+          </tr>
+          <tr>
+            <td>Public holiday auto-detection</td>
+            <td><span class="cross" aria-label="No">&#10007;</span></td>
+            <td><span class="check" aria-label="Yes">&#10003;</span></td>
+            <td><span class="check" aria-label="Yes">&#10003;</span></td>
+            <td><span class="cross" aria-label="No">&#10007;</span></td>
+            <td class="highlight-col"><span class="check" aria-label="Yes">&#10003;</span><span class="cell-note">6 countries + custom</span></td>
+          </tr>
+          <tr>
+            <td>Custom templates</td>
+            <td><span class="partial">Partial</span><span class="cell-note">Copy-paste issues</span></td>
+            <td><span class="cross" aria-label="No">&#10007;</span></td>
+            <td><span class="cross" aria-label="No">&#10007;</span></td>
+            <td><span class="partial">Partial</span><span class="cell-note">Duplicate sheets</span></td>
+            <td class="highlight-col"><span class="check" aria-label="Yes">&#10003;</span><span class="cell-note">Role-specific templates</span></td>
+          </tr>
+          <tr>
+            <td>Rovo AI Agent</td>
+            <td><span class="cross" aria-label="No">&#10007;</span></td>
+            <td><span class="cross" aria-label="No">&#10007;</span></td>
+            <td><span class="cross" aria-label="No">&#10007;</span></td>
+            <td><span class="cross" aria-label="No">&#10007;</span></td>
+            <td class="highlight-col"><span class="check" aria-label="Yes">&#10003;</span><span class="cell-note">Natural-language HR queries</span></td>
+          </tr>
+          <tr>
+            <td>Data stays in Atlassian (Forge-native)</td>
+            <td><span class="check" aria-label="Yes">&#10003;</span><span class="cell-note">It is Jira</span></td>
+            <td><span class="partial">Partial</span><span class="cell-note">Connect app, some external calls</span></td>
+            <td><span class="cross" aria-label="No">&#10007;</span><span class="cell-note">External SaaS</span></td>
+            <td><span class="cross" aria-label="No">&#10007;</span><span class="cell-note">Google infrastructure</span></td>
+            <td class="highlight-col"><span class="check" aria-label="Yes">&#10003;</span><span class="cell-note">100% Forge platform</span></td>
+          </tr>
+          <tr>
+            <td>Zero vendor data access</td>
+            <td><span class="check" aria-label="Yes">&#10003;</span></td>
+            <td><span class="cross" aria-label="No">&#10007;</span><span class="cell-note">Data on vendor infrastructure</span></td>
+            <td><span class="cross" aria-label="No">&#10007;</span><span class="cell-note">Data on vendor infrastructure</span></td>
+            <td><span class="cross" aria-label="No">&#10007;</span><span class="cell-note">Google processes data</span></td>
+            <td class="highlight-col"><span class="check" aria-label="Yes">&#10003;</span><span class="cell-note">PPLX cannot see your data</span></td>
+          </tr>
+          <tr>
+            <td>RBAC (HR Admin / Manager / Employee)</td>
+            <td><span class="partial">Partial</span><span class="cell-note">Jira project roles only</span></td>
+            <td><span class="check" aria-label="Yes">&#10003;</span></td>
+            <td><span class="check" aria-label="Yes">&#10003;</span></td>
+            <td><span class="cross" aria-label="No">&#10007;</span></td>
+            <td class="highlight-col"><span class="check" aria-label="Yes">&#10003;</span><span class="cell-note">3-tier role model</span></td>
+          </tr>
+          <tr>
+            <td>Pricing</td>
+            <td>Free<span class="cell-note">Already in Jira</span></td>
+            <td>$10/user/mo<span class="cell-note">Full suite</span></td>
+            <td>$2-4/user/mo</td>
+            <td>Free<span class="cell-note">Google Workspace required</span></td>
+            <td class="highlight-col">Free &ndash; $2/user/mo<span class="cell-note">Free for 1-10 users</span></td>
+          </tr>
+          <tr>
+            <td>Setup time</td>
+            <td>Hours<span class="cell-note">Build workflows yourself</span></td>
+            <td>30-60 min<span class="cell-note">Guided setup</span></td>
+            <td>30-60 min<span class="cell-note">External account + Jira integration</span></td>
+            <td>Hours<span class="cell-note">Build and maintain templates</span></td>
+            <td class="highlight-col">Minutes<span class="cell-note">Auto-configures on install</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="when-to-use-what">When to Use What</h2>
+    <p>There is no single right answer. The best choice depends on your team's size, budget, and what you need most. Here are honest recommendations for each option.</p>
+
+    <div class="rec-grid">
+      <div class="rec-card">
+        <h3>Manual Jira Issues</h3>
+        <div class="rec-best-for">Best for: Tiny teams (under 5) who rarely take leave</div>
+        <p>If you only have a handful of people and someone takes PTO once a month, creating a Jira issue works fine. The moment you need to track balances, see a team calendar, or onboard more than one person a quarter, the manual approach breaks down. There is no approval workflow, no holiday awareness, and no audit trail. But the price is right and there is nothing to install.</p>
+      </div>
+
+      <div class="rec-card">
+        <h3>Tempo Timesheets</h3>
+        <div class="rec-best-for">Best for: Teams that need time tracking first, PTO second</div>
+        <p>Tempo is a mature, well-established product with strong time-tracking capabilities. Its PTO module is solid and benefits from years of development. If your primary need is billable-hour tracking or timesheet management and you want PTO on top of that, Tempo is a strong choice. The trade-off is price ($10/user/month for the full suite) and the fact that it is a Connect app, meaning data passes through Tempo's servers. Tempo does not cover onboarding or offboarding.</p>
+      </div>
+
+      <div class="rec-card">
+        <h3>Calamari</h3>
+        <div class="rec-best-for">Best for: Teams that want a dedicated external HR system with a Jira integration</div>
+        <p>Calamari is a standalone HR tool with leave management, time tracking, and basic HR workflows. Its Jira integration syncs data between the two systems. If your HR team wants a purpose-built HR platform and your Jira teams just need to see who is out, Calamari works well. The downside is that employee data lives outside Atlassian entirely, which may not meet your security or compliance requirements.</p>
+      </div>
+
+      <div class="rec-card">
+        <h3>Google Sheets / Manual Tracking</h3>
+        <div class="rec-best-for">Best for: Absolute minimum viable tracking when nothing else is approved</div>
+        <p>A shared spreadsheet can technically track anything, but it relies on people remembering to update it, has no approval workflows, no notifications, and no connection to Jira. Balances drift, rows get deleted, and nobody knows if it is up to date. We have seen teams use this as a stopgap while waiting for budget approval. It is better than nothing, but only barely.</p>
+      </div>
+
+      <div class="rec-card">
+        <h3>TeamOps</h3>
+        <div class="rec-best-for">Best for: Teams who tried the alternatives and hit a wall</div>
+        <p>You tried tracking leave in Jira issues and it cluttered your boards. You looked at Tempo but it is $10/user and you do not need time tracking. You tried a Google Sheet and it drifted by week two. You looked at Calamari but your security team will not approve sending HR data outside Atlassian. TeamOps exists because this specific gap should not require a compromise. It does leave, onboarding, and offboarding in one Forge-native app where your data never leaves Atlassian. The trade-off: it is newer than Tempo and does not offer time tracking. If timesheets are your primary need, Tempo is the better fit.</p>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <h2>Ready to try it?</h2>
+      <p>TeamOps is free for up to 10 users. Install from the Atlassian Marketplace in under a minute -- no credit card, no external account, no data leaving Jira.</p>
+      <a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="btn-cta" target="_blank" rel="noopener">Try TeamOps Free</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="nav-logo">T</div>PPLX Software</div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="/support">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
+  </div>
+</footer>
+
+</body>
+</html>
