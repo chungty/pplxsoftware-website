@@ -221,7 +221,7 @@
     <h1>TeamOps vs Alternatives</h1>
     <p class="doc-subtitle">An honest, feature-by-feature comparison of the most common ways Jira teams handle HR tasks like leave management, onboarding, and offboarding.</p>
 
-    <p style="color: var(--gray-300); line-height: 1.7; margin-bottom: 32px;">Every Jira team eventually runs into the same problem: leave requests end up as Jira issues that clutter your boards. Onboarding lives in a doc that nobody updates. Offboarding is a checklist someone emails around. The usual fixes create new problems — Tempo is a full time-tracking suite when you only need PTO. Calamari sends your HR data outside Atlassian. Google Sheets drift out of date by day two. TeamOps exists because this gap should not require a compromise between functionality, privacy, and price.</p>
+    <p style="color: var(--gray-300); line-height: 1.7; margin-bottom: 32px;">A side-by-side look at the most common ways Jira teams handle leave, onboarding, and offboarding. We built TeamOps, so we're biased. But we've tried to be fair.</p>
 
     <p class="scroll-hint">Scroll right to see all columns &rarr;</p>
 
@@ -305,8 +305,8 @@
           <tr>
             <td>Zero vendor data access</td>
             <td><span class="check" aria-label="Yes">&#10003;</span></td>
-            <td><span class="cross" aria-label="No">&#10007;</span><span class="cell-note">Data on vendor infrastructure</span></td>
-            <td><span class="cross" aria-label="No">&#10007;</span><span class="cell-note">Data on vendor infrastructure</span></td>
+            <td><span class="cross" aria-label="No">&#10007;</span><span class="cell-note">Connect app</span></td>
+            <td><span class="cross" aria-label="No">&#10007;</span><span class="cell-note">Connect app</span></td>
             <td><span class="cross" aria-label="No">&#10007;</span><span class="cell-note">Google processes data</span></td>
             <td class="highlight-col"><span class="check" aria-label="Yes">&#10003;</span><span class="cell-note">PPLX cannot see your data</span></td>
           </tr>
@@ -327,12 +327,20 @@
             <td class="highlight-col">Free &ndash; $2/user/mo<span class="cell-note">Free for 1-10 users</span></td>
           </tr>
           <tr>
+            <td>Time tracking / timesheets</td>
+            <td><span class="cross" aria-label="No">&#10007;</span></td>
+            <td><span class="check" aria-label="Yes">&#10003;</span><span class="cell-note">Core feature</span></td>
+            <td><span class="check" aria-label="Yes">&#10003;</span></td>
+            <td><span class="cross" aria-label="No">&#10007;</span></td>
+            <td class="highlight-col"><span class="cross" aria-label="No">&#10007;</span><span class="cell-note">Not planned</span></td>
+          </tr>
+          <tr>
             <td>Setup time</td>
             <td>Hours<span class="cell-note">Build workflows yourself</span></td>
             <td>30-60 min<span class="cell-note">Guided setup</span></td>
             <td>30-60 min<span class="cell-note">External account + Jira integration</span></td>
             <td>Hours<span class="cell-note">Build and maintain templates</span></td>
-            <td class="highlight-col">Minutes<span class="cell-note">Auto-configures on install</span></td>
+            <td class="highlight-col">Varies<span class="cell-note">Auto-configures defaults; manual setup for groups</span></td>
           </tr>
         </tbody>
       </table>
@@ -362,14 +370,14 @@
 
       <div class="rec-card">
         <h3>Google Sheets / Manual Tracking</h3>
-        <div class="rec-best-for">Best for: Absolute minimum viable tracking when nothing else is approved</div>
-        <p>A shared spreadsheet can technically track anything, but it relies on people remembering to update it, has no approval workflows, no notifications, and no connection to Jira. Balances drift, rows get deleted, and nobody knows if it is up to date. We have seen teams use this as a stopgap while waiting for budget approval. It is better than nothing, but only barely.</p>
+        <div class="rec-best-for">Best for: Teams that need something today with no budget</div>
+        <p>Most teams start here. It works until you need approval workflows, balances, or more than one person maintaining the sheet. No connection to Jira, no notifications, no audit trail. Fine as a stopgap while you evaluate other options.</p>
       </div>
 
       <div class="rec-card">
         <h3>TeamOps</h3>
-        <div class="rec-best-for">Best for: Teams who tried the alternatives and hit a wall</div>
-        <p>You tried tracking leave in Jira issues and it cluttered your boards. You looked at Tempo but it is $10/user and you do not need time tracking. You tried a Google Sheet and it drifted by week two. You looked at Calamari but your security team will not approve sending HR data outside Atlassian. TeamOps exists because this specific gap should not require a compromise. It does leave, onboarding, and offboarding in one Forge-native app where your data never leaves Atlassian. The trade-off: it is newer than Tempo and does not offer time tracking. If timesheets are your primary need, Tempo is the better fit.</p>
+        <div class="rec-best-for">Best for: Jira teams that want leave, onboarding, and offboarding without adding a separate system</div>
+        <p>TeamOps combines leave management, onboarding, and offboarding in a single Forge-native app. Your data stays in Atlassian and we cannot access it. The trade-off: it is newer than Tempo and does not offer time tracking or timesheets. If those are your primary need, Tempo is the better fit.</p>
       </div>
     </div>
 
