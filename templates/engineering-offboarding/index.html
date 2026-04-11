@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYNC13TQKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PYNC13TQKF');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Engineering Offboarding Checklist for Jira | 20 Tasks</title>
+<meta name="description" content="Free 20-task engineering offboarding checklist template for Jira. Covers code access removal, secrets rotation, repo transfer, cloud access revocation, on-call rotation update, and branch archival.">
+<meta name="keywords" content="engineering offboarding checklist template jira, developer offboarding, software engineer offboarding template, code access revocation checklist, engineering exit checklist">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/templates/engineering-offboarding">
+
+<meta property="og:title" content="Free Engineering Offboarding Checklist for Jira | 20 Tasks">
+<meta property="og:description" content="20-task engineering offboarding checklist for Jira. Code access removal, secrets rotation, repo transfer, cloud revocation, and branch archival. Free with TeamOps.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pplxsoftware.com/templates/engineering-offboarding">
+<meta property="og:site_name" content="PPLX Software">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Free Engineering Offboarding Checklist for Jira | 20 Tasks">
+<meta name="twitter:description" content="20-task engineering offboarding checklist for Jira. Secrets rotation, code access removal, and infrastructure handoff.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Engineering Employee Offboarding Checklist",
+  "description": "A 20-task offboarding checklist for engineering roles. Includes all general offboarding tasks plus code access removal, secrets rotation, repository transfer, and infrastructure handoff.",
+  "totalTime": "P21D",
+  "step": [
+    {
+      "@type": "HowToSection",
+      "name": "Pre-departure",
+      "itemListElement": [
+        {"@type": "HowToStep", "name": "Notify IT of departure", "text": "Inform IT department of the upcoming departure so they can prepare for access revocation and equipment collection"},
+        {"@type": "HowToStep", "name": "Schedule exit interview", "text": "Schedule a confidential exit interview to gather feedback and discuss transition details"},
+        {"@type": "HowToStep", "name": "Knowledge transfer documentation", "text": "Document key processes, project status, architecture decisions, and outstanding work items"},
+        {"@type": "HowToStep", "name": "Identify handoff recipients", "text": "Assign team members to take over responsibilities, projects, and client relationships"},
+        {"@type": "HowToStep", "name": "Notify payroll of departure", "text": "Inform payroll of last working day, final pay calculation, and any outstanding expenses"},
+        {"@type": "HowToStep", "name": "Transfer repo ownership", "text": "Transfer ownership of personal repos, update CODEOWNERS files, reassign PR reviewers"},
+        {"@type": "HowToStep", "name": "Revoke cloud access", "text": "Remove access to AWS/GCP/Azure consoles, CI/CD pipelines, and production environments"}
+      ]
+    },
+    {
+      "@type": "HowToSection",
+      "name": "Last Day",
+      "itemListElement": [
+        {"@type": "HowToStep", "name": "Revoke badge/building access", "text": "Deactivate badge access, collect physical keys, and remove from building access lists"},
+        {"@type": "HowToStep", "name": "Collect company equipment", "text": "Collect laptop, phone, monitors, peripherals, and any other company-owned equipment"},
+        {"@type": "HowToStep", "name": "Revoke email and system access", "text": "Disable email account, SSO, VPN, and all application access"},
+        {"@type": "HowToStep", "name": "Conduct exit interview", "text": "Conduct the exit interview, document feedback, and discuss any outstanding concerns"},
+        {"@type": "HowToStep", "name": "Remove from distribution lists", "text": "Remove from email distribution lists, Slack channels, and team communication groups"},
+        {"@type": "HowToStep", "name": "Rotate secrets and credentials", "text": "Rotate any API keys, tokens, or credentials the departing employee had access to"}
+      ]
+    },
+    {
+      "@type": "HowToSection",
+      "name": "Post-departure",
+      "itemListElement": [
+        {"@type": "HowToStep", "name": "Update on-call rotation", "text": "Remove from PagerDuty/on-call schedules and redistribute rotation slots"},
+        {"@type": "HowToStep", "name": "Process final paycheck", "text": "Process final paycheck including unused PTO payout, bonuses, and expense reimbursements"},
+        {"@type": "HowToStep", "name": "Archive branches", "text": "Archive or close open branches and pull requests authored by the departing employee"},
+        {"@type": "HowToStep", "name": "Send benefits continuation info", "text": "Send COBRA/benefits continuation information, 401k rollover options, and related documentation"},
+        {"@type": "HowToStep", "name": "Archive employee files", "text": "Archive personnel files, move shared documents to team ownership, preserve work product"},
+        {"@type": "HowToStep", "name": "Remove software licenses", "text": "Reclaim or cancel assigned software licenses (SaaS seats, IDE licenses, cloud accounts)"},
+        {"@type": "HowToStep", "name": "Update org chart", "text": "Update organizational chart, team directory, and internal documentation to reflect departure"}
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="/styles.css">
+<style>
+  .template-card { border: 1px solid rgba(255, 255, 255, 0.06); border-radius: var(--radius-sm); margin-bottom: 12px; overflow: hidden; background: var(--navy-light); transition: border-color var(--transition); }
+  .template-card:hover { border-color: rgba(96, 165, 250, 0.2); }
+  .template-header { width: 100%; background: none; border: none; color: var(--white); font-family: inherit; font-size: 1rem; font-weight: 600; text-align: left; padding: 20px; cursor: pointer; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; transition: color var(--transition); }
+  .template-header:hover { color: var(--blue); }
+  .template-header::after { content: '+'; font-size: 1.3rem; font-weight: 400; color: var(--gray-400); flex-shrink: 0; transition: transform var(--transition); line-height: 1; margin-top: 2px; }
+  .template-card.open .template-header::after { content: '\2212'; }
+  .template-header-content { flex: 1; }
+  .template-name { display: block; margin-bottom: 6px; }
+  .template-meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .template-badge { display: inline-block; background: rgba(96, 165, 250, 0.12); color: var(--blue); font-size: 0.78rem; font-weight: 600; padding: 3px 10px; border-radius: 100px; letter-spacing: 0.02em; white-space: nowrap; }
+  .template-desc { color: var(--gray-400); font-size: 0.88rem; font-weight: 400; line-height: 1.5; }
+  .template-body { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; }
+  .template-card.open .template-body { max-height: 3000px; }
+  .template-body-inner { padding: 0 20px 24px; }
+  .task-list { list-style: none; padding: 0; margin: 0; }
+  .task-item { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.03); font-size: 0.9rem; color: var(--gray-300); line-height: 1.5; }
+  .task-item:last-child { border-bottom: none; }
+  .task-check { flex-shrink: 0; width: 18px; height: 18px; border: 2px solid var(--slate-light); border-radius: 4px; margin-top: 2px; }
+  .task-info { flex: 1; }
+  .task-name { color: var(--white); font-weight: 500; }
+  .task-detail { font-size: 0.82rem; color: var(--gray-400); margin-top: 2px; }
+  .task-dept { display: inline-block; font-size: 0.75rem; font-weight: 600; color: var(--gray-500); background: rgba(255, 255, 255, 0.04); padding: 1px 7px; border-radius: 4px; margin-left: 6px; }
+  .cta-section { text-align: center; padding: 40px 0; }
+  .cta-section p { color: var(--gray-400); font-size: 0.95rem; margin-bottom: 16px; }
+  .template-stats { display: flex; gap: 32px; justify-content: center; margin-bottom: 40px; flex-wrap: wrap; }
+  .stat-item { text-align: center; }
+  .stat-number { display: block; font-size: 2rem; font-weight: 800; color: var(--blue); letter-spacing: -0.03em; }
+  .stat-label { font-size: 0.85rem; color: var(--gray-400); font-weight: 500; }
+  .breadcrumb { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 16px; }
+  .breadcrumb a { color: var(--gray-400); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--blue); }
+  @media (max-width: 768px) { .template-meta { flex-direction: column; align-items: flex-start; gap: 6px; } .template-stats { gap: 24px; } .stat-number { font-size: 1.6rem; } }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home"><div class="nav-logo">T</div>TeamOps</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="doc-wrapper">
+  <div class="doc-content">
+    <div class="breadcrumb"><a href="/">Home</a> / <a href="/templates">Templates</a> / Engineering Offboarding</div>
+    <h1>Engineering Offboarding Checklist</h1>
+    <p class="doc-subtitle">A 20-task offboarding checklist for engineering roles. Extends the general offboarding with code access removal, secrets rotation, repository transfer, cloud access revocation, and infrastructure handoff.</p>
+
+    <div class="template-stats">
+      <div class="stat-item"><span class="stat-number">20</span><span class="stat-label">Tasks</span></div>
+      <div class="stat-item"><span class="stat-number">3</span><span class="stat-label">Phases</span></div>
+      <div class="stat-item"><span class="stat-number">5</span><span class="stat-label">Departments</span></div>
+    </div>
+
+    <div class="cta-section" style="padding-top: 0;">
+      <a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="btn-cta" target="_blank" rel="noopener">Get This Template Instantly -- Install TeamOps Free</a>
+    </div>
+
+    <!-- Pre-departure -->
+    <div class="template-card open">
+      <button class="template-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="template-header-content">
+          <span class="template-name">Pre-departure</span>
+          <div class="template-meta">
+            <span class="template-badge">7 tasks</span>
+            <span class="template-desc">Before the engineer's last day. Knowledge transfer, repo ownership transfer, and cloud access revocation.</span>
+          </div>
+        </div>
+      </button>
+      <div class="template-body"><div class="template-body-inner">
+        <ul class="task-list">
+          <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Notify IT of departure</span><span class="task-dept">IT</span><div class="task-detail">Inform IT department of the upcoming departure so they can prepare for access revocation and equipment collection</div></div></li>
+          <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Schedule exit interview</span><span class="task-dept">HR</span><div class="task-detail">Schedule a confidential exit interview to gather feedback and discuss transition details</div></div></li>
+          <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Knowledge transfer documentation</span><span class="task-dept">Employee</span><div class="task-detail">Document key processes, project status, architecture decisions, and outstanding work items</div></div></li>
+          <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Identify handoff recipients</span><span class="task-dept">Manager</span><div class="task-detail">Assign team members to take over responsibilities, projects, and client relationships</div></div></li>
+          <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Notify payroll of departure</span><span class="task-dept">HR</span><div class="task-detail">Inform payroll of last working day, final pay calculation, and any outstanding expenses</div></div></li>
+          <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Transfer repo ownership</span><span class="task-dept">Employee</span><div class="task-detail">Transfer ownership of personal repos, update CODEOWNERS files, reassign PR reviewers</div></div></li>
+          <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Revoke cloud access</span><span class="task-dept">IT</span><div class="task-detail">Remove access to AWS/GCP/Azure consoles, CI/CD pipelines, and production environments</div></div></li>
+        </ul>
+      </div></div>
+    </div>
+
+    <!-- Last Day -->
+    <div class="template-card">
+      <button class="template-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="template-header-content">
+          <span class="template-name">Last Day</span>
+          <div class="template-meta">
+            <span class="template-badge">6 tasks</span>
+            <span class="template-desc">On the engineer's final day. Equipment return, access revocation, secrets rotation, and exit interview.</span>
+          </div>
+        </div>
+      </button>
+      <div class="template-body"><div class="template-body-inner">
+        <ul class="task-list">
+          <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Revoke badge/building access</span><span class="task-dept">Facilities</span><div class="task-detail">Deactivate badge access, collect physical keys, and remove from building access lists</div></div></li>
+          <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Collect company equipment</span><span class="task-dept">IT</span><div class="task-detail">Collect laptop, phone, monitors, peripherals, and any other company-owned equipment</div></div></li>
+          <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Revoke email and system access</span><span class="task-dept">IT</span><div class="task-detail">Disable email account, SSO, VPN, and all application access</div></div></li>
+          <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Conduct exit interview</span><span class="task-dept">HR</span><div class="task-detail">Conduct the exit interview, document feedback, and discuss any outstanding concerns</div></div></li>
+          <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Remove from distribution lists</span><span class="task-dept">IT</span><div class="task-detail">Remove from email distribution lists, Slack channels, and team communication groups</div></div></li>
+          <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Rotate secrets and credentials</span><span class="task-dept">IT</span><div class="task-detail">Rotate any API keys, tokens, or credentials the departing employee had access to</div></div></li>
+        </ul>
+      </div></div>
+    </div>
+
+    <!-- Post-departure -->
+    <div class="template-card">
+      <button class="template-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="template-header-content">
+          <span class="template-name">Post-departure</span>
+          <div class="template-meta">
+            <span class="template-badge">7 tasks</span>
+            <span class="template-desc">After the engineer leaves. On-call rotation, branch archival, final paycheck, and license recovery.</span>
+          </div>
+        </div>
+      </button>
+      <div class="template-body"><div class="template-body-inner">
+        <ul class="task-list">
+          <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Update on-call rotation</span><span class="task-dept">Manager</span><div class="task-detail">Remove from PagerDuty/on-call schedules and redistribute rotation slots</div></div></li>
+          <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Process final paycheck</span><span class="task-dept">HR</span><div class="task-detail">Process final paycheck including unused PTO payout, bonuses, and expense reimbursements</div></div></li>
+          <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Archive branches</span><span class="task-dept">IT</span><div class="task-detail">Archive or close open branches and pull requests authored by the departing employee</div></div></li>
+          <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Send benefits continuation info</span><span class="task-dept">HR</span><div class="task-detail">Send COBRA/benefits continuation information, 401k rollover options, and related documentation</div></div></li>
+          <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Archive employee files</span><span class="task-dept">HR</span><div class="task-detail">Archive personnel files, move shared documents to team ownership, preserve work product</div></div></li>
+          <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Remove software licenses</span><span class="task-dept">IT</span><div class="task-detail">Reclaim or cancel assigned software licenses (SaaS seats, IDE licenses, cloud accounts)</div></div></li>
+          <li class="task-item"><div class="task-check"></div><div class="task-info"><span class="task-name">Update org chart</span><span class="task-dept">HR</span><div class="task-detail">Update organizational chart, team directory, and internal documentation to reflect departure</div></div></li>
+        </ul>
+      </div></div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="cta-section" style="margin-top: 48px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.06);">
+      <h2 style="color: var(--white); font-size: 1.4rem; margin-bottom: 8px; border: none; padding: 0;">Get this template in your Jira instance</h2>
+      <p>Install TeamOps and this 20-task engineering offboarding template is available instantly. Free for teams up to 10 users.</p>
+      <a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="btn-cta" target="_blank" rel="noopener">Install TeamOps Free on Atlassian Marketplace</a>
+    </div>
+
+    <!-- Internal Links -->
+    <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.06);">
+      <h2 style="color: var(--white); font-size: 1.2rem; margin-bottom: 16px; border: none; padding: 0;">Related Resources</h2>
+      <ul style="list-style: none; padding: 0;">
+        <li style="margin-bottom: 10px;"><a href="/templates" style="color: var(--blue); text-decoration: none;">All 7 Onboarding and Offboarding Templates</a></li>
+        <li style="margin-bottom: 10px;"><a href="/templates/engineering-onboarding" style="color: var(--blue); text-decoration: none;">Engineering Onboarding Checklist (22 tasks)</a></li>
+        <li style="margin-bottom: 10px;"><a href="/templates/general-offboarding" style="color: var(--blue); text-decoration: none;">General Offboarding Checklist (15 tasks)</a></li>
+        <li style="margin-bottom: 10px;"><a href="/blog/employee-offboarding-security" style="color: var(--blue); text-decoration: none;">Employee Offboarding Security Best Practices</a></li>
+        <li style="margin-bottom: 10px;"><a href="/blog/offboarding-checklist-jira" style="color: var(--blue); text-decoration: none;">The Complete Offboarding Checklist for Jira</a></li>
+        <li style="margin-bottom: 10px;"><a href="/comparison" style="color: var(--blue); text-decoration: none;">Compare TeamOps to BambooHR, Rippling, and Others</a></li>
+      </ul>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="nav-logo">T</div>PPLX Software</div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="/support">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
+  </div>
+</footer>
+
+</body>
+</html>
