@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYNC13TQKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PYNC13TQKF');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to See Who's Out of Office in Jira | TeamOps Blog</title>
+<meta name="description" content="Three approaches to tracking who is out of office in Jira: DIY automation, out-of-office apps, and integrated leave management. A comparison of what works at different team sizes.">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/blog/team-availability-jira">
+
+<meta property="og:title" content="How to See Who's Out of Office in Jira">
+<meta property="og:description" content="Three approaches to tracking who is out of office in Jira. A comparison of DIY automation, OOO apps, and integrated leave management.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pplxsoftware.com/blog/team-availability-jira">
+<meta property="og:site_name" content="TeamOps Blog | PPLX Software">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to See Who's Out of Office in Jira">
+<meta name="twitter:description" content="Three approaches to tracking who is out of office in Jira.">
+
+<meta name="article:published_time" content="2026-04-01">
+<meta name="author" content="Thomas Chung">
+<meta name="keywords" content="jira out of office, jira team availability, who is out jira, jira OOO tracking, jira team calendar">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to See Who's Out of Office in Jira",
+  "description": "Three approaches to tracking who is out of office in Jira: DIY automation, out-of-office apps, and integrated leave management. A comparison of what works at different team sizes.",
+  "author": {
+    "@type": "Person",
+    "name": "Thomas Chung"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PPLX Software"
+  },
+  "datePublished": "2026-04-01",
+  "dateModified": "2026-04-01",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pplxsoftware.com/blog/team-availability-jira"
+  }
+}
+</script>
+
+<link rel="stylesheet" href="/styles.css">
+<style>
+.article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
+.article-content { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.article-breadcrumb { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 24px; }
+.article-breadcrumb a { color: var(--gray-400); text-decoration: none; transition: color var(--transition); }
+.article-breadcrumb a:hover { color: var(--blue); }
+.article-content h1 { font-size: clamp(1.75rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
+.article-meta { color: var(--gray-400); font-size: 0.9rem; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.article-meta .tag { background: var(--blue-glow); color: var(--blue); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
+.article-content h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.06); border-bottom: none; }
+.article-content h2:first-of-type { border-top: none; padding-top: 0; }
+.article-content h3 { font-size: 1.15rem; font-weight: 600; margin-top: 32px; margin-bottom: 12px; color: var(--gray-300); }
+.article-content p { color: var(--gray-300); line-height: 1.8; margin-bottom: 18px; font-size: 1.05rem; }
+.article-content ul, .article-content ol { color: var(--gray-300); margin-bottom: 18px; padding-left: 24px; }
+.article-content li { margin-bottom: 10px; line-height: 1.7; font-size: 1.05rem; }
+.article-content strong { color: var(--white); font-weight: 600; }
+.article-content a { color: var(--blue); text-decoration: none; transition: color var(--transition); }
+.article-content a:hover { color: #93c5fd; text-decoration: underline; }
+.callout { background: var(--navy-light); border-left: 3px solid var(--blue); border-radius: var(--radius-sm); padding: 20px 24px; margin: 28px 0; }
+.callout p { margin-bottom: 0; font-size: 0.95rem; }
+.callout-warning { border-left-color: #fbbf24; }
+.callout-success { border-left-color: var(--green); }
+.article-cta { background: linear-gradient(135deg, var(--navy-light) 0%, rgba(96, 165, 250, 0.06) 100%); border: 1px solid rgba(96, 165, 250, 0.15); border-radius: var(--radius); padding: 32px; margin: 48px 0 24px; text-align: center; }
+.article-cta h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 8px; margin-top: 0; }
+.article-cta p { font-size: 0.95rem; margin-bottom: 20px; }
+.article-content .cta-button, .cta-button { display: inline-block; background: var(--blue); color: var(--navy); padding: 12px 28px; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background var(--transition), transform var(--transition); }
+.cta-button:hover { background: #93c5fd; color: var(--navy) !important; transform: translateY(-1px); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home"><div class="nav-logo">T</div>TeamOps</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="article-wrapper">
+  <article class="article-content">
+    <div class="article-breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/blog">Blog</a> &rsaquo; Team Availability in Jira
+    </div>
+
+    <h1>How to See Who's Out of Office in Jira</h1>
+
+    <div class="article-meta">
+      <span>Thomas Chung</span>
+      <span>&bull;</span>
+      <span>April 1, 2026</span>
+      <span>&bull;</span>
+      <span>6 min read</span>
+      <span class="tag">Leave</span>
+      <span class="tag">Jira</span>
+    </div>
+
+    <p>It is 9:15am Monday. You need to assign a critical bug fix. You open Jira, look at the team board, and realize you have no idea who is actually working today. Two people mentioned taking Friday off, but is anyone out today? You check Slack statuses. One person has a palm tree emoji. Another has nothing set. You send a message in the team channel: "Who's around this week?"</p>
+
+    <p>This is a daily friction point for engineering managers and scrum masters. Jira is where the work lives, but Jira has no native concept of who is available on any given day. The result is a patchwork of Slack statuses, Google Calendar events, and tribal knowledge that is never quite accurate.</p>
+
+    <h2>Approach 1: Slack statuses and calendar blocks</h2>
+
+    <p>The most common approach. People set their Slack status to "OOO" or "Vacation" and block time on their Google Calendar. Anyone who needs to know checks both places.</p>
+
+    <p><strong>What works:</strong> Zero setup cost. Everyone already uses Slack and Calendar. It is better than nothing.</p>
+
+    <p><strong>What breaks:</strong> Compliance is inconsistent. Not everyone remembers to set their status. Slack statuses expire or get overwritten. Calendar events are only visible to people with calendar access, which may not include all team members, especially across organizations. Most importantly, none of this is visible inside Jira, where the work assignment actually happens.</p>
+
+    <p>The failure mode is predictable: you assign a task to someone who is on vacation, and nobody notices until the task sits untouched for three days.</p>
+
+    <h2>Approach 2: A shared "Who's Out" Jira dashboard</h2>
+
+    <p>Some teams create a Jira dashboard with a filter showing all "Out of Office" issues for the current week. Each absence is a Jira issue with a start date and end date field. A JQL filter surfaces active absences.</p>
+
+    <p><strong>What works:</strong> Absences are visible inside Jira. Managers can check the dashboard before sprint planning or task assignment. JQL makes it queryable.</p>
+
+    <p><strong>What breaks:</strong> It requires discipline. Someone has to create an OOO issue for every absence, which means either the employee creates it (and some will not) or the manager creates it (and some will forget). The dashboard is only useful if the data is complete, and <a href="/blog/track-time-off-jira">manually maintained data degrades over time</a>.</p>
+
+    <p>It also mixes OOO issues with real work in the project, which adds clutter. With a team of 20, you might have 5 to 10 active OOO issues at any given time during summer months.</p>
+
+    <h2>Approach 3: Dedicated out-of-office or calendar apps</h2>
+
+    <p>Several Atlassian Marketplace apps provide team calendar views showing who is out. These range from simple calendar overlays to full leave management systems.</p>
+
+    <p>The simpler ones read from Google Calendar or let people manually mark dates in a calendar widget inside Jira. The more complete ones handle leave requests, approvals, and automatically show approved absences in a team view.</p>
+
+    <p><strong>What works:</strong> Purpose-built UI for team availability. No manual issue creation. If the app handles leave requests too, the data is always current because it comes from the approval workflow.</p>
+
+    <p><strong>What to watch for:</strong></p>
+    <ul>
+      <li><strong>Data source.</strong> Does the app read from another system (Google Calendar) or manage its own data? Reading from Calendar is convenient but inherits Calendar's accuracy problems (people forget to create events). Managing its own data through a leave request workflow is more reliable.</li>
+      <li><strong>Connect vs. Forge.</strong> Connect apps run on the vendor's infrastructure. Your team's absence data is stored on external servers. Forge apps run on Atlassian's infrastructure, so the data stays within your existing Atlassian trust boundary.</li>
+      <li><strong>Integration depth.</strong> Can you see availability from within a Jira project, or do you have to open a separate page? The value of team availability is highest when it is visible where you make assignment decisions.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>The key insight:</strong> "Who is out" is only useful if you trust the data. The most reliable source of absence data is the leave approval system itself. If absences are approved through a workflow, the availability view is always accurate. If it depends on people remembering to update a calendar or set a Slack status, it will always be incomplete.</p>
+    </div>
+
+    <h2>What good team availability looks like</h2>
+
+    <p>A team availability view that actually gets used has four properties:</p>
+
+    <ul>
+      <li><strong>Automatically populated.</strong> When a leave request is approved, the person appears as out on those dates. No extra steps.</li>
+      <li><strong>Visible inside Jira.</strong> Not a separate URL, not a different app, not a dashboard you have to remember to check. It should be accessible from the project where you assign work.</li>
+      <li><strong>Holiday-aware.</strong> Public holidays should be reflected in the availability view. If Monday is a national holiday, the entire team is unavailable that day. This matters for <a href="/blog/pto-tracking-capacity-planning">capacity planning</a>.</li>
+      <li><strong>Team-scoped.</strong> A manager should see their team's availability, not the entire company's. A 200-person company calendar is noise. A 6-person team view is useful.</li>
+    </ul>
+
+    <h2>How TeamOps handles this</h2>
+
+    <p>TeamOps builds team availability into the leave management workflow. When a leave request is approved, the employee automatically appears as out on those dates. Managers see a team-level view of who is available and who is not, directly inside their Jira project.</p>
+
+    <p>Public holidays are included automatically based on the team's configured country. Custom holidays (company offsites, team days) can be added. The result is a single view that answers "who is available this week?" without checking Slack, Google Calendar, or a spreadsheet.</p>
+
+    <p>Because TeamOps is Forge-native, the availability data stays on Atlassian's infrastructure. There is no external server storing your team's absence patterns.</p>
+
+    <p>For teams evaluating different approaches, the <a href="/comparison">comparison page</a> breaks down how TeamOps compares to standalone calendar apps and full HRIS platforms.</p>
+
+    <div class="article-cta">
+      <p>TeamOps shows team availability inside Jira, powered by your leave approval data. Free for teams up to 10.</p>
+      <a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="cta-button" target="_blank" rel="noopener">Install TeamOps Free</a>
+    </div>
+
+  </article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="nav-logo">T</div>PPLX Software</div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="/support">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
+  </div>
+</footer>
+
+</body>
+</html>

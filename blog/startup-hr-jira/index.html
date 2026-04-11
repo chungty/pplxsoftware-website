@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYNC13TQKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PYNC13TQKF');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Startup HR in Jira: Running a 50-Person Operation Without BambooHR | TeamOps Blog</title>
+<meta name="description" content="Practical guide for startups using Jira as their HR system. Covers onboarding, time off, offboarding, and compliance tracking for teams of 10 to 50 without buying a dedicated HRIS.">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/blog/startup-hr-jira">
+
+<meta property="og:title" content="Startup HR in Jira: Running a 50-Person Operation Without BambooHR">
+<meta property="og:description" content="Practical guide for startups using Jira as their HR system. Onboarding, time off, offboarding for teams of 10 to 50.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pplxsoftware.com/blog/startup-hr-jira">
+<meta property="og:site_name" content="TeamOps Blog | PPLX Software">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Startup HR in Jira: Running a 50-Person Operation Without BambooHR">
+<meta name="twitter:description" content="Practical guide for startups using Jira as their HR system. Onboarding, time off, offboarding for teams of 10 to 50.">
+
+<meta name="article:published_time" content="2026-04-04">
+<meta name="author" content="Thomas Chung">
+<meta name="keywords" content="jira HR management, startup HR jira, jira for HR, small team HR jira, HR without HRIS">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Startup HR in Jira: Running a 50-Person Operation Without BambooHR",
+  "description": "Practical guide for startups using Jira as their HR system. Covers onboarding, time off, offboarding, and compliance tracking for teams of 10 to 50 without buying a dedicated HRIS.",
+  "author": {
+    "@type": "Person",
+    "name": "Thomas Chung"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PPLX Software"
+  },
+  "datePublished": "2026-04-04",
+  "dateModified": "2026-04-04",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pplxsoftware.com/blog/startup-hr-jira"
+  }
+}
+</script>
+
+<link rel="stylesheet" href="/styles.css">
+<style>
+.article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
+.article-content { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.article-breadcrumb { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 24px; }
+.article-breadcrumb a { color: var(--gray-400); text-decoration: none; transition: color var(--transition); }
+.article-breadcrumb a:hover { color: var(--blue); }
+.article-content h1 { font-size: clamp(1.75rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
+.article-meta { color: var(--gray-400); font-size: 0.9rem; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.article-meta .tag { background: var(--blue-glow); color: var(--blue); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
+.article-content h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.06); border-bottom: none; }
+.article-content h2:first-of-type { border-top: none; padding-top: 0; }
+.article-content h3 { font-size: 1.15rem; font-weight: 600; margin-top: 32px; margin-bottom: 12px; color: var(--gray-300); }
+.article-content p { color: var(--gray-300); line-height: 1.8; margin-bottom: 18px; font-size: 1.05rem; }
+.article-content ul, .article-content ol { color: var(--gray-300); margin-bottom: 18px; padding-left: 24px; }
+.article-content li { margin-bottom: 10px; line-height: 1.7; font-size: 1.05rem; }
+.article-content strong { color: var(--white); font-weight: 600; }
+.article-content a { color: var(--blue); text-decoration: none; transition: color var(--transition); }
+.article-content a:hover { color: #93c5fd; text-decoration: underline; }
+.callout { background: var(--navy-light); border-left: 3px solid var(--blue); border-radius: var(--radius-sm); padding: 20px 24px; margin: 28px 0; }
+.callout p { margin-bottom: 0; font-size: 0.95rem; }
+.callout-warning { border-left-color: #fbbf24; }
+.callout-success { border-left-color: var(--green); }
+.article-cta { background: linear-gradient(135deg, var(--navy-light) 0%, rgba(96, 165, 250, 0.06) 100%); border: 1px solid rgba(96, 165, 250, 0.15); border-radius: var(--radius); padding: 32px; margin: 48px 0 24px; text-align: center; }
+.article-cta h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 8px; margin-top: 0; }
+.article-cta p { font-size: 0.95rem; margin-bottom: 20px; }
+.article-content .cta-button, .cta-button { display: inline-block; background: var(--blue); color: var(--navy); padding: 12px 28px; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background var(--transition), transform var(--transition); }
+.cta-button:hover { background: #93c5fd; color: var(--navy) !important; transform: translateY(-1px); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home"><div class="nav-logo">T</div>TeamOps</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="article-wrapper">
+  <article class="article-content">
+    <div class="article-breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/blog">Blog</a> &rsaquo; Startup HR in Jira
+    </div>
+
+    <h1>Startup HR in Jira: Running a 50-Person Operation Without BambooHR</h1>
+
+    <div class="article-meta">
+      <span>Thomas Chung</span>
+      <span>&bull;</span>
+      <span>April 4, 2026</span>
+      <span>&bull;</span>
+      <span>8 min read</span>
+      <span class="tag">HR</span>
+      <span class="tag">Startup</span>
+    </div>
+
+    <p>At 10 people, HR is a spreadsheet. At 50, it is a full-time job. Somewhere in between, startups face a choice: buy a dedicated HRIS like BambooHR, Gusto, or Rippling, or try to stretch the tools they already have.</p>
+
+    <p>If your team already lives in Jira for project management, there is a compelling argument for keeping HR there too. Fewer tools means fewer logins, fewer integrations to maintain, and fewer invoices to approve. The question is whether Jira can actually handle it.</p>
+
+    <p>The answer is: not out of the box, but with the right approach, it can cover the 80% of HR workflows that startups actually need.</p>
+
+    <h2>What startups actually need from HR tooling</h2>
+
+    <p>Enterprise HRIS platforms offer hundreds of features. Startups need about six:</p>
+
+    <ol>
+      <li><strong>Onboarding checklists</strong> that work across departments (IT, HR, manager)</li>
+      <li><strong>Time-off tracking</strong> with balance calculation and approval workflows</li>
+      <li><strong>Offboarding checklists</strong> so access revocation is not forgotten</li>
+      <li><strong>A simple employee directory</strong> with role, department, and start date</li>
+      <li><strong>Compliance tracking</strong> for required training and document acknowledgment</li>
+      <li><strong>Basic reporting</strong> on headcount, turnover, and leave usage</li>
+    </ol>
+
+    <p>Payroll and benefits administration are not on this list because those require specialized providers (Gusto, Deel, Remote) regardless of where you track everything else. Payroll is a regulated financial operation. Running it from Jira would be irresponsible.</p>
+
+    <h2>How to structure HR in Jira</h2>
+
+    <h3>Separate project, not a board</h3>
+
+    <p>Do not mix HR tasks into your engineering or product boards. Create a dedicated Jira project (something like "PEOPLE" or "HR") with its own issue types and workflows. This keeps HR work visible to the people who need it and invisible to everyone else.</p>
+
+    <h3>Onboarding with templates, not manual issues</h3>
+
+    <p>The biggest HR workflow at a growing startup is onboarding. You are hiring every month. Each hire generates 20 to 30 tasks across three or four departments. If you create these tasks manually every time, you will burn out your office manager by the third hire.</p>
+
+    <p>Templates solve this. Define the checklist once per role, then instantiate it for each new hire. TeamOps ships with <a href="/templates">pre-built templates</a> for engineering, sales, HR, executive, and general roles. If you are building from scratch, start with the <a href="/blog/jira-onboarding-without-36-statuses">Jira onboarding guide</a> to avoid the common pitfalls.</p>
+
+    <h3>Leave tracking without issue spam</h3>
+
+    <p>Tracking time off as Jira issues works until you have about 15 people. After that, <a href="/blog/track-time-off-jira">the issue count becomes unmanageable</a>. The better approach is a dedicated leave system that runs alongside Jira but does not create issues for every sick day.</p>
+
+    <p>What you need: request submission, manager approval, automatic balance calculation, and a team calendar. Country-specific holiday detection matters if your team is distributed.</p>
+
+    <h3>Offboarding as a first-class process</h3>
+
+    <p>Most startups treat offboarding as an afterthought. Someone leaves, IT disables their account a few days later, and everyone assumes the rest was handled. It was not.</p>
+
+    <p>A proper <a href="/blog/offboarding-checklist-jira">offboarding checklist</a> covers IT access, HR paperwork, legal compliance, knowledge transfer, and security tasks. At minimum, use a template. The <a href="/templates/general-offboarding">General Offboarding template</a> is a good starting point.</p>
+
+    <h2>Where Jira falls short (and what to do about it)</h2>
+
+    <p><strong>Employee records.</strong> Jira has no concept of an employee profile. You can create custom fields on a "Person" issue type, but this is clunky. For basic directory needs, a Confluence page or a simple Notion database might be more practical alongside Jira.</p>
+
+    <p><strong>Benefits administration.</strong> Do not attempt this in Jira. Use Gusto, Justworks, or your PEO. The compliance requirements alone make this a non-starter.</p>
+
+    <p><strong>Performance reviews.</strong> Jira can technically track review cycles with due dates and custom fields. In practice, it is a poor experience for both reviewers and employees. If performance management is important to you, consider a lightweight tool like Lattice or 15Five.</p>
+
+    <p><strong>Payroll.</strong> No. Use a payroll provider.</p>
+
+    <div class="callout">
+      <p><strong>The rule of thumb:</strong> If a process involves regulated financial transactions or highly sensitive personal data (SSN, bank accounts, medical information), use a specialized tool. If a process involves task coordination, checklists, and approvals, Jira can handle it well.</p>
+    </div>
+
+    <h2>When to graduate to a dedicated HRIS</h2>
+
+    <p>The Jira-as-HR approach has a ceiling. Signs you are hitting it:</p>
+
+    <ul>
+      <li><strong>You are past 75 employees</strong> and spending more than 10 hours per week on HR admin.</li>
+      <li><strong>You need international payroll</strong> across multiple countries with different tax regimes.</li>
+      <li><strong>Compliance requirements demand audit trails</strong> that Jira's permission model cannot satisfy.</li>
+      <li><strong>You are hiring a dedicated HR person</strong> who expects professional HR tooling, not Jira.</li>
+    </ul>
+
+    <p>Below that threshold, Jira plus a few purpose-built extensions can cover your needs. The <a href="/comparison">full comparison</a> between Jira-based HR and dedicated HRIS tools breaks down the tradeoffs in detail.</p>
+
+    <h2>A practical setup for a 50-person startup</h2>
+
+    <p>If you are starting from zero, this is the configuration that works:</p>
+
+    <ol>
+      <li><strong>TeamOps for onboarding, offboarding, and leave.</strong> Install from the <a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">Atlassian Marketplace</a>. Configure your onboarding templates and leave types. This covers 70% of your daily HR operations.</li>
+      <li><strong>Gusto or Deel for payroll and benefits.</strong> Non-negotiable. Do not DIY payroll.</li>
+      <li><strong>Confluence for the employee handbook and policy documentation.</strong> Keep it alongside your engineering documentation.</li>
+      <li><strong>Jira project for ad-hoc HR tasks.</strong> Policy updates, compliance follow-ups, equipment requests. Standard Jira workflows are fine for this.</li>
+    </ol>
+
+    <p>Total tool count: four. Total additional cost beyond what you already pay for Jira: one payroll provider and a free Marketplace app. For a Series A startup watching burn rate, this is a meaningful difference compared to adding BambooHR at $8 per employee per month.</p>
+
+    <div class="article-cta">
+      <p>TeamOps covers onboarding, offboarding, and leave management inside Jira. Free for teams up to 10.</p>
+      <a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="cta-button" target="_blank" rel="noopener">Install TeamOps Free</a>
+    </div>
+
+  </article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="nav-logo">T</div>PPLX Software</div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="/support">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
+  </div>
+</footer>
+
+</body>
+</html>

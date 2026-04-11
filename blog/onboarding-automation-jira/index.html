@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYNC13TQKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PYNC13TQKF');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automating Employee Onboarding in Jira | TeamOps Blog</title>
+<meta name="description" content="How to automate employee onboarding in Jira using templates, automation rules, and cross-department task assignment. Practical patterns that reduce manual work without breaking your workflow.">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/blog/onboarding-automation-jira">
+
+<meta property="og:title" content="Automating Employee Onboarding in Jira">
+<meta property="og:description" content="How to automate employee onboarding in Jira using templates, automation rules, and cross-department task assignment.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pplxsoftware.com/blog/onboarding-automation-jira">
+<meta property="og:site_name" content="TeamOps Blog | PPLX Software">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automating Employee Onboarding in Jira">
+<meta name="twitter:description" content="How to automate employee onboarding in Jira using templates, automation rules, and cross-department task assignment.">
+
+<meta name="article:published_time" content="2026-04-03">
+<meta name="author" content="Thomas Chung">
+<meta name="keywords" content="jira onboarding automation, automate employee onboarding jira, jira onboarding template automation, onboarding workflow automation jira">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Automating Employee Onboarding in Jira",
+  "description": "How to automate employee onboarding in Jira using templates, automation rules, and cross-department task assignment. Practical patterns that reduce manual work without breaking your workflow.",
+  "author": {
+    "@type": "Person",
+    "name": "Thomas Chung"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PPLX Software"
+  },
+  "datePublished": "2026-04-03",
+  "dateModified": "2026-04-03",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pplxsoftware.com/blog/onboarding-automation-jira"
+  }
+}
+</script>
+
+<link rel="stylesheet" href="/styles.css">
+<style>
+.article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
+.article-content { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.article-breadcrumb { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 24px; }
+.article-breadcrumb a { color: var(--gray-400); text-decoration: none; transition: color var(--transition); }
+.article-breadcrumb a:hover { color: var(--blue); }
+.article-content h1 { font-size: clamp(1.75rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
+.article-meta { color: var(--gray-400); font-size: 0.9rem; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.article-meta .tag { background: var(--blue-glow); color: var(--blue); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
+.article-content h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.06); border-bottom: none; }
+.article-content h2:first-of-type { border-top: none; padding-top: 0; }
+.article-content h3 { font-size: 1.15rem; font-weight: 600; margin-top: 32px; margin-bottom: 12px; color: var(--gray-300); }
+.article-content p { color: var(--gray-300); line-height: 1.8; margin-bottom: 18px; font-size: 1.05rem; }
+.article-content ul, .article-content ol { color: var(--gray-300); margin-bottom: 18px; padding-left: 24px; }
+.article-content li { margin-bottom: 10px; line-height: 1.7; font-size: 1.05rem; }
+.article-content strong { color: var(--white); font-weight: 600; }
+.article-content a { color: var(--blue); text-decoration: none; transition: color var(--transition); }
+.article-content a:hover { color: #93c5fd; text-decoration: underline; }
+.callout { background: var(--navy-light); border-left: 3px solid var(--blue); border-radius: var(--radius-sm); padding: 20px 24px; margin: 28px 0; }
+.callout p { margin-bottom: 0; font-size: 0.95rem; }
+.callout-warning { border-left-color: #fbbf24; }
+.callout-success { border-left-color: var(--green); }
+.article-cta { background: linear-gradient(135deg, var(--navy-light) 0%, rgba(96, 165, 250, 0.06) 100%); border: 1px solid rgba(96, 165, 250, 0.15); border-radius: var(--radius); padding: 32px; margin: 48px 0 24px; text-align: center; }
+.article-cta h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 8px; margin-top: 0; }
+.article-cta p { font-size: 0.95rem; margin-bottom: 20px; }
+.article-content .cta-button, .cta-button { display: inline-block; background: var(--blue); color: var(--navy); padding: 12px 28px; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background var(--transition), transform var(--transition); }
+.cta-button:hover { background: #93c5fd; color: var(--navy) !important; transform: translateY(-1px); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home"><div class="nav-logo">T</div>TeamOps</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="article-wrapper">
+  <article class="article-content">
+    <div class="article-breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/blog">Blog</a> &rsaquo; Automating Onboarding in Jira
+    </div>
+
+    <h1>Automating Employee Onboarding in Jira</h1>
+
+    <div class="article-meta">
+      <span>Thomas Chung</span>
+      <span>&bull;</span>
+      <span>April 3, 2026</span>
+      <span>&bull;</span>
+      <span>7 min read</span>
+      <span class="tag">Onboarding</span>
+      <span class="tag">Automation</span>
+    </div>
+
+    <p>Every time you hire someone, the same 25 to 35 tasks need to happen. IT provisions accounts. HR processes paperwork. The manager schedules introductions. Security grants the right access levels. Facilities arranges a desk or ships equipment.</p>
+
+    <p>If you are doing this manually each time, you are spending 2 to 4 hours per hire just on task creation and assignment, and you are probably missing things. The third new hire in a quarter is where people start forgetting steps, because nobody is checking against a master list anymore.</p>
+
+    <p>Automation fixes this. But "automation" in Jira can mean very different things depending on how you approach it. Some approaches work well. Others create more problems than they solve.</p>
+
+    <h2>What to automate (and what not to)</h2>
+
+    <p>Not every onboarding task should be automated. The goal is to automate the repetitive, structural work so humans can focus on the parts that require judgment.</p>
+
+    <p><strong>Automate these:</strong></p>
+    <ul>
+      <li>Task creation from a template (the same 30 tasks should not be typed out by hand every time)</li>
+      <li>Task assignment to the right department or person</li>
+      <li>Due date calculation based on the hire's start date</li>
+      <li>Notifications when tasks are overdue or a phase is falling behind</li>
+      <li>Progress tracking across all active onboardings</li>
+    </ul>
+
+    <p><strong>Do not automate these:</strong></p>
+    <ul>
+      <li>Welcome messages (a personal note from the manager matters more than a bot message)</li>
+      <li>Buddy assignment (this requires knowing team dynamics, not just org charts)</li>
+      <li>Role-specific training selection (what an engineer needs differs from what a salesperson needs, and it changes over time)</li>
+    </ul>
+
+    <h2>Approach 1: Jira automation rules</h2>
+
+    <p>Jira's built-in automation engine can create issues when a trigger fires. The typical pattern: create a parent issue called "Onboard [Name]," then use an automation rule to create sub-tasks for each onboarding step.</p>
+
+    <p><strong>The setup:</strong> You write an automation rule with a "When: Issue Created" trigger, filtered to a specific issue type (like "New Hire"). The rule then creates 20+ sub-tasks with predefined titles, assignees, and due dates calculated relative to a start date field.</p>
+
+    <p><strong>Where this works:</strong> Small teams with a stable onboarding process. If your checklist rarely changes and you have a Jira admin who can maintain automation rules, this can be effective.</p>
+
+    <p><strong>Where this breaks:</strong></p>
+    <ul>
+      <li><strong>Rule complexity.</strong> A 30-task onboarding requires 30 "create issue" actions in a single rule. Jira automation rules have execution limits, and a large rule can hit them.</li>
+      <li><strong>Template changes.</strong> When you need to add a new task or change an assignee, you are editing an automation rule, not a template. This is error-prone and non-obvious to non-admin users.</li>
+      <li><strong>Multiple roles.</strong> Engineering hires need different tasks than sales hires. You either maintain separate automation rules per role or build conditional logic that becomes difficult to read.</li>
+      <li><strong>Board clutter.</strong> Sub-tasks appear on sprint boards alongside real work. With five concurrent onboardings, that is 150 sub-tasks mixed into your backlog. See <a href="/blog/jira-onboarding-without-36-statuses">why the sub-task approach fails at scale</a>.</li>
+    </ul>
+
+    <h2>Approach 2: Jira Service Management forms</h2>
+
+    <p>JSM can intake an onboarding request through a form, then trigger automation rules to create downstream tasks. This is closer to how large enterprises handle it.</p>
+
+    <p><strong>Where this works:</strong> Organizations that already use JSM for IT service requests. The form provides a clean intake experience, and the request-to-task pipeline can be automated.</p>
+
+    <p><strong>Where this breaks:</strong> JSM puts onboarding into a service desk context, separate from the teams doing the actual work. IT tasks live in the JSM queue while the hiring manager's tasks live in a different project. Tracking overall progress across both is manual. JSM also adds licensing cost, as JSM agents are priced separately from Jira users.</p>
+
+    <h2>Approach 3: Template-based onboarding apps</h2>
+
+    <p>Instead of building automation from Jira primitives, you install a purpose-built app that handles onboarding as a first-class concept. You create templates, assign tasks by department and phase, and launch them for each new hire.</p>
+
+    <p>This is how <a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">TeamOps</a> works. The <a href="/templates">template library</a> ships with pre-built checklists for engineering, sales, HR, executive, and general onboarding. Each template defines tasks grouped by phase (Day 1, Week 1, Month 1) and department (IT, HR, Manager, Security). When you launch a template for a new hire, all tasks are created and assigned automatically.</p>
+
+    <p><strong>Where this works:</strong> Teams that want onboarding to be a repeatable, auditable process without maintaining automation rules. The template is the configuration, and changing it is as simple as editing a checklist.</p>
+
+    <p><strong>Where this breaks:</strong> If your onboarding process is truly unique to every single hire (no two hires share more than 50% of tasks), templates offer less value. In practice, most teams find that 80% of tasks are common across roles.</p>
+
+    <div class="callout">
+      <p><strong>The key difference:</strong> Automation rules define onboarding logic in a rules engine that only admins can edit. Templates define onboarding logic in a checklist that anyone can understand. The second approach is more maintainable because the people who own the onboarding process (HR, managers) can update it directly.</p>
+    </div>
+
+    <h2>Cross-department assignment</h2>
+
+    <p>The hardest part of onboarding automation is not creating tasks. It is assigning them to the right people across departments.</p>
+
+    <p>In a 30-task onboarding:</p>
+    <ul>
+      <li>8 tasks go to IT (account provisioning, equipment, access)</li>
+      <li>6 tasks go to HR (benefits, payroll, policies)</li>
+      <li>5 tasks go to the hiring manager (introductions, first project, check-ins)</li>
+      <li>4 tasks go to Security (access reviews, training)</li>
+      <li>4 tasks go to Facilities (desk, badge, parking)</li>
+      <li>3 tasks go to the new hire themselves (forms, training, reading)</li>
+    </ul>
+
+    <p>Each department has a different contact person, and that contact person changes depending on the office or region. Hardcoding assignees in automation rules means updating them every time someone changes roles. The better pattern is assigning by department and letting the department lead distribute to individuals.</p>
+
+    <h2>Measuring onboarding effectiveness</h2>
+
+    <p>Automation gives you data that manual processes do not. Once your onboarding tasks are tracked in a system, you can measure:</p>
+
+    <ul>
+      <li><strong>Average time to complete onboarding</strong> across all hires</li>
+      <li><strong>Bottleneck departments</strong> where tasks consistently run late</li>
+      <li><strong>Completion rates</strong> by phase (are Month 1 tasks getting done, or just Day 1?)</li>
+      <li><strong>Template effectiveness</strong> (which tasks are frequently marked as not applicable?)</li>
+    </ul>
+
+    <p>These metrics are invisible when onboarding lives in a spreadsheet. They become automatic when onboarding is tracked in a system with progress reporting.</p>
+
+    <div class="article-cta">
+      <p>TeamOps automates onboarding with templates, phases, and department assignment. Free for teams up to 10.</p>
+      <a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="cta-button" target="_blank" rel="noopener">Install TeamOps Free</a>
+    </div>
+
+  </article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="nav-logo">T</div>PPLX Software</div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="/support">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
+  </div>
+</footer>
+
+</body>
+</html>

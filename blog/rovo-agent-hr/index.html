@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYNC13TQKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PYNC13TQKF');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building an HR AI Agent with Atlassian Rovo | TeamOps Blog</title>
+<meta name="description" content="A technical walkthrough of building an HR AI agent on Atlassian Rovo and Forge. How TeamOps uses Rovo to answer leave balance questions, surface onboarding status, and provide HR guidance inside Jira.">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/blog/rovo-agent-hr">
+
+<meta property="og:title" content="Building an HR AI Agent with Atlassian Rovo">
+<meta property="og:description" content="A technical walkthrough of building an HR AI agent on Atlassian Rovo and Forge. How TeamOps uses Rovo for HR operations.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pplxsoftware.com/blog/rovo-agent-hr">
+<meta property="og:site_name" content="TeamOps Blog | PPLX Software">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Building an HR AI Agent with Atlassian Rovo">
+<meta name="twitter:description" content="A technical walkthrough of building an HR AI agent on Atlassian Rovo and Forge.">
+
+<meta name="article:published_time" content="2026-04-06">
+<meta name="author" content="Thomas Chung">
+<meta name="keywords" content="rovo agent forge, atlassian rovo AI agent, rovo forge app, building rovo agent, HR AI agent atlassian">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Building an HR AI Agent with Atlassian Rovo",
+  "description": "A technical walkthrough of building an HR AI agent on Atlassian Rovo and Forge. How TeamOps uses Rovo to answer leave balance questions, surface onboarding status, and provide HR guidance inside Jira.",
+  "author": {
+    "@type": "Person",
+    "name": "Thomas Chung"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PPLX Software"
+  },
+  "datePublished": "2026-04-06",
+  "dateModified": "2026-04-06",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pplxsoftware.com/blog/rovo-agent-hr"
+  }
+}
+</script>
+
+<link rel="stylesheet" href="/styles.css">
+<style>
+.article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
+.article-content { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.article-breadcrumb { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 24px; }
+.article-breadcrumb a { color: var(--gray-400); text-decoration: none; transition: color var(--transition); }
+.article-breadcrumb a:hover { color: var(--blue); }
+.article-content h1 { font-size: clamp(1.75rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
+.article-meta { color: var(--gray-400); font-size: 0.9rem; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.article-meta .tag { background: var(--blue-glow); color: var(--blue); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
+.article-content h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.06); border-bottom: none; }
+.article-content h2:first-of-type { border-top: none; padding-top: 0; }
+.article-content h3 { font-size: 1.15rem; font-weight: 600; margin-top: 32px; margin-bottom: 12px; color: var(--gray-300); }
+.article-content p { color: var(--gray-300); line-height: 1.8; margin-bottom: 18px; font-size: 1.05rem; }
+.article-content ul, .article-content ol { color: var(--gray-300); margin-bottom: 18px; padding-left: 24px; }
+.article-content li { margin-bottom: 10px; line-height: 1.7; font-size: 1.05rem; }
+.article-content strong { color: var(--white); font-weight: 600; }
+.article-content a { color: var(--blue); text-decoration: none; transition: color var(--transition); }
+.article-content a:hover { color: #93c5fd; text-decoration: underline; }
+.article-content code { background: var(--navy-light); padding: 2px 8px; border-radius: 4px; font-size: 0.92rem; color: #e2e8f0; font-family: 'SF Mono', 'Fira Code', monospace; }
+.article-content pre { background: var(--navy-light); border-radius: var(--radius-sm); padding: 20px; margin: 20px 0; overflow-x: auto; border: 1px solid rgba(255, 255, 255, 0.06); }
+.article-content pre code { background: none; padding: 0; font-size: 0.88rem; line-height: 1.7; }
+.callout { background: var(--navy-light); border-left: 3px solid var(--blue); border-radius: var(--radius-sm); padding: 20px 24px; margin: 28px 0; }
+.callout p { margin-bottom: 0; font-size: 0.95rem; }
+.callout-warning { border-left-color: #fbbf24; }
+.callout-success { border-left-color: var(--green); }
+.article-cta { background: linear-gradient(135deg, var(--navy-light) 0%, rgba(96, 165, 250, 0.06) 100%); border: 1px solid rgba(96, 165, 250, 0.15); border-radius: var(--radius); padding: 32px; margin: 48px 0 24px; text-align: center; }
+.article-cta h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 8px; margin-top: 0; }
+.article-cta p { font-size: 0.95rem; margin-bottom: 20px; }
+.article-content .cta-button, .cta-button { display: inline-block; background: var(--blue); color: var(--navy); padding: 12px 28px; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background var(--transition), transform var(--transition); }
+.cta-button:hover { background: #93c5fd; color: var(--navy) !important; transform: translateY(-1px); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home"><div class="nav-logo">T</div>TeamOps</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="article-wrapper">
+  <article class="article-content">
+    <div class="article-breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/blog">Blog</a> &rsaquo; Rovo Agent for HR
+    </div>
+
+    <h1>Building an HR AI Agent with Atlassian Rovo</h1>
+
+    <div class="article-meta">
+      <span>Thomas Chung</span>
+      <span>&bull;</span>
+      <span>April 6, 2026</span>
+      <span>&bull;</span>
+      <span>8 min read</span>
+      <span class="tag">Rovo</span>
+      <span class="tag">Forge</span>
+    </div>
+
+    <p>Atlassian Rovo is an AI layer that sits across Jira, Confluence, and other Atlassian products. It can search, summarize, and take actions on behalf of users. For Forge app developers, Rovo opens a new interaction model: instead of users navigating to your app's UI, they can ask questions in natural language and the agent retrieves data from your app's backend.</p>
+
+    <p>TeamOps uses Rovo to create an HR agent that can answer questions like "How many vacation days do I have left?", "Who is out of office this week?", and "What is the status of the new hire's onboarding?" This post walks through the architecture and the decisions we made building it.</p>
+
+    <h2>Why an HR agent makes sense</h2>
+
+    <p>HR data is frequently queried but infrequently changed. An employee checks their leave balance a few times per year. A manager checks team availability weekly during sprint planning. An HR admin checks onboarding progress whenever a new hire starts.</p>
+
+    <p>These are read-heavy, context-light queries. The user wants a single piece of information and does not need to navigate a full UI to get it. That is the exact pattern where AI agents add value: reducing a "open the app, find the right tab, look up the data" workflow to a single question.</p>
+
+    <p>Compare the two experiences:</p>
+    <ul>
+      <li><strong>Without agent:</strong> Open Jira, navigate to TeamOps panel, click Leave tab, find your name, read your balance. Four clicks, 15 seconds.</li>
+      <li><strong>With agent:</strong> Type "How many vacation days do I have left?" in the Rovo chat. Get the answer. Zero navigation.</li>
+    </ul>
+
+    <p>For power users who live in the TeamOps UI, the agent is not essential. For casual users who check their balance twice a year, the agent removes all friction.</p>
+
+    <h2>Architecture: Forge resolvers as agent actions</h2>
+
+    <p>Rovo agents are defined in your Forge app's <code>manifest.yml</code>. An agent is a collection of "actions" that the AI can invoke based on the user's query. Each action maps to a Forge resolver function.</p>
+
+    <p>The manifest entry looks roughly like this:</p>
+
+    <pre><code>rovo:agent:
+  - key: teamops-hr-agent
+    name: TeamOps HR Agent
+    description: Answers questions about leave balances, team availability, and onboarding status.
+    actions:
+      - key: get-leave-balance
+        function: getLeaveBalance
+        description: Returns the requesting user's remaining leave balance by type.
+        inputs:
+          userId:
+            type: string
+            description: The Atlassian account ID of the user.
+      - key: get-team-availability
+        function: getTeamAvailability
+        description: Returns who is out of office for a given date range.
+        inputs:
+          startDate:
+            type: string
+          endDate:
+            type: string
+      - key: get-onboarding-status
+        function: getOnboardingStatus
+        description: Returns progress of active onboardings.</code></pre>
+
+    <p>Each action's <code>function</code> references a Forge resolver. These are the same resolvers that power the TeamOps UI. The agent reuses existing backend logic rather than duplicating it.</p>
+
+    <div class="callout">
+      <p><strong>Key design decision:</strong> We did not build separate endpoints for the agent. The Rovo actions call the same resolver functions that the UI calls. This means the agent always returns the same data as the UI, and any bug fix or improvement to the resolver benefits both interfaces simultaneously.</p>
+    </div>
+
+    <h2>Handling permissions</h2>
+
+    <p>HR data is sensitive. An employee should see their own leave balance but not a colleague's. A manager should see their team's availability but not another team's. An HR admin should see everything.</p>
+
+    <p>Rovo passes the requesting user's Atlassian account ID to the agent action. TeamOps already implements role-based access control (RBAC) in every resolver. When the agent calls <code>getLeaveBalance</code>, the resolver checks whether the requesting user has permission to view the requested data. If someone asks "What is Jane's leave balance?" and they are not Jane's manager or an HR admin, the resolver returns an access-denied response.</p>
+
+    <p>This is important because Rovo's natural language interface makes it easy for users to ask for data they should not have access to. The permission check must happen at the resolver level, not at the agent level. The agent does not know your org chart. The resolver does.</p>
+
+    <h2>Structuring agent responses</h2>
+
+    <p>Rovo agents return structured data that the AI formats into natural language. The balance resolver returns something like:</p>
+
+    <pre><code>{
+  "balances": [
+    { "type": "Vacation", "total": 20, "used": 8, "pending": 3, "available": 9 },
+    { "type": "Sick Leave", "total": 10, "used": 2, "pending": 0, "available": 8 }
+  ],
+  "asOfDate": "2026-04-06"
+}</code></pre>
+
+    <p>Rovo's AI takes this structured response and formats it into a readable answer: "You have 9 vacation days and 8 sick days remaining as of April 6, 2026. You have 3 vacation days pending approval."</p>
+
+    <p>The key is returning structured data, not pre-formatted text. If you return a formatted string, the AI has nothing to work with for follow-up questions. If you return structured data, the user can ask "How many of those vacation days are pending?" and the AI can answer from the same response.</p>
+
+    <h2>What the agent can do today</h2>
+
+    <p>The TeamOps Rovo agent currently supports five query types:</p>
+
+    <ul>
+      <li><strong>Leave balance lookup.</strong> "How many vacation days do I have?" Returns balance by leave type.</li>
+      <li><strong>Team availability.</strong> "Who is out next week?" Returns approved absences for the user's team within a date range.</li>
+      <li><strong>Onboarding status.</strong> "How is the new hire onboarding going?" Returns progress percentage and overdue tasks for active onboardings.</li>
+      <li><strong>Holiday lookup.</strong> "When is the next public holiday?" Returns upcoming holidays for the user's configured country.</li>
+      <li><strong>Leave policy questions.</strong> "How many vacation days do we get per year?" Returns the configured leave policy for the user's organization.</li>
+    </ul>
+
+    <h2>What we intentionally kept out</h2>
+
+    <p>Write operations. The agent can read data, but it cannot submit a leave request, approve a request, or modify an onboarding template. This is a deliberate constraint.</p>
+
+    <p>HR actions have consequences. Approving a leave request affects team capacity. Submitting a request on behalf of someone else raises consent questions. These actions should require explicit user intent in a UI with confirmation steps, not a casual message in a chat window where a typo could approve the wrong request.</p>
+
+    <p>Read operations are low-risk. Write operations are high-risk. The agent handles reads. The UI handles writes. This boundary is unlikely to change.</p>
+
+    <h2>Building your own Rovo agent on Forge</h2>
+
+    <p>If you are building a Forge app and want to add a Rovo agent, the pattern is straightforward:</p>
+
+    <ol>
+      <li><strong>Identify your read-heavy queries.</strong> What do users look up frequently? Those are your agent actions.</li>
+      <li><strong>Reuse your existing resolvers.</strong> Do not build a parallel API for the agent. Call the same functions your UI calls.</li>
+      <li><strong>Enforce permissions in the resolver, not the agent.</strong> The agent's job is to understand the query and route it. The resolver's job is to check access and return data.</li>
+      <li><strong>Return structured data.</strong> Let Rovo's AI handle the formatting. Your job is to return accurate, well-typed data.</li>
+      <li><strong>Keep write operations out of the agent.</strong> If an action has side effects, it belongs in a UI with confirmation dialogs.</li>
+    </ol>
+
+    <p>The Forge documentation covers the manifest schema and resolver integration in detail. The <a href="/roadmap">TeamOps roadmap</a> includes planned Rovo agent expansions if you want to follow our progress.</p>
+
+    <div class="article-cta">
+      <p>TeamOps is a Forge-native Jira app with Rovo agent support. Free for teams up to 10.</p>
+      <a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="cta-button" target="_blank" rel="noopener">Install TeamOps Free</a>
+    </div>
+
+  </article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="nav-logo">T</div>PPLX Software</div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="/support">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
+  </div>
+</footer>
+
+</body>
+</html>

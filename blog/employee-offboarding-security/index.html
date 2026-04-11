@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYNC13TQKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PYNC13TQKF');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Security Tasks Everyone Forgets During Offboarding | TeamOps Blog</title>
+<meta name="description" content="SSH keys, API tokens, SSO sessions, shared credentials, and other security tasks that companies miss during employee offboarding. A checklist for engineering and security teams.">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/blog/employee-offboarding-security">
+
+<meta property="og:title" content="The Security Tasks Everyone Forgets During Offboarding">
+<meta property="og:description" content="SSH keys, API tokens, SSO sessions, and other security tasks that companies miss during employee offboarding.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pplxsoftware.com/blog/employee-offboarding-security">
+<meta property="og:site_name" content="TeamOps Blog | PPLX Software">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Security Tasks Everyone Forgets During Offboarding">
+<meta name="twitter:description" content="SSH keys, API tokens, SSO sessions, and other security tasks that companies miss during employee offboarding.">
+
+<meta name="article:published_time" content="2026-04-01">
+<meta name="author" content="Thomas Chung">
+<meta name="keywords" content="employee offboarding security, offboarding security checklist, revoke access offboarding, SSH keys offboarding, API token revocation">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The Security Tasks Everyone Forgets During Offboarding",
+  "description": "SSH keys, API tokens, SSO sessions, shared credentials, and other security tasks that companies miss during employee offboarding. A checklist for engineering and security teams.",
+  "author": {
+    "@type": "Person",
+    "name": "Thomas Chung"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PPLX Software"
+  },
+  "datePublished": "2026-04-01",
+  "dateModified": "2026-04-01",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pplxsoftware.com/blog/employee-offboarding-security"
+  }
+}
+</script>
+
+<link rel="stylesheet" href="/styles.css">
+<style>
+.article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
+.article-content { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.article-breadcrumb { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 24px; }
+.article-breadcrumb a { color: var(--gray-400); text-decoration: none; transition: color var(--transition); }
+.article-breadcrumb a:hover { color: var(--blue); }
+.article-content h1 { font-size: clamp(1.75rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
+.article-meta { color: var(--gray-400); font-size: 0.9rem; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.article-meta .tag { background: var(--blue-glow); color: var(--blue); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
+.article-content h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.06); border-bottom: none; }
+.article-content h2:first-of-type { border-top: none; padding-top: 0; }
+.article-content h3 { font-size: 1.15rem; font-weight: 600; margin-top: 32px; margin-bottom: 12px; color: var(--gray-300); }
+.article-content p { color: var(--gray-300); line-height: 1.8; margin-bottom: 18px; font-size: 1.05rem; }
+.article-content ul, .article-content ol { color: var(--gray-300); margin-bottom: 18px; padding-left: 24px; }
+.article-content li { margin-bottom: 10px; line-height: 1.7; font-size: 1.05rem; }
+.article-content strong { color: var(--white); font-weight: 600; }
+.article-content a { color: var(--blue); text-decoration: none; transition: color var(--transition); }
+.article-content a:hover { color: #93c5fd; text-decoration: underline; }
+.callout { background: var(--navy-light); border-left: 3px solid var(--blue); border-radius: var(--radius-sm); padding: 20px 24px; margin: 28px 0; }
+.callout p { margin-bottom: 0; font-size: 0.95rem; }
+.callout-warning { border-left-color: #fbbf24; }
+.callout-success { border-left-color: var(--green); }
+.article-cta { background: linear-gradient(135deg, var(--navy-light) 0%, rgba(96, 165, 250, 0.06) 100%); border: 1px solid rgba(96, 165, 250, 0.15); border-radius: var(--radius); padding: 32px; margin: 48px 0 24px; text-align: center; }
+.article-cta h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 8px; margin-top: 0; }
+.article-cta p { font-size: 0.95rem; margin-bottom: 20px; }
+.article-content .cta-button, .cta-button { display: inline-block; background: var(--blue); color: var(--navy); padding: 12px 28px; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background var(--transition), transform var(--transition); }
+.cta-button:hover { background: #93c5fd; color: var(--navy) !important; transform: translateY(-1px); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home"><div class="nav-logo">T</div>TeamOps</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="article-wrapper">
+  <article class="article-content">
+    <div class="article-breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/blog">Blog</a> &rsaquo; Offboarding Security
+    </div>
+
+    <h1>The Security Tasks Everyone Forgets During Offboarding</h1>
+
+    <div class="article-meta">
+      <span>Thomas Chung</span>
+      <span>&bull;</span>
+      <span>April 1, 2026</span>
+      <span>&bull;</span>
+      <span>7 min read</span>
+      <span class="tag">Security</span>
+      <span class="tag">Offboarding</span>
+    </div>
+
+    <p>Most companies handle the obvious offboarding steps: disable the email account, collect the laptop, revoke building access. The problem is the less obvious steps. SSH keys on production servers. Personal access tokens in GitHub. OAuth grants that persist after SSO is disabled. Shared passwords in a vault that were never rotated.</p>
+
+    <p>These are the gaps that create security incidents. A departing employee does not need to be malicious for this to matter. Unrevoked credentials are an attack surface. If that employee's personal device is compromised six months later, the attacker inherits every credential you never cleaned up.</p>
+
+    <h2>SSH keys</h2>
+
+    <p>Engineers add SSH keys to servers, jump hosts, and Git providers. Over time, a single developer might have SSH keys deployed across a dozen systems. When they leave, the keys stay unless someone actively removes them.</p>
+
+    <p>The problem is inventory. Most companies do not maintain a central list of where each employee's SSH keys are deployed. The key is added during setup and forgotten. Six months later, nobody knows which servers have a former employee's public key in their authorized_keys file.</p>
+
+    <p><strong>What to do:</strong></p>
+    <ul>
+      <li>Remove SSH keys from GitHub, GitLab, and Bitbucket accounts before disabling the accounts themselves.</li>
+      <li>Audit authorized_keys files on production servers and jump hosts. If you use a configuration management tool (Ansible, Puppet, Chef), the key should be managed there and removable centrally.</li>
+      <li>If you use SSH certificate authorities (like Smallstep or Vault), revoke the user's certificate. This is cleaner than hunting individual keys.</li>
+    </ul>
+
+    <h2>Personal access tokens and API keys</h2>
+
+    <p>GitHub personal access tokens, Jira API tokens, AWS access keys, GCP service account keys. These are long-lived credentials that often outlast the employee who created them. Unlike SSO-backed sessions, they do not expire when you disable the user's identity provider account.</p>
+
+    <p>The risk is significant. A GitHub personal access token with repo scope gives full read/write access to every repository the employee could access. If that token was stored in a CI/CD pipeline, a local config file, or a password manager the employee takes with them, it remains functional until explicitly revoked.</p>
+
+    <p><strong>What to do:</strong></p>
+    <ul>
+      <li>Revoke all personal access tokens in GitHub, Bitbucket, and other source control platforms.</li>
+      <li>Rotate AWS access keys and GCP service account keys that the employee had access to.</li>
+      <li>Check CI/CD pipelines for stored credentials created by the departing employee. Replace them with new credentials owned by a service account.</li>
+      <li>Review Jira and Confluence API tokens. These persist independently of SSO status.</li>
+    </ul>
+
+    <div class="callout callout-warning">
+      <p><strong>Disabling SSO is not enough.</strong> SSO controls session-based access. Personal access tokens, API keys, and SSH keys bypass SSO entirely. Disabling someone's Okta account stops them from logging into the web UI, but any long-lived tokens they created remain valid.</p>
+    </div>
+
+    <h2>OAuth grants and connected apps</h2>
+
+    <p>Employees connect third-party apps to company services: GitHub Apps, Slack integrations, Jira OAuth connections, Google Workspace third-party access. These OAuth grants often persist after the employee's account is disabled.</p>
+
+    <p>A common scenario: an engineer connects a personal CI tool to the company GitHub org. They leave. The OAuth grant remains, and the tool still has access to company repositories through the departed employee's authorization.</p>
+
+    <p><strong>What to do:</strong></p>
+    <ul>
+      <li>Review OAuth applications authorized by the departing employee in GitHub, Google Workspace, and Slack.</li>
+      <li>Revoke third-party app access grants tied to their account.</li>
+      <li>Check for GitHub Apps installed under their account that have organization-level permissions.</li>
+    </ul>
+
+    <h2>Shared credentials and secrets</h2>
+
+    <p>Teams share credentials. Database passwords, API keys for third-party services, admin passwords for SaaS tools that do not support SSO. These live in password managers (1Password, Vault, LastPass) or sometimes in environment variables, config files, and Slack DMs.</p>
+
+    <p>When someone leaves, every shared secret they had access to should be rotated. This is the most frequently skipped step because it is the most tedious. Rotating a database password means updating every service that connects to that database. Nobody wants to do this on a Friday afternoon when someone's last day happens to be.</p>
+
+    <p><strong>What to do:</strong></p>
+    <ul>
+      <li>Audit the departing employee's access in your secrets manager. Identify every shared credential they could view.</li>
+      <li>Rotate credentials on a priority basis: production database passwords first, then service account tokens, then shared tool passwords.</li>
+      <li>If your team stores secrets in environment variables or .env files, update and redeploy affected services.</li>
+    </ul>
+
+    <h2>Cloud infrastructure access</h2>
+
+    <p>AWS IAM users, GCP IAM bindings, Azure RBAC assignments. Cloud providers have their own identity layers that may not be fully connected to your SSO. Even with SSO federation, some access may have been granted directly (an IAM user with console access, or a service account key downloaded to a local machine).</p>
+
+    <p><strong>What to do:</strong></p>
+    <ul>
+      <li>Remove IAM users and revoke direct access in AWS, GCP, and Azure.</li>
+      <li>Review IAM role assumptions. If the employee assumed a role with elevated privileges, verify those temporary credentials have expired.</li>
+      <li>Check for service account keys that were generated and downloaded. Delete them and reissue to current team members.</li>
+      <li>Audit CloudTrail, GCP audit logs, or Azure Activity Logs for the employee's account to identify any access patterns you might have missed.</li>
+    </ul>
+
+    <h2>Code ownership and deploy access</h2>
+
+    <p>This is less about security and more about operational risk. If the departing employee was a CODEOWNERS entry, a required reviewer, or the only person with deploy access to a specific service, their departure creates a gap.</p>
+
+    <p><strong>What to do:</strong></p>
+    <ul>
+      <li>Update CODEOWNERS files in all repositories where the employee was listed.</li>
+      <li>Reassign required reviewer status in branch protection rules.</li>
+      <li>Transfer ownership of any deployment pipelines or release processes they managed.</li>
+      <li>Document any operational knowledge that was not previously written down (runbooks, incident procedures, escalation paths).</li>
+    </ul>
+
+    <h2>Making this repeatable</h2>
+
+    <p>The reason these tasks get skipped is not that people do not know about them. It is that they are not in the checklist. If your offboarding process is a mental list or a Google Doc that has not been updated since 2023, security tasks will be missed.</p>
+
+    <p>The fix is a structured checklist that includes every security task, assigned to the right person, with a due date of the employee's last day or sooner. The <a href="/templates/engineering-offboarding">Engineering Offboarding template</a> in TeamOps includes all of the above. For the broader offboarding process including HR and legal tasks, see the <a href="/blog/offboarding-checklist-jira">full offboarding checklist</a>.</p>
+
+    <div class="article-cta">
+      <p>TeamOps includes engineering offboarding templates with security tasks built in. Free for teams up to 10.</p>
+      <a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="cta-button" target="_blank" rel="noopener">Install TeamOps Free</a>
+    </div>
+
+  </article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="nav-logo">T</div>PPLX Software</div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="/support">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
+  </div>
+</footer>
+
+</body>
+</html>

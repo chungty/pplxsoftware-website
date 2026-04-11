@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYNC13TQKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PYNC13TQKF');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PTO Tracking and Capacity Planning: Stop Overbooking Your Team | TeamOps Blog</title>
+<meta name="description" content="Why PTO tracking and sprint capacity planning should be connected. How to use leave data for realistic sprint scoping and avoid overbooking your team.">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/blog/pto-tracking-capacity-planning">
+
+<meta property="og:title" content="PTO Tracking and Capacity Planning: Stop Overbooking Your Team">
+<meta property="og:description" content="Why PTO tracking and sprint capacity planning should be connected. Use leave data for realistic sprint scoping.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pplxsoftware.com/blog/pto-tracking-capacity-planning">
+<meta property="og:site_name" content="TeamOps Blog | PPLX Software">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PTO Tracking and Capacity Planning: Stop Overbooking Your Team">
+<meta name="twitter:description" content="Why PTO tracking and sprint capacity planning should be connected. Use leave data for realistic sprint scoping.">
+
+<meta name="article:published_time" content="2026-04-03">
+<meta name="author" content="Thomas Chung">
+<meta name="keywords" content="jira PTO tracking, capacity planning jira, sprint capacity planning PTO, team availability jira, jira leave capacity">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "PTO Tracking and Capacity Planning: Stop Overbooking Your Team",
+  "description": "Why PTO tracking and sprint capacity planning should be connected. How to use leave data for realistic sprint scoping and avoid overbooking your team.",
+  "author": {
+    "@type": "Person",
+    "name": "Thomas Chung"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PPLX Software"
+  },
+  "datePublished": "2026-04-03",
+  "dateModified": "2026-04-03",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pplxsoftware.com/blog/pto-tracking-capacity-planning"
+  }
+}
+</script>
+
+<link rel="stylesheet" href="/styles.css">
+<style>
+.article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
+.article-content { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.article-breadcrumb { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 24px; }
+.article-breadcrumb a { color: var(--gray-400); text-decoration: none; transition: color var(--transition); }
+.article-breadcrumb a:hover { color: var(--blue); }
+.article-content h1 { font-size: clamp(1.75rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
+.article-meta { color: var(--gray-400); font-size: 0.9rem; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.article-meta .tag { background: var(--blue-glow); color: var(--blue); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
+.article-content h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.06); border-bottom: none; }
+.article-content h2:first-of-type { border-top: none; padding-top: 0; }
+.article-content h3 { font-size: 1.15rem; font-weight: 600; margin-top: 32px; margin-bottom: 12px; color: var(--gray-300); }
+.article-content p { color: var(--gray-300); line-height: 1.8; margin-bottom: 18px; font-size: 1.05rem; }
+.article-content ul, .article-content ol { color: var(--gray-300); margin-bottom: 18px; padding-left: 24px; }
+.article-content li { margin-bottom: 10px; line-height: 1.7; font-size: 1.05rem; }
+.article-content strong { color: var(--white); font-weight: 600; }
+.article-content a { color: var(--blue); text-decoration: none; transition: color var(--transition); }
+.article-content a:hover { color: #93c5fd; text-decoration: underline; }
+.callout { background: var(--navy-light); border-left: 3px solid var(--blue); border-radius: var(--radius-sm); padding: 20px 24px; margin: 28px 0; }
+.callout p { margin-bottom: 0; font-size: 0.95rem; }
+.callout-warning { border-left-color: #fbbf24; }
+.callout-success { border-left-color: var(--green); }
+.article-cta { background: linear-gradient(135deg, var(--navy-light) 0%, rgba(96, 165, 250, 0.06) 100%); border: 1px solid rgba(96, 165, 250, 0.15); border-radius: var(--radius); padding: 32px; margin: 48px 0 24px; text-align: center; }
+.article-cta h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 8px; margin-top: 0; }
+.article-cta p { font-size: 0.95rem; margin-bottom: 20px; }
+.article-content .cta-button, .cta-button { display: inline-block; background: var(--blue); color: var(--navy); padding: 12px 28px; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background var(--transition), transform var(--transition); }
+.cta-button:hover { background: #93c5fd; color: var(--navy) !important; transform: translateY(-1px); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home"><div class="nav-logo">T</div>TeamOps</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="article-wrapper">
+  <article class="article-content">
+    <div class="article-breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/blog">Blog</a> &rsaquo; PTO Tracking and Capacity Planning
+    </div>
+
+    <h1>PTO Tracking and Capacity Planning: Stop Overbooking Your Team</h1>
+
+    <div class="article-meta">
+      <span>Thomas Chung</span>
+      <span>&bull;</span>
+      <span>April 3, 2026</span>
+      <span>&bull;</span>
+      <span>7 min read</span>
+      <span class="tag">Leave</span>
+      <span class="tag">Planning</span>
+    </div>
+
+    <p>Sprint planning typically starts with a question: "How many story points can we commit to this sprint?" The answer depends on who is available. And who is available depends on who has approved time off during the sprint window.</p>
+
+    <p>In most teams, these two pieces of information live in different systems. Sprint planning happens in Jira. PTO tracking happens in a spreadsheet, an HR tool, or someone's memory. The connection between them is a human being who remembers to check both before committing to a sprint scope.</p>
+
+    <p>When that connection fails, the result is overcommitment. The team plans for full capacity, then discovers mid-sprint that two engineers are out for three days each. That is six person-days gone, and the sprint scope does not shrink to match.</p>
+
+    <h2>The math behind capacity planning</h2>
+
+    <p>Capacity planning is straightforward arithmetic, but only if you have the inputs.</p>
+
+    <p>A standard two-week sprint has 10 working days. A five-person engineering team has a maximum capacity of 50 person-days. But that is the theoretical maximum. Real capacity is lower:</p>
+
+    <ul>
+      <li>Subtract public holidays (if the sprint overlaps with a holiday, everyone loses that day)</li>
+      <li>Subtract approved PTO (individual absences)</li>
+      <li>Subtract recurring non-sprint work (on-call, meetings, support rotation)</li>
+    </ul>
+
+    <p>If one engineer is out for three days and a public holiday falls in the sprint, actual capacity is 44 person-days, not 50. That is a 12% reduction. Planning at 100% and delivering at 88% is a recipe for missed commitments.</p>
+
+    <div class="callout">
+      <p><strong>The compounding effect:</strong> Teams that consistently overcommit develop a pattern of carrying work into the next sprint. Over time, the backlog grows, estimates lose meaning, and stakeholders lose trust in delivery dates. The root cause is often not bad estimation. It is planning against capacity that does not account for absences.</p>
+    </div>
+
+    <h2>Why PTO data stays disconnected</h2>
+
+    <p>The reason PTO and capacity planning are separate is usually historical. When the team was small, everyone knew when everyone else was out. There was no need to formalize it. As the team grew, PTO tracking moved to a spreadsheet or an HR tool, but sprint planning stayed in Jira. Nobody built the bridge.</p>
+
+    <p>The consequences:</p>
+    <ul>
+      <li><strong>Sprint planning relies on tribal knowledge.</strong> "Is anyone out next week?" is asked verbally at the planning meeting. If someone forgets to mention their Wednesday off, the plan is wrong.</li>
+      <li><strong>Managers double-check absences manually.</strong> They look at the PTO spreadsheet, cross-reference with the sprint dates, and mentally adjust capacity. This works until it does not.</li>
+      <li><strong>Leave requests approved without context.</strong> A manager approves a PTO request without realizing it overlaps with a sprint that has a hard deadline. The team finds out too late to adjust.</li>
+    </ul>
+
+    <h2>Connecting the two systems</h2>
+
+    <p>There are three ways to bring PTO data into sprint planning.</p>
+
+    <h3>Option 1: Manual capacity spreadsheet</h3>
+
+    <p>Before each sprint planning session, the scrum master builds a capacity spreadsheet. They check the PTO tracker, note who is out, subtract days, and present the adjusted capacity to the team.</p>
+
+    <p>This works but does not scale. It takes 15 to 30 minutes per sprint, it depends on a single person doing it correctly, and it is outdated the moment someone submits a new PTO request after the spreadsheet was built.</p>
+
+    <h3>Option 2: PTO issues on the Jira board</h3>
+
+    <p>Some teams create "Out of Office" issues in Jira so absences are visible alongside sprint work. This makes PTO visible during planning, but at the cost of <a href="/blog/track-time-off-jira">cluttering the board with non-work items</a>.</p>
+
+    <h3>Option 3: Integrated leave and availability data</h3>
+
+    <p>The ideal approach is leave data that lives in the same tool as sprint planning, visible without manual effort. When a manager opens the sprint planning view, they see: five engineers on the team, one is out Monday and Tuesday, actual capacity is 48 person-days. No spreadsheet, no Slack thread, no guesswork.</p>
+
+    <p>This requires leave tracking to be built into (or tightly integrated with) your Jira instance. TeamOps provides this by running leave management inside Jira. Approved absences show up in a <a href="/blog/team-availability-jira">team availability view</a>, and managers can see who is out during any date range.</p>
+
+    <h2>Leave approval with capacity context</h2>
+
+    <p>The other half of this problem is leave approval. When a manager approves a PTO request, they should know the impact on team capacity. If three of five engineers request the same Friday off, approving all three means the team is at 40% capacity that day.</p>
+
+    <p>Without visibility, the manager approves each request in isolation. They do not realize the overlap until the sprint is already planned and someone points out that half the team is gone next Friday.</p>
+
+    <p>A leave management system with team-level visibility surfaces this conflict at approval time, not at planning time. The manager sees: "Approving this request means 3 of 5 engineers are out on June 14th." They can still approve it, but they are making an informed decision.</p>
+
+    <h2>Seasonal patterns and forward planning</h2>
+
+    <p>PTO data is not just useful sprint-to-sprint. Aggregated over time, it reveals seasonal patterns that inform quarterly planning.</p>
+
+    <ul>
+      <li><strong>December holidays:</strong> Most teams lose 30 to 40% of capacity in the last two weeks of December. Planning a major launch for December 20th is planning for failure.</li>
+      <li><strong>Summer Fridays:</strong> June through August PTO usage spikes, often on Fridays. If your team runs four-day weeks in summer, plan accordingly.</li>
+      <li><strong>Q1 carryover surge:</strong> Employees who carried over unused PTO from the previous year tend to use it in Q1. January and February capacity is often lower than expected.</li>
+    </ul>
+
+    <p>These patterns are only visible when you have historical PTO data in a queryable system. A spreadsheet can technically do this analysis, but few teams actually do it. An analytics layer that shows PTO trends by month makes the pattern obvious.</p>
+
+    <h2>A practical workflow</h2>
+
+    <p>If you want to connect PTO tracking and capacity planning today, the simplest path is:</p>
+
+    <ol>
+      <li><strong>Move leave tracking into Jira</strong> using a <a href="/blog/jira-leave-management-guide">purpose-built leave app</a> so absences are in the same system as your sprint board.</li>
+      <li><strong>Check team availability before sprint planning.</strong> Look at approved absences during the sprint window and calculate actual capacity.</li>
+      <li><strong>Scope the sprint to actual capacity,</strong> not theoretical. If capacity is 88%, plan for 88%.</li>
+      <li><strong>Review PTO trends quarterly.</strong> Identify months with historically lower capacity and adjust delivery expectations accordingly.</li>
+    </ol>
+
+    <div class="article-cta">
+      <p>TeamOps tracks leave and team availability inside Jira, so your capacity planning starts with real data. Free for teams up to 10.</p>
+      <a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="cta-button" target="_blank" rel="noopener">Install TeamOps Free</a>
+    </div>
+
+  </article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="nav-logo">T</div>PPLX Software</div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="/support">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
+  </div>
+</footer>
+
+</body>
+</html>
