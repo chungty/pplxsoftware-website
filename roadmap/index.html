@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYNC13TQKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PYNC13TQKF');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TeamOps Roadmap — What We're Building Next</title>
+<meta name="description" content="TeamOps roadmap for Jira leave management, onboarding, and the Rovo AI Agent. See what shipped, what's next, and what's on the horizon.">
+<meta name="keywords" content="teamops roadmap, jira leave management roadmap, teamops features, jira onboarding roadmap">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/roadmap">
+
+<meta property="og:title" content="TeamOps Roadmap — What We're Building Next">
+<meta property="og:description" content="See what's shipped, vote on what's next, and preview what's on the horizon for TeamOps — leave management, onboarding, and AI for Jira.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pplxsoftware.com/roadmap">
+
+<link rel="stylesheet" href="/styles.css">
+<style>
+/* Roadmap page-specific styles */
+.roadmap-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
+.roadmap-header { max-width: var(--max-width); margin: 0 auto; padding: 0 24px 48px; }
+.roadmap-header h1 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 12px; }
+.roadmap-header p { color: var(--gray-400); font-size: 1.1rem; max-width: 640px; line-height: 1.6; }
+
+.roadmap-content { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+/* Section titles */
+.roadmap-section { margin-bottom: 64px; }
+.roadmap-section:last-child { margin-bottom: 0; }
+.roadmap-section-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.roadmap-section-title .section-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.section-badge--shipped { background: rgba(52, 211, 153, 0.12); color: var(--green); }
+.section-badge--next { background: var(--blue-glow); color: var(--blue); }
+.section-badge--horizon { background: rgba(148, 163, 184, 0.1); color: var(--gray-400); }
+
+/* Recently Shipped list */
+.shipped-list { list-style: none; padding: 28px; background: var(--navy-light); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: var(--radius); }
+.shipped-item {
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 14px;
+  color: var(--gray-300);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.shipped-item:last-child { margin-bottom: 0; }
+.shipped-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 18px;
+  height: 18px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2334d399' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 11.08V12a10 10 0 1 1-5.93-9.14'/%3E%3Cpolyline points='22 4 12 14.01 9 11.01'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.shipped-version { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 16px; }
+
+/* Up Next cards */
+.upnext-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+@media (max-width: 640px) { .upnext-grid { grid-template-columns: 1fr; } }
+
+.upnext-card {
+  background: var(--navy-light);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+.upnext-card:hover {
+  border-color: rgba(96, 165, 250, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+.upnext-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--white);
+  margin: 0;
+}
+.upnext-card p {
+  color: var(--gray-400);
+  font-size: 0.93rem;
+  line-height: 1.65;
+  margin: 0;
+  flex: 1;
+}
+
+/* Vote button */
+.vote-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: 1.5px solid var(--blue);
+  color: var(--blue);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+  align-self: flex-start;
+  margin-top: 4px;
+}
+.vote-btn:hover {
+  background: var(--blue-glow);
+  transform: translateY(-1px);
+}
+.vote-btn:active {
+  transform: translateY(0);
+}
+.vote-btn.voted {
+  background: rgba(52, 211, 153, 0.1);
+  border-color: var(--green);
+  color: var(--green);
+  cursor: default;
+}
+.vote-btn.voted:hover {
+  transform: none;
+  background: rgba(52, 211, 153, 0.1);
+}
+.vote-btn svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Horizon list */
+.horizon-list {
+  list-style: none;
+  padding: 0;
+}
+.horizon-item {
+  background: var(--navy-light);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-sm);
+  padding: 20px 24px;
+  margin-bottom: 10px;
+  color: var(--gray-400);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  opacity: 0.8;
+  transition: opacity var(--transition), border-color var(--transition);
+}
+.horizon-item:hover {
+  opacity: 1;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.horizon-item strong {
+  color: var(--gray-300);
+  font-weight: 600;
+}
+.horizon-item .horizon-dash {
+  color: var(--gray-500);
+  margin: 0 6px;
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home"><div class="nav-logo">T</div>TeamOps</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="roadmap-wrapper">
+  <div class="roadmap-header">
+    <h1>Roadmap</h1>
+    <p>What we shipped, what we're building next, and where TeamOps is headed. Vote on the features that matter to your team.</p>
+  </div>
+
+  <div class="roadmap-content">
+
+    <!-- Section 1: Recently Shipped -->
+    <section class="roadmap-section">
+      <h2 class="roadmap-section-title">Recently Shipped <span class="section-badge section-badge--shipped">v3.5.0</span></h2>
+      <ul class="shipped-list">
+        <li class="shipped-item">9 Rovo AI actions with strategic intelligence across 3 personas</li>
+        <li class="shipped-item">Employee onboarding coaching with pace comparison against team averages</li>
+        <li class="shipped-item">Manager capacity analysis with Jira sprint integration</li>
+        <li class="shipped-item">HR admin severity-triaged recommendations (urgent, action needed, trends)</li>
+        <li class="shipped-item">Submit and approve leave through natural language via the Rovo Agent</li>
+        <li class="shipped-item">Org structure queries &mdash; &ldquo;Who reports to me?&rdquo; and team hierarchy lookups</li>
+        <li class="shipped-item">Country-aware holiday surfacing with public holiday detection</li>
+        <li class="shipped-item">Anniversary and milestone detection for your team</li>
+        <li class="shipped-item">Approval velocity statistics for managers</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Up Next -->
+    <section class="roadmap-section">
+      <h2 class="roadmap-section-title">Up Next <span class="section-badge section-badge--next">Planned</span></h2>
+      <div class="upnext-grid">
+
+        <div class="upnext-card">
+          <h3>Calendar Feed</h3>
+          <p>Subscribe to your team's leave calendar from Outlook, Google Calendar, or any calendar app. Approved leave syncs automatically.</p>
+          <button class="vote-btn" data-feature="calendar-feed" onclick="handleVote(this)">
+            <svg viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 0 0-6 0v4"/><rect x="2" y="9" width="20" height="13" rx="2"/></svg>
+            I need this
+          </button>
+        </div>
+
+        <div class="upnext-card">
+          <h3>Smart Assignment Alerts</h3>
+          <p>When someone assigns a Jira issue to a team member who's on leave, TeamOps flags it and suggests the backup. No more assigning work to people who aren't here.</p>
+          <button class="vote-btn" data-feature="smart-assignment-alerts" onclick="handleVote(this)">
+            <svg viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 0 0-6 0v4"/><rect x="2" y="9" width="20" height="13" rx="2"/></svg>
+            I need this
+          </button>
+        </div>
+
+        <div class="upnext-card">
+          <h3>Jira Issue Migration</h3>
+          <p>Already tracking PTO with Jira issues? The Rovo agent scans your existing projects and imports your leave history into TeamOps in one conversation.</p>
+          <button class="vote-btn" data-feature="jira-issue-migration" onclick="handleVote(this)">
+            <svg viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 0 0-6 0v4"/><rect x="2" y="9" width="20" height="13" rx="2"/></svg>
+            I need this
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 3: On the Horizon -->
+    <section class="roadmap-section">
+      <h2 class="roadmap-section-title">On the Horizon <span class="section-badge section-badge--horizon">Exploring</span></h2>
+      <ul class="horizon-list">
+        <li class="horizon-item"><strong>Advanced Roadmaps capacity sync</strong><span class="horizon-dash">&mdash;</span>leave data auto-updates your plan capacity so resource planning stays accurate</li>
+        <li class="horizon-item"><strong>Cross-project onboarding</strong><span class="horizon-dash">&mdash;</span>tasks created in IT, HR, and Facilities projects simultaneously from a single template</li>
+        <li class="horizon-item"><strong>HRIS integration</strong><span class="horizon-dash">&mdash;</span>start with CSV import, then BambooHR API sync for automated employee data</li>
+        <li class="horizon-item"><strong>AI template generation</strong><span class="horizon-dash">&mdash;</span>describe a role, get a custom onboarding checklist generated by Forge LLMs</li>
+      </ul>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="nav-logo">T</div>PPLX Software</div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="/support">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
+  </div>
+</footer>
+
+<script>
+function handleVote(btn) {
+  if (btn.classList.contains('voted')) return;
+
+  var feature = btn.getAttribute('data-feature');
+
+  // Track with GA4
+  if (typeof gtag === 'function') {
+    gtag('event', 'roadmap_vote', { feature_name: feature });
+  }
+
+  // Update button state
+  btn.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Noted!';
+  btn.classList.add('voted');
+
+  // Persist in localStorage
+  var votes = JSON.parse(localStorage.getItem('roadmap_votes') || '{}');
+  votes[feature] = true;
+  localStorage.setItem('roadmap_votes', JSON.stringify(votes));
+}
+
+// Restore previously voted buttons on page load
+(function() {
+  var votes = JSON.parse(localStorage.getItem('roadmap_votes') || '{}');
+  var buttons = document.querySelectorAll('.vote-btn');
+  for (var i = 0; i < buttons.length; i++) {
+    var feature = buttons[i].getAttribute('data-feature');
+    if (votes[feature]) {
+      buttons[i].innerHTML = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Noted!';
+      buttons[i].classList.add('voted');
+    }
+  }
+})();
+</script>
+
+</body>
+</html>
