@@ -139,7 +139,7 @@
       <li><strong>Basic reporting</strong> on headcount, turnover, and leave usage</li>
     </ol>
 
-    <p>Payroll and benefits administration are not on this list because those require specialized providers (Gusto, Deel, Remote) regardless of where you track everything else. Payroll is a regulated financial operation. Running it from Jira would be irresponsible.</p>
+    <p>Payroll and benefits administration are not on this list because those require specialized providers regardless of where you track everything else. Gusto handles US payroll and benefits. Deel and Remote handle international payroll for distributed teams. Payroll is a regulated financial operation. Running it from Jira would be irresponsible.</p>
 
     <h2>How to structure HR in Jira</h2>
 
@@ -169,7 +169,7 @@
 
     <p><strong>Employee records.</strong> Jira has no concept of an employee profile. You can create custom fields on a "Person" issue type, but this is clunky. For basic directory needs, a Confluence page or a simple Notion database might be more practical alongside Jira.</p>
 
-    <p><strong>Benefits administration.</strong> Do not attempt this in Jira. Use Gusto, Justworks, or your PEO. The compliance requirements alone make this a non-starter.</p>
+    <p><strong>Benefits administration.</strong> Do not attempt this in Jira. Use Gusto or Justworks for US benefits, or your PEO for international teams. The compliance requirements alone make this a non-starter.</p>
 
     <p><strong>Performance reviews.</strong> Jira can technically track review cycles with due dates and custom fields. In practice, it is a poor experience for both reviewers and employees. If performance management is important to you, consider a lightweight tool like Lattice or 15Five.</p>
 
@@ -198,7 +198,7 @@
 
     <ol>
       <li><strong>TeamOps for onboarding, offboarding, and leave.</strong> Install from the <a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" target="_blank" rel="noopener">Atlassian Marketplace</a>. Configure your onboarding templates and leave types. This covers 70% of your daily HR operations.</li>
-      <li><strong>Gusto or Deel for payroll and benefits.</strong> Non-negotiable. Do not DIY payroll.</li>
+      <li><strong>Gusto for US payroll and benefits, or Deel for international payroll.</strong> Non-negotiable. Do not DIY payroll.</li>
       <li><strong>Confluence for the employee handbook and policy documentation.</strong> Keep it alongside your engineering documentation.</li>
       <li><strong>Jira project for ad-hoc HR tasks.</strong> Policy updates, compliance follow-ups, equipment requests. Standard Jira workflows are fine for this.</li>
     </ol>
@@ -206,8 +206,7 @@
     <p>Total tool count: four. Total additional cost beyond what you already pay for Jira: one payroll provider and a free Marketplace app. For a Series A startup watching burn rate, this is a meaningful difference compared to adding BambooHR at $8 per employee per month.</p>
 
     <div class="article-cta">
-      <p>TeamOps covers onboarding, offboarding, and leave management inside Jira. Free for teams up to 10.</p>
-      <a href="https://marketplace.atlassian.com/apps/d62bff92-530e-4541-87a0-4ecb14919b78" class="cta-button" target="_blank" rel="noopener">Install TeamOps Free</a>
+      <p>TeamOps handles this inside Jira. <a href="https://marketplace.atlassian.com/apps/522828381">Free for up to 10 users.</a></p>
     </div>
 
   </article>
