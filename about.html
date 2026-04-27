@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — PPLX Software</title>
+  <meta name="description" content="About PPLX Software and TeamOps. Built by Thomas Chung — one founder, no investors, no sales team.">
+  <meta name="theme-color" content="#fbfaf7">
+  <link rel="canonical" href="https://pplxsoftware.com/about">
+
+  <meta property="og:title" content="About PPLX Software">
+  <meta property="og:description" content="Built by Thomas Chung. One founder. No investors. No sales team.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pplxsoftware.com/about">
+
+  <link rel="stylesheet" href="teamops-design-tokens.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Inter:wght@510;590;680&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-family-body);
+      font-weight: var(--font-weight-body-regular);
+      font-size: var(--font-size-text-base);
+      line-height: var(--font-line-height-text-base);
+      letter-spacing: var(--font-tracking-text-base);
+      color: var(--color-semantic-foreground);
+      background-color: var(--color-semantic-background);
+    }
+
+    .container { max-width: var(--max-width-content); margin: 0 auto; padding: 0 var(--space-600); }
+
+    h1, h2, h3 {
+      font-family: var(--font-family-display);
+      font-weight: var(--font-weight-display-bold);
+      color: var(--color-semantic-foreground);
+    }
+    h1 {
+      font-size: clamp(var(--font-size-display-md), 6vw, var(--font-size-display-xl));
+      letter-spacing: var(--font-tracking-display-xl);
+      line-height: var(--font-line-height-display-xl);
+      margin-bottom: var(--space-500);
+    }
+    h2 {
+      font-size: clamp(var(--font-size-display-sm), 4vw, var(--font-size-display-md));
+      letter-spacing: var(--font-tracking-display-md);
+      line-height: var(--font-line-height-display-md);
+      margin-bottom: var(--space-500);
+    }
+    h3 {
+      font-size: var(--font-size-text-lg);
+      letter-spacing: var(--font-tracking-text-lg);
+      line-height: var(--font-line-height-text-lg);
+      margin-bottom: var(--space-300);
+    }
+
+    p { max-width: 65ch; margin-bottom: var(--space-400); }
+    p.lead {
+      font-size: var(--font-size-text-lg);
+      line-height: var(--font-line-height-text-lg);
+      letter-spacing: var(--font-tracking-text-lg);
+      color: var(--color-semantic-muted-foreground);
+      max-width: 38rem;
+    }
+
+    a { color: var(--color-brand-sage-deep); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: var(--space-100); }
+    a:focus-visible {
+      outline: var(--focus-outline);
+      outline-offset: var(--focus-outline-offset);
+      border-radius: var(--radius-sm);
+    }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--color-semantic-border);
+      background: rgba(251, 250, 247, 0.85);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: var(--space-400) 0; }
+    .brand {
+      font-family: var(--font-family-display);
+      font-weight: var(--font-weight-display-bold);
+      font-size: var(--font-size-text-lg);
+      letter-spacing: var(--font-tracking-text-lg);
+      color: var(--color-semantic-foreground);
+    }
+    .nav { display: flex; gap: var(--space-500); font-size: var(--font-size-text-sm); font-weight: var(--font-weight-body-regular); letter-spacing: var(--font-tracking-text-sm); }
+    .nav a { color: var(--color-semantic-muted-foreground); }
+    .nav a:hover { color: var(--color-semantic-foreground); }
+
+    /* Page sections */
+    .hero { padding: var(--space-1200) 0 var(--space-800); }
+    section.block { padding: var(--space-800) 0; border-top: 1px solid var(--color-semantic-border); }
+    section.block-tinted { background: var(--color-semantic-card-elevated); }
+
+    /* Beliefs */
+    .beliefs { list-style: none; margin-top: var(--space-600); display: grid; gap: var(--space-500); }
+    .beliefs li { padding-left: var(--space-500); border-left: 2px solid var(--color-brand-sage); }
+    .beliefs h3 { margin-bottom: var(--space-100); }
+    .beliefs p { color: var(--color-semantic-muted-foreground); margin-bottom: 0; }
+
+    /* Contact */
+    .contact-list { list-style: none; margin-top: var(--space-500); display: grid; gap: var(--space-300); font-size: var(--font-size-text-base); }
+    .contact-list li::before {
+      content: '→';
+      color: var(--color-brand-sage-deep);
+      margin-right: var(--space-300);
+      font-family: var(--font-family-mono);
+    }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--color-semantic-border); background: var(--color-semantic-card-elevated); padding: var(--space-1000) 0 var(--space-600); }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--space-800);
+      margin-bottom: var(--space-1000);
+    }
+    .footer-col h4 {
+      font-family: var(--font-family-body);
+      font-weight: var(--font-weight-body-medium);
+      font-size: var(--font-size-text-sm);
+      color: var(--color-semantic-foreground);
+      margin-bottom: var(--space-300);
+      letter-spacing: var(--font-tracking-text-sm);
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: var(--space-200); font-size: var(--font-size-text-sm); letter-spacing: var(--font-tracking-text-sm); }
+    .footer-col a { color: var(--color-semantic-muted-foreground); }
+    .footer-col a:hover { color: var(--color-semantic-foreground); }
+    .footer-bottom {
+      padding-top: var(--space-600);
+      border-top: 1px solid var(--color-semantic-border);
+      font-size: var(--font-size-text-xs);
+      color: var(--color-semantic-muted-foreground);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-400);
+    }
+    .footer-bottom .build-info { font-family: var(--font-family-mono); }
+
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .hero { padding: var(--space-800) 0 var(--space-600); }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .header-inner { padding: var(--space-300) 0; }
+      .nav { gap: var(--space-300); flex-wrap: wrap; }
+      section.block, .hero { padding: var(--space-600) 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container header-inner">
+    <a href="/" class="brand">PPLX Software</a>
+    <nav class="nav">
+      <a href="/blog">Blog</a>
+      <a href="/docs">Docs</a>
+      <a href="/admin-guide">Admin guide</a>
+      <a href="https://marketplace.atlassian.com/apps/522828381/teamops-leave-management-employee-onboarding">Get TeamOps</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+      <h1>About PPLX Software.</h1>
+      <p class="lead">
+        I'm Thomas Chung. I run PPLX Software, a one-person company that makes TeamOps —
+        PTO and onboarding for teams that already use Jira. No investors, no sales team,
+        no roadmap held hostage by anyone else's quarter.
+      </p>
+    </div>
+  </section>
+
+  <section class="block block-tinted">
+    <div class="container">
+      <h2>What we believe</h2>
+      <ul class="beliefs">
+        <li>
+          <h3>Your time is the budget.</h3>
+          <p>If a tool needs a 30-minute demo to explain itself, it's the wrong tool. TeamOps installs in 60 seconds and the default config works for most teams.</p>
+        </li>
+        <li>
+          <h3>Free until it's worth paying for.</h3>
+          <p>The Free tier is the real product up to 10 users — not a 14-day trial dressed up as generosity. You only pay when your team grows past that.</p>
+        </li>
+        <li>
+          <h3>If we change the price, we tell you first.</h3>
+          <p>Founding-member pricing is locked for the life of the subscription. Public pricing lives in source code, gated by a CI check, and can't be quietly raised.</p>
+        </li>
+        <li>
+          <h3>Your data stays where it already is.</h3>
+          <p>TeamOps runs on Atlassian's infrastructure. Nothing about your team leaves Jira. If you uninstall, the data goes with it — no export, no negotiation.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="container">
+      <h2>Who we are</h2>
+      <p>
+        One person. Background in HR, marketing, and operations — not engineering.
+        I've spent years on the receiving end of HR software that promised to save time and quietly added work.
+      </p>
+      <p>
+        I build TeamOps alongside an AI engineering workflow that lets a solo founder ship like a small team.
+        That means I write the specs, design the product, talk to every customer, and review every line of code.
+        It also means there's no committee to slow down a fix you actually need.
+      </p>
+    </div>
+  </section>
+
+  <section class="block block-tinted">
+    <div class="container">
+      <h2>Why we built it</h2>
+      <p>
+        Most teams under 100 people are running HR in spreadsheets and Slack DMs.
+        They already pay for Jira. Their engineers, designers, and ops people log in every day.
+        And yet PTO requests, onboarding checklists, and offboarding compliance live in a separate tab nobody opens.
+      </p>
+      <p>
+        TeamOps puts that work in the tool your team is already in. One source of truth for time off.
+        Onboarding templates that don't get rebuilt from scratch every hire. An offboarding flow that catches the access revocations everyone forgets.
+      </p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="container">
+      <h2>What we're not</h2>
+      <p>
+        We're not trying to be BambooHR. We don't do payroll, performance reviews, or engagement surveys.
+        We're not a venture-backed platform building toward a 12-product suite.
+      </p>
+      <p>
+        TeamOps is the HR tool you use until you genuinely outgrow it. When you hit 200 people and need a real HRIS, we'll be the first to tell you.
+        Until then, it's the layer that makes the tools you already pay for do the HR work you're already doing.
+      </p>
+    </div>
+  </section>
+
+  <section class="block block-tinted">
+    <div class="container">
+      <h2>How to reach us</h2>
+      <p>I read every email personally. There's no contact form, no ticket queue, no chatbot in front of me.</p>
+      <ul class="contact-list">
+        <li><a href="mailto:chungty@gmail.com">chungty@gmail.com</a> — for anything, including bug reports and feature requests</li>
+        <li><a href="/support.html">Support page</a> — for install help and common questions</li>
+        <li><a href="https://github.com/chungty/teamops-atlassian/issues">GitHub issues</a> — for public bug tracking and the roadmap</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="brand" style="margin-bottom: var(--space-300);">PPLX Software</div>
+        <p style="font-size: var(--font-size-text-sm); letter-spacing: var(--font-tracking-text-sm); color: var(--color-semantic-muted-foreground); max-width: 28ch;">
+          TeamOps is HR workflows that live inside Jira — built by PPLX Software.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="https://marketplace.atlassian.com/apps/522828381/teamops-leave-management-employee-onboarding">Marketplace</a></li>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/admin-guide">Admin guide</a></li>
+          <li><a href="/user-guide">User guide</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about">About</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/security">Security</a></li>
+          <li><a href="/privacy-policy">Privacy</a></li>
+          <li><a href="https://github.com/chungty/teamops-atlassian/blob/main/ROADMAP.html">Roadmap</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href="mailto:chungty@gmail.com">chungty@gmail.com</a></li>
+          <li><a href="https://github.com/chungty/teamops-atlassian/issues">GitHub issues</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/support.html">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PPLX Software</span>
+      <span class="build-info">TeamOps · Built on Atlassian</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
