@@ -291,6 +291,7 @@
 
       <div class="alt-grid">
 
+        <!-- ref: canonical/competitors.yaml CMP-001 (Spreadsheet + Slack) -->
         <article class="alt-card">
           <span class="alt-tag">Alternative 1</span>
           <h3>A shared spreadsheet plus Slack DMs.</h3>
@@ -298,6 +299,7 @@
           <p class="pivot">It stops working when balances start to drift. Three copies of "PTO Tracker FINAL v2" appear. Someone burns a PTO day on a national holiday. Approval requests get lost in a Slack scroll. Reconciling the sheet at month-end becomes a 3-hour job. There is no audit trail when a manager asks who approved what.</p>
         </article>
 
+        <!-- ref: canonical/competitors.yaml CMP-002 (Tempo Timesheets) -->
         <article class="alt-card">
           <span class="alt-tag">Alternative 2</span>
           <h3>Tempo Timesheets and similar time-tracking apps.</h3>
@@ -305,6 +307,7 @@
           <p class="pivot">It solves a different problem than TeamOps. Tempo tracks time spent. TeamOps tracks time off. The two are complementary, not competing — many teams run both. If you need to know who logged 8 hours to which project, that is Tempo. If you need to know who is out next week and how much PTO they have left, that is TeamOps.</p>
         </article>
 
+        <!-- ref: canonical/competitors.yaml CMP-003 (BambooHR), CMP-004 (Lattice), CMP-005 (Personio) -->
         <article class="alt-card">
           <span class="alt-tag">Alternative 3</span>
           <h3>BambooHR, Lattice, Personio, and other full HR tools.</h3>
@@ -312,11 +315,20 @@
           <p class="pivot">They run $10 to $22 per user per month. The evaluation cycle is weeks of demos, security review, and procurement. And they live outside the tool your team already opens every day. Use a real HRIS when you need one. Use TeamOps until you do.</p>
         </article>
 
+        <!-- ref: GTM.md §6 (Capability Gaps — native Jira) -->
         <article class="alt-card">
           <span class="alt-tag">Alternative 4</span>
           <h3>Native Jira with custom fields and workflows.</h3>
           <p>Jira is configurable. A capable Jira admin can build a request type for time off, route it through an approval workflow, and store the result on an issue. We have seen teams ship a working version in a week.</p>
           <p class="pivot">What they cannot build is a leave balance, a holiday-aware business-day count, or a team availability summary. These are not configuration gaps — they are architectural limits. The capability table below shows where the line is.</p>
+        </article>
+
+        <!-- ref: canonical/competitors.yaml CMP-006 (Calamari) -->
+        <article class="alt-card">
+          <span class="alt-tag">Alternative 5</span>
+          <h3>Calamari and other PTO-only Marketplace apps.</h3>
+          <p>Calamari has been on the Atlassian Marketplace longer than TeamOps and has more installs. If you only need PTO tracking and integrations with an external HRIS or payroll system, it is a solid choice.</p>
+          <p class="pivot">Two things separate them. First, Calamari is Connect-based, which means your HR data flows through Calamari's servers. TeamOps is Forge-native — HR data stays inside Atlassian's infrastructure. If your security review flags external data processors, that is the deciding difference. Second, Calamari is PTO-only. TeamOps adds onboarding and offboarding workflows in the same install.</p>
         </article>
 
       </div>
@@ -379,7 +391,7 @@
             <tr>
               <td class="cap">AI assistant for HR queries — &quot;who's out next week?&quot;</td>
               <td class="native">Impossible</td>
-              <td class="teamops">9 Rovo HR actions (requires Jira Premium or Enterprise)</td>
+              <td class="teamops">9 Rovo HR actions (requires Jira Premium or Enterprise plan)</td>
             </tr>
           </tbody>
         </table>
@@ -422,7 +434,7 @@
   <section class="cta">
     <div class="container">
       <h2>Ready to try it on a real team?</h2>
-      <p class="lead">Free for teams up to 10. No credit card. Installs in about a minute from the Atlassian Marketplace.</p>
+      <p class="lead">Free for teams up to 10. No credit card. Typical setup in 60 seconds via the Atlassian Marketplace.</p>
       <div class="cta-actions">
         <a href="https://marketplace.atlassian.com/apps/522828381/teamops-leave-management-employee-onboarding" class="btn btn-primary">Install on Atlassian Marketplace</a>
         <a href="/" class="btn btn-secondary">Back to homepage</a>
