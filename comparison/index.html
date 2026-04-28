@@ -292,7 +292,7 @@
             <td class="highlight-col"><span class="check" aria-label="Yes">&#10003;</span><span class="cell-note">Role-specific templates</span></td>
           </tr>
           <tr>
-            <td>Rovo AI Agent</td>
+            <td>Rovo AI Agent (requires Jira Premium or Enterprise plan)</td>
             <td><span class="cross" aria-label="No">&#10007;</span></td>
             <td><span class="cross" aria-label="No">&#10007;</span></td>
             <td><span class="cross" aria-label="No">&#10007;</span></td>
@@ -300,7 +300,7 @@
             <td class="highlight-col"><span class="check" aria-label="Yes">&#10003;</span><span class="cell-note">Natural-language HR queries</span></td>
           </tr>
           <tr>
-            <td>Data stays in Atlassian (Forge-native)</td>
+            <td>HR data stays in Atlassian</td>
             <td><span class="check" aria-label="Yes">&#10003;</span><span class="cell-note">It is Jira</span></td>
             <td><span class="partial">Partial</span><span class="cell-note">Connect app, some external calls</span></td>
             <td><span class="cross" aria-label="No">&#10007;</span><span class="cell-note">External SaaS</span></td>
@@ -308,7 +308,7 @@
             <td class="highlight-col"><span class="check" aria-label="Yes">&#10003;</span><span class="cell-note">100% Forge platform</span></td>
           </tr>
           <tr>
-            <td>Zero vendor data access</td>
+            <td>We can't access your data</td>
             <td><span class="check" aria-label="Yes">&#10003;</span></td>
             <td><span class="cross" aria-label="No">&#10007;</span><span class="cell-note">Connect app</span></td>
             <td><span class="cross" aria-label="No">&#10007;</span><span class="cell-note">Connect app</span></td>
@@ -356,24 +356,28 @@
 
     <div class="rec-grid">
       <div class="rec-card">
+        <!-- ref: ../teamops-atlassian/canonical/competitors.yaml — Manual Jira Issues (no CMP atom; closest is GTM.md §6 native Jira capability gaps) -->
         <h3>Manual Jira Issues</h3>
         <div class="rec-best-for">Best for: Tiny teams (under 5) who rarely take leave</div>
         <p>If you only have a handful of people and someone takes PTO once a month, creating a Jira issue works fine. The moment you need to track balances, see a team calendar, or onboard more than one person a quarter, the manual approach breaks down. There is no approval workflow, no holiday awareness, and no audit trail. But the price is right and there is nothing to install.</p>
       </div>
 
       <div class="rec-card">
+        <!-- ref: ../teamops-atlassian/canonical/competitors.yaml CMP-002 (Tempo Timesheets) -->
         <h3>Tempo Timesheets</h3>
         <div class="rec-best-for">Best for: Teams that need time tracking first, PTO second</div>
         <p>Tempo is a mature, well-established product with strong time-tracking capabilities. Its PTO module is solid and benefits from years of development. If your primary need is billable-hour tracking or timesheet management and you want PTO on top of that, Tempo is a strong choice. The trade-off is price ($10/user/month for the full suite) and the fact that it is a Connect app, meaning data passes through Tempo's servers. Tempo does not cover onboarding or offboarding.</p>
       </div>
 
       <div class="rec-card">
+        <!-- ref: ../teamops-atlassian/canonical/competitors.yaml CMP-006 (Calamari) -->
         <h3>Calamari</h3>
         <div class="rec-best-for">Best for: Teams that want a dedicated external HR system with a Jira integration</div>
         <p>Calamari is a standalone HR tool with leave management, time tracking, and basic HR workflows. Its Jira integration syncs data between the two systems. If your HR team wants a purpose-built HR platform and your Jira teams just need to see who is out, Calamari works well. The downside is that employee data lives outside Atlassian entirely, which may not meet your security or compliance requirements.</p>
       </div>
 
       <div class="rec-card">
+        <!-- ref: ../teamops-atlassian/canonical/competitors.yaml CMP-001 (Spreadsheet + Slack) -->
         <h3>Google Sheets / Manual Tracking</h3>
         <div class="rec-best-for">Best for: Teams that need something today with no budget</div>
         <p>Most teams start here. It works until you need approval workflows, balances, or more than one person maintaining the sheet. No connection to Jira, no notifications, no audit trail. Fine as a stopgap while you evaluate other options.</p>
@@ -382,11 +386,19 @@
       <div class="rec-card">
         <h3>TeamOps</h3>
         <div class="rec-best-for">Best for: Jira teams that want leave, onboarding, and offboarding without adding a separate system</div>
-        <p>TeamOps combines leave management, onboarding, and offboarding in a single Forge-native app. Your data stays in Atlassian and we cannot access it. The trade-off: it is newer than Tempo and does not offer time tracking or timesheets. If those are your primary need, Tempo is the better fit.</p>
+        <p>TeamOps combines leave management, onboarding, and offboarding in one app that runs entirely inside Atlassian. Your data stays in your Jira instance and we cannot access it. The trade-off: it is newer than Tempo and does not offer time tracking or timesheets. If those are your primary need, Tempo is the better fit.</p>
       </div>
     </div>
 
     <div class="cta-section">
+      <h2>When TeamOps is NOT the right call</h2>
+      <p style="color: var(--gray-300); line-height: 1.7; margin-bottom: 32px;">We would rather you pick the right tool than the wrong one. Three situations where TeamOps will under-deliver and you should pick something else:</p>
+      <ul style="color: var(--gray-300); line-height: 1.7; margin-bottom: 32px; padding-left: 20px;">
+        <li style="margin-bottom: 12px;"><strong>You are 200+ people and need performance reviews, payroll, and benefits in one system.</strong> Pick a real HRIS — BambooHR, Lattice, Personio, or similar. We do not cover those workflows and would force you to run two systems.</li>
+        <li style="margin-bottom: 12px;"><strong>You run multi-entity payroll across countries.</strong> TeamOps tracks one employee per Jira user. Multi-entity legal structures need a specialized HRIS that handles localized payroll, tax, and compliance.</li>
+        <li style="margin-bottom: 12px;"><strong>Your team does not use Jira.</strong> TeamOps lives inside Jira. If your team is not there already, this is not the right tool yet.</li>
+      </ul>
+
       <h2>Ready to try it?</h2>
       <p>TeamOps is free for up to 10 users. Install from the Atlassian Marketplace in under a minute -- no credit card, no external account, no data leaving Jira.</p>
       <a href="https://marketplace.atlassian.com/apps/522828381" class="btn-cta" target="_blank" rel="noopener">Try TeamOps Free</a>
