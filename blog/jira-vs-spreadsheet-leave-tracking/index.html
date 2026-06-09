@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYNC13TQKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PYNC13TQKF');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jira vs. Spreadsheet PTO Tracking: When to Move On | TeamOps Blog</title>
+<meta name="description" content="When to replace your PTO spreadsheet with Jira leave management. Where spreadsheets still work, where they break, and what TeamOps adds in 2026.">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/blog/jira-vs-spreadsheet-leave-tracking">
+
+<meta property="og:title" content="Jira Leave Tracking vs. Spreadsheets: When the PTO Sheet Stops Working">
+<meta property="og:description" content="Where a PTO spreadsheet works fine, where it breaks, and what Jira with TeamOps adds. An honest comparison for ops-heavy teams in 2026.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pplxsoftware.com/blog/jira-vs-spreadsheet-leave-tracking">
+<meta property="og:image" content="https://pplxsoftware.com/assets/og/og-blog.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pplxsoftware.com/assets/og/og-blog.png">
+<meta property="og:site_name" content="TeamOps Blog | PPLX Software">
+
+<meta name="twitter:title" content="Jira Leave Tracking vs. Spreadsheets: When the PTO Sheet Stops Working">
+<meta name="twitter:description" content="An honest comparison of PTO spreadsheets vs. Jira leave management with TeamOps. Where each fits in 2026.">
+
+<meta name="article:published_time" content="2026-06-09">
+<meta name="author" content="Thomas Chung">
+<meta name="keywords" content="jira leave tracking vs spreadsheet, pto tracking spreadsheet problems, replace spreadsheet pto jira, jira leave management, pto spreadsheet alternative, leave tracking jira">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Jira Leave Tracking vs. Spreadsheets: When the PTO Sheet Stops Working",
+  "description": "An honest comparison of PTO spreadsheet tracking versus Jira leave management with TeamOps. Where spreadsheets work fine, where they break, and when it makes sense to move on.",
+  "author": {
+    "@type": "Person",
+    "name": "Thomas Chung"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PPLX Software"
+  },
+  "datePublished": "2026-06-09",
+  "dateModified": "2026-06-09",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pplxsoftware.com/blog/jira-vs-spreadsheet-leave-tracking"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can Jira track employee PTO without a plugin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Jira has no native concept of a leave request, a balance, or a time-off calendar. You can create a custom issue type and workflow to approximate it, but you will need to maintain balances by hand and you will have no team-level availability view. A dedicated Jira app like TeamOps adds those missing pieces."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the best way to replace a PTO spreadsheet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If your team already uses Jira, the lowest-friction path is a Jira-native leave app. TeamOps adds leave requests, automatic balance tracking, manager approvals, and a team availability calendar inside Jira. It is free for teams up to 10 users. For teams that need a full HRIS with payroll or benefits, a standalone platform like BambooHR is the right move instead."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does TeamOps replace Excel or Google Sheets for leave tracking?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TeamOps replaces the leave-tracking part of a spreadsheet: balance calculations, request records, and availability visibility. It does not replace general-purpose spreadsheet uses like payroll exports, headcount planning, or finance modeling. Most teams run TeamOps for leave and keep their spreadsheets for everything else."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does it cost to add PTO tracking in Jira?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TeamOps is free for teams up to 10 users, with all core features included. For larger teams, paid plans start at the $2/user/month founding-member rate (for the first 50 Pro subscribers; we intend to hold this rate for 24 months from subscription). There is no separate charge for the Jira plan itself beyond your existing subscription."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to existing spreadsheet leave data when moving to TeamOps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TeamOps does not import spreadsheet history. The practical approach is to set opening balances manually when you configure each employee's leave account, then let TeamOps track from that point forward. Most teams pick a quarter boundary as their cutover date to keep the math clean."
+      }
+    }
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="/styles.css">
+<style>
+.article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
+.article-content { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.article-breadcrumb { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 24px; }
+.article-breadcrumb a { color: var(--gray-400); text-decoration: none; transition: color var(--transition); }
+.article-breadcrumb a:hover { color: var(--blue); }
+.article-content h1 { font-size: clamp(1.75rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
+.article-meta { color: var(--gray-400); font-size: 0.9rem; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.article-meta .tag { background: var(--blue-glow); color: var(--blue); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
+.article-content h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.06); border-bottom: none; }
+.article-content h2:first-of-type { border-top: none; padding-top: 0; }
+.article-content h3 { font-size: 1.15rem; font-weight: 600; margin-top: 32px; margin-bottom: 12px; color: var(--gray-300); }
+.article-content p { color: var(--gray-300); line-height: 1.8; margin-bottom: 18px; font-size: 1.05rem; }
+.article-content ul, .article-content ol { color: var(--gray-300); margin-bottom: 18px; padding-left: 24px; }
+.article-content li { margin-bottom: 10px; line-height: 1.7; font-size: 1.05rem; }
+.article-content strong { color: var(--white); font-weight: 600; }
+.article-content a { color: var(--blue); text-decoration: none; transition: color var(--transition); }
+.article-content a:hover { color: #93c5fd; text-decoration: underline; }
+.callout { background: var(--navy-light); border-left: 3px solid var(--blue); border-radius: var(--radius-sm); padding: 20px 24px; margin: 28px 0; }
+.callout p { margin-bottom: 0; font-size: 0.95rem; }
+.callout-warning { border-left-color: #fbbf24; }
+.callout-success { border-left-color: var(--green); }
+.compare-table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 0.95rem; }
+.compare-table th, .compare-table td { text-align: left; padding: 12px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); vertical-align: top; }
+.compare-table th { color: var(--white); font-weight: 600; border-bottom: 1px solid rgba(255, 255, 255, 0.18); }
+.compare-table td { color: var(--gray-300); }
+.compare-table td:first-child { color: var(--white); font-weight: 500; }
+.article-cta { background: linear-gradient(135deg, var(--navy-light) 0%, rgba(96, 165, 250, 0.06) 100%); border: 1px solid rgba(96, 165, 250, 0.15); border-radius: var(--radius); padding: 32px; margin: 48px 0 24px; text-align: center; }
+.article-cta h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 8px; margin-top: 0; }
+.article-cta p { font-size: 0.95rem; margin-bottom: 20px; }
+.article-content .cta-button, .cta-button { display: inline-block; background: var(--blue); color: var(--navy); padding: 12px 28px; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background var(--transition), transform var(--transition); }
+.cta-button:hover { background: #93c5fd; color: var(--navy) !important; transform: translateY(-1px); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home"><div class="nav-logo">T</div>TeamOps</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/522828381" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="article-wrapper">
+  <article class="article-content">
+    <div class="article-breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/blog">Blog</a> &rsaquo; Jira Leave Tracking vs Spreadsheets
+    </div>
+
+    <h1>Jira Leave Tracking vs. Spreadsheets: When the PTO Sheet Stops Working</h1>
+
+    <div class="article-meta">
+      <span>Thomas Chung</span>
+      <span>&bull;</span>
+      <span>June 9, 2026</span>
+      <span>&bull;</span>
+      <span>8 min read</span>
+      <span class="tag">Leave</span>
+      <span class="tag">Comparison</span>
+    </div>
+
+    <p>Full disclosure: TeamOps is our app, built by PPLX Software. We have a clear interest in this comparison. But the spreadsheet-and-Slack approach to PTO tracking is genuinely good for a lot of teams, and pretending otherwise would be dishonest. So this page starts with what spreadsheets actually do well &mdash; and only then gets into where they tend to break down and what Jira with TeamOps gives you instead.</p>
+
+    <div class="callout">
+      <p><strong>TL;DR:</strong> A PTO spreadsheet is free, requires no setup, and works well for teams with simple leave needs and a single person who remembers to update it. It breaks down when balances drift, when managers forget to approve, when reconciliation eats an afternoon every month, or when the person who owns the sheet leaves. Jira with TeamOps handles the same core functions &mdash; requests, balances, approvals, availability &mdash; inside the tool your team already uses, free for teams up to 10. The decision is mostly about how much time you are spending on reconciliation.</p>
+    </div>
+
+    <h2>What a spreadsheet actually does well for PTO</h2>
+
+    <p>Before making the case for anything else, it is worth being clear about what spreadsheets genuinely do well. Dismissing the status quo is easy. Understanding why it works is harder.</p>
+
+    <h3>No tool to buy or configure</h3>
+    <p>A shared Google Sheet costs nothing. Everyone on the team already has a Google account, already knows how to edit a cell, and does not need to learn a new tool. There is no vendor relationship, no procurement cycle, and no training. If you are a 6-person team that just needs a record of who took time off, a spreadsheet is a completely reasonable answer.</p>
+
+    <h3>Zero learning curve</h3>
+    <p>Onboarding someone to a PTO spreadsheet takes about 90 seconds. Every employee already knows how rows and columns work. Every manager already knows how to type &ldquo;approved&rdquo; in a cell. The barrier to adoption is essentially zero.</p>
+
+    <h3>Full flexibility</h3>
+    <p>Spreadsheets bend to whatever your leave policy happens to be this week. Adding a new leave type is one new column. Changing an accrual rule is one new formula. There is no app to update, no vendor to call, no support ticket to file. For a team whose leave policy is still evolving, that flexibility matters.</p>
+
+    <h3>Simple teams with simple needs</h3>
+    <p>If your team has under eight people, a single leave type, and someone who genuinely stays on top of updates, the spreadsheet may be all you need indefinitely. Not every problem requires a new tool.</p>
+
+    <h2>Where spreadsheets break down for leave tracking</h2>
+
+    <p>The problems start when volume increases, when ownership gets fuzzy, or when the spreadsheet stops being updated consistently.</p>
+
+    <h3>Balances drift when someone forgets to update</h3>
+    <p>A spreadsheet is only as accurate as the last person who remembered to update it. When someone takes a half-day and does not enter it, or when a carry-over formula breaks on the first of the year, the balance is wrong. Nobody knows it is wrong until a leave dispute forces a manual audit. That audit takes time &mdash; time that comes out of whoever manages HR, usually at month-end when every other close is already happening.</p>
+
+    <h3>No clear approval flow</h3>
+    <p>Most PTO spreadsheets handle approvals via Slack: the employee sends a message, the manager says &ldquo;sounds good,&rdquo; and the employee (or someone) updates the sheet. If the Slack message gets buried, the update never happens. If the manager approves verbally but the cell never changes, the record is wrong. There is no single moment where the request, the approval, and the balance update happen together.</p>
+
+    <h3>No visibility into team availability</h3>
+    <p>A spreadsheet shows you who was out. It does not show you, from the sprint planning board, who is out next week while you are moving stories into the sprint. Getting that answer requires switching to the sheet, searching, cross-referencing dates, and going back. That context switch is small but it happens every sprint, every planning cycle, every time a manager asks &ldquo;who is around for the Tuesday standup?&rdquo;</p>
+
+    <h3>Month-end reconciliation takes real time</h3>
+    <p>Someone has to check every row. Verify the formulas are still pointing at the right cells. Find the entries that were added in the wrong column. Correct the balances that drifted. For teams using spreadsheets as their primary leave system, this can run to several hours at the end of each month. The time cost is invisible because it is distributed across many small tasks &mdash; but it adds up.</p>
+
+    <h3>Knowledge lives in one person's head</h3>
+    <p>The person who built the spreadsheet knows which formula does what, why column K is blank, and what the conditional formatting rule on row 3 means. When that person leaves, some of that knowledge leaves with them. Rebuilding the system costs time; leaving it broken costs accuracy.</p>
+
+    <h2>What native Jira gives you for leave management</h2>
+
+    <p>It is worth being honest about this too. Jira on its own has no concept of a leave request, a PTO balance, or a time-off calendar. You can create a custom issue type called &ldquo;Leave Request&rdquo; with a custom workflow, but you will maintain balances by hand, you will have no automatic approval routing, and you will have no team availability view. That gap is exactly why dedicated apps exist alongside Jira. The choice is not &ldquo;Jira vs. spreadsheet&rdquo; &mdash; it is &ldquo;which approach to building leave tracking on top of Jira.&rdquo;</p>
+
+    <h2>What TeamOps adds to Jira</h2>
+
+    <p>TeamOps is an app on the Atlassian Marketplace that runs entirely on Atlassian's platform. Installing it adds leave management, onboarding, and offboarding inside the Jira your team already uses.</p>
+
+    <p>For leave specifically, it adds:</p>
+    <ul>
+      <li><strong>Leave request submission</strong> &mdash; employees submit from inside Jira; the request goes to the right approver automatically</li>
+      <li><strong>Automatic balance tracking</strong> &mdash; balances update when requests are approved; no manual cell-editing required</li>
+      <li><strong>Manager approval flow</strong> &mdash; approve or decline in one click; the employee gets notified; the record is updated</li>
+      <li><strong>Team availability view</strong> &mdash; see <a href="/blog/team-availability-jira">who is out</a> without leaving Jira, which feeds into <a href="/blog/pto-tracking-capacity-planning">capacity-aware sprint planning</a></li>
+      <li><strong>Multi-country holidays</strong> &mdash; 6 countries pre-loaded (US, UK, Canada, Australia, India, Germany), so you are not manually entering public holidays into a cell</li>
+      <li><strong>Multiple leave types</strong> &mdash; vacation, sick, parental, unpaid &mdash; each tracked separately with its own policy</li>
+    </ul>
+
+    <p>On top of leave, TeamOps includes <a href="/blog/onboarding-automation-jira">onboarding checklists</a> and <a href="/blog/offboarding-checklist-jira">offboarding workflows</a> &mdash; 7 templates total (5 onboarding + 2 offboarding), with 140 pre-built tasks across all templates. For a small ops team managing all three processes out of spreadsheets, consolidating into one app inside Jira reduces the number of places things can get out of sync.</p>
+
+    <h2>Side-by-side: spreadsheet vs. Jira with TeamOps</h2>
+
+    <table class="compare-table">
+      <thead>
+        <tr><th>&nbsp;</th><th>Spreadsheet + Slack</th><th>Jira + TeamOps</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Setup cost</td><td>Free</td><td>Free for teams up to 10</td></tr>
+        <tr><td>PTO request submission</td><td>Slack DM + manual cell update</td><td>In-app request with automated routing</td></tr>
+        <tr><td>Balance tracking</td><td>Manual formula; drifts when not updated</td><td>Automatic; updates on approval</td></tr>
+        <tr><td>Approval flow</td><td>Slack message + hope someone updates the sheet</td><td>In-app approval; employee notified; record updated</td></tr>
+        <tr><td>Team availability view</td><td>None (must open the sheet)</td><td>Built in; visible from Jira</td></tr>
+        <tr><td>Onboarding checklists</td><td>Separate doc or second spreadsheet</td><td>Included &mdash; 5 onboarding templates</td></tr>
+        <tr><td>Offboarding checklists</td><td>Separate doc or second spreadsheet</td><td>Included &mdash; 2 offboarding flows</td></tr>
+        <tr><td>Month-end reconciliation</td><td>Required; time-consuming</td><td>Not required</td></tr>
+        <tr><td>Multi-country holidays</td><td>Manual entry</td><td>6 countries pre-loaded</td></tr>
+        <tr><td>Learning curve for employees</td><td>None &mdash; everyone knows spreadsheets</td><td>Short &mdash; typical setup in 60 seconds for admins; request flow is 2 clicks for employees</td></tr>
+      </tbody>
+    </table>
+
+    <h2>When the spreadsheet is still fine</h2>
+
+    <p>There are real situations where staying with the spreadsheet is the right call:</p>
+    <ul>
+      <li>Your team is very small (under 8 people) and leave requests are rare</li>
+      <li>You have one person who genuinely owns the spreadsheet and updates it consistently</li>
+      <li>You are not on Jira yet, so adding a Jira-based tool means adding Jira first</li>
+      <li>Your leave policy is still being figured out and you need the flexibility to change rules weekly</li>
+      <li>Leave disputes have never happened and reconciliation takes under 15 minutes per month</li>
+    </ul>
+
+    <p>If all of those are true, the spreadsheet is probably working. Adding a tool introduces its own maintenance overhead. Only move when the pain is real.</p>
+
+    <h2>When it is time to move on</h2>
+
+    <p>The signal is usually one of these:</p>
+    <ul>
+      <li>Month-end reconciliation is taking more than 30 minutes to get right</li>
+      <li>A leave balance dispute forced a manual audit of the spreadsheet</li>
+      <li>A new hire's onboarding missed steps because the checklist was in a different document</li>
+      <li>Managers are asking in Slack who is out next week instead of looking somewhere</li>
+      <li>The person who built the spreadsheet is leaving and nobody fully understands it</li>
+    </ul>
+
+    <p>Any one of those is a reasonable trigger. You do not need all five.</p>
+
+    <p>For a view of how TeamOps compares against dedicated HR platforms like BambooHR, see <a href="/blog/jira-vs-bamboohr">Jira for HR vs. BambooHR</a>, or the <a href="/comparison">full comparison page</a> for a broader feature breakdown.</p>
+
+    <div class="callout callout-success">
+      <p><strong>The honest answer:</strong> If the spreadsheet is working, keep it. If reconciliation is eating real time, if balances are drifting, or if managers are routing approvals through Slack and hoping the sheet gets updated, those are problems a Jira-native leave app solves. TeamOps is free for teams up to 10 and typical setup takes 60 seconds &mdash; the cost of trying it is low.</p>
+    </div>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>Can Jira track employee PTO without a plugin?</h3>
+    <p>Jira has no native concept of a leave request, a balance, or a time-off calendar. You can create a custom issue type and workflow to approximate it, but you will need to maintain balances by hand and you will have no team-level availability view. A dedicated Jira app like TeamOps adds those missing pieces. For a full walkthrough, see our <a href="/blog/jira-leave-management-guide">complete guide to leave management in Jira</a>.</p>
+
+    <h3>What is the best way to replace a PTO spreadsheet?</h3>
+    <p>If your team already uses Jira, the lowest-friction path is a Jira-native leave app. TeamOps adds leave requests, automatic balance tracking, manager approvals, and a team availability calendar inside Jira. It is free for teams up to 10 users. For teams that need a full HRIS with payroll or benefits, a standalone platform like <a href="/blog/jira-vs-bamboohr">BambooHR</a> is the right move instead.</p>
+
+    <h3>Does TeamOps replace Excel or Google Sheets for leave tracking?</h3>
+    <p>TeamOps replaces the leave-tracking part of a spreadsheet: balance calculations, request records, and availability visibility. It does not replace general-purpose spreadsheet uses like payroll exports, headcount planning, or finance modeling. Most teams run TeamOps for leave and keep their spreadsheets for everything else.</p>
+
+    <h3>How much does it cost to add PTO tracking in Jira?</h3>
+    <p>TeamOps is <strong>free for teams up to 10 users</strong>, with all core features included. For larger teams, paid plans start at the <strong>$2/user/month founding-member rate</strong> (for the first 50 Pro subscribers; we intend to hold this rate for 24 months from subscription). There is no separate charge for the Jira plan itself beyond your existing subscription. Current pricing is always on the <a href="https://marketplace.atlassian.com/apps/522828381" target="_blank" rel="noopener">Marketplace listing</a>.</p>
+
+    <h3>What happens to existing spreadsheet leave data when moving to TeamOps?</h3>
+    <p>TeamOps does not import spreadsheet history. The practical approach is to set opening balances manually when you configure each employee's leave account, then let TeamOps track from that point forward. Most teams pick a quarter boundary as their cutover date to keep the math clean.</p>
+
+    <div class="article-cta">
+      <p>TeamOps handles leave requests, balances, and team availability inside Jira &mdash; no separate tool, no month-end reconciliation. <a href="https://marketplace.atlassian.com/apps/522828381" class="cta-button" target="_blank" rel="noopener">Free for up to 10 users</a></p>
+    </div>
+
+  </article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="nav-logo">T</div>PPLX Software</div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/522828381" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="/support">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
+  </div>
+</footer>
+
+</body>
+</html>
