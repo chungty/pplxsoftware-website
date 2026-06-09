@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYNC13TQKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PYNC13TQKF');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calamari vs. TeamOps: Forge-Native Jira Leave Management | TeamOps Blog</title>
+<meta name="description" content="Honest 2026 comparison of Calamari vs. TeamOps for Jira leave management: where Calamari's PTO tracking wins, and where Forge-native data residency and onboarding favor TeamOps.">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/blog/calamari-vs-teamops">
+
+<meta property="og:title" content="Calamari vs. TeamOps: Forge-Native Leave Management for Jira">
+<meta property="og:description" content="Where Calamari's PTO tracking wins, where Forge-native data residency and onboarding tip toward TeamOps, and how to choose.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pplxsoftware.com/blog/calamari-vs-teamops">
+<meta property="og:image" content="https://pplxsoftware.com/assets/og/og-blog.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pplxsoftware.com/assets/og/og-blog.png">
+<meta property="og:site_name" content="TeamOps Blog | PPLX Software">
+
+<meta name="twitter:title" content="Calamari vs. TeamOps: Forge-Native Leave Management for Jira">
+<meta name="twitter:description" content="An honest comparison of Calamari and TeamOps for leave management in Jira.">
+
+<meta name="article:published_time" content="2026-06-08">
+<meta name="author" content="Thomas Chung">
+<meta name="keywords" content="calamari alternative, calamari vs teamops, jira leave management, forge native pto, calamari jira, leave management software jira">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Calamari vs. TeamOps: Forge-Native Leave Management for Jira",
+  "description": "An honest comparison of Calamari and TeamOps for leave management in Jira. Where Calamari's PTO tracking wins, where Forge-native data residency and onboarding tip toward TeamOps, and how to choose in 2026.",
+  "author": {
+    "@type": "Person",
+    "name": "Thomas Chung"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PPLX Software"
+  },
+  "datePublished": "2026-06-08",
+  "dateModified": "2026-06-08",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pplxsoftware.com/blog/calamari-vs-teamops"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Calamari a Forge app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Calamari is built on Atlassian Connect, which means leave and attendance data is processed on Calamari's own infrastructure. TeamOps is built on Atlassian Forge, so HR data stays inside Atlassian's infrastructure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good Calamari alternative for Jira leave management?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TeamOps is a Forge-native alternative for teams that want leave data to stay inside Atlassian and also need onboarding and offboarding, not just PTO. It is free for teams up to 10 users."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Calamari handle employee onboarding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Calamari focuses on PTO and attendance tracking. If you need onboarding and offboarding checklists inside Jira in addition to leave, TeamOps covers all three in one app."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is TeamOps cheaper than Calamari?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For teams up to 10 users, TeamOps is free. For pure PTO tracking at larger team sizes, Calamari's Leave plan can be less per user. TeamOps bundles onboarding and offboarding alongside leave and keeps data inside Atlassian, which is where the value difference sits rather than per-user price alone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the best leave management app for Jira?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on what you need. For teams that want leave data to stay inside Atlassian's infrastructure plus onboarding and offboarding in one app, TeamOps is a strong Forge-native choice, and it is free for teams up to 10 users. Calamari is a strong pick for mature, standalone PTO and attendance tracking with payroll integrations. As of 2026, the main trade-off is scope and data residency rather than per-user price alone."
+      }
+    }
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="/styles.css">
+<style>
+.article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
+.article-content { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.article-breadcrumb { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 24px; }
+.article-breadcrumb a { color: var(--gray-400); text-decoration: none; transition: color var(--transition); }
+.article-breadcrumb a:hover { color: var(--blue); }
+.article-content h1 { font-size: clamp(1.75rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
+.article-meta { color: var(--gray-400); font-size: 0.9rem; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.article-meta .tag { background: var(--blue-glow); color: var(--blue); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
+.article-content h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.06); border-bottom: none; }
+.article-content h2:first-of-type { border-top: none; padding-top: 0; }
+.article-content h3 { font-size: 1.15rem; font-weight: 600; margin-top: 32px; margin-bottom: 12px; color: var(--gray-300); }
+.article-content p { color: var(--gray-300); line-height: 1.8; margin-bottom: 18px; font-size: 1.05rem; }
+.article-content ul, .article-content ol { color: var(--gray-300); margin-bottom: 18px; padding-left: 24px; }
+.article-content li { margin-bottom: 10px; line-height: 1.7; font-size: 1.05rem; }
+.article-content strong { color: var(--white); font-weight: 600; }
+.article-content a { color: var(--blue); text-decoration: none; transition: color var(--transition); }
+.article-content a:hover { color: #93c5fd; text-decoration: underline; }
+.callout { background: var(--navy-light); border-left: 3px solid var(--blue); border-radius: var(--radius-sm); padding: 20px 24px; margin: 28px 0; }
+.callout p { margin-bottom: 0; font-size: 0.95rem; }
+.callout-warning { border-left-color: #fbbf24; }
+.callout-success { border-left-color: var(--green); }
+.compare-table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 0.95rem; }
+.compare-table th, .compare-table td { text-align: left; padding: 12px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); vertical-align: top; }
+.compare-table th { color: var(--white); font-weight: 600; border-bottom: 1px solid rgba(255, 255, 255, 0.18); }
+.compare-table td { color: var(--gray-300); }
+.compare-table td:first-child { color: var(--white); font-weight: 500; }
+.article-cta { background: linear-gradient(135deg, var(--navy-light) 0%, rgba(96, 165, 250, 0.06) 100%); border: 1px solid rgba(96, 165, 250, 0.15); border-radius: var(--radius); padding: 32px; margin: 48px 0 24px; text-align: center; }
+.article-cta h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 8px; margin-top: 0; }
+.article-cta p { font-size: 0.95rem; margin-bottom: 20px; }
+.article-content .cta-button, .cta-button { display: inline-block; background: var(--blue); color: var(--navy); padding: 12px 28px; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background var(--transition), transform var(--transition); }
+.cta-button:hover { background: #93c5fd; color: var(--navy) !important; transform: translateY(-1px); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home"><div class="nav-logo">T</div>TeamOps</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/522828381" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="article-wrapper">
+  <article class="article-content">
+    <div class="article-breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/blog">Blog</a> &rsaquo; Calamari vs TeamOps
+    </div>
+
+    <h1>Calamari vs. TeamOps: Forge-Native Leave Management for Jira</h1>
+
+    <div class="article-meta">
+      <span>Thomas Chung</span>
+      <span>&bull;</span>
+      <span>June 8, 2026</span>
+      <span>&bull;</span>
+      <span>7 min read</span>
+      <span class="tag">Leave</span>
+      <span class="tag">Comparison</span>
+    </div>
+
+    <p>Full disclosure up front: TeamOps is our app, built by PPLX Software, so we have a stake in this comparison. We have tried to be honest about where Calamari is the better choice, because pretending otherwise helps no one. Calamari has been on the Atlassian Marketplace longer than we have, has more installs, and is a genuinely strong product for teams that mainly need PTO and attendance tracking with connections to external HR and payroll systems.</p>
+
+    <p>If you are evaluating leave management for a Jira-based team and Calamari is on your shortlist, this page lays out where each tool fits.</p>
+
+    <div class="callout">
+      <p><strong>TL;DR:</strong> Calamari is the stronger pick if you want mature, dedicated PTO and attendance tracking with payroll and external-HR integrations. TeamOps is the stronger pick if you want leave data to stay inside Atlassian's infrastructure (it is Forge-native), or if you need onboarding and offboarding workflows in the same app, or if your team is 10 people or fewer (TeamOps is free at that size). The deciding factor for most teams is not price &mdash; it is where your HR data lives.</p>
+    </div>
+
+    <h2>First, what native Jira does and doesn't do for leave</h2>
+
+    <p>Jira on its own has no concept of a leave request, a balance, or a time-off calendar. You can approximate leave with a custom issue type and a workflow, but you end up hand-maintaining balances and you have no team-level availability view. That gap is exactly why dedicated apps like Calamari and TeamOps exist. So the real question is not "Jira or an app" &mdash; it is "which app," and on what basis.</p>
+
+    <h2>Where Calamari is the stronger choice</h2>
+
+    <h3>Mature, dedicated PTO and attendance</h3>
+    <p>Calamari has spent years focused on time off and attendance. If your single biggest need is robust PTO tracking &mdash; accrual policies, attendance clock-in, and a long track record &mdash; that focus shows. A product that does one thing for a long time tends to handle the edge cases well.</p>
+
+    <h3>External HR and payroll integrations</h3>
+    <p>Calamari connects to outside HR and payroll platforms. If your leave data needs to flow into a separate payroll system or a standalone HRIS, that integration surface is a real advantage and something TeamOps does not aim to replicate.</p>
+
+    <h3>You already use it and only need PTO</h3>
+    <p>If Calamari is already installed, working, and you have no need for onboarding or offboarding workflows, there is no strong reason to switch. "It already works" is a legitimate answer.</p>
+
+    <h2>Where TeamOps is the stronger Calamari alternative</h2>
+
+    <h3>Forge-native: HR data stays inside Atlassian</h3>
+    <p>This is the core architectural difference. Calamari is built on Atlassian Connect, which means leave and attendance data is processed on Calamari's own infrastructure. TeamOps is built on <a href="https://developer.atlassian.com/platform/forge/" target="_blank" rel="noopener">Atlassian Forge</a>, so HR data stays inside <a href="https://www.atlassian.com/trust/data-residency" target="_blank" rel="noopener">Atlassian's infrastructure</a> rather than being handled by an external processor. For many teams that distinction does not matter. For teams whose security or compliance review flags external data processors, it is often the deciding factor.</p>
+
+    <h3>Leave plus onboarding and offboarding</h3>
+    <p>Calamari is focused on time off. TeamOps covers leave alongside <a href="/blog/onboarding-automation-jira">employee onboarding</a> and <a href="/blog/offboarding-checklist-jira">offboarding checklists</a> in the same app. If you would otherwise need a separate tool for onboarding, consolidating into one Forge app reduces the number of vendors and logins your team manages.</p>
+
+    <h3>Availability inside the tool where work happens</h3>
+    <p>Because TeamOps lives in Jira, leave shows up next to the work it affects &mdash; you can see <a href="/blog/team-availability-jira">who is out of office</a> without leaving the board, which feeds directly into <a href="/blog/pto-tracking-capacity-planning">capacity-aware sprint planning</a>.</p>
+
+    <h2>Calamari vs TeamOps: side-by-side comparison</h2>
+
+    <table class="compare-table">
+      <thead>
+        <tr><th>&nbsp;</th><th>Calamari</th><th>TeamOps</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Platform</td><td>Atlassian Connect</td><td>Atlassian Forge (data stays in Atlassian)</td></tr>
+        <tr><td>PTO / leave tracking</td><td>Yes &mdash; mature, dedicated</td><td>Yes</td></tr>
+        <tr><td>Attendance clock-in</td><td>Yes</td><td>No</td></tr>
+        <tr><td>Onboarding workflows</td><td>No</td><td>Yes</td></tr>
+        <tr><td>Offboarding workflows</td><td>No</td><td>Yes</td></tr>
+        <tr><td>External payroll / HRIS integrations</td><td>Yes</td><td>No (by design &mdash; stays in Atlassian)</td></tr>
+        <tr><td>Free tier</td><td>Check current plans</td><td>Free for teams up to 10</td></tr>
+      </tbody>
+    </table>
+
+    <h2>The deciding factor: where your HR data lives</h2>
+    <p>Most leave apps for Jira do roughly the same operational job: submit a request, route it for approval, track the balance, show a calendar. The durable difference between Calamari and TeamOps is architectural. A Connect app processes your data on the vendor's servers; a Forge app keeps it inside Atlassian. If your organization runs a security review on every new vendor, "the data never leaves Atlassian" is frequently the line that decides it. If it does not, you can weigh the other factors on their merits.</p>
+
+    <h2>Pricing, honestly</h2>
+    <p>TeamOps is <strong>free for teams up to 10 users</strong>; paid plans start at $2/user/month (a founding-member rate). For pure PTO tracking at larger team sizes, Calamari's Leave plan can come in at a lower per-user price &mdash; so if leave is genuinely all you need and you are past the free tier, Calamari may be cheaper per seat. The honest framing is that TeamOps bundles onboarding and offboarding alongside leave and keeps data inside Atlassian; the value comparison is about scope and data residency, not per-user price alone. Pricing changes, so confirm current numbers on <a href="https://calamari.io" target="_blank" rel="noopener">Calamari's site</a> and on the <a href="https://marketplace.atlassian.com/apps/522828381" target="_blank" rel="noopener">TeamOps Marketplace listing</a> before deciding.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>Is Calamari a Forge app?</h3>
+    <p>No. Calamari is built on Atlassian Connect, so leave and attendance data is processed on Calamari's own infrastructure. TeamOps is built on Atlassian Forge, so HR data stays inside Atlassian's infrastructure.</p>
+
+    <h3>What is a good Calamari alternative for Jira leave management?</h3>
+    <p>TeamOps is a Forge-native alternative for teams that want leave data to stay inside Atlassian and also need onboarding and offboarding, not just PTO. It is free for teams up to 10 users. For a broader view, see our <a href="/blog/jira-leave-management-guide">complete guide to leave management in Jira</a>.</p>
+
+    <h3>Does Calamari handle employee onboarding?</h3>
+    <p>Calamari focuses on PTO and attendance. If you need onboarding and offboarding checklists inside Jira in addition to leave, TeamOps covers all three in one app.</p>
+
+    <h3>Is TeamOps cheaper than Calamari?</h3>
+    <p>For teams up to 10 users, TeamOps is free. For pure PTO tracking at larger team sizes, Calamari's Leave plan can be less per user. TeamOps bundles onboarding and offboarding alongside leave and keeps data inside Atlassian, which is where the value difference sits rather than per-user price alone.</p>
+
+    <h3>What is the best leave management app for Jira?</h3>
+    <p>It depends on what you need. For teams that want leave data to stay inside Atlassian's infrastructure plus onboarding and offboarding in one app, TeamOps is a strong Forge-native choice, and it is free for teams up to 10 users. Calamari is a strong pick for mature, standalone PTO and attendance tracking with payroll integrations. As of 2026, the main trade-off is scope and data residency rather than per-user price alone.</p>
+
+    <div class="callout callout-success">
+      <p><strong>The honest answer:</strong> If you need mature, standalone PTO and attendance with payroll integrations, Calamari is a strong, proven choice. If you want HR data to stay inside Atlassian, or you need onboarding and offboarding in the same place as leave, or your team is 10 or fewer, TeamOps is built for exactly that.</p>
+    </div>
+
+    <p>For a feature-by-feature view across more tools, see the <a href="/comparison">full comparison page</a>, or our take on <a href="/blog/jira-vs-bamboohr">Jira for HR versus BambooHR</a>.</p>
+
+    <div class="article-cta">
+      <p>TeamOps does leave, onboarding, and offboarding inside Jira &mdash; Forge-native, so your data stays in Atlassian. <a href="https://marketplace.atlassian.com/apps/522828381">Free for up to 10 users.</a></p>
+    </div>
+
+  </article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="nav-logo">T</div>PPLX Software</div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/522828381" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="/support">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
+  </div>
+</footer>
+
+</body>
+</html>
