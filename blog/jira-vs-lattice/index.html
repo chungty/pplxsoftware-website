@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYNC13TQKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PYNC13TQKF');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jira + TeamOps vs. Lattice: HR Operations vs. Performance Reviews (2026) | TeamOps Blog</title>
+<meta name="description" content="Honest 2026 comparison of Jira + TeamOps vs. Lattice: where performance reviews win, where Jira-native leave and onboarding fill the gap, and whether you need both.">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/blog/jira-vs-lattice">
+
+<meta property="og:title" content="Jira + TeamOps vs. Lattice: HR Operations vs. Performance Reviews">
+<meta property="og:description" content="Where Lattice's performance reviews win, where Jira-native leave and onboarding fill the gap, and whether the two tools can work side by side.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pplxsoftware.com/blog/jira-vs-lattice">
+<meta property="og:image" content="https://pplxsoftware.com/assets/og/og-blog.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pplxsoftware.com/assets/og/og-blog.png">
+<meta property="og:site_name" content="TeamOps Blog | PPLX Software">
+
+<meta name="twitter:title" content="Jira + TeamOps vs. Lattice: HR Operations vs. Performance Reviews">
+<meta name="twitter:description" content="Where Lattice's performance reviews win, where Jira-native leave and onboarding fill the gap, and whether you need both.">
+
+<meta name="article:published_time" content="2026-06-15">
+<meta name="author" content="Thomas Chung">
+<meta name="keywords" content="jira vs lattice, lattice alternative jira, jira hr operations, lattice performance management, hr tool for jira, leave management jira, onboarding jira lattice">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Jira + TeamOps vs. Lattice: HR Operations vs. Performance Reviews",
+  "description": "An honest 2026 comparison of Jira with TeamOps versus Lattice for HR. Where Lattice's performance reviews win, where Jira-native leave and onboarding fill the gap, and whether the two tools can work side by side.",
+  "author": {
+    "@type": "Person",
+    "name": "Thomas Chung"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PPLX Software"
+  },
+  "datePublished": "2026-06-15",
+  "dateModified": "2026-06-15",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pplxsoftware.com/blog/jira-vs-lattice"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does Lattice handle employee PTO and leave requests?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Lattice focuses on performance reviews, OKRs, engagement surveys, and structured 1:1 meetings. It does not have a leave balance tracking system or a leave request workflow. For PTO management inside Jira, a dedicated app like TeamOps is the right layer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good alternative to Lattice for HR operations inside Jira?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If your need is leave tracking, onboarding checklists, and offboarding workflows inside Jira, TeamOps is built for that. It runs on Atlassian Forge, so HR data stays inside Atlassian's infrastructure. It is free for teams up to 10 users."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can TeamOps and Lattice work side by side?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. They solve different problems. Lattice handles performance and engagement; TeamOps handles leave management, onboarding, and offboarding inside Jira. There is no direct overlap on core workflows, and many teams run both."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does Lattice cost compared to TeamOps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lattice starts at $11/user/month (Engagement) and $15+/user/month (Talent Management), as verified in April 2026. TeamOps is free for teams up to 10 users; larger teams pay $2/user/month at the founding-member rate. Confirm current pricing on Lattice's site and on the TeamOps Marketplace listing before deciding, as prices change."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What HR problems does Jira not solve without a plugin?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Jira has no native concept of a leave request, a leave balance, a PTO calendar, onboarding checklist templates, or an offboarding workflow. You can approximate these with custom issue types and workflows, but without balance tracking and team-level availability views, you end up maintaining data by hand. An app like TeamOps adds those missing pieces inside the Jira environment."
+      }
+    }
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="/styles.css">
+<style>
+.article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
+.article-content { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.article-breadcrumb { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 24px; }
+.article-breadcrumb a { color: var(--gray-400); text-decoration: none; transition: color var(--transition); }
+.article-breadcrumb a:hover { color: var(--blue); }
+.article-content h1 { font-size: clamp(1.75rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
+.article-meta { color: var(--gray-400); font-size: 0.9rem; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.article-meta .tag { background: var(--blue-glow); color: var(--blue); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
+.article-content h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.06); border-bottom: none; }
+.article-content h2:first-of-type { border-top: none; padding-top: 0; }
+.article-content h3 { font-size: 1.15rem; font-weight: 600; margin-top: 32px; margin-bottom: 12px; color: var(--gray-300); }
+.article-content p { color: var(--gray-300); line-height: 1.8; margin-bottom: 18px; font-size: 1.05rem; }
+.article-content ul, .article-content ol { color: var(--gray-300); margin-bottom: 18px; padding-left: 24px; }
+.article-content li { margin-bottom: 10px; line-height: 1.7; font-size: 1.05rem; }
+.article-content strong { color: var(--white); font-weight: 600; }
+.article-content a { color: var(--blue); text-decoration: none; transition: color var(--transition); }
+.article-content a:hover { color: #93c5fd; text-decoration: underline; }
+.callout { background: var(--navy-light); border-left: 3px solid var(--blue); border-radius: var(--radius-sm); padding: 20px 24px; margin: 28px 0; }
+.callout p { margin-bottom: 0; font-size: 0.95rem; }
+.callout-warning { border-left-color: #fbbf24; }
+.callout-success { border-left-color: var(--green); }
+.compare-table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 0.95rem; }
+.compare-table th, .compare-table td { text-align: left; padding: 12px 14px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); vertical-align: top; }
+.compare-table th { color: var(--white); font-weight: 600; border-bottom: 1px solid rgba(255, 255, 255, 0.18); }
+.compare-table td { color: var(--gray-300); }
+.compare-table td:first-child { color: var(--white); font-weight: 500; }
+.article-cta { background: linear-gradient(135deg, var(--navy-light) 0%, rgba(96, 165, 250, 0.06) 100%); border: 1px solid rgba(96, 165, 250, 0.15); border-radius: var(--radius); padding: 32px; margin: 48px 0 24px; text-align: center; }
+.article-cta h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 8px; margin-top: 0; }
+.article-cta p { font-size: 0.95rem; margin-bottom: 20px; }
+.article-content .cta-button, .cta-button { display: inline-block; background: var(--blue); color: var(--navy); padding: 12px 28px; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background var(--transition), transform var(--transition); }
+.cta-button:hover { background: #93c5fd; color: var(--navy) !important; transform: translateY(-1px); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home"><div class="nav-logo">T</div>TeamOps</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/522828381" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="article-wrapper">
+  <article class="article-content">
+    <div class="article-breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/blog">Blog</a> &rsaquo; Jira vs Lattice
+    </div>
+
+    <h1>Jira + TeamOps vs. Lattice: HR Operations vs. Performance Reviews</h1>
+
+    <div class="article-meta">
+      <span>Thomas Chung</span>
+      <span>&bull;</span>
+      <span>June 15, 2026</span>
+      <span>&bull;</span>
+      <span>8 min read</span>
+      <span class="tag">HR</span>
+      <span class="tag">Comparison</span>
+    </div>
+
+    <p>Full disclosure up front: TeamOps is our app, built by PPLX Software, so we have a stake in how this comparison reads. We have tried to be honest about where Lattice is the right choice, because pointing someone toward the wrong tool helps no one. Lattice is a well-designed performance management platform that HR ops managers cite by name &mdash; reviews, OKRs, 1:1s, and engagement surveys are its strengths. If those are your primary problem, Lattice is genuinely a strong fit and this page will tell you that.</p>
+
+    <p>Where it gets muddier is when someone searches for &ldquo;HR tool for Jira&rdquo; or &ldquo;Lattice alternative&rdquo; and what they actually need is leave management, onboarding checklists, and offboarding workflows inside the tool their team already uses every day. Those are HR operations problems, not performance management problems, and they call for different solutions. That distinction is what this comparison is really about.</p>
+
+    <div class="callout">
+      <p><strong>TL;DR:</strong> Lattice handles performance reviews, OKRs, engagement surveys, and structured 1:1s. TeamOps handles leave management, onboarding workflows, and offboarding checklists inside Jira. They solve adjacent but different problems. If your immediate need is PTO tracking and onboarding in the tool your team already lives in, TeamOps is built for that. If your need is review cycles and goal tracking, Lattice is built for that. The two tools coexist without conflict &mdash; many teams run both.</p>
+    </div>
+
+    <h2>The core difference: HR operations vs. performance management</h2>
+
+    <p>The HR software market uses &ldquo;HR tool&rdquo; to describe at least two meaningfully different categories. Performance management is about review cycles, goal alignment, feedback loops, and engagement measurement &mdash; the recurring processes that shape how people grow in their roles. HR operations is about the daily transactions of the employment relationship: someone requests time off, a new hire goes through onboarding steps, someone leaves and the offboarding checklist runs.</p>
+
+    <p>Lattice is a performance management platform. TeamOps is an HR operations app. The daily workflow is different: a manager opening Lattice is likely running a review cycle or checking in on goals. A manager opening TeamOps is likely approving a time-off request or confirming that IT provisioned the new hire&rsquo;s laptop.</p>
+
+    <p>Both categories matter. Many growing teams need both. The right question is which one is the higher-pain problem right now.</p>
+
+    <h2>Where Lattice is the stronger choice</h2>
+
+    <h3>Performance reviews and structured feedback</h3>
+    <p>Lattice runs review cycles with self-assessments, manager reviews, upward feedback, and peer feedback. It handles calibration workflows and builds a historical record of performance conversations over time. This is Lattice&rsquo;s core product, and it has been iterated on for years. Jira is not a performance management tool, and TeamOps does not have a review cycle feature &mdash; nor does it plan to. If structured review cycles are the job, Lattice is what you want.</p>
+
+    <h3>OKRs and goal tracking</h3>
+    <p>Lattice lets teams set objectives at the company, team, and individual level, with progress scoring and check-in cadences. For organizations that run OKR cycles and want a single system to track alignment from top to bottom, Lattice has built dedicated tooling for it. TeamOps does not cover goal tracking.</p>
+
+    <h3>Employee engagement surveys</h3>
+    <p>Lattice Engagement collects quantitative sentiment data on a recurring basis, benchmarks it against external data, and surfaces insights at the manager and department level. If you want to measure and track how your team feels about the organization over time, that is a purpose-built feature in Lattice. TeamOps has no engagement survey capability.</p>
+
+    <h3>Structured 1:1 meetings</h3>
+    <p>Lattice supports structured 1:1 agendas, shared talking points, and action item tracking for recurring manager-employee conversations. For organizations that want a consistent record of ongoing manager-employee dialogue, Lattice provides that natively.</p>
+
+    <h2>Where TeamOps fills the gap Lattice leaves</h2>
+
+    <h3>Leave requests and balance tracking inside Jira</h3>
+    <p>Lattice does not handle PTO requests or leave balances. If your team needs to submit time-off requests, route them for manager approval, track remaining leave balances, and see a team availability calendar, that is an HR operations problem. TeamOps handles all of it inside Jira &mdash; leave data is visible alongside sprint boards and project work, which means you can plan capacity without switching tools. See our full <a href="/blog/jira-leave-management-guide">guide to leave management in Jira</a> and how it connects to <a href="/blog/pto-tracking-capacity-planning">capacity planning for sprint teams</a>.</p>
+
+    <h3>Employee onboarding checklists</h3>
+    <p>Lattice has onboarding task capabilities, but they sit outside the engineering and ops team&rsquo;s daily workflow. TeamOps ships 5 onboarding templates (Engineering, Sales, General, HR, and Executive) with 140 pre-built tasks, all tracked as Jira issues alongside the rest of the team&rsquo;s work. Cross-team onboarding steps &mdash; provisioning from IT, access grants from security, equipment from facilities &mdash; all land in the same board the team already uses. See <a href="/blog/onboarding-automation-jira">how to automate onboarding in Jira</a> and our <a href="/blog/remote-team-onboarding">remote onboarding guide</a>.</p>
+
+    <h3>Offboarding workflows</h3>
+    <p>When someone leaves the organization, the operational checklist matters as much as the exit interview. TeamOps provides 2 offboarding flows that assign IT, HR, legal, and security tasks as Jira issues to the right people. Access revocation, equipment return, final payroll steps, and account closures all get tracked to completion. See our <a href="/blog/offboarding-checklist-jira">offboarding checklist guide for Jira</a> for a full walkthrough.</p>
+
+    <h3>Team availability visible where work happens</h3>
+    <p>Because TeamOps lives inside Jira on Atlassian Forge, leave shows up next to the work it affects. Engineering managers can see <a href="/blog/team-availability-jira">who is out</a> without leaving the sprint board, which prevents the common failure mode of planning a sprint with three people on holiday and realizing it three days in.</p>
+
+    <h2>Jira + TeamOps vs. Lattice: side-by-side</h2>
+
+    <table class="compare-table">
+      <thead>
+        <tr><th>&nbsp;</th><th>Lattice</th><th>Jira + TeamOps</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Performance reviews</td><td>Yes &mdash; core feature</td><td>No</td></tr>
+        <tr><td>OKRs / goal tracking</td><td>Yes</td><td>No</td></tr>
+        <tr><td>Engagement surveys</td><td>Yes</td><td>No</td></tr>
+        <tr><td>Structured 1:1 meetings</td><td>Yes</td><td>No</td></tr>
+        <tr><td>PTO / leave requests</td><td>No</td><td>Yes</td></tr>
+        <tr><td>Leave balance tracking</td><td>No</td><td>Yes</td></tr>
+        <tr><td>Team availability calendar</td><td>No</td><td>Yes</td></tr>
+        <tr><td>Onboarding checklists</td><td>Limited</td><td>Yes &mdash; 5 templates, 140 pre-built tasks</td></tr>
+        <tr><td>Offboarding workflows</td><td>Exit surveys only</td><td>Yes &mdash; 2 offboarding flows</td></tr>
+        <tr><td>Lives inside Jira</td><td>No (standalone)</td><td>Yes (Forge-native)</td></tr>
+        <tr><td>Free tier</td><td>No</td><td>Free for teams up to 10</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Do they work together?</h2>
+
+    <p>Yes, and in 2026 this is a common setup for teams in the 30-100 person range. Lattice handles performance and engagement; TeamOps handles leave, onboarding, and offboarding in Jira. They do not overlap on core functionality and they do not need to integrate directly &mdash; they serve different workflows for different people on the HR and engineering teams.</p>
+
+    <p>The decision about which to prioritize usually comes down to which pain is more acute. If onboarding is chaotic, PTO is tracked in a spreadsheet, and the offboarding checklist is someone&rsquo;s mental model, the operations layer is the higher-priority fix. If you have structured onboarding and leave handled but no formal review process, performance management is the gap. There is no rule against solving both; most organizations eventually do.</p>
+
+    <h2>Pricing, honestly</h2>
+
+    <p>Lattice starts at $11/user/month for the Engagement module and $15+/user/month for Talent Management, as verified on their pricing page in April 2026. For a 50-person team, that is $550 to $750+ per month. Lattice is a significant line item, and for teams under 30 people the price-per-seat math often does not work until the review cycle problem becomes genuinely pressing.</p>
+
+    <p>TeamOps is <strong>free for teams up to 10 users</strong>. For larger teams, paid plans start at <strong>$2/user/month founding-member rate</strong> &mdash; a rate we intend to hold for 24 months from subscription, for the first 50 Pro subscribers. At 50 people, that is $100/month.</p>
+
+    <p>The honest framing is that these are not substitutes at the pricing level, because they do different things. You would not choose TeamOps over Lattice purely on cost if your actual problem is performance reviews. But if your problem is leave management and onboarding, the relevant cost comparison is the price of the tool that actually solves your problem, not a tool that does something adjacent.</p>
+
+    <p>Pricing changes, so confirm current numbers directly on <a href="https://lattice.com/pricing" target="_blank" rel="noopener">Lattice&rsquo;s pricing page</a> and on the <a href="https://marketplace.atlassian.com/apps/522828381" target="_blank" rel="noopener">TeamOps Marketplace listing</a> before making a decision.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>Does Lattice handle employee PTO and leave requests?</h3>
+    <p>No. Lattice focuses on performance reviews, OKRs, engagement surveys, and structured 1:1 meetings. It does not have a leave balance tracking system or a leave request workflow. For PTO management inside Jira, a dedicated app like TeamOps is the right layer. For a broader view of leave options, see our <a href="/blog/jira-leave-management-guide">complete guide to leave management in Jira</a>.</p>
+
+    <h3>What is a good alternative to Lattice for HR operations inside Jira?</h3>
+    <p>If your need is leave tracking, onboarding checklists, and offboarding workflows inside Jira, TeamOps is built for that. It runs on Atlassian Forge, so HR data stays inside Atlassian&rsquo;s infrastructure. It is free for teams up to 10 users. For a broader feature-by-feature view, see the <a href="/comparison">full comparison page</a> or our take on <a href="/blog/jira-vs-bamboohr">Jira for HR versus BambooHR</a>.</p>
+
+    <h3>Can TeamOps and Lattice work side by side?</h3>
+    <p>Yes. They solve different problems. Lattice handles performance and engagement; TeamOps handles leave management, onboarding, and offboarding in Jira. There is no direct overlap on core workflows, and many teams in the 30&ndash;100 person range run both without conflict.</p>
+
+    <h3>What does Lattice cost compared to TeamOps?</h3>
+    <p>Lattice starts at $11/user/month (Engagement) and $15+/user/month (Talent Management), as verified in April 2026. TeamOps is free for teams up to 10 users; larger teams pay $2/user/month at the founding-member rate. These are different tools serving different needs, so comparing them on price alone is not the right frame. Confirm current pricing on <a href="https://lattice.com/pricing" target="_blank" rel="noopener">Lattice&rsquo;s site</a> and the <a href="https://marketplace.atlassian.com/apps/522828381" target="_blank" rel="noopener">TeamOps Marketplace listing</a> before deciding, as prices change.</p>
+
+    <h3>What HR problems does Jira not solve without a plugin?</h3>
+    <p>Jira has no native concept of a leave request, a leave balance, a PTO calendar, onboarding checklist templates, or an offboarding workflow. You can approximate these with custom issue types and workflows, but without automatic balance tracking and team-level availability views, you end up maintaining data by hand. An app like TeamOps adds those missing pieces inside the Jira environment, without requiring a separate tool or login.</p>
+
+    <div class="callout callout-success">
+      <p><strong>The honest answer:</strong> If your primary HR need in 2026 is performance reviews, OKRs, or employee engagement surveys, Lattice is purpose-built for those. If your primary need is leave management, onboarding checklists, or offboarding workflows inside Jira, TeamOps is built for that. The two tools address different layers of the HR problem, and they coexist without conflict for teams that need both.</p>
+    </div>
+
+    <p>For a broader feature comparison across more tools, see the <a href="/comparison">full comparison page</a>, or our takes on <a href="/blog/jira-vs-bamboohr">Jira for HR versus BambooHR</a> and <a href="/blog/calamari-vs-teamops">Calamari versus TeamOps</a>.</p>
+
+    <div class="article-cta">
+      <h3>Handle leave, onboarding, and offboarding inside Jira</h3>
+      <p>TeamOps runs natively on Atlassian Forge &mdash; free for teams up to 10, with 5 onboarding templates and 140 pre-built tasks ready on install.</p>
+      <a href="https://marketplace.atlassian.com/apps/522828381" class="cta-button" target="_blank" rel="noopener">Install Free on the Marketplace</a>
+    </div>
+
+  </article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="nav-logo">T</div>PPLX Software</div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/522828381" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="/support">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
+  </div>
+</footer>
+
+</body>
+</html>
