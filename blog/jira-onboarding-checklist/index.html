@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYNC13TQKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PYNC13TQKF');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jira Onboarding Checklist: 30 Tasks by Phase and Role</title>
+<meta name="description" content="A complete Jira onboarding checklist broken into Day 1, Week 1, and Month 1 phases, with role-specific tasks for Engineering, Sales, and HR teams.">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/blog/jira-onboarding-checklist">
+
+<meta property="og:title" content="Jira Onboarding Checklist: 30 Tasks by Phase and Role">
+<meta property="og:description" content="A complete Jira onboarding checklist broken into Day 1, Week 1, and Month 1 phases, with role-specific tasks for Engineering, Sales, and HR teams.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pplxsoftware.com/blog/jira-onboarding-checklist">
+<meta property="og:image" content="https://pplxsoftware.com/assets/og/og-blog.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pplxsoftware.com/assets/og/og-blog.png">
+<meta property="og:site_name" content="TeamOps Blog | PPLX Software">
+
+<meta name="twitter:title" content="Jira Onboarding Checklist: 30 Tasks by Phase and Role">
+<meta name="twitter:description" content="A complete Jira onboarding checklist broken into Day 1, Week 1, and Month 1 phases, with role-specific tasks for Engineering, Sales, and HR teams.">
+
+<meta name="article:published_time" content="2026-06-16">
+<meta name="author" content="Thomas Chung">
+<meta name="keywords" content="jira onboarding checklist, jira onboarding template, new hire checklist jira, jira employee onboarding, jira hr onboarding">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Jira Onboarding Checklist: 30 Tasks by Phase and Role",
+  "description": "A complete Jira onboarding checklist broken into Day 1, Week 1, and Month 1 phases, with role-specific tasks for Engineering, Sales, and HR teams.",
+  "author": {
+    "@type": "Person",
+    "name": "Thomas Chung"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PPLX Software"
+  },
+  "datePublished": "2026-06-16",
+  "dateModified": "2026-06-16",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pplxsoftware.com/blog/jira-onboarding-checklist"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What should be on a Jira onboarding checklist?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A complete Jira onboarding checklist covers four phases: Day 1 (IT setup, account provisioning, badge access), Week 1 (dev environment, security training, first sprint tasks), Month 1 (30-day review, full project access, goals documented), and the 90-day mark (access audit, onboarding Epic closed). Most teams need 20–30 tasks minimum, grouped by department: IT, HR, Manager, and the new hire's own team."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I create an onboarding checklist in Jira?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Create a parent Epic named 'Onboarding – [New Hire Name]' with a start date of their first day and a due date at the 90-day mark. Add Components for each department (IT, HR, Manager, Security) and create sub-tasks under each. Use a dedicated Onboarding project with a 3-status workflow (To Do, In Progress, Done) rather than your main development workflow — onboarding tasks do not map to engineering statuses, and mixing them creates noise on sprint boards."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many tasks should a Jira onboarding checklist have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most engineering onboarding checklists need 20–30 tasks for a full 90-day period: 8–12 for Day 1 (hardware, accounts, access), 5–8 for Week 1 (training, first assignments), 5–8 for Month 1 (review, access promotion), and 3–5 for the 90-day mark. Role-specific checklists for Engineering, Sales, and HR typically run 20–25 tasks each once you add department-specific items."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between onboarding tasks in Jira and a Jira onboarding workflow?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Onboarding tasks are individual checklist items (provision a laptop, schedule a welcome meeting). An onboarding workflow is a Jira status sequence (To Do → In Progress → Done). The mismatch is that HR onboarding is a parallel checklist across multiple departments, but a Jira workflow is a linear status chain for a single issue. The most effective approach is a minimal 3-status workflow on the parent onboarding Epic, with each department's tasks as separate sub-tasks or Components assigned to the right owner."
+      }
+    }
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="/styles.css">
+<style>
+.article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
+.article-content { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.article-breadcrumb { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 24px; }
+.article-breadcrumb a { color: var(--gray-400); text-decoration: none; transition: color var(--transition); }
+.article-breadcrumb a:hover { color: var(--blue); }
+.article-content h1 { font-size: clamp(1.75rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
+.article-meta { color: var(--gray-400); font-size: 0.9rem; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.article-meta .tag { background: var(--blue-glow); color: var(--blue); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
+.article-content h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.06); border-bottom: none; }
+.article-content h2:first-of-type { border-top: none; padding-top: 0; }
+.article-content h3 { font-size: 1.15rem; font-weight: 600; margin-top: 32px; margin-bottom: 12px; color: var(--gray-300); }
+.article-content p { color: var(--gray-300); line-height: 1.8; margin-bottom: 18px; font-size: 1.05rem; }
+.article-content ul, .article-content ol { color: var(--gray-300); margin-bottom: 18px; padding-left: 24px; }
+.article-content li { margin-bottom: 10px; line-height: 1.7; font-size: 1.05rem; }
+.article-content strong { color: var(--white); font-weight: 600; }
+.article-content a { color: var(--blue); text-decoration: none; transition: color var(--transition); }
+.article-content a:hover { color: #93c5fd; text-decoration: underline; }
+.callout { background: var(--navy-light); border-left: 3px solid var(--blue); border-radius: var(--radius-sm); padding: 20px 24px; margin: 28px 0; }
+.callout p { margin-bottom: 0; font-size: 0.95rem; }
+.callout-warning { border-left-color: #fbbf24; }
+.callout-success { border-left-color: var(--green); }
+.article-cta { background: linear-gradient(135deg, var(--navy-light) 0%, rgba(96, 165, 250, 0.06) 100%); border: 1px solid rgba(96, 165, 250, 0.15); border-radius: var(--radius); padding: 32px; margin: 48px 0 24px; text-align: center; }
+.article-cta h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 8px; margin-top: 0; }
+.article-cta p { font-size: 0.95rem; margin-bottom: 20px; }
+.article-content .cta-button, .cta-button { display: inline-block; background: var(--blue); color: var(--navy); padding: 12px 28px; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background var(--transition), transform var(--transition); }
+.cta-button:hover { background: #93c5fd; color: var(--navy) !important; transform: translateY(-1px); text-decoration: none; }
+.checklist-table { width: 100%; border-collapse: collapse; margin: 24px 0 32px; font-size: 0.9rem; }
+.checklist-table th { text-align: left; padding: 10px 14px; background: rgba(96, 165, 250, 0.08); color: var(--gray-400); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.checklist-table td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; color: var(--gray-300); line-height: 1.5; }
+.checklist-table tr:last-child td { border-bottom: none; }
+.phase-badge { display: inline-block; padding: 2px 9px; border-radius: 10px; font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
+.phase-day1 { background: rgba(248,113,113,0.12); color: #f87171; }
+.phase-week1 { background: rgba(251,191,36,0.12); color: #fbbf24; }
+.phase-month1 { background: rgba(96,165,250,0.12); color: #60a5fa; }
+.phase-90d { background: rgba(52,211,153,0.12); color: #34d399; }
+.dept-badge { display: inline-block; padding: 1px 7px; border-radius: 8px; font-size: 0.72rem; font-weight: 500; background: rgba(255,255,255,0.06); color: var(--gray-400); }
+.role-block { background: var(--navy-light); border-radius: var(--radius-sm); padding: 20px 24px; margin: 16px 0; border: 1px solid rgba(255,255,255,0.04); }
+.role-block h4 { color: var(--white); font-size: 1rem; font-weight: 600; margin-bottom: 10px; }
+.role-block ul { margin-bottom: 0; }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home"><div class="nav-logo">T</div>TeamOps</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/522828381" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="article-wrapper">
+  <article class="article-content">
+    <div class="article-breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/blog">Blog</a> &rsaquo; Jira Onboarding Checklist
+    </div>
+
+    <h1>Jira Onboarding Checklist: 30 Tasks by Phase and Role</h1>
+
+    <div class="article-meta">
+      <span>Thomas Chung</span>
+      <span>&bull;</span>
+      <span>June 16, 2026</span>
+      <span>&bull;</span>
+      <span>10 min read</span>
+      <span class="tag">Onboarding</span>
+      <span class="tag">Jira</span>
+    </div>
+
+    <div class="callout">
+      <p><strong>TL;DR:</strong> This page is the complete Jira onboarding checklist — 30 tasks broken into Day 1, Week 1, Month 1, and the 90-day mark, grouped by department (IT, HR, Manager, Security) and role (Engineering, Sales, HR). Copy the table below. No signup required. PPLX Software builds TeamOps, a Forge-native Jira app that automates this checklist — but the checklist works without it too.</p>
+    </div>
+
+    <p>A Jira onboarding checklist is the full list of tasks a new hire needs to complete — and that IT, HR, and their manager need to complete for them — in the first 90 days, tracked inside Jira. This guide gives you that checklist, plus the Jira-specific setup steps that determine whether it stays usable as you scale.</p>
+
+    <p>The common failure mode is building this as a flat list of sub-tasks under a single parent issue. That works for five people. At twenty hires a year, you end up with 600 open sub-tasks on a board nobody wants to open. The structure below avoids that.</p>
+
+    <h2>The complete Jira onboarding checklist</h2>
+
+    <p>30 tasks organized by phase and department. The Jira-specific note column explains where the gotchas are.</p>
+
+    <table class="checklist-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Phase</th>
+          <th>Department</th>
+          <th>Task</th>
+          <th>Jira-specific note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><span class="phase-badge phase-day1">Day 1</span></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><strong>Create the onboarding Epic</strong></td>
+          <td>Name it "Onboarding – [Name]". Set start = hire date, due = 90-day mark. Use an Epic so sub-tasks don't spill into sprint boards.</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><span class="phase-badge phase-day1">Day 1</span></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><strong>Provision laptop and ship to hire address</strong></td>
+          <td>Create a sub-task assigned to IT. Add a due date 5 business days before start — shipping lead time catches admins who create this task on the first day.</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><span class="phase-badge phase-day1">Day 1</span></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><strong>Create Atlassian account and add to Jira</strong></td>
+          <td>Add to relevant Jira projects with Developer permission — not Admin. New admins accidentally change workflow configurations on their first day more often than you'd expect.</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><span class="phase-badge phase-day1">Day 1</span></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><strong>Provision VPN credentials</strong></td>
+          <td>Do NOT put credentials in Jira comments — all project members can read them. Use a secrets manager (1Password, Keeper) and add the link to the Jira task instead.</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><span class="phase-badge phase-day1">Day 1</span></td>
+          <td><span class="dept-badge">Security</span></td>
+          <td><strong>Create badge and building access request</strong></td>
+          <td>Assign to Facilities or Security as a separate Component so their tasks are filtered without affecting IT's view.</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><span class="phase-badge phase-day1">Day 1</span></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><strong>Set new hire's Jira notification preferences</strong></td>
+          <td>Default Jira notifications fire on every comment and transition. Walk new hires through Project Settings → Notifications → set to "Mentioned" only for the first week, or they'll disable email notifications entirely within 48 hours.</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><span class="phase-badge phase-day1">Day 1</span></td>
+          <td><span class="dept-badge">HR</span></td>
+          <td><strong>I-9 / right-to-work documentation collected</strong></td>
+          <td>Track completion in a Jira task, but store the actual documents in your HRIS or Confluence's restricted HR space — not in Jira attachments visible to all project members.</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><span class="phase-badge phase-day1">Day 1</span></td>
+          <td><span class="dept-badge">HR</span></td>
+          <td><strong>Benefits enrollment form sent</strong></td>
+          <td>Set the sub-task due date to Day 3, not Day 1. Benefits enrollment forms take time to complete and Day 1 is overwhelming. Day 3 is a realistic deadline.</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td><span class="phase-badge phase-day1">Day 1</span></td>
+          <td><span class="dept-badge">HR</span></td>
+          <td><strong>Emergency contacts and policy acknowledgment</strong></td>
+          <td>Link the Confluence policies space in the task description. Assign to HR with due = Day 2. This is the most commonly missed Day 1 task.</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td><span class="phase-badge phase-day1">Day 1</span></td>
+          <td><span class="dept-badge">Manager</span></td>
+          <td><strong>Welcome meeting and team introductions</strong></td>
+          <td>Create the calendar invite separately. The Jira task is the tracking artifact, not the meeting itself. Add a Confluence meeting notes page as a linked resource.</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td><span class="phase-badge phase-day1">Day 1</span></td>
+          <td><span class="dept-badge">Manager</span></td>
+          <td><strong>Buddy / mentor assigned and introduced</strong></td>
+          <td>Name the buddy in the task description. "Assign a buddy" without a specific name closes without action more than half the time.</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td><span class="phase-badge phase-day1">Day 1</span></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><strong>Slack workspace access and team channels added</strong></td>
+          <td>List the required channels in the task description (e.g., #eng-general, #deploys, #on-call). Without a list, IT adds the new hire to #general and considers it done.</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td><span class="phase-badge phase-week1">Week 1</span></td>
+          <td><span class="dept-badge">Engineering</span></td>
+          <td><strong>Dev environment fully set up and verified</strong></td>
+          <td>Include specific verification steps: "clone primary repo → run test suite → at least one test passes locally." Vague tasks like "set up dev environment" close without verification.</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td><span class="phase-badge phase-week1">Week 1</span></td>
+          <td><span class="dept-badge">Security</span></td>
+          <td><strong>Security and compliance training assigned and completed</strong></td>
+          <td>Two separate tasks: one to assign (Day 1) and one to verify completion (Day 5). A single task marked Done when assigned means nobody checks if they actually finished it.</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td><span class="phase-badge phase-week1">Week 1</span></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><strong>Principle-of-least-privilege access audit</strong></td>
+          <td>Review which Jira projects the new hire was added to. Remove any inherited from their onboarding project membership that they don't need for their role.</td>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td><span class="phase-badge phase-week1">Week 1</span></td>
+          <td><span class="dept-badge">Manager</span></td>
+          <td><strong>First sprint task assigned</strong></td>
+          <td>Assign 1–2 low-stakes tasks from the existing backlog. The new hire should experience the full Jira workflow (pick up task → submit PR → review → close) before Week 2. This is the fastest way to find permission gaps.</td>
+        </tr>
+        <tr>
+          <td>17</td>
+          <td><span class="phase-badge phase-week1">Week 1</span></td>
+          <td><span class="dept-badge">Manager</span></td>
+          <td><strong>Confluence knowledge-base orientation</strong></td>
+          <td>Link the specific Confluence spaces they need: team wiki, runbooks, architecture docs. A link to the Confluence root is useless — it's a 300-page maze on Day 3.</td>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td><span class="phase-badge phase-week1">Week 1</span></td>
+          <td><span class="dept-badge">Manager</span></td>
+          <td><strong>First one-on-one completed</strong></td>
+          <td>Schedule recurring, not ad hoc. Block the calendar on Day 1 so Week 1 logistics don't push it to Week 3.</td>
+        </tr>
+        <tr>
+          <td>19</td>
+          <td><span class="phase-badge phase-week1">Week 1</span></td>
+          <td><span class="dept-badge">HR</span></td>
+          <td><strong>Benefits enrollment confirmed as submitted</strong></td>
+          <td>Benefits elections have hard external deadlines (typically 30 days from hire). Create a task with a due date that matches the carrier's deadline, not an internal estimate.</td>
+        </tr>
+        <tr>
+          <td>20</td>
+          <td><span class="phase-badge phase-week1">Week 1</span></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><strong>Password manager enrolled and master password set</strong></td>
+          <td>Do this in Week 1, not Month 1. New hires accumulate weak passwords in the first two weeks and never migrate them later.</td>
+        </tr>
+        <tr>
+          <td>21</td>
+          <td><span class="phase-badge phase-month1">Month 1</span></td>
+          <td><span class="dept-badge">Manager</span></td>
+          <td><strong>30-day check-in and feedback form</strong></td>
+          <td>This is also a signal for the onboarding process itself. Add a field in the task for notes on what was missing from the checklist so you can update the template.</td>
+        </tr>
+        <tr>
+          <td>22</td>
+          <td><span class="phase-badge phase-month1">Month 1</span></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><strong>Jira project access promoted from Reporter to Developer</strong></td>
+          <td>Many teams add new hires as Reporter (read + comment only) for the first 30 days. If you do this, create a task to promote them at Day 30 — otherwise it's forgotten and they can't close their own tasks for months.</td>
+        </tr>
+        <tr>
+          <td>23</td>
+          <td><span class="phase-badge phase-month1">Month 1</span></td>
+          <td><span class="dept-badge">Manager</span></td>
+          <td><strong>First substantial project task assigned</strong></td>
+          <td>Something with visible impact on a real sprint goal, not a cleanup task. The new hire should be able to say "I shipped X" in their first month.</td>
+        </tr>
+        <tr>
+          <td>24</td>
+          <td><span class="phase-badge phase-month1">Month 1</span></td>
+          <td><span class="dept-badge">Manager</span></td>
+          <td><strong>Goals / OKRs documented and linked</strong></td>
+          <td>Link to the Confluence OKR page. Vague verbal goal-setting at Month 1 check-ins never gets written down and creates misalignment at the 90-day review.</td>
+        </tr>
+        <tr>
+          <td>25</td>
+          <td><span class="phase-badge phase-month1">Month 1</span></td>
+          <td><span class="dept-badge">Security</span></td>
+          <td><strong>Security training completion verified</strong></td>
+          <td>Separate from Week 1 task 14. This verification task checks the training platform for completion status — not just self-reported.</td>
+        </tr>
+        <tr>
+          <td>26</td>
+          <td><span class="phase-badge phase-90d">90-day</span></td>
+          <td><span class="dept-badge">Manager</span></td>
+          <td><strong>90-day performance review scheduled and completed</strong></td>
+          <td>Schedule during Week 1 so nobody's calendar is full. A 90-day review scheduled in Week 12 gets pushed to Week 14.</td>
+        </tr>
+        <tr>
+          <td>27</td>
+          <td><span class="phase-badge phase-90d">90-day</span></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><strong>Full access audit</strong></td>
+          <td>Enumerate every Jira project and third-party tool the new hire has access to. Remove any that weren't explicitly granted for their role — onboarding typically over-provisions access "just in case."</td>
+        </tr>
+        <tr>
+          <td>28</td>
+          <td><span class="phase-badge phase-90d">90-day</span></td>
+          <td><span class="dept-badge">Manager</span></td>
+          <td><strong>Mentor relationship formally concluded or extended</strong></td>
+          <td>Most buddy arrangements end around Day 60 without anyone saying so. Create a task to make it explicit. If extending, update the buddy's recurring calendar block.</td>
+        </tr>
+        <tr>
+          <td>29</td>
+          <td><span class="phase-badge phase-90d">90-day</span></td>
+          <td><span class="dept-badge">HR</span></td>
+          <td><strong>Benefits confirmed enrolled and active</strong></td>
+          <td>Distinct from the Month 1 submission confirmation. This verifies the carrier has processed enrollment and the new hire is actually covered.</td>
+        </tr>
+        <tr>
+          <td>30</td>
+          <td><span class="phase-badge phase-90d">90-day</span></td>
+          <td><span class="dept-badge">HR</span></td>
+          <td><strong>Onboarding Epic closed in Jira</strong></td>
+          <td>Transition Epic status to Done, add a "completed-YYYY-MM-DD" label, and link the 90-day review notes. The label makes it easy to query "how many onboardings completed this quarter" via Jira's issue search.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>How to structure this in Jira without a mess</h2>
+
+    <p>The table above is the what. Here is the how — the specific Jira setup decisions that determine whether this checklist stays usable as your team grows.</p>
+
+    <h3>Use a dedicated Onboarding project, not your engineering project</h3>
+
+    <p>The most common mistake is creating onboarding tasks inside the team's main Jira project. Engineering workflows have statuses like "In Sprint," "Code Review," "Blocked," and "Deployed." None of those apply to "Provision laptop" or "Benefits enrollment form sent." When IT filters the board, they see 200 sprint tasks alongside their 8 onboarding tasks. Nothing gets done on time.</p>
+
+    <p>Create a separate project named "HR Operations" (or "People Ops" if you prefer). Set a simple 3-status workflow: To Do, In Progress, Done. All onboarding tasks live here, not in Engineering. Engineering still sees new hires added to their sprint boards — they just do not see the IT provisioning tasks cluttering their backlog.</p>
+
+    <h3>Use Components for department ownership, not labels</h3>
+
+    <p>Jira Components (created under Project Settings → Components) assign default owners and enable filtering by department. Add Components named IT, HR, Manager, and Security. When you create a sub-task under the onboarding Epic, set the Component to the owning department. Now IT can open the board and filter to "Component = IT" to see exactly their 8 tasks without noise from HR's tasks. Labels can do this too, but Components support default assignees, which means IT tasks get routed to the IT admin automatically rather than landing unassigned.</p>
+
+    <h3>Set a parent Epic for each hire, not a single shared Epic</h3>
+
+    <p>One "New Hire Onboarding" Epic shared across all hires creates an Epic with 180 sub-tasks inside it by Month 6. Create one Epic per person: "Onboarding – Jane Smith" with hire date as start date and 90-day mark as due date. You can then filter your Epic list by date range to see all active onboardings and their completion percentages in Jira's Timeline view.</p>
+
+    <h3>Template the sub-tasks with a standard Epic template</h3>
+
+    <p>Jira does not have native Epic templates (as of 2026). The options are:</p>
+    <ul>
+      <li><strong>Jira Automation</strong> — trigger "When Epic created with label 'new-hire', create sub-tasks from list." Works, but the automation JSON is fragile when task templates change.</li>
+      <li><strong>A Confluence page with a copy-paste structure</strong> — low-tech but reliable. HR copies the task list and creates sub-tasks manually each time. Takes about 12 minutes per hire.</li>
+      <li><strong>A purpose-built onboarding tool like TeamOps</strong> — creates the full task structure automatically when you start an onboarding, keeps templates editable without breaking automation rules, and shows progress across all active onboardings in one view.</li>
+    </ul>
+
+    <p>For teams hiring fewer than 2 people per month, the Confluence copy-paste approach is usually fast enough. For teams hiring 3 or more, manual task creation becomes the bottleneck.</p>
+
+    <h2>Role-specific additions to the base checklist</h2>
+
+    <p>The 30 tasks above apply to everyone. Role-specific tasks go on top of them.</p>
+
+    <div class="role-block">
+      <h4>Engineering additions (8 tasks)</h4>
+      <ul>
+        <li><strong>Repository access granted</strong> — specify which repos; "GitHub access" without a list means they have read access to everything but write access to nothing useful</li>
+        <li><strong>CI/CD pipeline orientation</strong> — walk through one deploy: branch → PR → review → merge → automated deploy. Not reading docs, actually doing it.</li>
+        <li><strong>Code review process documented</strong> — link to your team's PR review guide in Confluence. "We do code review" is not enough; new engineers need to know response time expectations and who has merge authority.</li>
+        <li><strong>On-call rotation added (if applicable)</strong> — not in Month 1, but by Month 2. Create the task at Day 1 with a due date 60 days out.</li>
+        <li><strong>Database access provisioned and documented</strong> — production read access, if applicable. Separate from development database access. Both should be explicitly granted and logged.</li>
+        <li><strong>Architecture overview session scheduled</strong> — 60-minute walk-through of the system with a senior engineer. The new hire's first context for why things are built the way they are.</li>
+        <li><strong>Security: SSH key added, old keys for prior employer removed from personal machine</strong> — most teams skip the second part. It matters.</li>
+        <li><strong>First bug fixed and shipped</strong> — a concrete, shippable task in Week 2 or 3. Not a cleanup task. Something with a ticket number and a merge commit.</li>
+      </ul>
+    </div>
+
+    <div class="role-block">
+      <h4>Sales additions (7 tasks)</h4>
+      <ul>
+        <li><strong>CRM access provisioned and sandbox configured</strong> — name the CRM and the specific objects they need access to (Accounts, Contacts, Opportunities). Provisioning "CRM access" without specifics means they can log in but can't do anything useful.</li>
+        <li><strong>ICP (ideal customer profile) documentation reviewed</strong> — link the Confluence page. If it doesn't exist, create it before the new hire's first day.</li>
+        <li><strong>Sales script and objection-handling guide reviewed</strong> — again, a link. Not a meeting. The new hire reads it independently, then the first one-on-one covers questions.</li>
+        <li><strong>First 3 cold call or cold email shadows completed</strong> — with a senior rep. Listening is faster than reading.</li>
+        <li><strong>Product demo certification</strong> — complete a full demo for the hiring manager before Week 3 ends. Create the task on Day 1 with a due date so it doesn't slip.</li>
+        <li><strong>Quota and comp plan reviewed and signed off</strong> — in writing, linked in the Jira task. Verbal quota agreements create problems at the end of the quarter.</li>
+        <li><strong>First prospect meeting attended (shadow)</strong> — Week 2 at the latest. The fastest way to learn what customers actually say.</li>
+      </ul>
+    </div>
+
+    <div class="role-block">
+      <h4>HR / People Ops additions (6 tasks)</h4>
+      <ul>
+        <li><strong>HRIS system access provisioned</strong> — if you use BambooHR, Personio, or another HRIS alongside Jira, provision access on Day 1 with the specific modules they need (not admin access on Day 1).</li>
+        <li><strong>Payroll system access and first payroll run verified</strong> — confirm the new hire appears correctly in payroll before their first payday. A task with due date 3 days before payroll close.</li>
+        <li><strong>Benefits administration access</strong> — if HR manages benefit enrollments, they need carrier portal access. Create the task with a specific carrier login URL.</li>
+        <li><strong>Employee handbook and policy library reviewed</strong> — link the Confluence space. Add a task for the hiring manager to confirm the new HR team member has reviewed it, not just a self-reported checkbox.</li>
+        <li><strong>Confluence HR space edit access</strong> — HR team members need contributor access, not just view access. Distinct from read access to the general team wiki.</li>
+        <li><strong>Onboarding process ownership introduced</strong> — the new HR person will run future onboardings. Walk them through this checklist explicitly so they can maintain and improve it.</li>
+      </ul>
+    </div>
+
+    <h2>What the checklist misses without Jira-specific knowledge</h2>
+
+    <p>Several onboarding steps look simple but create real problems if you handle them wrong in Jira specifically.</p>
+
+    <h3>Jira notifications are overwhelming by default</h3>
+
+    <p>A new hire added to a Jira project with default notification settings gets emailed on every issue creation, status transition, comment, and assignment in that project. A busy engineering project generates 40–80 emails per day. New hires typically turn off all Jira email notifications within their first week, which means they stop getting assignment notifications entirely. Walk new hires through Project Settings → Notifications and set up a custom notification scheme that emails on "Assigned to Me" and "Mentioned" only.</p>
+
+    <h3>The 36-status trap</h3>
+
+    <p>Teams that try to track onboarding in their engineering workflow end up adding statuses for each step: "Laptop Ordered," "Laptop Shipped," "Laptop Received," "Laptop Configured." This creates a workflow with 20+ statuses that Jira's board view renders as a horizontal scroll of tiny columns. Once a Jira workflow has more than about 12 statuses, the board view becomes impractical. The fix is to keep the onboarding workflow to 3 statuses (To Do, In Progress, Done) and use task names and due dates to express the detail, not status transitions.</p>
+
+    <h3>Sub-tasks are not visible on sprint boards</h3>
+
+    <p>If you create onboarding tasks as sub-tasks of a parent Epic in an engineering project, those sub-tasks do not appear on sprint boards unless you add them to a sprint explicitly. IT admins who use the sprint board as their todo list will not see them. Either use a separate project (recommended) or add onboarding sub-tasks to the IT sprint explicitly each time a new hire starts.</p>
+
+    <h2>Frequently asked questions about Jira onboarding checklists</h2>
+
+    <h3>What should be on a Jira onboarding checklist?</h3>
+
+    <p>A complete Jira onboarding checklist covers four phases: Day 1 (IT setup, account provisioning, badge access), Week 1 (dev environment, security training, first sprint tasks), Month 1 (30-day review, full project access, goals documented), and the 90-day mark (access audit, onboarding Epic closed). Most teams need 20–30 tasks minimum, grouped by department: IT, HR, Manager, and the new hire's own team.</p>
+
+    <h3>How do I create an onboarding checklist in Jira?</h3>
+
+    <p>Create a parent Epic named "Onboarding – [New Hire Name]" with a start date of their first day and a due date at the 90-day mark. Add Components for each department (IT, HR, Manager, Security) and create sub-tasks under each. Use a dedicated Onboarding project with a 3-status workflow (To Do, In Progress, Done) rather than your main development workflow — onboarding tasks do not map to engineering statuses, and mixing them creates noise on sprint boards.</p>
+
+    <h3>How many tasks should a Jira onboarding checklist have?</h3>
+
+    <p>Most engineering onboarding checklists need 20–30 tasks for a full 90-day period: 8–12 for Day 1 (hardware, accounts, access), 5–8 for Week 1 (training, first assignments), 5–8 for Month 1 (review, access promotion), and 3–5 for the 90-day mark. Role-specific checklists for Engineering, Sales, and HR typically run 20–25 tasks each once you add department-specific items.</p>
+
+    <h3>What is the difference between onboarding tasks in Jira and a Jira onboarding workflow?</h3>
+
+    <p>Onboarding tasks are individual checklist items (provision a laptop, schedule a welcome meeting). An onboarding workflow is a Jira status sequence (To Do &rarr; In Progress &rarr; Done). The mismatch is that HR onboarding is a parallel checklist across multiple departments, but a Jira workflow is a linear status chain for a single issue. The most effective approach is a minimal 3-status workflow on the parent onboarding Epic, with each department's tasks as separate sub-tasks or Components assigned to the right owner.</p>
+
+    <div class="callout callout-success">
+      <p><strong>If manually creating 30 tasks per hire is the bottleneck:</strong> <a href="https://marketplace.atlassian.com/apps/522828381" target="_blank" rel="noopener">TeamOps</a> (by PPLX Software) is a Forge-native Jira app that creates this full task structure automatically when you start an onboarding — role-based templates, phase organization, department assignment. Most HR apps bolt onto Jira from outside; TeamOps runs natively on Atlassian and ships a Rovo agent so your team can manage onboarding and leave in the tools they already use (Rovo requires Jira Premium or Enterprise plan). Free for teams up to 10 users.</p>
+    </div>
+
+    <h2>How to keep the checklist current</h2>
+
+    <p>Onboarding checklists decay. Tools change, policies update, roles evolve. Three practices that keep the list usable:</p>
+
+    <ul>
+      <li><strong>After every onboarding, add a task:</strong> "Review onboarding checklist for gaps." The 30-day check-in is when new hires are most likely to remember what was missing from their first week. Capture it while it's fresh.</li>
+      <li><strong>Version the template:</strong> If your Jira Automation rule or Confluence template generates the task list, keep a version history. When you change the template for a new role, make sure existing onboardings don't get duplicate or conflicting tasks.</li>
+      <li><strong>Audit access as part of offboarding:</strong> The access granted during onboarding is the same access that needs to be revoked at offboarding. If your onboarding list is accurate, your <a href="/blog/offboarding-checklist-jira">offboarding checklist</a> is half-written already.</li>
+    </ul>
+
+    <div class="article-cta">
+      <p>If manually creating 30 tasks per hire is eating your time, TeamOps automates it inside Jira. <a href="https://marketplace.atlassian.com/apps/522828381" class="cta-button" target="_blank" rel="noopener">Install free for up to 10 users</a></p>
+    </div>
+
+    <div class="callout related-guides">
+      <p><strong>Related guides:</strong> <a href="/blog/jira-onboarding-without-36-statuses">How to Manage Employee Onboarding in Jira Without Creating 36 Statuses</a> &middot; <a href="/blog/offboarding-checklist-jira">Offboarding Checklist for Jira: IT, HR, Legal &amp; Security Steps</a> &middot; <a href="/blog/onboarding-automation-jira">Automating Employee Onboarding in Jira</a> &middot; <a href="/blog/remote-team-onboarding">Remote Onboarding Checklist: 22 Tasks Your New Hire Needs</a> &middot; <a href="/templates">Free Jira onboarding templates</a> &middot; <a href="https://marketplace.atlassian.com/apps/522828381" target="_blank" rel="noopener">TeamOps on the Marketplace</a></p>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="nav-logo">T</div>PPLX Software</div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/522828381" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="/support">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
+  </div>
+</footer>
+
+</body>
+</html>
