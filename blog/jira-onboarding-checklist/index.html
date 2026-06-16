@@ -179,16 +179,16 @@
     </div>
 
     <div class="callout">
-      <p><strong>TL;DR:</strong> This page is the complete Jira onboarding checklist — 30 tasks broken into Day 1, Week 1, Month 1, and the 90-day mark, grouped by department (IT, HR, Manager, Security) and role (Engineering, Sales, HR). Copy the table below. No signup required. PPLX Software builds TeamOps, a Forge-native Jira app that automates this checklist — but the checklist works without it too.</p>
+      <p><strong>TL;DR:</strong> A Jira onboarding checklist runs about 30 tasks across Day 1, Week 1, Month 1, and the 90-day mark — owned by IT, HR, the manager, and Security, with role-specific additions for Engineering, Sales, and HR. The hard part isn't the list; it's structuring it in Jira so it survives past the first few hires. TeamOps, our app (PPLX Software), is the worked example; the checklist stands on its own.</p>
     </div>
 
     <p>A Jira onboarding checklist is the full list of tasks a new hire needs to complete — and that IT, HR, and their manager need to complete for them — in the first 90 days, tracked inside Jira. This guide gives you that checklist, plus the Jira-specific setup steps that determine whether it stays usable as you scale.</p>
 
-    <p>The common failure mode is building this as a flat list of sub-tasks under a single parent issue. That works for five people. At twenty hires a year, you end up with 600 open sub-tasks on a board nobody wants to open. The structure below avoids that.</p>
+    <p>Don't build this as a flat list of sub-tasks under a single parent issue. That works for five people. At twenty hires a year, you end up with 600 open sub-tasks on a board nobody wants to open. One Epic per hire avoids that.</p>
 
     <h2>The complete Jira onboarding checklist</h2>
 
-    <p>30 tasks organized by phase and department. The Jira-specific note column explains where the gotchas are.</p>
+    <p>30 tasks organized by phase and department.</p>
 
     <table class="checklist-table">
       <thead>
@@ -416,7 +416,7 @@
 
     <h2>How to structure this in Jira without a mess</h2>
 
-    <p>The table above is the what. Here is the how — the specific Jira setup decisions that determine whether this checklist stays usable as your team grows.</p>
+    <p>The specific Jira setup decisions that determine whether onboarding stays usable as the team grows:</p>
 
     <h3>Use a dedicated Onboarding project, not your engineering project</h3>
 
@@ -520,26 +520,14 @@
 
     <p>Onboarding tasks are individual checklist items (provision a laptop, schedule a welcome meeting). An onboarding workflow is a Jira status sequence (To Do &rarr; In Progress &rarr; Done). The mismatch is that HR onboarding is a parallel checklist across multiple departments, but a Jira workflow is a linear status chain for a single issue. The most effective approach is a minimal 3-status workflow on the parent onboarding Epic, with each department's tasks as separate sub-tasks or Components assigned to the right owner.</p>
 
-    <div class="callout callout-success">
-      <p><strong>If manually creating 30 tasks per hire is the bottleneck:</strong> <a href="https://marketplace.atlassian.com/apps/522828381" target="_blank" rel="noopener">TeamOps</a> (by PPLX Software) is a Forge-native Jira app that creates this full task structure automatically when you start an onboarding — role-based templates, phase organization, department assignment. Most HR apps bolt onto Jira from outside; TeamOps runs natively on Atlassian and ships a Rovo agent so your team can manage onboarding and leave in the tools they already use (Rovo requires Jira Premium or Enterprise plan). Free for teams up to 10 users.</p>
-    </div>
-
-    <h2>How to keep the checklist current</h2>
-
-    <p>Onboarding checklists decay. Tools change, policies update, roles evolve. Three practices that keep the list usable:</p>
-
-    <ul>
-      <li><strong>After every onboarding, add a task:</strong> "Review onboarding checklist for gaps." The 30-day check-in is when new hires are most likely to remember what was missing from their first week. Capture it while it's fresh.</li>
-      <li><strong>Version the template:</strong> If your Jira Automation rule or Confluence template generates the task list, keep a version history. When you change the template for a new role, make sure existing onboardings don't get duplicate or conflicting tasks.</li>
-      <li><strong>Audit access as part of offboarding:</strong> The access granted during onboarding is the same access that needs to be revoked at offboarding. If your onboarding list is accurate, your <a href="/blog/offboarding-checklist-jira">offboarding checklist</a> is half-written already.</li>
-    </ul>
+    <p>The access you grant during onboarding is the same access offboarding has to revoke — so a checklist that's accurate here makes the <a href="/blog/offboarding-checklist-jira">offboarding checklist</a> half-written already.</p>
 
     <div class="article-cta">
-      <p>If manually creating 30 tasks per hire is eating your time, TeamOps automates it inside Jira. <a href="https://marketplace.atlassian.com/apps/522828381" class="cta-button" target="_blank" rel="noopener">Install free for up to 10 users</a></p>
+      <p>If creating 30 tasks per hire by hand is the bottleneck, TeamOps creates the whole structure when you start an onboarding — role templates, phases, department assignment — inside Jira. <a href="https://marketplace.atlassian.com/apps/522828381" class="cta-button" target="_blank" rel="noopener">Free for up to 10 users</a></p>
     </div>
 
     <div class="callout related-guides">
-      <p><strong>Related guides:</strong> <a href="/blog/jira-onboarding-without-36-statuses">How to Manage Employee Onboarding in Jira Without Creating 36 Statuses</a> &middot; <a href="/blog/offboarding-checklist-jira">Offboarding Checklist for Jira: IT, HR, Legal &amp; Security Steps</a> &middot; <a href="/blog/onboarding-automation-jira">Automating Employee Onboarding in Jira</a> &middot; <a href="/blog/remote-team-onboarding">Remote Onboarding Checklist: 22 Tasks Your New Hire Needs</a> &middot; <a href="/templates">Free Jira onboarding templates</a> &middot; <a href="https://marketplace.atlassian.com/apps/522828381" target="_blank" rel="noopener">TeamOps on the Marketplace</a></p>
+      <p><strong>Related guides:</strong> <a href="/blog/jira-onboarding-without-36-statuses">How to Manage Employee Onboarding in Jira Without Creating 36 Statuses</a> &middot; <a href="/blog/offboarding-checklist-jira">Offboarding Checklist for Jira: IT, HR, Legal &amp; Security Steps</a> &middot; <a href="/blog/onboarding-automation-jira">Automating Employee Onboarding in Jira</a> &middot; <a href="/templates">Free Jira onboarding templates</a></p>
     </div>
   </article>
 </main>
