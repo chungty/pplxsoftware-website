@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYNC13TQKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PYNC13TQKF');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jira Offboarding Template: 26 Tasks by Department</title>
+<meta name="description" content="Jira offboarding template: 26 tasks for IT, HR, Legal, and Security with timing from the last day and Jira-specific setup notes per task.">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/blog/jira-offboarding-template">
+
+<meta property="og:title" content="Jira Offboarding Template: 26 Tasks by Department">
+<meta property="og:description" content="Jira offboarding template: 26 tasks for IT, HR, Legal, and Security with timing from the last day and Jira-specific notes per task.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pplxsoftware.com/blog/jira-offboarding-template">
+<meta property="og:image" content="https://pplxsoftware.com/assets/og/og-blog.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pplxsoftware.com/assets/og/og-blog.png">
+<meta property="og:site_name" content="TeamOps Blog | PPLX Software">
+
+<meta name="twitter:title" content="Jira Offboarding Template: 26 Tasks by Department">
+<meta name="twitter:description" content="Jira offboarding template: 26 tasks for IT, HR, Legal, and Security with timing from the last day and Jira-specific notes per task.">
+
+<meta name="article:published_time" content="2026-06-22">
+<meta name="author" content="Thomas Chung">
+<meta name="keywords" content="jira offboarding template, jira offboarding checklist, employee offboarding jira, offboarding tasks jira, jira hr offboarding">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Jira Offboarding Template: 26 Tasks by Department",
+  "description": "Jira offboarding template: 26 tasks for IT, HR, Legal, and Security with timing from the last day and Jira-specific setup notes per task.",
+  "author": {
+    "@type": "Person",
+    "name": "Thomas Chung"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PPLX Software"
+  },
+  "datePublished": "2026-06-22",
+  "dateModified": "2026-06-22",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pplxsoftware.com/blog/jira-offboarding-template"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I offboard someone in Jira?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Create an offboarding Epic named 'Offboarding - [Name]' with the last day as the start date. Add IT, HR, Legal, Security, and Manager as Jira Components and create sub-tasks for each department. The 26-task template covers a complete offboarding, ordered by department and timing from the last day."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between deactivating and deleting a Jira user?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Deactivating prevents login and removes the user from project member lists but preserves all issue history. Every ticket they created or were assigned to keeps their name in the Reporter and Assignee fields. Deleting removes them from all issue history site-wide, replacing their name with anonymous references. Always deactivate; never delete a former employee's account."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does deactivating a Jira user revoke their API tokens?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Personal API tokens are not automatically revoked when a Jira account is deactivated. Active tokens continue to authenticate API requests until they expire or are manually revoked. After deactivating the account, go to Atlassian Admin, select the user, navigate to API tokens, and revoke each token manually."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should offboarding tasks go in the team's main Jira project or a separate HR project?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use a dedicated HR or People Ops project, not the team's development backlog. Offboarding tasks span IT, HR, Legal, Security, and the manager's team. A dedicated project lets you use Components for department filtering, keep a clean 3-status workflow (To Do, In Progress, Done), and keep offboarding history separate from sprint work."
+      }
+    }
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="/styles.css">
+<style>
+.article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
+.article-content { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.article-breadcrumb { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 24px; }
+.article-breadcrumb a { color: var(--gray-400); text-decoration: none; transition: color var(--transition); }
+.article-breadcrumb a:hover { color: var(--blue); }
+.article-content h1 { font-size: clamp(1.75rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
+.article-meta { color: var(--gray-400); font-size: 0.9rem; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.article-meta .tag { background: var(--blue-glow); color: var(--blue); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
+.article-content h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.06); border-bottom: none; }
+.article-content h2:first-of-type { border-top: none; padding-top: 0; }
+.article-content h3 { font-size: 1.15rem; font-weight: 600; margin-top: 32px; margin-bottom: 12px; color: var(--gray-300); }
+.article-content p { color: var(--gray-300); line-height: 1.8; margin-bottom: 18px; font-size: 1.05rem; }
+.article-content ul, .article-content ol { color: var(--gray-300); margin-bottom: 18px; padding-left: 24px; }
+.article-content li { margin-bottom: 10px; line-height: 1.7; font-size: 1.05rem; }
+.article-content strong { color: var(--white); font-weight: 600; }
+.article-content a { color: var(--blue); text-decoration: none; transition: color var(--transition); }
+.article-content a:hover { color: #93c5fd; text-decoration: underline; }
+.callout { background: var(--navy-light); border-left: 3px solid var(--blue); border-radius: var(--radius-sm); padding: 20px 24px; margin: 28px 0; }
+.callout p { margin-bottom: 0; font-size: 0.95rem; }
+.callout-warning { border-left-color: #fbbf24; }
+.callout-success { border-left-color: var(--green); }
+.article-cta { background: linear-gradient(135deg, var(--navy-light) 0%, rgba(96, 165, 250, 0.06) 100%); border: 1px solid rgba(96, 165, 250, 0.15); border-radius: var(--radius); padding: 32px; margin: 48px 0 24px; text-align: center; }
+.article-cta h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 8px; margin-top: 0; }
+.article-cta p { font-size: 0.95rem; margin-bottom: 20px; }
+.article-content .cta-button, .cta-button { display: inline-block; background: var(--blue); color: var(--navy); padding: 12px 28px; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background var(--transition), transform var(--transition); }
+.cta-button:hover { background: #93c5fd; color: var(--navy) !important; transform: translateY(-1px); text-decoration: none; }
+.checklist-table { width: 100%; border-collapse: collapse; margin: 24px 0 32px; font-size: 0.9rem; }
+.checklist-table th { text-align: left; padding: 10px 14px; background: rgba(96, 165, 250, 0.08); color: var(--gray-400); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.checklist-table td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; color: var(--gray-300); line-height: 1.5; }
+.checklist-table tr:last-child td { border-bottom: none; }
+.phase-badge { display: inline-block; padding: 2px 9px; border-radius: 10px; font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
+.phase-pre { background: rgba(167,139,250,0.12); color: #a78bfa; }
+.phase-last { background: rgba(248,113,113,0.12); color: #f87171; }
+.phase-5d { background: rgba(251,191,36,0.12); color: #fbbf24; }
+.phase-14d { background: rgba(96,165,250,0.12); color: #60a5fa; }
+.dept-badge { display: inline-block; padding: 1px 7px; border-radius: 8px; font-size: 0.72rem; font-weight: 500; background: rgba(255,255,255,0.06); color: var(--gray-400); }
+.faq-term { color: var(--white); font-weight: 600; font-size: 1rem; margin-top: 24px; margin-bottom: 8px; display: block; }
+.faq-def { color: var(--gray-300); font-size: 0.95rem; line-height: 1.75; margin: 0 0 8px 0; }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home"><div class="nav-logo">T</div>TeamOps</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/522828381" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="article-wrapper">
+  <article class="article-content">
+    <div class="article-breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/blog">Blog</a> &rsaquo; Jira Offboarding Template
+    </div>
+
+    <h1>Jira Offboarding Template: 26 Tasks by Department</h1>
+
+    <div class="article-meta">
+      <span>Thomas Chung</span>
+      <span>&bull;</span>
+      <span>June 22, 2026</span>
+      <span>&bull;</span>
+      <span>10 min read</span>
+      <span class="tag">Offboarding</span>
+      <span class="tag">Jira</span>
+    </div>
+
+    <div class="callout">
+      <p><strong>TL;DR:</strong> 26 offboarding tasks across IT, HR, Legal, Security, and the manager's team, ordered by timing from the last day. Two hard rules before everything else: issue the litigation hold before deactivating the account, and export the Jira Audit Log before deleting it. Everything else is timing and assignment.</p>
+    </div>
+
+    <p>A Jira offboarding template is the full list of tasks that IT, HR, Legal, Security, and the manager's team need to complete when someone leaves &mdash; organized by department, timed from the last day, and tracked inside Jira. This guide gives you those 26 tasks with Jira-specific notes, plus the sequencing rules that determine whether the offboarding closes cleanly or leaves access gaps.</p>
+
+    <p>The template assumes one offboarding Epic per employee with IT, HR, Legal, Security, and Manager as Jira Components. That structure lets each department filter to their own tasks without scrolling through the full list.</p>
+
+    <h2>The complete Jira offboarding template</h2>
+
+    <p>26 tasks organized by department and timing from the last day.</p>
+
+    <table class="checklist-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Timing</th>
+          <th>Dept</th>
+          <th>Task</th>
+          <th>Jira-specific note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><span class="phase-badge phase-pre">Week before</span></td>
+          <td><span class="dept-badge">Legal</span></td>
+          <td><strong>Issue litigation hold notice (if applicable)</strong></td>
+          <td>If there is any active or anticipated litigation involving the departing employee, legal must issue a hold before account deactivation. Deactivation can trigger email purges or auto-archive workflows. Legal completes this task; IT deactivates only after legal has cleared it.</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><span class="phase-badge phase-pre">Week before</span></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><strong>Audit Jira Automation rules owned by this user</strong></td>
+          <td>Automation rules owned by the departing employee continue to run after account deactivation. HTTP request actions using their stored credentials fail silently &mdash; no error appears in the Automation log visible to other admins. Go to Automation &rarr; filter by Owner: [User] &rarr; reassign each rule before the last day.</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><span class="phase-badge phase-pre">Week before</span></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><strong>Fix Component default assignee</strong></td>
+          <td>If the employee was the default assignee for any Jira Component, deactivating them silently routes new issues to Unassigned with no notification. Go to Project Settings &rarr; Components &rarr; update the default assignee for each affected Component before the last day.</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><span class="phase-badge phase-pre">Week before</span></td>
+          <td><span class="dept-badge">HR</span></td>
+          <td><strong>Export PTO and leave balance</strong></td>
+          <td>Export the balance before deactivating the account. Some leave-tracking tools lose history when the user is removed from the IdP. Record the final balance in the offboarding Epic before triggering account deactivation.</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><span class="phase-badge phase-pre">Week before</span></td>
+          <td><span class="dept-badge">HR</span></td>
+          <td><strong>Schedule exit interview</strong></td>
+          <td>Schedule before the last day, not on it. People on their last day are occupied with logistics handoffs. Create a sub-task with a due date 5 business days before the last day to keep the interview from slipping.</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><span class="phase-badge phase-pre">Week before</span></td>
+          <td><span class="dept-badge">Manager</span></td>
+          <td><strong>Bulk reassign open Jira issues</strong></td>
+          <td>Use Jira's bulk edit: Board or Backlog &rarr; select issues &rarr; Bulk Change &rarr; Edit Fields &rarr; Assignee. Do this before the last day while the employee can still clarify context on open work. Issues assigned to a deactivated user remain in Jira but are excluded from most default sprint board filters.</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><span class="phase-badge phase-pre">Week before</span></td>
+          <td><span class="dept-badge">Manager</span></td>
+          <td><strong>Document knowledge transfer in Confluence</strong></td>
+          <td>Create a Confluence page linked to the offboarding Epic. The employee writes it; the manager reviews it before sign-off. Minimum sections: current project status, active blockers, key contacts, and any team account credentials not stored in a password manager.</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><span class="phase-badge phase-last">Last day</span></td>
+          <td><span class="dept-badge">Security</span></td>
+          <td><strong>Remove from Jira Admin group before deactivating</strong></td>
+          <td>Jira users with Site Admin access retain that access even after account deactivation until explicitly removed from the admin group. Go to Atlassian Admin &rarr; Groups &rarr; site-admins &rarr; remove the user. Complete this before triggering deactivation.</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td><span class="phase-badge phase-last">Last day</span></td>
+          <td><span class="dept-badge">Security</span></td>
+          <td><strong>Export Jira Audit Log for this user</strong></td>
+          <td>Go to Jira Admin &rarr; System &rarr; Audit log. Filter by the user and export the last 90 days. Look for bulk issue exports, permission changes, and project configuration edits. Export before deactivation &mdash; some audit records are attached to the user object and may not be accessible after the account is removed.</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td><span class="phase-badge phase-last">Last day</span></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><strong>Disable IdP/SSO account</strong></td>
+          <td>Disable in Okta, Azure AD, or Google Workspace first. Jira respects SSO deactivation on the next session refresh, but the Atlassian account remains active until you also deactivate it in Atlassian Admin. Both steps are required; one alone leaves a gap.</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td><span class="phase-badge phase-last">Last day</span></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><strong>Deactivate Jira account (do not delete)</strong></td>
+          <td>Deactivating preserves all issue attribution and audit history. Deleting removes the user from every Reporter and Assignee field site-wide &mdash; the board shows anonymous attributions for all work that person did. Deactivate only. Go to Atlassian Admin &rarr; Users &rarr; [User] &rarr; Deactivate.</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td><span class="phase-badge phase-last">Last day</span></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><strong>Revoke Jira personal API tokens</strong></td>
+          <td>Jira does not auto-revoke personal API tokens when an account is deactivated. Active tokens continue to authenticate API requests until they expire or are manually revoked. Go to Atlassian Admin &rarr; Users &rarr; [User] &rarr; API tokens &rarr; revoke all.</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td><span class="phase-badge phase-last">Last day</span></td>
+          <td><span class="dept-badge">Security</span></td>
+          <td><strong>Revoke SSH keys on all servers and deploy keys</strong></td>
+          <td>Check authorized_keys on every production and staging server individually. Also check GitHub and Bitbucket for repository-level deploy keys the employee may have added &mdash; these are not removed when the organization account is deprovisioned.</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td><span class="phase-badge phase-last">Last day</span></td>
+          <td><span class="dept-badge">Security</span></td>
+          <td><strong>Revoke PATs across all developer tools</strong></td>
+          <td>GitHub, GitLab, CircleCI, Datadog, Sentry, and similar tools each maintain separate token stores. Deprovisioning from the IdP does not revoke these tokens. Create a sub-task per integration and track revocation for each one individually.</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td><span class="phase-badge phase-last">Last day</span></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><strong>Collect hardware and initiate MDM wipe if needed</strong></td>
+          <td>Log the hardware return in the Jira task with the device serial number. If MDM (Jamf, Kandji) is in use, trigger a remote wipe command from this task before returning the device to inventory. Set the due date to the agreed return date.</td>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td><span class="phase-badge phase-last">Last day</span></td>
+          <td><span class="dept-badge">Legal</span></td>
+          <td><strong>Confirm NDA and confidentiality obligations</strong></td>
+          <td>Send the employee a written reminder of active NDAs and confidentiality obligations on or before the last day. The Jira task completion timestamp serves as documentation that the reminder was delivered and acknowledged.</td>
+        </tr>
+        <tr>
+          <td>17</td>
+          <td><span class="phase-badge phase-last">Last day</span></td>
+          <td><span class="dept-badge">Legal</span></td>
+          <td><strong>Confirm IP assignment for work in progress</strong></td>
+          <td>Verify the IP assignment agreement covers any work-in-progress at the time of departure. Engineering should list any pending patents or unreleased inventions in a sub-task for legal review before the account is deactivated.</td>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td><span class="phase-badge phase-last">Last day</span></td>
+          <td><span class="dept-badge">HR</span></td>
+          <td><strong>Issue separation letter and collect signed paperwork</strong></td>
+          <td>If severance is involved, confirm the release agreement is signed before the last day. Track document status in the Jira task using a label or status sequence: Drafted &rarr; Sent &rarr; Signed &rarr; Filed.</td>
+        </tr>
+        <tr>
+          <td>19</td>
+          <td><span class="phase-badge phase-last">Last day</span></td>
+          <td><span class="dept-badge">Manager</span></td>
+          <td><strong>Transfer Confluence space ownership</strong></td>
+          <td>If the employee owned a Confluence space, the space becomes unmanaged when the account is deactivated. Go to Space Settings &rarr; Overview &rarr; Edit &rarr; Owner and transfer ownership before deactivating the account.</td>
+        </tr>
+        <tr>
+          <td>20</td>
+          <td><span class="phase-badge phase-5d">+5 days</span></td>
+          <td><span class="dept-badge">HR</span></td>
+          <td><strong>Update HRIS and employee directory</strong></td>
+          <td>Mark the termination date and type (voluntary or involuntary). If your HRIS syncs to Jira via SCIM or a directory integration, verify the sync removed the user from Jira groups. Some SCIM configurations add users on provisioning but do not remove them on deactivation.</td>
+        </tr>
+        <tr>
+          <td>21</td>
+          <td><span class="phase-badge phase-5d">+5 days</span></td>
+          <td><span class="dept-badge">HR</span></td>
+          <td><strong>Send COBRA notification</strong></td>
+          <td>Employers have 30 days to notify their group health plan administrator, who then has 14 days to send COBRA election paperwork to the employee. The 30-day clock starts on the last day of coverage. Set a Jira due date to the termination date + 29 days to avoid missing this deadline.</td>
+        </tr>
+        <tr>
+          <td>22</td>
+          <td><span class="phase-badge phase-5d">+5 days</span></td>
+          <td><span class="dept-badge">HR</span></td>
+          <td><strong>Process final payroll</strong></td>
+          <td>Final pay deadlines vary by state. California requires same-day payment for involuntary terminations; most other states allow the next regular pay cycle. Log the applicable state deadline in the Jira task with a due date that matches the law, not the next default payroll run.</td>
+        </tr>
+        <tr>
+          <td>23</td>
+          <td><span class="phase-badge phase-5d">+5 days</span></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><strong>Rotate shared credentials the employee held</strong></td>
+          <td>Shared service account passwords, integration API tokens tied to team accounts, and any webhook secrets the employee knew. List each credential in a sub-task and rotate one at a time to avoid breaking live integrations during the rotation.</td>
+        </tr>
+        <tr>
+          <td>24</td>
+          <td><span class="phase-badge phase-14d">+14 days</span></td>
+          <td><span class="dept-badge">Legal</span></td>
+          <td><strong>Process equity and stock paperwork</strong></td>
+          <td>RSU vesting dates, option exercise windows, and ESPP elections each have different post-termination deadlines. ISO stock options typically have a 90-day exercise window after the last day of employment. Create a Jira task with a due date set to last day + 89 days so this does not slip.</td>
+        </tr>
+        <tr>
+          <td>25</td>
+          <td><span class="phase-badge phase-14d">+14 days</span></td>
+          <td><span class="dept-badge">Legal</span></td>
+          <td><strong>Apply data retention policy to employee files</strong></td>
+          <td>Email archives, Confluence pages, and Jira history fall under your data retention schedule. Configure the retention policy before deleting the Atlassian account &mdash; deleting the account also removes Jira issue history attributed to that user.</td>
+        </tr>
+        <tr>
+          <td>26</td>
+          <td><span class="phase-badge phase-14d">+14 days</span></td>
+          <td><span class="dept-badge">Manager</span></td>
+          <td><strong>Update runbooks and process docs with new owner names</strong></td>
+          <td>Any runbook listing the employee as an escalation contact is now stale. Run a Confluence search for the employee's name. Update all pages before closing the offboarding Epic. Assign this as a Jira sub-task with a due date 14 days after the last day.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Sequencing: two tasks that must come before deactivation</h2>
+
+    <p>Most offboarding tasks can run in parallel. IT can collect hardware on the last day while HR prepares the separation letter. Two tasks have a hard ordering constraint:</p>
+
+    <p><strong>1. Litigation hold before account deactivation.</strong> If there is any active litigation or a reasonable expectation of it involving the departing employee, legal must issue a hold notice before IT deactivates the account. Deactivation can trigger email purges, auto-archive workflows, and cloud storage sync deletions. Once the data is gone, a hold notice cannot recover it. Legal clears task 1 in the table; IT runs task 10 after.</p>
+
+    <p><strong>2. Jira Audit Log export before account removal.</strong> The audit log filtered by user is accessible while the account exists. Some audit records are tied to the user object and may not survive account deletion. Export the log on the last day, before any deactivation step. This is task 9 in the table, ordered above the deactivation tasks for this reason.</p>
+
+    <h2>Three ways to run this template in Jira</h2>
+
+    <p>Jira does not have a native offboarding mode. These are the three practical approaches, ordered from lowest setup cost to highest automation:</p>
+
+    <ol>
+      <li><strong>Jira Automation rule</strong> &mdash; Create a rule triggered by a custom field change (for example, "Employment Status" set to "Terminated") that automatically creates the offboarding Epic and sub-tasks. Requires Jira Admin access and Automation Premium tier. The rule needs maintenance as task lists evolve, but it removes manual Epic creation for each departure.</li>
+      <li><strong>Confluence template + manual Jira tasks</strong> &mdash; Write the 26 tasks as a Confluence page template. For each offboarding, duplicate the page and create Jira sub-tasks from it manually. More effort per departure, but no automation configuration required.</li>
+      <li><strong>TeamOps</strong> &mdash; Creates the per-employee offboarding Epic, the IT/HR/Legal/Security Component split, and the 26 tasks with due dates calculated from the last day &mdash; IT tasks default to "last day," HR tasks to "+5 days," legal tasks to "+14 days." <a href="https://marketplace.atlassian.com/apps/522828381">Free for up to 10 users.</a></li>
+    </ol>
+
+    <h2>Frequently asked questions</h2>
+
+    <dl>
+      <dt class="faq-term">How do I offboard someone in Jira?</dt>
+      <dd class="faq-def">Create an offboarding Epic named "Offboarding &ndash; [Name]" with the last day as the start date. Add IT, HR, Legal, Security, and Manager as Jira Components. Create sub-tasks for each department. The 26-task template above covers a complete offboarding with Jira-specific notes for each task.</dd>
+
+      <dt class="faq-term">What is the difference between deactivating and deleting a Jira user?</dt>
+      <dd class="faq-def">Deactivating prevents login and removes the user from project member lists but preserves all issue history. Every ticket they created or were assigned to keeps their name. Deleting removes them from all issue history site-wide, replacing their name with anonymous references. Always deactivate; never delete a former employee's account.</dd>
+
+      <dt class="faq-term">Does deactivating a Jira user revoke their API tokens?</dt>
+      <dd class="faq-def">No. Personal API tokens are not automatically revoked on account deactivation. Active tokens continue to authenticate API requests until they expire or are manually revoked. After deactivating the account, go to Atlassian Admin &rarr; Users &rarr; [User] &rarr; API tokens and revoke each token.</dd>
+
+      <dt class="faq-term">Should offboarding tasks go in the team's main Jira project or a separate HR project?</dt>
+      <dd class="faq-def">A dedicated HR or People Ops project keeps offboarding history separate from sprint work. Offboarding tasks span IT, HR, Legal, and Security &mdash; they do not belong in a single team's backlog. A dedicated project lets you use Components for department filtering and a clean 3-status workflow: To Do, In Progress, Done.</dd>
+    </dl>
+
+    <div class="article-cta">
+      <p>TeamOps runs this inside Jira. <a href="https://marketplace.atlassian.com/apps/522828381">Free for up to 10 users.</a></p>
+    </div>
+
+    <div class="callout related-guides">
+      <p><strong>Related guides:</strong> <a href="/blog/offboarding-checklist-jira">Employee Offboarding Checklist in Jira</a> &middot; <a href="/blog/employee-offboarding-security">Security Offboarding Checklist for Jira</a> &middot; <a href="/blog/jira-onboarding-checklist">Jira Onboarding Checklist: 30 Tasks by Phase</a> &middot; <a href="/blog/jira-vs-bamboohr">Jira for HR vs. BambooHR</a> &middot; <a href="/templates">Free Jira templates</a></p>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="nav-logo">T</div>PPLX Software</div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/522828381" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="/support">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian&#39;s Forge platform.</div>
+  </div>
+</footer>
+
+</body>
+</html>
