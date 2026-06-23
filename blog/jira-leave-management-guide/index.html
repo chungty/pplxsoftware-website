@@ -57,6 +57,47 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can you track PTO in Jira?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not natively. Jira has no built-in PTO or leave feature, so you either approximate it with a custom issue type and workflow, or you install a Marketplace app that adds leave as a native capability. The manual route works but leaves balance tracking outside Jira, usually in a spreadsheet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Jira have a leave management feature?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Jira was built for tracking software development work, not time-off requests, so it has no native concept of a leave request, a balance, or a time-off calendar. Teams add leave management through Jira automation plus a spreadsheet, or through a purpose-built app such as TeamOps."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you calculate leave balances in Jira?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Jira cannot compute a running balance on its own. You total every approved and pending request for the year, subtract from the annual allocation, and account for carryover, which usually means maintaining a spreadsheet alongside Jira. A dedicated leave app computes the balance automatically from approved requests and your configured policy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to set up leave management in Jira manually?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Building it from Jira primitives (a custom issue type, an approval automation, a dashboard, a balance spreadsheet, and yearly holiday lists) takes roughly 4 to 6 hours upfront plus ongoing maintenance. Installing a purpose-built app such as TeamOps takes about 5 minutes and keeps balances and holidays inside Jira. TeamOps is free for teams up to 10 users."
+      }
+    }
+  ]
+}
+</script>
+
 <link rel="stylesheet" href="/styles.css">
 <style>
 .article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
@@ -124,6 +165,10 @@
       <span class="tag">Jira</span>
     </div>
 
+    <div class="callout">
+      <p><strong>TL;DR:</strong> Jira has no native leave management feature, so you manage PTO in one of two ways: build it from primitives (a custom "Leave Request" issue type, an approval automation, a dashboard, and a spreadsheet for balances) or install a Marketplace app that adds leave as a native capability. The hard part is balance tracking. Jira cannot compute a running balance on its own, so a manual setup keeps balances in a spreadsheet, while a purpose-built app such as TeamOps computes them automatically from approved requests and handles country-specific holidays inside Jira.</p>
+    </div>
+
     <p>Leave management sounds simple until you actually try to build it. An employee requests three days off. A manager approves it. The balance decreases. That is the happy path. The real world adds country-specific holidays, overlapping requests, different accrual rates by tenure, carryover limits, half-day requests, and the question of whether that Monday is actually a public holiday in the employee's country.</p>
 
     <p>Jira does not have a native leave management feature. It was built for tracking software development work, not time-off requests. But many teams already live in Jira all day, and adding another tool just for leave creates friction that reduces adoption. So the question becomes: how do you build a workable leave system inside the tool your team already uses?</p>
@@ -166,7 +211,7 @@
 
     <p>A team calendar or availability dashboard that shows approved absences is the minimum. Bonus: flagging when approving a request would leave a team below a minimum staffing threshold. This is the connection between <a href="/blog/pto-tracking-capacity-planning">PTO tracking and capacity planning</a>.</p>
 
-    <h2>Building it manually in Jira</h2>
+    <h2>How do you build leave management in Jira manually?</h2>
 
     <p>If you want to build leave management from Jira primitives, here is what that looks like:</p>
 
@@ -180,7 +225,7 @@
 
     <p>This works. It is also roughly 4 to 6 hours of setup, requires ongoing maintenance, and still leaves balance tracking outside Jira. For teams under 15 people, this may be acceptable. For larger teams, the maintenance cost accumulates.</p>
 
-    <h2>Using a purpose-built leave app</h2>
+    <h2>Should you use a purpose-built leave app instead?</h2>
 
     <p>The alternative is installing a Marketplace app that adds leave management as a native capability inside Jira. <a href="https://marketplace.atlassian.com/apps/522828381" target="_blank" rel="noopener">TeamOps</a> takes this approach.</p>
 
@@ -202,6 +247,20 @@
     </ul>
 
     <p>Setting these up upfront is easier than adding them later when someone asks "how do I request bereavement leave?" and you realize the system only supports vacation.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>Can you track PTO in Jira?</h3>
+    <p>Not natively. Jira has no built-in PTO or leave feature, so you either approximate it with a custom issue type and workflow, or you install a Marketplace app that adds leave as a native capability. The manual route works but leaves balance tracking outside Jira, usually in a spreadsheet.</p>
+
+    <h3>Does Jira have a leave management feature?</h3>
+    <p>No. Jira was built for tracking software development work, not time-off requests, so it has no native concept of a leave request, a balance, or a time-off calendar. Teams add leave management through Jira automation plus a spreadsheet, or through a purpose-built app such as TeamOps.</p>
+
+    <h3>How do you calculate leave balances in Jira?</h3>
+    <p>Jira cannot compute a running balance on its own. You total every approved and pending request for the year, subtract from the annual allocation, and account for carryover, which usually means maintaining a spreadsheet alongside Jira. A dedicated leave app computes the balance automatically from approved requests and your configured policy.</p>
+
+    <h3>How long does it take to set up leave management in Jira manually?</h3>
+    <p>Building it from Jira primitives (a custom issue type, an approval automation, a dashboard, a balance spreadsheet, and yearly holiday lists) takes roughly 4 to 6 hours upfront plus ongoing maintenance. Installing a purpose-built app such as TeamOps takes about 5 minutes and keeps balances and holidays inside Jira. TeamOps is free for teams up to 10 users.</p>
 
     <div class="article-cta">
       <p>TeamOps handles this inside Jira. <a href="https://marketplace.atlassian.com/apps/522828381">Free for up to 10 users.</a></p>

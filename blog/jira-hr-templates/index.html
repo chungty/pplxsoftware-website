@@ -57,6 +57,47 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does Jira have HR templates?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Jira on its own does not ship HR templates. You can build onboarding, offboarding, and leave checklists yourself with issue types and workflows, or install TeamOps, which adds 7 built-in HR templates (5 onboarding plus 2 offboarding) you can launch for any employee with one click. TeamOps is free for teams up to 10 users."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you create an onboarding template in Jira?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can create a Jira issue with subtasks for each onboarding step and clone it for every new hire, which works but means manual copying each time. TeamOps provides 5 pre-built onboarding templates (Engineering, Sales, General, HR, and Executive) that create, assign, and track every task automatically."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What HR workflows can you run in Jira?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The common ones are employee onboarding, offboarding, leave and PTO requests, and recurring compliance reviews. Each can be modeled as a Jira issue with a task checklist. TeamOps packages onboarding, offboarding, and leave into one Forge-native app so HR data stays inside Atlassian."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are these Jira HR templates free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The task lists on this page are free to copy into any Jira project by hand. The 7 built-in TeamOps templates are free for teams up to 10 users; paid plans start at $2/user/month, a founding-member rate."
+      }
+    }
+  ]
+}
+</script>
+
 <link rel="stylesheet" href="/styles.css">
 <style>
 .article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
@@ -124,6 +165,10 @@
       <span class="tag">HR</span>
     </div>
 
+    <div class="callout">
+      <p><strong>The short answer:</strong> Jira has no built-in HR templates, but you can run HR work in it two ways. Build the checklists yourself with issue types and subtasks, or install TeamOps, which adds 7 ready-made templates (5 onboarding, 2 offboarding) plus leave tracking and launches them for any employee in one click. The 10 templates below cover onboarding, offboarding, and recurring compliance. Copy the task lists into any Jira project by hand, or get them pre-built in TeamOps, free for teams up to 10 users.</p>
+    </div>
+
     <p>Building HR checklists from scratch is tedious and error-prone. You forget a step, someone else adds it back, and by the third hire you have three different versions of the onboarding process floating around in different documents.</p>
 
     <p>Templates fix this. Define the process once, use it every time. Below are 10 HR templates that cover the most common people operations workflows. All of them are available as pre-built templates in <a href="/templates">TeamOps</a>, and the task lists below can be adapted for any Jira project even without the app.</p>
@@ -183,13 +228,27 @@
       <p><strong>All templates are customizable.</strong> These are starting points. Your company will have tasks that are unique to your industry, tech stack, or culture. The value of a template is not that it is perfect out of the box. The value is that it gives you a structure to modify rather than a blank page to fill.</p>
     </div>
 
-    <h2>How to use these templates</h2>
+    <h2>How do you use these HR templates in Jira?</h2>
 
     <p>If you are using TeamOps, all seven built-in templates are available from the <a href="/templates">template library</a> and can be launched for any employee with one click. Tasks are created, assigned, and tracked automatically.</p>
 
     <p>If you are not using TeamOps, you can still use these task lists. Create a Confluence page for each template and copy the tasks manually when you hire or offboard someone. The trade-off is manual work on every use, but the structure is still better than starting from scratch.</p>
 
     <p>For teams that want to automate the process without a dedicated app, the <a href="/blog/onboarding-automation-jira">Jira automation guide</a> covers how to turn these checklists into automation rules.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>Does Jira have HR templates?</h3>
+    <p>Jira on its own does not ship HR templates. You can build onboarding, offboarding, and leave checklists yourself with issue types and workflows, or install <a href="/templates">TeamOps</a>, which adds 7 built-in HR templates (5 onboarding plus 2 offboarding) you can launch for any employee with one click. TeamOps is free for teams up to 10 users.</p>
+
+    <h3>Can you create an onboarding template in Jira?</h3>
+    <p>Yes. You can create a Jira issue with subtasks for each onboarding step and clone it for every new hire, which works but means manual copying each time. TeamOps provides 5 pre-built onboarding templates (Engineering, Sales, General, HR, and Executive) that create, assign, and track every task automatically.</p>
+
+    <h3>What HR workflows can you run in Jira?</h3>
+    <p>The common ones are employee onboarding, offboarding, leave and PTO requests, and recurring compliance reviews. Each can be modeled as a Jira issue with a task checklist. TeamOps packages onboarding, offboarding, and leave into one Forge-native app so HR data stays inside Atlassian.</p>
+
+    <h3>Are these Jira HR templates free?</h3>
+    <p>The task lists on this page are free to copy into any Jira project by hand. The 7 built-in TeamOps templates are free for teams up to 10 users; paid plans start at $2/user/month, a founding-member rate.</p>
 
     <div class="article-cta">
       <p>TeamOps handles this inside Jira. <a href="https://marketplace.atlassian.com/apps/522828381">Free for up to 10 users.</a></p>
