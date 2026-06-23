@@ -57,6 +57,55 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is BambooHR available on the Atlassian Marketplace?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. BambooHR is a standalone HRIS with its own login and admin console, not an Atlassian Marketplace app, so it does not run inside Jira. If you want HR workflows to live inside Jira, you need a Jira-native app such as TeamOps, which is built by PPLX Software on Atlassian Forge."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you manage leave in Jira without BambooHR?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. With a leave app such as TeamOps, Jira handles request submission, manager approval, automatic balance calculation, multi-country holiday detection, and a team availability view, without a separate HRIS. Jira on its own has no concept of a leave balance, which is why a dedicated app is needed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should you choose BambooHR over Jira for HR?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Choose BambooHR when you need a real employee database: searchable employee records, benefits administration, performance reviews, or HR compliance reporting such as EEO and ACA. Jira has no employee-record data model, so it cannot produce those reports."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Jira with TeamOps cheaper than BambooHR?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For teams up to 10 users, TeamOps is free, while BambooHR is paid per employee per month. Paid TeamOps plans start at $2 per user per month, a founding-member rate. Because TeamOps adds to a Jira a team already pays for, the marginal cost is small, whereas BambooHR is a separate line item. BambooHR is the better value when you actually need a full HRIS."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you use BambooHR and Jira together?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Some teams keep BambooHR for employee records and compliance while using Jira with TeamOps for day-to-day onboarding checklists, leave requests, and offboarding. This keeps routine approvals in the tool engineers already use while preserving the employee database and reporting in BambooHR."
+      }
+    }
+  ]
+}
+</script>
+
 <link rel="stylesheet" href="/styles.css">
 <style>
 .article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
@@ -124,6 +173,12 @@
       <span class="tag">Comparison</span>
     </div>
 
+    <p>Full disclosure up front: TeamOps is our app, built by PPLX Software, so we have a stake in this comparison. We have tried to be fair about where BambooHR is the better choice, because pretending otherwise helps no one.</p>
+
+    <div class="callout">
+      <p><strong>TL;DR:</strong> Pick BambooHR if you need a real HR system of record &mdash; employee records, benefits administration, performance reviews, or compliance reporting. Pick Jira (with a leave and onboarding app such as TeamOps) if your HR needs are mainly onboarding checklists, leave requests, and offboarding, and you already run on Atlassian; you avoid a second tool, a second login, and a second data silo, and it is free for teams up to 10 users. Most companies under 50 employees fall into the second case, where Jira is enough.</p>
+    </div>
+
     <p>BambooHR is the default answer when a growing company asks "what should we use for HR?" It is well-designed, covers most HR needs, and has strong brand recognition in the SMB market. At $8 to $16 per employee per month, it is not cheap, but it is straightforward.</p>
 
     <p>But for teams already running on Atlassian products, adding BambooHR introduces a new tool, a new login, a new vendor relationship, and a new data silo. The operational HR tasks that happen most frequently (onboarding checklists, leave requests, offboarding checklists) are coordination problems. And your team already has a coordination tool: Jira.</p>
@@ -154,7 +209,7 @@
 
     <p><strong>Roughly equal.</strong> Both handle task-based offboarding well. BambooHR ties it to the employee record. TeamOps ties it to the Jira project where the team works.</p>
 
-    <h2>Where BambooHR wins clearly</h2>
+    <h2>When should you choose BambooHR over Jira?</h2>
 
     <h3>Employee records and directory</h3>
 
@@ -194,11 +249,25 @@
       <p><strong>The honest answer:</strong> If your HR needs are primarily onboarding, leave management, and offboarding, Jira with TeamOps covers them well at a fraction of the cost. If you need employee records, benefits administration, compliance reporting, or performance management, you need BambooHR or an equivalent HRIS. Most companies under 50 employees fall into the first category.</p>
     </div>
 
-    <h2>A hybrid approach</h2>
+    <h2>Can you use BambooHR and Jira together?</h2>
 
     <p>The choice does not have to be binary. Some teams use BambooHR for employee records and compliance, while using Jira with TeamOps for day-to-day operational HR (onboarding checklists, leave requests, offboarding). This gives you the employee database and reporting from BambooHR without asking your engineering team to live in a separate tool for routine approvals.</p>
 
     <p>For a more detailed feature-by-feature breakdown, see the <a href="/comparison">full comparison page</a>.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>Is BambooHR available on the Atlassian Marketplace?</h3>
+    <p>No. BambooHR is a standalone HRIS with its own login and admin console, not an Atlassian Marketplace app, so it does not run inside Jira. If you want HR workflows to live inside Jira, you need a Jira-native app such as TeamOps, which is built by PPLX Software on Atlassian Forge.</p>
+
+    <h3>Can you manage leave in Jira without BambooHR?</h3>
+    <p>Yes. With a leave app such as TeamOps, Jira handles request submission, manager approval, automatic balance calculation, multi-country holiday detection, and a <a href="/blog/team-availability-jira">team availability view</a>, without a separate HRIS. Jira on its own has no concept of a leave balance, which is why a dedicated app is needed.</p>
+
+    <h3>When should you choose BambooHR over Jira for HR?</h3>
+    <p>Choose BambooHR when you need a real employee database: searchable employee records, benefits administration, performance reviews, or HR compliance reporting such as EEO and ACA. Jira has no employee-record data model, so it cannot produce those reports.</p>
+
+    <h3>Is Jira with TeamOps cheaper than BambooHR?</h3>
+    <p>For teams up to 10 users, TeamOps is free, while BambooHR is paid per employee per month. Paid TeamOps plans start at $2 per user per month, a founding-member rate. Because TeamOps adds to a Jira a team already pays for, the marginal cost is small, whereas BambooHR is a separate line item. BambooHR is the better value when you actually need a full HRIS.</p>
 
     <div class="article-cta">
       <p>TeamOps handles this inside Jira. <a href="https://marketplace.atlassian.com/apps/522828381">Free for up to 10 users.</a></p>
