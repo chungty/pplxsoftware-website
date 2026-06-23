@@ -1,3 +1,32 @@
+# pplxsoftware.com
 User-agent: *
 Allow: /
+
+# AI answer-engine crawlers — explicitly allowed for citation eligibility.
+# Index bots (OAI-SearchBot, PerplexityBot, Claude-SearchBot) gate whether we can be cited
+# in ChatGPT / Perplexity / Claude answers. See research: W26-geo-strategy.md.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
 Sitemap: https://pplxsoftware.com/sitemap.xml
