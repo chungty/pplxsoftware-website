@@ -57,6 +57,55 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is remote onboarding different from in-office onboarding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The goals are identical: get the new hire productive, connected, and confident. The difference is execution. In an office, half of onboarding happens by accident \u2014 the new hire overhears a conversation, asks the person next to them, or bumps into someone from another team. Remote, none of that happens unless you schedule it. Every relationship-building moment that an office creates for free has to be deliberately built: the buddy assignment, the team introductions, the first-week task, the recurring check-ins."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should be done before a remote new hire's first day?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Five things, all owned by IT and the manager: ship equipment and confirm delivery, provision every account the new hire will need on Day 1, send a welcome email with logistics, pre-schedule the first week of meetings, and create the onboarding checklist from a template. The test is simple \u2014 can the new hire log in and know what to do on their first morning without waiting for anyone?"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you track remote onboarding in Jira?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Turn the checklist into a Jira issue with sub-tasks for each task, grouped by phase (before Day 1, Day 1, Week 1, Weeks 2 to 4), and assign each sub-task to its owner so IT, HR, the manager, and the buddy all see their part. Native Jira has no built-in onboarding object, so most teams either hand-build this each time or use an app that templates it. TeamOps does the templating inside Jira and is free for teams up to 10 users."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does a buddy system matter more for remote hires?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A buddy is the new hire's safe channel for the questions they would otherwise ask the person sitting next to them. In an office that channel exists by default. Remote, a confused new hire just goes quiet in Slack and nobody notices for days. The buddy makes that silence visible and gives the new hire one patient, reliable person to ask before they disengage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long should remote onboarding take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Plan for a full 30 days, not a single first day. The phases run before Day 1 (setup), Day 1 (welcome and access), Week 1 (first contribution and team relationships), and Weeks 2 to 4 (cross-team context, compliance, and a 30-day check-in). The 30-day check-in and the feedback survey close the loop and tell you what to fix for the next hire."
+      }
+    }
+  ]
+}
+</script>
+
 <link rel="stylesheet" href="/styles.css">
 <style>
 .article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
@@ -124,6 +173,10 @@
       <span class="tag">Remote</span>
     </div>
 
+    <div class="callout">
+      <p><strong>TL;DR:</strong> Remote onboarding changes nothing about the goals and everything about how you reach them &mdash; the ambient things an office does for free (overhearing context, asking the person next to you, bumping into another team) have to be scheduled instead. Make every implicit moment explicit: provision access before Day 1, assign a buddy, give a shippable first-week task, and run regular check-ins so a quiet new hire gets noticed early. To run it in Jira, turn the 22-task checklist below into an issue with phase-grouped sub-tasks assigned to IT, HR, the manager, and the buddy &mdash; TeamOps templates this and is free for teams up to 10 users.</p>
+    </div>
+
     <p>Remote onboarding has the same goals as in-office onboarding: get the new hire productive, connected, and confident. The challenge is that none of the passive, ambient things that happen in an office (overhearing conversations, reading the room, asking the person next to you a quick question) happen remotely. Everything that was implicit has to become explicit and scheduled.</p>
 
     <p>This checklist covers the 22 tasks that matter most for remote hires, organized by phase. It is built from patterns we have seen across engineering teams, but most of it applies to any remote role.</p>
@@ -187,6 +240,23 @@
     <p>The other critical difference is visibility. In an office, a confused new hire looks confused. You can see it. Remote, they go quiet in Slack, and nobody notices for three days. Regular check-ins and a tracked checklist catch problems early, before the new hire disengages.</p>
 
     <p>If you are using Jira, the <a href="/blog/onboarding-automation-jira">onboarding automation guide</a> explains how to turn this checklist into a repeatable process with templates and tracked progress.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>How is remote onboarding different from in-office onboarding?</h3>
+    <p>The goals are identical: get the new hire productive, connected, and confident. The difference is execution. In an office, half of onboarding happens by accident &mdash; the new hire overhears a conversation, asks the person next to them, or bumps into someone from another team. Remote, none of that happens unless you schedule it. Every relationship-building moment that an office creates for free has to be deliberately built: the buddy assignment, the team introductions, the first-week task, the recurring check-ins.</p>
+
+    <h3>What should be done before a remote new hire's first day?</h3>
+    <p>Five things, all owned by IT and the manager: ship equipment and confirm delivery, provision every account the new hire will need on Day 1, send a welcome email with logistics, pre-schedule the first week of meetings, and create the onboarding checklist from a template. The test is simple &mdash; can the new hire log in and know what to do on their first morning without waiting for anyone?</p>
+
+    <h3>How do you track remote onboarding in Jira?</h3>
+    <p>Turn the checklist into a Jira issue with sub-tasks for each task, grouped by phase (before Day 1, Day 1, Week 1, Weeks 2 to 4), and assign each sub-task to its owner so IT, HR, the manager, and the buddy all see their part. Native Jira has no built-in onboarding object, so most teams either hand-build this each time or use an app that templates it. TeamOps does the templating inside Jira and is free for teams up to 10 users.</p>
+
+    <h3>Why does a buddy system matter more for remote hires?</h3>
+    <p>A buddy is the new hire's safe channel for the questions they would otherwise ask the person sitting next to them. In an office that channel exists by default. Remote, a confused new hire just goes quiet in Slack and nobody notices for days. The buddy makes that silence visible and gives the new hire one patient, reliable person to ask before they disengage.</p>
+
+    <h3>How long should remote onboarding take?</h3>
+    <p>Plan for a full 30 days, not a single first day. The phases run before Day 1 (setup), Day 1 (welcome and access), Week 1 (first contribution and team relationships), and Weeks 2 to 4 (cross-team context, compliance, and a 30-day check-in). The 30-day check-in and the feedback survey close the loop and tell you what to fix for the next hire.</p>
 
     <div class="article-cta">
       <p>TeamOps handles this inside Jira. <a href="https://marketplace.atlassian.com/apps/522828381">Free for up to 10 users.</a></p>

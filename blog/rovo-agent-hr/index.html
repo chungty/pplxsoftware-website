@@ -57,6 +57,55 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Atlassian Rovo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rovo is Atlassian's AI layer that works across Jira, Confluence, and other Atlassian products. It can search, summarize, and take actions on a user's behalf, including invoking actions exposed by Forge apps. Rovo is available on Jira Premium or Enterprise plans."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does TeamOps work with Rovo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. TeamOps runs natively on Atlassian and ships a Rovo agent with 9 HR actions, so people can ask about leave balances, team availability, and onboarding status in plain language instead of opening the app UI. The agent reuses the same Forge resolvers that power the TeamOps interface."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What plan do you need for Rovo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Rovo requires Jira Premium or Enterprise plan. TeamOps itself runs on any Jira plan and is free for teams up to 10 users, but the Rovo agent specifically needs a Premium or Enterprise subscription because that is where Atlassian makes Rovo available."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does a Rovo HR agent handle permissions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Permission checks happen in the Forge resolver, not in the agent. Rovo passes the requesting user's Atlassian account ID to each action, and the resolver applies the same role-based access control the UI uses. If someone asks for data they are not allowed to see, the resolver returns an access-denied response."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the Rovo agent submit or approve leave?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The TeamOps agent is read-first: most actions return information such as balances, availability, and onboarding status. Higher-consequence steps belong in a UI with explicit confirmation rather than a casual chat message, because an approval or submission affects team capacity and consent."
+      }
+    }
+  ]
+}
+</script>
+
 <link rel="stylesheet" href="/styles.css">
 <style>
 .article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
@@ -125,6 +174,10 @@
       <span>8 min read</span>
       <span class="tag">Rovo</span>
       <span class="tag">Forge</span>
+    </div>
+
+    <div class="callout">
+      <p><strong>TL;DR:</strong> A Rovo HR agent in Jira lets people ask plain-language questions &mdash; "How many vacation days do I have left?", "Who is out next week?", "How is the new hire's onboarding going?" &mdash; and get answers without opening an app. TeamOps runs natively on Atlassian and ships a Rovo agent with 9 HR actions covering leave balances, team availability, and onboarding status. Rovo requires Jira Premium or Enterprise plan; TeamOps itself runs on any Jira plan and is free for teams up to 10 users.</p>
     </div>
 
     <p>Atlassian Rovo is an AI layer that sits across Jira, Confluence, and other Atlassian products. It can search, summarize, and take actions on behalf of users. For Forge app developers, Rovo opens a new interaction model: instead of users navigating to your app's UI, they can ask questions in natural language and the agent retrieves data from your app's backend.</p>
@@ -238,6 +291,23 @@
     </ol>
 
     <p>The Forge documentation covers the manifest schema and resolver integration in detail. The <a href="/roadmap">TeamOps roadmap</a> includes planned Rovo agent expansions if you want to follow our progress.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>What is Atlassian Rovo?</h3>
+    <p>Rovo is Atlassian's AI layer that works across Jira, Confluence, and other Atlassian products. It can search, summarize, and take actions on a user's behalf, including invoking actions exposed by Forge apps. Rovo is available on Jira Premium or Enterprise plans.</p>
+
+    <h3>Does TeamOps work with Rovo?</h3>
+    <p>Yes. TeamOps runs natively on Atlassian and ships a Rovo agent with 9 HR actions, so people can ask about leave balances, team availability, and onboarding status in plain language instead of opening the app UI. The agent reuses the same Forge resolvers that power the TeamOps interface.</p>
+
+    <h3>What plan do you need for Rovo?</h3>
+    <p>Rovo requires Jira Premium or Enterprise plan. TeamOps itself runs on any Jira plan and is free for teams up to 10 users, but the Rovo agent specifically needs a Premium or Enterprise subscription because that is where Atlassian makes Rovo available.</p>
+
+    <h3>How does a Rovo HR agent handle permissions?</h3>
+    <p>Permission checks happen in the Forge resolver, not in the agent. Rovo passes the requesting user's Atlassian account ID to each action, and the resolver applies the same role-based access control the UI uses. If someone asks for data they are not allowed to see, the resolver returns an access-denied response.</p>
+
+    <h3>Can the Rovo agent submit or approve leave?</h3>
+    <p>The TeamOps agent is read-first: most actions return information such as balances, availability, and onboarding status. Higher-consequence steps belong in a UI with explicit confirmation rather than a casual chat message, because an approval or submission affects team capacity and consent.</p>
 
     <div class="article-cta">
       <p>TeamOps handles this inside Jira. <a href="https://marketplace.atlassian.com/apps/522828381">Free for up to 10 users.</a></p>

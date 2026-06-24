@@ -57,6 +57,55 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do you connect PTO tracking to capacity planning in Jira?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Move leave tracking into the same system as your sprint board, then subtract approved time off and public holidays from your theoretical sprint capacity before you commit scope. Native Jira has no leave object, so the connection is usually a manual step (a capacity spreadsheet) or a leave app that surfaces approved absences in a team availability view inside Jira."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does native Jira not account for PTO in sprint capacity?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Jira has no built-in concept of a leave request, a balance, or a time-off calendar, so sprint capacity is calculated as if everyone is available every working day. PTO usually lives in a separate spreadsheet or HR tool, and nothing bridges the two automatically. The gap is closed either manually before each planning session or by a leave app that puts approved absences next to the sprint board."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you calculate real sprint capacity with time off?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start from the theoretical maximum (working days in the sprint times team size), then subtract public holidays that fall in the window, approved PTO per person, and recurring non-sprint work like on-call and support. A five-person team over a 10-day sprint has a 50 person-day maximum; one person out three days plus a holiday brings it to 44, or 88 percent."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should you put PTO on the Jira board as issues?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can create Out of Office issues so absences show up during planning, but it clutters the board with non-work items and inflates issue counts. A cleaner approach is leave data that lives in Jira as its own object and shows up in a team availability view, so planners see who is out without filling the backlog with time-off tickets."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can PTO data help with quarterly capacity planning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Aggregated over time, leave data reveals seasonal patterns: most teams lose 30 to 40 percent of capacity in late December, PTO spikes on summer Fridays, and carried-over balances get used in Q1. Those patterns are only visible when historical leave data sits in a queryable system rather than scattered across spreadsheets."
+      }
+    }
+  ]
+}
+</script>
+
 <link rel="stylesheet" href="/styles.css">
 <style>
 .article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
@@ -122,6 +171,10 @@
       <span>7 min read</span>
       <span class="tag">Leave</span>
       <span class="tag">Planning</span>
+    </div>
+
+    <div class="callout">
+      <p><strong>TL;DR:</strong> To connect PTO to capacity planning in Jira, calculate real sprint capacity by subtracting approved time off and public holidays from your theoretical maximum (working days times team size), then scope the sprint to that number instead of 100 percent. The gap is that native Jira has no leave object, so PTO and sprint planning live in separate systems and the math only happens if someone remembers to do it. Closing the gap means either a manual capacity spreadsheet each sprint, or leave tracking that lives in Jira and surfaces approved absences in a team availability view.</p>
     </div>
 
     <p>Sprint planning typically starts with a question: "How many story points can we commit to this sprint?" The answer depends on who is available. And who is available depends on who has approved time off during the sprint window.</p>
@@ -209,6 +262,23 @@
       <li><strong>Scope the sprint to actual capacity,</strong> not theoretical. If capacity is 88%, plan for 88%.</li>
       <li><strong>Review PTO trends quarterly.</strong> Identify months with historically lower capacity and adjust delivery expectations accordingly.</li>
     </ol>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>How do you connect PTO tracking to capacity planning in Jira?</h3>
+    <p>Move leave tracking into the same system as your sprint board, then subtract approved time off and public holidays from your theoretical sprint capacity before you commit scope. Native Jira has no leave object, so the connection is usually a manual step (a capacity spreadsheet) or a leave app that surfaces approved absences in a team availability view inside Jira.</p>
+
+    <h3>Why does native Jira not account for PTO in sprint capacity?</h3>
+    <p>Jira has no built-in concept of a leave request, a balance, or a time-off calendar, so sprint capacity is calculated as if everyone is available every working day. PTO usually lives in a separate spreadsheet or HR tool, and nothing bridges the two automatically. The gap is closed either manually before each planning session or by a leave app that puts approved absences next to the sprint board.</p>
+
+    <h3>How do you calculate real sprint capacity with time off?</h3>
+    <p>Start from the theoretical maximum (working days in the sprint times team size), then subtract public holidays that fall in the window, approved PTO per person, and recurring non-sprint work like on-call and support. A five-person team over a 10-day sprint has a 50 person-day maximum; one person out three days plus a holiday brings it to 44, or 88 percent.</p>
+
+    <h3>Should you put PTO on the Jira board as issues?</h3>
+    <p>You can create Out of Office issues so absences show up during planning, but it clutters the board with non-work items and inflates issue counts. A cleaner approach is leave data that lives in Jira as its own object and shows up in a team availability view, so planners see who is out without filling the backlog with time-off tickets.</p>
+
+    <h3>Can PTO data help with quarterly capacity planning?</h3>
+    <p>Yes. Aggregated over time, leave data reveals seasonal patterns: most teams lose 30 to 40 percent of capacity in late December, PTO spikes on summer Fridays, and carried-over balances get used in Q1. Those patterns are only visible when historical leave data sits in a queryable system rather than scattered across spreadsheets.</p>
 
     <div class="article-cta">
       <p>TeamOps handles this inside Jira. <a href="https://marketplace.atlassian.com/apps/522828381">Free for up to 10 users.</a></p>

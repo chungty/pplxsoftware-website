@@ -57,6 +57,55 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does Jira show who is out of office?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Jira has no native concept of who is available on a given day. Out of the box, there is no leave request, no time-off calendar, and no team availability view. Teams approximate it with Slack statuses, Google Calendar blocks, a shared dashboard of OOO issues, or a Marketplace app that adds a real availability view."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I see team availability in Jira?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The three common ways are: read Slack statuses and Google Calendar, build a Jira dashboard with a JQL filter over Out-of-Office issues, or install a Marketplace app that adds a team availability view. Each works at a different team size. The most reliable source is a leave-approval workflow, because the availability view is populated automatically when a request is approved instead of depending on people remembering to update a status."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I build an out-of-office dashboard in Jira without an app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Create an OOO issue type with start-date and end-date fields, then build a dashboard with a JQL filter that surfaces active absences for the current week. It works, but it depends on everyone creating an issue for every absence, so the data degrades whenever someone forgets. It also mixes OOO issues with real work in the project."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What makes a team availability view reliable?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Trustworthy data. The most reliable source of absence data is the leave approval system itself: when an absence is approved through a workflow, the availability view is always current. A view that depends on people remembering to update a calendar or set a Slack status will always be incomplete. A good view is also visible inside Jira, holiday-aware, and scoped to one team rather than the whole company."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does TeamOps show who is out of office in Jira?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. TeamOps builds team availability into the leave workflow, so an approved leave request automatically shows the employee as out on those dates, directly inside the Jira project. Public holidays are included based on the team's country, and because TeamOps is Forge-native the availability data stays on Atlassian's infrastructure. It is free for teams up to 10 users."
+      }
+    }
+  ]
+}
+</script>
+
 <link rel="stylesheet" href="/styles.css">
 <style>
 .article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
@@ -124,6 +173,10 @@
       <span class="tag">Jira</span>
     </div>
 
+    <div class="callout">
+      <p><strong>TL;DR:</strong> Jira has no built-in way to show who is out of office, so you bridge the gap one of three ways: read Slack statuses and Google Calendar, build a Jira dashboard with a JQL filter over Out-of-Office issues, or install a Marketplace app that adds a real team availability view. The first two break down because they rely on people remembering to update a status. The most reliable source is a leave-approval workflow: when an absence is approved, the availability view populates automatically. Which one fits depends on your team size and how much you trust the data.</p>
+    </div>
+
     <p>It is 9:15am Monday. You need to assign a critical bug fix. You open Jira, look at the team board, and realize you have no idea who is actually working today. Two people mentioned taking Friday off, but is anyone out today? You check Slack statuses. One person has a palm tree emoji. Another has nothing set. You send a message in the team channel: "Who's around this week?"</p>
 
     <p>This is a daily friction point for engineering managers and scrum masters. Jira is where the work lives, but Jira has no native concept of who is available on any given day. The result is a patchwork of Slack statuses, Google Calendar events, and tribal knowledge that is never quite accurate.</p>
@@ -187,6 +240,23 @@
     <p>Because TeamOps is Forge-native, the availability data stays on Atlassian's infrastructure. There is no external server storing your team's absence patterns.</p>
 
     <p>For teams evaluating different approaches, the <a href="/comparison">comparison page</a> breaks down how TeamOps compares to standalone calendar apps and full HRIS platforms.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>Does Jira show who is out of office?</h3>
+    <p>Jira has no native concept of who is available on a given day. Out of the box, there is no leave request, no time-off calendar, and no team availability view. Teams approximate it with Slack statuses, Google Calendar blocks, a shared dashboard of OOO issues, or a Marketplace app that adds a real availability view.</p>
+
+    <h3>How do I see team availability in Jira?</h3>
+    <p>The three common ways are: read Slack statuses and Google Calendar, build a Jira dashboard with a JQL filter over Out-of-Office issues, or install a Marketplace app that adds a team availability view. Each works at a different team size. The most reliable source is a leave-approval workflow, because the availability view is populated automatically when a request is approved instead of depending on people remembering to update a status.</p>
+
+    <h3>Can I build an out-of-office dashboard in Jira without an app?</h3>
+    <p>Yes. Create an OOO issue type with start-date and end-date fields, then build a dashboard with a JQL filter that surfaces active absences for the current week. It works, but it depends on everyone creating an issue for every absence, so the data degrades whenever someone forgets. It also mixes OOO issues with real work in the project.</p>
+
+    <h3>What makes a team availability view reliable?</h3>
+    <p>Trustworthy data. The most reliable source of absence data is the leave approval system itself: when an absence is approved through a workflow, the availability view is always current. A view that depends on people remembering to update a calendar or set a Slack status will always be incomplete. A good view is also visible inside Jira, holiday-aware, and scoped to one team rather than the whole company.</p>
+
+    <h3>Does TeamOps show who is out of office in Jira?</h3>
+    <p>Yes. TeamOps builds team availability into the leave workflow, so an approved leave request automatically shows the employee as out on those dates, directly inside the Jira project. Public holidays are included based on the team's country, and because TeamOps is Forge-native the availability data stays on Atlassian's infrastructure. It is free for teams up to 10 users.</p>
 
     <div class="article-cta">
       <p>TeamOps handles this inside Jira. <a href="https://marketplace.atlassian.com/apps/522828381">Free for up to 10 users.</a></p>
