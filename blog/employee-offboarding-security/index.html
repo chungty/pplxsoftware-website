@@ -57,6 +57,47 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What security tasks are most often missed during offboarding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The most-missed tasks are the long-lived credentials that do not expire when an account is disabled: SSH keys on servers and Git providers, personal access tokens and API keys, OAuth grants for connected apps, shared secrets in a vault, and direct cloud IAM access. These survive a disabled identity-provider account, so they have to be removed individually."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is disabling SSO enough to revoke a departing employee's access?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Disabling SSO stops session-based logins, but personal access tokens, API keys, and SSH keys bypass SSO entirely. They stay valid until you explicitly revoke them, so SSO removal has to be paired with revoking long-lived credentials."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should you rotate shared passwords when someone leaves?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Every shared secret the departing person could view should be rotated, starting with production database passwords, then service-account tokens, then shared tool passwords. This is the most frequently skipped step because rotating a shared credential means updating every service that uses it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you make offboarding security tasks repeatable?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Put every security task into a structured checklist with an assigned owner and a due date of the last day or sooner. A mental list or a stale document is what causes tasks to be missed; a checklist that names SSH keys, tokens, OAuth grants, secrets, and cloud access keeps the steps from being forgotten."
+      }
+    }
+  ]
+}
+</script>
+
 <link rel="stylesheet" href="/styles.css">
 <style>
 .article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
@@ -128,6 +169,10 @@
 
     <p>These are the gaps that create security incidents. A departing employee does not need to be malicious for this to matter. Unrevoked credentials are an attack surface. If that employee's personal device is compromised six months later, the attacker inherits every credential you never cleaned up.</p>
 
+    <div class="callout">
+      <p><strong>TL;DR:</strong> The security tasks that matter most during offboarding are the long-lived credentials that survive a disabled account: SSH keys on servers, personal access tokens and API keys, OAuth grants, shared secrets in your vault, and direct cloud IAM access. Revoke these on or before the last day, and rotate every shared secret the person could see. The biggest risk is assuming that disabling SSO covers it &mdash; tokens, keys, and SSH access bypass SSO entirely and stay valid until you explicitly remove them.</p>
+    </div>
+
     <h2>SSH keys</h2>
 
     <p>Engineers add SSH keys to servers, jump hosts, and Git providers. Over time, a single developer might have SSH keys deployed across a dozen systems. When they leave, the keys stay unless someone actively removes them.</p>
@@ -197,7 +242,7 @@
       <li>Audit CloudTrail, GCP audit logs, or Azure Activity Logs for the employee's account to identify any access patterns you might have missed.</li>
     </ul>
 
-    <h2>Code ownership and deploy access</h2>
+    <h2>What about code ownership and deploy access?</h2>
 
     <p>This is less about security and more about operational risk. If the departing employee was a CODEOWNERS entry, a required reviewer, or the only person with deploy access to a specific service, their departure creates a gap.</p>
 
@@ -209,11 +254,25 @@
       <li>Document any operational knowledge that was not previously written down (runbooks, incident procedures, escalation paths).</li>
     </ul>
 
-    <h2>Making this repeatable</h2>
+    <h2>How do you keep these tasks from being skipped?</h2>
 
     <p>The reason these tasks get skipped is not that people do not know about them. It is that they are not in the checklist. If your offboarding process is a mental list or a Google Doc that has not been updated since 2023, security tasks will be missed.</p>
 
     <p>The fix is a structured checklist that includes every security task, assigned to the right person, with a due date of the employee's last day or sooner. The <a href="/templates/engineering-offboarding">Engineering Offboarding template</a> in TeamOps includes all of the above. For the broader offboarding process including HR and legal tasks, see the <a href="/blog/offboarding-checklist-jira">full offboarding checklist</a>.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>What security tasks are most often missed during offboarding?</h3>
+    <p>The most-missed tasks are the long-lived credentials that do not expire when an account is disabled: SSH keys on servers and Git providers, personal access tokens and API keys, OAuth grants for connected apps, shared secrets in a vault, and direct cloud IAM access. These survive a disabled identity-provider account, so they have to be removed individually.</p>
+
+    <h3>Is disabling SSO enough to revoke a departing employee's access?</h3>
+    <p>No. Disabling SSO stops session-based logins, but personal access tokens, API keys, and SSH keys bypass SSO entirely. They stay valid until you explicitly revoke them, so SSO removal has to be paired with revoking long-lived credentials.</p>
+
+    <h3>Should you rotate shared passwords when someone leaves?</h3>
+    <p>Yes. Every shared secret the departing person could view should be rotated, starting with production database passwords, then service-account tokens, then shared tool passwords. This is the most frequently skipped step because rotating a shared credential means updating every service that uses it.</p>
+
+    <h3>How do you make offboarding security tasks repeatable?</h3>
+    <p>Put every security task into a structured checklist with an assigned owner and a due date of the last day or sooner. A mental list or a stale document is what causes tasks to be missed; a checklist that names SSH keys, tokens, OAuth grants, secrets, and cloud access keeps the steps from being forgotten.</p>
 
     <div class="article-cta">
       <p>TeamOps handles this inside Jira. <a href="https://marketplace.atlassian.com/apps/522828381">Free for up to 10 users.</a></p>

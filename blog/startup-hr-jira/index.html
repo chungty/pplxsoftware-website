@@ -57,6 +57,47 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can a startup run HR in Jira instead of buying an HRIS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, for the core people-ops workflows most startups under 75 employees actually use: onboarding checklists, time-off requests and balances, offboarding, a basic directory, and headcount reporting. Jira does not do this out of the box, so teams add a Forge app like TeamOps. Payroll, benefits, and performance reviews still belong in specialized tools."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What HR workflows should stay out of Jira?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Payroll and benefits administration belong in a dedicated provider such as Gusto, Deel, or your PEO, because they are regulated financial operations handling sensitive personal data. Performance reviews work better in a purpose-built tool like Lattice or 15Five. Jira fits task coordination, checklists, and approvals."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does it cost to run HR in Jira?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Beyond what you already pay for Jira, a startup needs one payroll provider and a Marketplace app for onboarding, offboarding, and leave. TeamOps is free for teams up to 10 users, with paid plans starting at $2/user/month (a founding-member rate). That is meaningfully less than adding a separate HRIS for a small team watching burn."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should a startup move from Jira to a dedicated HRIS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Once you pass about 75 employees, need international payroll across several tax regimes, require audit trails Jira's permission model cannot satisfy, or hire a dedicated HR person who expects professional HR tooling. Below that threshold, Jira plus a few purpose-built extensions covers the need."
+      }
+    }
+  ]
+}
+</script>
+
 <link rel="stylesheet" href="/styles.css">
 <style>
 .article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
@@ -129,6 +170,10 @@
     <p>If your team already lives in Jira for project management, there is a compelling argument for keeping HR there too. Fewer tools means fewer logins, fewer integrations to maintain, and fewer invoices to approve. The question is whether Jira can actually handle it.</p>
 
     <p>The answer is: not out of the box, but with the right approach, it can cover the 80% of HR workflows that startups actually need.</p>
+
+    <div class="callout">
+      <p><strong>TL;DR:</strong> A startup can run HR inside Jira instead of buying a separate HRIS by adding a Forge app such as TeamOps to cover onboarding checklists, time-off tracking, offboarding, a basic directory, and headcount reporting. This works well up to roughly 75 employees and keeps tool count low: Jira, a payroll provider, and one Marketplace app (free for teams up to 10 users). The limits are real. Keep payroll, benefits, and performance reviews in specialized tools, because those involve regulated finances, sensitive data, and review experiences Jira handles poorly.</p>
+    </div>
 
     <h2>What startups actually need from HR tooling</h2>
 
@@ -208,6 +253,20 @@
     </ol>
 
     <p>Total tool count: four. Total additional cost beyond what you already pay for Jira: one payroll provider and a free Marketplace app. For a Series A startup watching burn rate, this is a meaningful difference compared to adding BambooHR at $8 per employee per month.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>Can a startup run HR in Jira instead of buying an HRIS?</h3>
+    <p>Yes, for the core people-ops workflows most startups under 75 employees actually use: onboarding checklists, time-off requests and balances, offboarding, a basic directory, and headcount reporting. Jira does not do this out of the box, so teams add a Forge app like TeamOps. Payroll, benefits, and performance reviews still belong in specialized tools.</p>
+
+    <h3>What HR workflows should stay out of Jira?</h3>
+    <p>Payroll and benefits administration belong in a dedicated provider such as Gusto, Deel, or your PEO, because they are regulated financial operations handling sensitive personal data. Performance reviews work better in a purpose-built tool like Lattice or 15Five. Jira fits task coordination, checklists, and approvals.</p>
+
+    <h3>How much does it cost to run HR in Jira?</h3>
+    <p>Beyond what you already pay for Jira, a startup needs one payroll provider and a Marketplace app for onboarding, offboarding, and leave. TeamOps is free for teams up to 10 users, with paid plans starting at $2/user/month (a founding-member rate). That is meaningfully less than adding a separate HRIS for a small team watching burn.</p>
+
+    <h3>When should a startup move from Jira to a dedicated HRIS?</h3>
+    <p>Once you pass about 75 employees, need international payroll across several tax regimes, require audit trails Jira's permission model cannot satisfy, or hire a dedicated HR person who expects professional HR tooling. Below that threshold, Jira plus a few purpose-built extensions covers the need.</p>
 
     <div class="article-cta">
       <p>TeamOps handles this inside Jira. <a href="https://marketplace.atlassian.com/apps/522828381">Free for up to 10 users.</a></p>

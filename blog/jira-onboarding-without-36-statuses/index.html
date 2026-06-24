@@ -57,6 +57,47 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many statuses do you need to run onboarding in Jira?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "About three is enough: a to-do state, an in-progress state, and a done state. Onboarding is a checklist of parallel tasks, so the structure belongs in the tasks themselves, not in a long status chain. Adding a status per step produces a 36-status workflow that nobody can read and that forces parallel work into a single lane."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should each onboarding step be its own Jira status?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. A Jira status describes where one issue sits in a single lifecycle. Onboarding steps run in parallel and have different owners, so each step should be a task or sub-task grouped by department and phase, with the parent issue carrying a simple to-do, in-progress, done status."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you group onboarding tasks by department in Jira?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use components or labels to tag each task with its owning department, and use the phase field or a fix-version-style grouping for the timeline. Components let IT, HR, and the hiring manager filter to their own slice without scrolling through everyone else's tasks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you track onboarding progress in Jira without a custom workflow?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Count completed tasks against total tasks for each new hire and surface that as a progress indicator. You do not need a custom status workflow to know that 14 of 28 tasks are done; you need the tasks grouped and counted. A purpose-built onboarding layer such as TeamOps does this without changing your Jira workflow."
+      }
+    }
+  ]
+}
+</script>
+
 <link rel="stylesheet" href="/styles.css">
 <style>
 /* Blog post page-specific styles */
@@ -139,6 +180,10 @@
       <span>8 min read</span>
       <span class="tag">Onboarding</span>
       <span class="tag">Jira</span>
+    </div>
+
+    <div class="callout">
+      <p><strong>TL;DR:</strong> Keep your onboarding workflow to about three statuses &mdash; to do, in progress, done &mdash; and put the real structure in the tasks, not the status chain. Onboarding is a parallel checklist with a different owner on every line, so group the steps with tasks or sub-tasks, components for department, and a phase field for the timeline. A status per step gives you the unreadable 36-status workflow this page is named for, because a status chain is linear while onboarding is not.</p>
     </div>
 
     <p>Your team already runs on Jira. Sprints, bug tracking, releases. So when someone from HR asks if they can manage new-hire onboarding in Jira too, you say yes. Obviously.</p>
@@ -277,7 +322,22 @@
 
     <p>No Jira workflow changes. No custom fields. No automation rules to maintain. Just a purpose-built onboarding system that works the way HR teams actually think &mdash; in checklists, phases, and milestones.</p>
 
+    <h2>Frequently asked questions</h2>
+
+    <h3>How many statuses do you need to run onboarding in Jira?</h3>
+    <p>About three is enough: a to-do state, an in-progress state, and a done state. Onboarding is a checklist of parallel tasks, so the structure belongs in the tasks themselves, not in a long status chain. Adding a status per step produces a 36-status workflow that nobody can read and that forces parallel work into a single lane.</p>
+
+    <h3>Should each onboarding step be its own Jira status?</h3>
+    <p>No. A Jira status describes where one issue sits in a single lifecycle. Onboarding steps run in parallel and have different owners, so each step should be a task or sub-task grouped by department and phase, with the parent issue carrying a simple to-do, in-progress, done status.</p>
+
+    <h3>How do you group onboarding tasks by department in Jira?</h3>
+    <p>Use components or labels to tag each task with its owning department, and use the phase field or a fix-version-style grouping for the timeline. Components let IT, HR, and the hiring manager filter to their own slice without scrolling through everyone else's tasks.</p>
+
+    <h3>Can you track onboarding progress in Jira without a custom workflow?</h3>
+    <p>Yes. Count completed tasks against total tasks for each new hire and surface that as a progress indicator. You do not need a custom status workflow to know that 14 of 28 tasks are done; you need the tasks grouped and counted. A purpose-built onboarding layer such as TeamOps does this without changing your Jira workflow.</p>
+
     <div class="article-cta">
+
       <p>TeamOps handles this inside Jira. <a href="https://marketplace.atlassian.com/apps/522828381">Free for up to 10 users.</a></p>
     </div>
 

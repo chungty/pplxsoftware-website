@@ -57,6 +57,55 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do you track time off in Jira?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There are four common ways. Create one Jira issue per absence and move it through an approval workflow. Add Jira automation rules and custom fields to route approvals and report on leave. Keep balances in a spreadsheet alongside Jira. Or install a purpose-built leave app that stores requests in their own data model. The first three reuse Jira primitives and break down on balance tracking; the fourth adds leave as a native capability."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you submit a leave request in Jira without creating a ticket?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not with native Jira. Native Jira has no leave request type, so the do-it-yourself approach turns every absence into an issue on your board. A leave app such as TeamOps stores each request in a separate leave data model, so requests and approvals never appear as tickets in your backlog."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does one issue per PTO day clutter a Jira board?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A 50-person team takes roughly 200 days of PTO a year. If each day off becomes an issue, your project accumulates hundreds of tickets that are not real work, and sprint boards mix delivery items with absences. The clutter compounds every year as sick days, half-days, and multi-day spans pile up."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can JQL track remaining vacation balances in Jira?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only approximately. JQL can count resolved leave issues, but it cannot compute a running balance, and it does not account for half-days, multi-day spans, accrual, or carry-over. A purpose-built app such as TeamOps computes remaining days automatically from approved requests and your accrual policy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do leave requests live in a Forge-native Jira app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In a Forge-native app such as TeamOps, leave requests, balances, and approvals live in their own data model on Atlassian infrastructure, separate from your project issues. That keeps your sprint board clean and keeps HR data inside Atlassian rather than on an external server."
+      }
+    }
+  ]
+}
+</script>
+
 <link rel="stylesheet" href="/styles.css">
 <style>
 .article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
@@ -122,6 +171,10 @@
       <span>7 min read</span>
       <span class="tag">Leave</span>
       <span class="tag">Jira</span>
+    </div>
+
+    <div class="callout">
+      <p><strong>TL;DR:</strong> To track time off in Jira, pick one of four methods: one issue per absence, automation rules with custom fields, a spreadsheet kept alongside Jira, or a purpose-built leave app. The do-it-yourself routes work for request logging and approvals but break on balance tracking, because native Jira cannot compute a running balance and JQL only approximates it. A Forge-native app such as TeamOps stores each leave request in its own data model, computes remaining days from approved requests automatically, and keeps the absences off your sprint board.</p>
     </div>
 
     <p>A 50-person team takes roughly 200 days of PTO per year. If each day off becomes a Jira issue, your backlog now has 200 tickets that have nothing to do with the actual work your team ships. Multiply that by a few years, add sick days and half-days, and you are looking at thousands of issues clogging your project.</p>
@@ -195,6 +248,23 @@
     </div>
 
   
+    <h2>Frequently asked questions</h2>
+
+    <h3>How do you track time off in Jira?</h3>
+    <p>There are four common ways. Create one Jira issue per absence and move it through an approval workflow. Add Jira automation rules and custom fields to route approvals and report on leave. Keep balances in a spreadsheet alongside Jira. Or install a purpose-built leave app that stores requests in their own data model. The first three reuse Jira primitives and break down on balance tracking; the fourth adds leave as a native capability.</p>
+
+    <h3>Can you submit a leave request in Jira without creating a ticket?</h3>
+    <p>Not with native Jira. Native Jira has no leave request type, so the do-it-yourself approach turns every absence into an issue on your board. A leave app such as <a href="https://marketplace.atlassian.com/apps/522828381" target="_blank" rel="noopener">TeamOps</a> stores each request in a separate leave data model, so requests and approvals never appear as tickets in your backlog.</p>
+
+    <h3>Why does one issue per PTO day clutter a Jira board?</h3>
+    <p>A 50-person team takes roughly 200 days of PTO a year. If each day off becomes an issue, your project accumulates hundreds of tickets that are not real work, and sprint boards mix delivery items with absences. The clutter compounds every year as sick days, half-days, and multi-day spans pile up.</p>
+
+    <h3>Can JQL track remaining vacation balances in Jira?</h3>
+    <p>Only approximately. JQL can count resolved leave issues, but it cannot compute a running balance, and it does not account for half-days, multi-day spans, accrual, or carry-over. A purpose-built app such as TeamOps computes remaining days automatically from approved requests and your accrual policy.</p>
+
+    <h3>Where do leave requests live in a Forge-native Jira app?</h3>
+    <p>In a Forge-native app such as TeamOps, leave requests, balances, and approvals live in their own data model on Atlassian infrastructure, separate from your project issues. That keeps your sprint board clean and keeps HR data inside Atlassian rather than on an external server. For a broader walkthrough, see our <a href="/blog/jira-leave-management-guide">complete guide to leave management in Jira</a>.</p>
+
     <div class="callout related-guides">
       <p><strong>Related guides:</strong> <a href="/blog/jira-leave-management-guide">Leave Management in Jira: The Complete Guide</a> &middot; <a href="/blog/pto-tracking-capacity-planning">PTO Tracking and Capacity Planning: Stop Overbooking Your Team</a> &middot; <a href="/blog/team-availability-jira">How to See Who's Out of Office in Jira</a> &middot; <a href="/templates">Free Jira templates</a></p>
     </div>

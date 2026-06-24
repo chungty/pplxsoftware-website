@@ -57,6 +57,55 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do you automate employee onboarding in Jira?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There are three common ways. Jira automation rules can create sub-tasks when a New Hire issue is created. Jira Service Management forms can intake a request and trigger downstream tasks. Or a template-based onboarding app can launch a pre-built checklist that creates and assigns tasks by department and phase. Templates are the most maintainable because the checklist is the configuration, so HR and managers can edit it without touching a rules engine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Jira automation rules create onboarding tasks automatically?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. A rule with a \"When: Issue Created\" trigger filtered to a New Hire issue type can create sub-tasks with predefined titles, assignees, and due dates calculated from a start-date field. This works for small teams with a stable checklist, but a 30-task onboarding needs 30 create-issue actions in one rule, which can hit Jira automation execution limits and becomes hard to edit for non-admins."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should you use Jira sub-tasks for onboarding?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sub-tasks work for a single onboarding, but they appear on sprint boards alongside real work. With five concurrent onboardings that is roughly 150 sub-tasks mixed into your backlog, which clutters the board and makes progress hard to read. A dedicated onboarding view keeps the tasks out of the sprint backlog."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What onboarding tasks should you not automate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Automate the structural work: task creation from a template, assignment to the right department, due-date calculation, overdue notifications, and progress tracking. Leave the judgment work manual: welcome messages from the manager, buddy assignment, and role-specific training selection. Those depend on team dynamics and change over time, so a bot version is worse than a human one."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does TeamOps automate onboarding inside Jira?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. TeamOps is a Forge-native app that handles onboarding as a first-class concept. You launch a pre-built template for each new hire and tasks are created and assigned by department and phase automatically, without maintaining automation rules. It is free for teams up to 10 users."
+      }
+    }
+  ]
+}
+</script>
+
 <link rel="stylesheet" href="/styles.css">
 <style>
 .article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
@@ -122,6 +171,10 @@
       <span>7 min read</span>
       <span class="tag">Onboarding</span>
       <span class="tag">Automation</span>
+    </div>
+
+    <div class="callout">
+      <p><strong>TL;DR:</strong> To automate onboarding in Jira, pick one of three patterns. Jira automation rules create sub-tasks when a New Hire issue is created. Jira Service Management forms intake a request and trigger downstream tasks. A template-based app launches a pre-built checklist that creates and assigns tasks by department and phase. Templates are the most maintainable: the checklist is the configuration, so HR and managers can edit it without touching a rules engine. Where each one breaks down: automation rules hit execution limits and board clutter on a 30-task onboarding, JSM splits tasks across separate queues and adds agent licensing cost, and templates lose value only if no two hires share more than half their tasks.</p>
     </div>
 
     <p>Every time you hire someone, the same 25 to 35 tasks need to happen. IT provisions accounts. HR processes paperwork. The manager schedules introductions. Security grants the right access levels. Facilities arranges a desk or ships equipment.</p>
@@ -216,6 +269,23 @@
     </ul>
 
     <p>These metrics are invisible when onboarding lives in a spreadsheet. They become automatic when onboarding is tracked in a system with progress reporting.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <h3>How do you automate employee onboarding in Jira?</h3>
+    <p>There are three common ways. Jira automation rules can create sub-tasks when a New Hire issue is created. Jira Service Management forms can intake a request and trigger downstream tasks. Or a template-based onboarding app can launch a pre-built checklist that creates and assigns tasks by department and phase. Templates are the most maintainable because the checklist is the configuration, so HR and managers can edit it without touching a rules engine.</p>
+
+    <h3>Can Jira automation rules create onboarding tasks automatically?</h3>
+    <p>Yes. A rule with a "When: Issue Created" trigger filtered to a New Hire issue type can create sub-tasks with predefined titles, assignees, and due dates calculated from a start-date field. This works for small teams with a stable checklist, but a 30-task onboarding needs 30 create-issue actions in one rule, which can hit Jira automation execution limits and becomes hard to edit for non-admins.</p>
+
+    <h3>Should you use Jira sub-tasks for onboarding?</h3>
+    <p>Sub-tasks work for a single onboarding, but they appear on sprint boards alongside real work. With five concurrent onboardings that is roughly 150 sub-tasks mixed into your backlog, which clutters the board and makes progress hard to read. A dedicated onboarding view keeps the tasks out of the sprint backlog. See <a href="/blog/jira-onboarding-without-36-statuses">why the sub-task approach fails at scale</a>.</p>
+
+    <h3>What onboarding tasks should you not automate?</h3>
+    <p>Automate the structural work: task creation from a template, assignment to the right department, due-date calculation, overdue notifications, and progress tracking. Leave the judgment work manual: welcome messages from the manager, buddy assignment, and role-specific training selection. Those depend on team dynamics and change over time, so a bot version is worse than a human one.</p>
+
+    <h3>Does TeamOps automate onboarding inside Jira?</h3>
+    <p>Yes. <a href="https://marketplace.atlassian.com/apps/522828381" target="_blank" rel="noopener">TeamOps</a> is a Forge-native app that handles onboarding as a first-class concept. You launch a pre-built <a href="/templates">template</a> for each new hire and tasks are created and assigned by department and phase automatically, without maintaining automation rules. It is free for teams up to 10 users.</p>
 
     <div class="article-cta">
       <p>TeamOps handles this inside Jira. <a href="https://marketplace.atlassian.com/apps/522828381">Free for up to 10 users.</a></p>
