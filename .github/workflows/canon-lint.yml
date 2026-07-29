@@ -1,0 +1,20 @@
+name: canon-lint
+# Backstop that blocks canon-violating copy from merging directly to this repo.
+# Added 2026-07-28 after a banned "5 minutes" setup claim (canonical: "60 seconds")
+# shipped to production via human-merged PRs #26/#27 that bypassed the growth-loop's
+# canon-check. See tools/canon-lint.mjs.
+on:
+  pull_request:
+    paths: ['**/*.html', 'tools/canon-lint.mjs', '.github/workflows/canon-lint.yml']
+  push:
+    branches: [main]
+jobs:
+  canon-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Check marketing copy against TeamOps canon
+        run: node tools/canon-lint.mjs
