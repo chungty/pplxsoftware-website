@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYNC13TQKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PYNC13TQKF');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jira Onboarding Template: Epic, Sub-tasks, and Automation</title>
+<meta name="description" content="Jira onboarding template with exact field values for 20 sub-tasks, Component ownership, and Smart Value expressions for hire-date-relative due dates.">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/blog/jira-onboarding-template">
+
+<meta property="og:title" content="Jira Onboarding Template: Epic, Sub-tasks, and Automation">
+<meta property="og:description" content="Jira onboarding template with exact field values for 20 sub-tasks, Component ownership, and Smart Value expressions for hire-date-relative due dates.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pplxsoftware.com/blog/jira-onboarding-template">
+<meta property="og:image" content="https://pplxsoftware.com/assets/og/og-blog.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pplxsoftware.com/assets/og/og-blog.png">
+<meta property="og:site_name" content="TeamOps Blog | PPLX Software">
+
+<meta name="twitter:title" content="Jira Onboarding Template: Epic, Sub-tasks, and Automation">
+<meta name="twitter:description" content="Jira onboarding template with exact field values for 20 sub-tasks, Component ownership, and Smart Value expressions for hire-date-relative due dates.">
+
+<meta name="article:published_time" content="2026-08-10">
+<meta name="author" content="Thomas Chung">
+<meta name="keywords" content="jira onboarding template, jira onboarding automation rule, jira onboarding epic template, onboarding template jira, jira employee onboarding template">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Jira Onboarding Template: Epic, Sub-tasks, and Automation",
+  "description": "Jira onboarding template with exact field values for 20 sub-tasks, Component ownership, and Smart Value expressions for hire-date-relative due dates.",
+  "author": {
+    "@type": "Person",
+    "name": "Thomas Chung"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PPLX Software"
+  },
+  "datePublished": "2026-08-10",
+  "dateModified": "2026-08-10",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pplxsoftware.com/blog/jira-onboarding-template"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need Jira Automation Premium to use this template?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Jira Automation's multi-action rules run on the Free and Standard plans for team-managed projects, though global rules across multiple projects require Premium. If you keep onboarding tasks in one dedicated project, the automation runs on Free. If you need cross-project rules — for example, creating tasks in both an HR project and an Engineering project — Premium is required. The fallback for Free without cross-project access: maintain a Confluence page with the 20 sub-task definitions and create them manually from that list each time a hire starts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if a hire date changes after the Automation rule has already created the sub-tasks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Smart Value expressions like {{issue.startDate.plusDays(30)}} resolve at the moment the 'Create issue' action fires. Once the sub-task is created, its due date is a fixed date — changing the parent Epic's start date does not cascade to the sub-tasks. The fix is to run a bulk edit: from the Epic's sub-task list, select all sub-tasks, choose Bulk Change, then Edit Fields, set Due Date to the corrected value per phase. Alternatively, add a separate automation rule triggered by 'Epic start date changed' that bulk-updates all linked sub-tasks."
+      }
+    }
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="/styles.css">
+<style>
+.article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
+.article-content { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.article-breadcrumb { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 24px; }
+.article-breadcrumb a { color: var(--gray-400); text-decoration: none; transition: color var(--transition); }
+.article-breadcrumb a:hover { color: var(--blue); }
+.article-content h1 { font-size: clamp(1.75rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
+.article-meta { color: var(--gray-400); font-size: 0.9rem; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.article-meta .tag { background: var(--blue-glow); color: var(--blue); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
+.article-content h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.06); border-bottom: none; }
+.article-content h2:first-of-type { border-top: none; padding-top: 0; }
+.article-content h3 { font-size: 1.15rem; font-weight: 600; margin-top: 32px; margin-bottom: 12px; color: var(--gray-300); }
+.article-content p { color: var(--gray-300); line-height: 1.8; margin-bottom: 18px; font-size: 1.05rem; }
+.article-content ul, .article-content ol { color: var(--gray-300); margin-bottom: 18px; padding-left: 24px; }
+.article-content li { margin-bottom: 10px; line-height: 1.7; font-size: 1.05rem; }
+.article-content strong { color: var(--white); font-weight: 600; }
+.article-content a { color: var(--blue); text-decoration: none; transition: color var(--transition); }
+.article-content a:hover { color: #93c5fd; text-decoration: underline; }
+.callout { background: var(--navy-light); border-left: 3px solid var(--blue); border-radius: var(--radius-sm); padding: 20px 24px; margin: 28px 0; }
+.callout p { margin-bottom: 0; font-size: 0.95rem; }
+.callout-warning { border-left-color: #fbbf24; }
+.callout-success { border-left-color: var(--green); }
+.article-cta { background: linear-gradient(135deg, var(--navy-light) 0%, rgba(96, 165, 250, 0.06) 100%); border: 1px solid rgba(96, 165, 250, 0.15); border-radius: var(--radius); padding: 32px; margin: 48px 0 24px; text-align: center; }
+.article-cta h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 8px; margin-top: 0; }
+.article-cta p { font-size: 0.95rem; margin-bottom: 20px; }
+.article-content .cta-button, .cta-button { display: inline-block; background: var(--blue); color: var(--navy); padding: 12px 28px; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background var(--transition), transform var(--transition); }
+.cta-button:hover { background: #93c5fd; color: var(--navy) !important; transform: translateY(-1px); text-decoration: none; }
+.checklist-table { width: 100%; border-collapse: collapse; margin: 24px 0 32px; font-size: 0.9rem; }
+.checklist-table th { text-align: left; padding: 10px 14px; background: rgba(96, 165, 250, 0.08); color: var(--gray-400); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.checklist-table td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; color: var(--gray-300); line-height: 1.5; }
+.checklist-table tr:last-child td { border-bottom: none; }
+.phase-badge { display: inline-block; padding: 2px 9px; border-radius: 10px; font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
+.phase-pre { background: rgba(167,139,250,0.12); color: #a78bfa; }
+.phase-day1 { background: rgba(248,113,113,0.12); color: #f87171; }
+.phase-week1 { background: rgba(251,191,36,0.12); color: #fbbf24; }
+.phase-month1 { background: rgba(96,165,250,0.12); color: #60a5fa; }
+.phase-90d { background: rgba(52,211,153,0.12); color: #34d399; }
+.dept-badge { display: inline-block; padding: 1px 7px; border-radius: 8px; font-size: 0.72rem; font-weight: 500; background: rgba(255,255,255,0.06); color: var(--gray-400); }
+.sv { font-family: monospace; font-size: 0.82em; background: rgba(255,255,255,0.06); padding: 1px 6px; border-radius: 3px; white-space: nowrap; color: #93c5fd; }
+.faq-term { color: var(--white); font-weight: 600; font-size: 1rem; margin-top: 24px; margin-bottom: 8px; display: block; }
+.faq-def { color: var(--gray-300); font-size: 0.95rem; line-height: 1.75; margin: 0 0 8px 0; }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home"><div class="nav-logo">T</div>TeamOps</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/522828381" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="article-wrapper">
+  <article class="article-content">
+    <div class="article-breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/blog">Blog</a> &rsaquo; Jira Onboarding Template
+    </div>
+
+    <h1>Jira Onboarding Template: Epic, Sub-tasks, and Automation</h1>
+
+    <div class="article-meta">
+      <span>Thomas Chung</span>
+      <span>&bull;</span>
+      <span>August 10, 2026</span>
+      <span>&bull;</span>
+      <span>9 min read</span>
+      <span class="tag">Onboarding</span>
+      <span class="tag">Jira</span>
+    </div>
+
+    <div class="callout">
+      <p><strong>TL;DR:</strong> A Jira onboarding template is an Automation rule with one trigger ("Epic created, label = new-hire") and one "Create issue" branch action per sub-task. Set each action's due date as a Smart Value expression relative to the Epic's start date &mdash; <code>{{issue.startDate}}</code> for Day 1, <code>{{issue.startDate.plusDays(30)}}</code> for the 30-day check-in, <code>{{issue.startDate.minusDays(7)}}</code> for pre-arrival IT tasks. Expressions keep due dates correct when a hire date shifts; hard-coded dates do not.</p>
+    </div>
+
+    <p>A Jira onboarding template is the Automation rule configuration that turns one trigger &mdash; an Epic created with the label "new-hire" &mdash; into a fully-formed onboarding structure: per-hire Epic, 20 sub-tasks, department Component assignment, and due dates keyed to the hire start date. PPLX Software (maker of TeamOps, our Atlassian app) built and iterated on this setup across hundreds of hires; the field values and wiring steps below replicate it without any additional tooling.</p>
+
+    <p>Two decisions determine whether the template holds up at scale. First, every sub-task's due date must be expressed relative to the hire date, not a fixed calendar date &mdash; otherwise a single reschedule requires manually editing 20 tasks. Second, use Jira Components (not labels) for department ownership, because Components support default assignees, which routes each task to the right person automatically.</p>
+
+    <h2>The template: 20 sub-task actions</h2>
+
+    <p>Each row is one "Create issue" branch action in the Automation rule. Set Issue type to Sub-task and Parent to <code>{{issue.key}}</code> (auto-links to the triggering Epic) on every action. The Due date column shows the Smart Value expression to paste into the Due date field.</p>
+
+    <table class="checklist-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Summary (task name)</th>
+          <th>Component</th>
+          <th>Due date expression</th>
+          <th>Field note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><strong>Provision laptop and confirm ship address</strong></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><span class="sv">{{issue.startDate.minusDays(7)}}</span></td>
+          <td>7 days before start. Shipping lead time means this task closes late more than any other. Pull it earlier than you think you need to.</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><strong>Create Atlassian account and grant project access</strong></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><span class="sv">{{issue.startDate}}</span></td>
+          <td>Set permission to Developer, not Admin. Developer access is sufficient for all onboarding work; Admin lets new accounts change workflow configurations.</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><strong>Provision VPN credentials</strong></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><span class="sv">{{issue.startDate}}</span></td>
+          <td>Add the secrets manager link in the task description, not the credentials themselves. Jira comments are visible to all project members.</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><strong>Create badge and building access request</strong></td>
+          <td><span class="dept-badge">Security</span></td>
+          <td><span class="sv">{{issue.startDate}}</span></td>
+          <td>Assign to Facilities or Security. A separate Component means their tasks filter cleanly from IT's queue without hiding either set.</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><strong>Set Jira notification preferences</strong></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><span class="sv">{{issue.startDate}}</span></td>
+          <td>Walk the new hire through Project Settings &rarr; Notifications on Day 1. Default notification schemes email on every project event; new hires disable Jira email entirely within a week when that happens.</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><strong>Add to Slack workspace and required channels</strong></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><span class="sv">{{issue.startDate}}</span></td>
+          <td>List specific channels in the task description. "Slack access" without a channel list gets the new hire into #general only.</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><strong>I-9 and right-to-work documentation</strong></td>
+          <td><span class="dept-badge">HR</span></td>
+          <td><span class="sv">{{issue.startDate}}</span></td>
+          <td>Track completion here; store the actual documents in your HRIS or a restricted Confluence space, not as Jira attachments.</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><strong>Benefits enrollment form sent</strong></td>
+          <td><span class="dept-badge">HR</span></td>
+          <td><span class="sv">{{issue.startDate.plusDays(3)}}</span></td>
+          <td>Day 3, not Day 1. Benefits enrollment requires thought; Day 1 is processing paperwork and getting set up. Use the actual carrier deadline (often 30 days from hire) as the due date on a second verification sub-task.</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td><strong>Emergency contacts and policy acknowledgment</strong></td>
+          <td><span class="dept-badge">HR</span></td>
+          <td><span class="sv">{{issue.startDate.plusDays(2)}}</span></td>
+          <td>Link the Confluence policies page in the task description. This is the most frequently missed Day 1 compliance item.</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td><strong>Welcome meeting and team introductions</strong></td>
+          <td><span class="dept-badge">Manager</span></td>
+          <td><span class="sv">{{issue.startDate}}</span></td>
+          <td>The Jira task tracks completion; the calendar invite is separate. Link the Confluence meeting notes page as a resource on the task.</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td><strong>Buddy assigned and introduced by name</strong></td>
+          <td><span class="dept-badge">Manager</span></td>
+          <td><span class="sv">{{issue.startDate}}</span></td>
+          <td>Name the buddy in the task description. Tasks that say "assign a buddy" without a name close as Done without action at a much higher rate than tasks with a specific person named.</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td><strong>Security training assigned</strong></td>
+          <td><span class="dept-badge">Security</span></td>
+          <td><span class="sv">{{issue.startDate}}</span></td>
+          <td>Two separate sub-tasks: one to assign the training (Day 1) and one to verify completion (Day 5). A single task marked Done when assigned means no one checks if the training was actually finished.</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td><strong>Security training completion verified</strong></td>
+          <td><span class="dept-badge">Security</span></td>
+          <td><span class="sv">{{issue.startDate.plusDays(5)}}</span></td>
+          <td>Check the training platform for completion status, not a self-reported checkbox. Separate from task 12.</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td><strong>Dev environment set up and verified</strong></td>
+          <td><span class="dept-badge">Engineering</span></td>
+          <td><span class="sv">{{issue.startDate.plusDays(5)}}</span></td>
+          <td>Specify the verification steps in the description: clone the primary repo, run the test suite, confirm at least one test passes locally. "Set up dev environment" closes without verification.</td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td><strong>First sprint task assigned</strong></td>
+          <td><span class="dept-badge">Manager</span></td>
+          <td><span class="sv">{{issue.startDate.plusDays(5)}}</span></td>
+          <td>1&ndash;2 low-stakes tasks from the existing backlog. The goal is for the new hire to complete the full Jira workflow before Week 2, which surfaces any permission gaps before they block real work.</td>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td><strong>Principle-of-least-privilege access review</strong></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><span class="sv">{{issue.startDate.plusDays(7)}}</span></td>
+          <td>Review which Jira projects were inherited from project membership during onboarding. Remove any that don't apply to the role. Onboarding typically over-provisions.</td>
+        </tr>
+        <tr>
+          <td>17</td>
+          <td><strong>30-day check-in and feedback</strong></td>
+          <td><span class="dept-badge">Manager</span></td>
+          <td><span class="sv">{{issue.startDate.plusDays(30)}}</span></td>
+          <td>Add a field in the task for notes on checklist gaps. The 30-day check-in is also the primary signal for what the template is missing.</td>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td><strong>Goals and OKRs documented and linked</strong></td>
+          <td><span class="dept-badge">Manager</span></td>
+          <td><span class="sv">{{issue.startDate.plusDays(30)}}</span></td>
+          <td>Link to the Confluence OKR page. Verbal goal-setting at Month 1 check-ins without a written record creates misalignment at the 90-day review.</td>
+        </tr>
+        <tr>
+          <td>19</td>
+          <td><strong>Full access audit</strong></td>
+          <td><span class="dept-badge">IT</span></td>
+          <td><span class="sv">{{issue.startDate.plusDays(90)}}</span></td>
+          <td>Enumerate every Jira project and third-party tool the new hire can access. Remove anything not explicitly granted for the role. Add a "completed-YYYY-MM-DD" label when done.</td>
+        </tr>
+        <tr>
+          <td>20</td>
+          <td><strong>Onboarding Epic closed</strong></td>
+          <td><span class="dept-badge">HR</span></td>
+          <td><span class="sv">{{issue.startDate.plusDays(90)}}</span></td>
+          <td>Transition Epic status to Done, add a "completed-YYYY-MM-DD" label, and link the 90-day review notes. The label lets you query "how many onboardings closed this quarter" via Jira's issue search.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Wiring the Automation trigger</h2>
+
+    <p>Open Jira &rarr; Project Settings &rarr; Automation &rarr; Create rule. Use these exact settings:</p>
+
+    <ol>
+      <li><strong>Trigger: Issue created.</strong> Scope it to the HR Operations project (not global), unless you need tasks created in multiple projects &mdash; in which case a global rule and Premium tier are required.</li>
+      <li><strong>Condition: Issue type = Epic AND Label = new-hire.</strong> Without the label condition, the rule fires for every Epic created in the project, including non-onboarding Epics. Add the label manually when creating each new hire's Epic, or create a second rule that adds the "new-hire" label automatically when the Epic summary starts with "Onboarding &ndash;".</li>
+      <li><strong>Action: Branch rule / related issues &rarr; Create issue.</strong> Add one branch action per sub-task in the 20-action template. Set Issue type to Sub-task on each. The Parent field is pre-filled to the triggering Epic; leave it as is.</li>
+      <li><strong>Component field:</strong> Add the Component field to each "Create issue" action and set it to the value in the Component column above (IT, HR, Manager, Security, or Engineering). Components must already exist in the project before the rule fires &mdash; create them under Project Settings &rarr; Components before deploying the automation rule.</li>
+    </ol>
+
+    <div class="callout callout-warning">
+      <p><strong>Component default assignees must be set before the rule runs.</strong> Go to Project Settings &rarr; Components. Set the default assignee for IT, HR, Manager, Security, and Engineering. When the Automation rule creates a sub-task with a Component but no explicit Assignee, Jira assigns it to the Component's default. If the default is unset, the task lands unassigned with no notification.</p>
+    </div>
+
+    <h2>Component vs label for department ownership</h2>
+
+    <p>Labels route tasks visually but do not support default assignees. A sub-task labeled "IT" lands unassigned unless someone manually sets the assignee. Components support default assignees at the project level, which means IT tasks route to the IT admin automatically when the rule fires.</p>
+
+    <p>The practical consequence: with labels, every IT sub-task needs its Assignee field filled in manually during task creation &mdash; either in the automation rule (where you must hard-code a specific user, breaking when that person changes) or after the fact (where it frequently gets skipped). Components eliminate that choice. Set the default assignee once per Component, and the routing holds for every future hire without touching the automation rule.</p>
+
+    <p>Use labels as secondary classification if you need them (for example, "engineering-onboarding" as a label on role-specific tasks), but make Components the department ownership mechanism.</p>
+
+    <h2>Role-specific field changes</h2>
+
+    <p>The 20 tasks above apply to every hire. Role-specific tasks extend the base template without duplicating it.</p>
+
+    <h3>Engineering additions (6 tasks)</h3>
+    <p>Add these after task 14, with due dates as shown:</p>
+    <ul>
+      <li><strong>Repository access granted</strong> &mdash; specify which repos; "GitHub access" without a list grants read-only on everything and write on nothing &mdash; due: <span class="sv">{{issue.startDate}}</span></li>
+      <li><strong>CI/CD pipeline walkthrough</strong> &mdash; branch &rarr; PR &rarr; review &rarr; merge &rarr; automated deploy, done once as a live session, not as documentation to read &mdash; due: <span class="sv">{{issue.startDate.plusDays(5)}}</span></li>
+      <li><strong>Code review process documented and reviewed</strong> &mdash; link the team's PR guide in Confluence; new engineers need response time expectations and merge authority, not just "we do code review" &mdash; due: <span class="sv">{{issue.startDate.plusDays(5)}}</span></li>
+      <li><strong>First bug fixed and merged</strong> &mdash; a shippable task with a ticket number and merge commit; a cleanup task does not count &mdash; due: <span class="sv">{{issue.startDate.plusDays(14)}}</span></li>
+      <li><strong>Architecture overview session completed</strong> &mdash; 60 minutes with a senior engineer; not optional for the template to produce independent contributors &mdash; due: <span class="sv">{{issue.startDate.plusDays(14)}}</span></li>
+      <li><strong>On-call rotation added</strong> &mdash; not Month 1; due at day 60 gives time to get fully settled before carrying a pager &mdash; due: <span class="sv">{{issue.startDate.plusDays(60)}}</span></li>
+    </ul>
+
+    <h3>Sales additions (5 tasks)</h3>
+    <ul>
+      <li><strong>CRM access provisioned and sandbox configured</strong> &mdash; name the specific CRM objects (Accounts, Contacts, Opportunities); "CRM access" without specifics means login but no usable permissions &mdash; due: <span class="sv">{{issue.startDate}}</span></li>
+      <li><strong>ICP documentation reviewed</strong> &mdash; link the Confluence page; if it does not exist, create it before the hire's first day &mdash; due: <span class="sv">{{issue.startDate.plusDays(3)}}</span></li>
+      <li><strong>Product demo certification</strong> &mdash; full demo delivered to the hiring manager before Week 3; set the due date on Day 1 so the deadline exists before the week fills up &mdash; due: <span class="sv">{{issue.startDate.plusDays(14)}}</span></li>
+      <li><strong>Quota and comp plan signed off</strong> &mdash; in writing, linked in the task; verbal quota agreements break at quarter end &mdash; due: <span class="sv">{{issue.startDate.plusDays(5)}}</span></li>
+      <li><strong>First prospect meeting attended (shadow)</strong> &mdash; Week 2 at the latest; listening to real customer calls teaches faster than reading call transcripts &mdash; due: <span class="sv">{{issue.startDate.plusDays(10)}}</span></li>
+    </ul>
+
+    <h3>HR / People Ops additions (4 tasks)</h3>
+    <ul>
+      <li><strong>HRIS access provisioned with role-appropriate modules</strong> &mdash; specify which modules (Employees, Benefits, Payroll), not admin access on Day 1 &mdash; due: <span class="sv">{{issue.startDate}}</span></li>
+      <li><strong>Payroll system access verified before first pay run</strong> &mdash; due 3 days before payroll close; missing this delays the first paycheck &mdash; due: <span class="sv">{{issue.startDate.plusDays(11)}}</span></li>
+      <li><strong>Confluence HR space contributor access</strong> &mdash; edit access, not view-only; the HR team member needs to update the very pages they were just walked through &mdash; due: <span class="sv">{{issue.startDate}}</span></li>
+      <li><strong>Onboarding process ownership introduced</strong> &mdash; the new HR person will run future onboardings; walk through the Automation rule and Component setup so they can maintain and update it &mdash; due: <span class="sv">{{issue.startDate.plusDays(7)}}</span></li>
+    </ul>
+
+    <h2>Two field configurations that break silently</h2>
+
+    <p><strong>The Assignee field versus Component default.</strong> If you set a specific Assignee in the "Create issue" action, you are hard-coding a person into the Automation rule JSON. When that person leaves or changes roles, every future hire gets their tasks routed to the wrong place, with no error message. Leave the Assignee blank in the action and rely on the Component default assignee. Update the Component default when someone changes roles; the Automation rule needs no edit.</p>
+
+    <p><strong>The Due date field must be a Smart Value, not a static date.</strong> Jira's "Create issue" action in Automation accepts both static dates and Smart Value expressions in the Due date field. Static dates work for the first hire. By the third reschedule, you have 20 sub-tasks with due dates that no longer match the hire date and need a bulk edit. Smart Value expressions like those in the 20-action template resolve correctly whenever the rule fires, regardless of when that is.</p>
+
+    <p>At teams hiring three or more people per month, maintaining the Automation rule JSON as the onboarding task list evolves becomes its own overhead &mdash; new tasks, changed owners, updated due date windows. TeamOps ships the per-hire Epic, the Component-based ownership split, and these 20 sub-tasks as an editable role template inside Jira itself: you update the task list in the TeamOps admin screen rather than in Automation rule JSON, and the changes propagate to the next hire automatically. Free for teams up to 10 users.</p>
+
+    <h2>Frequently asked questions</h2>
+
+    <dl>
+      <dt class="faq-term">Do I need Jira Automation Premium to use this template?</dt>
+      <dd class="faq-def">Not if the onboarding project is self-contained. Jira Automation's multi-action rules run on the Free and Standard plans for team-managed projects. Premium is only required for global rules that create tasks across multiple projects simultaneously. If you want IT tasks in a separate IT project and HR tasks in an HR project, that cross-project action requires Premium. The straightforward alternative: keep all 20 sub-tasks inside one dedicated HR Operations project with Components for department filtering &mdash; single-project rules work on Free.</dd>
+
+      <dt class="faq-term">What happens if a hire date changes after the Automation rule has created the sub-tasks?</dt>
+      <dd class="faq-def">Smart Value expressions resolve at the moment the "Create issue" action fires. After that, each sub-task's due date is a fixed calendar date. Changing the parent Epic's start date does not cascade. Fix it with a bulk edit: from the Epic's sub-task list, select all, choose Bulk Change &rarr; Edit Fields &rarr; Due Date and set the corrected phase date per group. For teams that reschedule frequently, a second Automation rule triggered by "Epic start date changed" can bulk-update linked sub-tasks automatically.</dd>
+    </dl>
+
+    <p>Onboarding access granted is offboarding access revoked &mdash; the <a href="/blog/offboarding-checklist-jira">offboarding checklist</a> maps directly onto the Components and task structure set up here.</p>
+
+    <div class="article-cta">
+      <p>If maintaining the Automation rule JSON is the bottleneck, TeamOps runs this inside Jira as an editable role template &mdash; no JSON required. <a href="https://marketplace.atlassian.com/apps/522828381" class="cta-button" target="_blank" rel="noopener">Free for up to 10 users</a></p>
+    </div>
+
+    <div class="callout related-guides">
+      <p><strong>Related guides:</strong> <a href="/blog/jira-onboarding-checklist">Jira Onboarding Checklist: 30 Tasks by Phase and Role</a> &middot; <a href="/blog/onboarding-automation-jira">Automating Employee Onboarding in Jira</a> &middot; <a href="/blog/offboarding-checklist-jira">Offboarding Checklist for Jira</a> &middot; <a href="/blog/jira-onboarding-without-36-statuses">Jira Onboarding Without 36 Statuses</a> &middot; <a href="/templates">Free Jira onboarding templates</a></p>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="nav-logo">T</div>PPLX Software</div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/522828381" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="/support">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
+  </div>
+</footer>
+
+</body>
+</html>
