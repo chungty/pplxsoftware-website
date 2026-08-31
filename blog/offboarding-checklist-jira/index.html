@@ -11,13 +11,13 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Offboarding Checklist for Jira: IT, HR, Legal &amp; Security Steps | TeamOps Blog</title>
-<meta name="description" content="A department-by-department offboarding checklist for Jira teams. Covers IT access revocation, HR paperwork, legal compliance, and security tasks that most companies miss.">
+<title>Jira Offboarding Workflow: Checklist and Setup Guide</title>
+<meta name="description" content="Jira offboarding workflow: department checklist for IT, HR, legal, and security, plus Epic structure, Components, due-date offsets, and automation for every departure.">
 <meta name="theme-color" content="#0f172a">
 <link rel="canonical" href="https://pplxsoftware.com/blog/offboarding-checklist-jira">
 
-<meta property="og:title" content="Offboarding Checklist for Jira: IT, HR, Legal &amp; Security Steps">
-<meta property="og:description" content="A department-by-department offboarding checklist for Jira teams. Covers IT, HR, legal, and security steps that most companies forget.">
+<meta property="og:title" content="Jira Offboarding Workflow: Checklist and Setup Guide">
+<meta property="og:description" content="Department checklist and Jira project setup for employee offboarding — IT, HR, legal, security, and manager tasks with timing that enforces itself.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://pplxsoftware.com/blog/offboarding-checklist-jira">
 <meta property="og:image" content="https://pplxsoftware.com/assets/og/og-blog.png">
@@ -27,19 +27,20 @@
 <meta name="twitter:image" content="https://pplxsoftware.com/assets/og/og-blog.png">
 <meta property="og:site_name" content="TeamOps Blog | PPLX Software">
 
-<meta name="twitter:title" content="Offboarding Checklist for Jira: IT, HR, Legal &amp; Security Steps">
-<meta name="twitter:description" content="A department-by-department offboarding checklist for Jira teams. Covers IT, HR, legal, and security steps that most companies forget.">
+<meta name="twitter:title" content="Jira Offboarding Workflow: Checklist and Setup Guide">
+<meta name="twitter:description" content="Department checklist and Jira project setup for employee offboarding — IT, HR, legal, security, and manager tasks with timing that enforces itself.">
 
 <meta name="article:published_time" content="2026-04-06">
+<meta name="article:modified_time" content="2026-08-31">
 <meta name="author" content="Thomas Chung">
-<meta name="keywords" content="offboarding checklist template, employee offboarding jira, offboarding process, jira offboarding checklist, IT offboarding checklist">
+<meta name="keywords" content="jira offboarding workflow, offboarding checklist jira, employee offboarding jira, jira offboarding checklist, IT offboarding checklist jira">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Offboarding Checklist for Jira: IT, HR, Legal & Security Steps",
-  "description": "A department-by-department offboarding checklist for Jira teams. Covers IT access revocation, HR paperwork, legal compliance, and security tasks that most companies miss.",
+  "headline": "Jira Offboarding Workflow: Checklist and Setup Guide",
+  "description": "Jira offboarding workflow: department checklist for IT, HR, legal, and security, plus Epic structure, Components, due-date offsets, and automation for every departure.",
   "author": {
     "@type": "Person",
     "name": "Thomas Chung"
@@ -49,7 +50,7 @@
     "name": "PPLX Software"
   },
   "datePublished": "2026-04-06",
-  "dateModified": "2026-04-06",
+  "dateModified": "2026-08-31",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://pplxsoftware.com/blog/offboarding-checklist-jira"
@@ -64,14 +65,6 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What should an employee offboarding checklist in Jira include?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A complete offboarding checklist covers five departments: IT (disable SSO, revoke SaaS access, rotate shared credentials, collect hardware), HR (final payroll, benefits termination, exit interview, HRIS update), legal (NDA confirmation, IP assignment, litigation hold, data retention), security (revoke SSH keys, invalidate access tokens, audit recent data exports), and the manager (reassign work and run a knowledge transfer). The tasks that get skipped are usually the security and legal ones, because they do not feel urgent."
-      }
-    },
-    {
-      "@type": "Question",
       "name": "How do you revoke Jira access when someone leaves?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -84,22 +77,6 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "A checklist is the list of tasks that must happen when someone leaves. A workflow is how those tasks get created, assigned, sequenced by due date, and tracked to completion. In Jira, a checklist alone lives in a document or a Slack thread; a workflow turns it into assigned issues with owners and deadlines so nothing depends on someone remembering."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "When should IT and security offboarding tasks be completed?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "IT and security tasks should be done on or before the employee's last day, because every hour of lingering access after departure is unnecessary risk. HR and legal tasks can extend a few days after, since they involve paperwork with their own deadlines rather than live credentials."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Why do companies use Jira for employee offboarding?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Offboarding involves five departments working on different timelines for the same person, which is a coordination problem that needs a system of record. Jira gives every task an owner, a due date, and a status, so a manager sees a progress bar instead of trusting that a spreadsheet or a Slack thread caught everything."
       }
     }
   ]
@@ -134,6 +111,10 @@
 .article-cta p { font-size: 0.95rem; margin-bottom: 20px; }
 .article-content .cta-button, .cta-button { display: inline-block; background: var(--blue); color: var(--navy); padding: 12px 28px; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background var(--transition), transform var(--transition); }
 .cta-button:hover { background: #93c5fd; color: var(--navy) !important; transform: translateY(-1px); text-decoration: none; }
+.workflow-table { width: 100%; border-collapse: collapse; margin: 20px 0 28px; font-size: 0.95rem; }
+.workflow-table th { text-align: left; padding: 10px 14px; background: rgba(96, 165, 250, 0.08); color: var(--gray-400); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.workflow-table td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; color: var(--gray-300); }
+.workflow-table tr:last-child td { border-bottom: none; }
 </style>
 </head>
 <body>
@@ -158,32 +139,34 @@
 <main class="article-wrapper">
   <article class="article-content">
     <div class="article-breadcrumb">
-      <a href="/">Home</a> &rsaquo; <a href="/blog">Blog</a> &rsaquo; Offboarding Checklist for Jira
+      <a href="/">Home</a> &rsaquo; <a href="/blog">Blog</a> &rsaquo; Jira Offboarding Workflow
     </div>
 
-    <h1>Offboarding Checklist for Jira: IT, HR, Legal &amp; Security Steps</h1>
+    <h1>Jira Offboarding Workflow: Department Checklist and Setup Guide</h1>
 
     <div class="article-meta">
       <span>Thomas Chung</span>
       <span>&bull;</span>
       <span>April 6, 2026</span>
       <span>&bull;</span>
-      <span>7 min read</span>
+      <span>Updated August 2026</span>
+      <span>&bull;</span>
+      <span>9 min read</span>
       <span class="tag">Offboarding</span>
       <span class="tag">Jira</span>
     </div>
 
     <div class="callout">
-      <p><strong>TL;DR:</strong> An employee offboarding checklist in Jira runs across five departments: IT revokes access and collects hardware, HR closes out payroll and benefits, legal confirms NDAs and any litigation hold, security invalidates keys and tokens, and the manager reassigns work and captures knowledge. The single biggest gotcha is timing: IT and security tasks have to be finished on or before the last day, because lingering credentials are how former employees end up linked to breaches. The reason this belongs in Jira rather than a Slack message is that offboarding is a coordination problem across teams on different timelines, and a checklist in someone's head will miss the tasks that feel least urgent.</p>
+      <p><strong>TL;DR:</strong> A Jira offboarding workflow runs five departments in parallel under one Epic per departing employee — IT, HR, Legal, Security, and Manager, each as a Component with a default assignee and a time-relative due date. IT and Security tasks close on or before the last day; HR within three business days; Legal within five; Manager knowledge transfer begins five days before. The timing is the part that fails without Jira: a Slack thread can hold the list but not enforce who does what by when. PPLX Software is the vendor — TeamOps, our app, is free for teams up to 10.</p>
     </div>
 
-    <p>Onboarding gets all the attention. There are templates, welcome kits, buddy programs, 90-day plans. Offboarding, meanwhile, is usually a Slack message to IT saying "can you disable Sarah's account?" followed by three weeks of discovering things that were never turned off.</p>
+    <p>Onboarding gets all the attention. There are templates, welcome kits, buddy programs, 90-day plans. A Jira offboarding workflow, meanwhile, is usually a Slack message to IT saying "can you disable Sarah's account?" — followed by three weeks of discovering things that were never turned off.</p>
 
-    <p>This is a problem that compounds. Every incomplete offboarding leaves behind active credentials, lingering access to shared drives, API tokens nobody revoked, and knowledge that walked out the door without documentation. The risk is not theoretical. According to the Ponemon Institute, 20% of organizations have experienced data breaches linked to former employees.</p>
+    <p>The problem compounds. Every incomplete offboarding leaves behind active credentials, lingering access to shared drives, API tokens nobody revoked, and knowledge that walked out the door without documentation. According to the Ponemon Institute, 20% of organizations have experienced data breaches linked to former employees.</p>
 
-    <p>Offboarding is a cross-department coordination problem, which makes it a perfect fit for structured checklists in Jira. Below is the full list, broken down by department.</p>
+    <p>Offboarding is a cross-department coordination problem with hard timing constraints, which makes it a natural fit for Jira. Below is the department checklist, followed by the project setup that makes timing enforcement automatic.</p>
 
-    <h2>IT and Infrastructure</h2>
+    <h2>IT and infrastructure</h2>
 
     <p>IT owns the largest chunk of offboarding tasks, and these are the most time-sensitive. Every hour of delay after an employee's last day is an hour of unnecessary access.</p>
 
@@ -200,7 +183,7 @@
 
     <p>For engineering-specific offboarding (SSH keys, deploy access, code review ownership), see the <a href="/templates/engineering-offboarding">Engineering Offboarding template</a>.</p>
 
-    <h2>HR and People Operations</h2>
+    <h2>HR and people operations</h2>
 
     <p>HR offboarding is less urgent than IT, but has legal deadlines attached to some of it.</p>
 
@@ -216,7 +199,7 @@
 
     <p>If you are tracking leave in Jira, the departing employee's <a href="/blog/jira-leave-management-guide">leave balance and history</a> should be exported before their records are archived.</p>
 
-    <h2>Legal and Compliance</h2>
+    <h2>Legal and compliance</h2>
 
     <p>Legal tasks are often overlooked because they involve paperwork that does not feel urgent. They are urgent.</p>
 
@@ -244,7 +227,7 @@
       <p><strong>Timing matters.</strong> IT and security tasks should be completed on or before the employee's last day. HR and legal tasks can extend a few days after. If you are using a checklist in Jira, set due dates accordingly rather than treating everything as "do it when you can."</p>
     </div>
 
-    <h2>Manager and Knowledge Transfer</h2>
+    <h2>Manager and knowledge transfer</h2>
 
     <p>The manager is responsible for making sure the team does not lose institutional knowledge when someone leaves.</p>
 
@@ -256,18 +239,75 @@
       <li><strong>Communicate the departure to the team</strong> with appropriate context.</li>
     </ul>
 
-    <h2>Why this belongs in Jira</h2>
+    <h2>Setting up the Jira offboarding workflow</h2>
 
-    <p>Offboarding involves five departments doing different things on different timelines for the same person. That is a coordination problem, and coordination problems need a system of record. A checklist in someone's head, a Google Doc, or a Slack thread will not cut it when you are offboarding three people in the same month.</p>
+    <p>The checklists above tell you what to do. The Jira setup tells you how to track it so timing enforces itself and you are not rebuilding the structure for every departure.</p>
 
-    <p>The <a href="/templates/general-offboarding">General Offboarding template</a> in TeamOps includes all of the above, pre-assigned by department and phased by urgency. Launch it for a departing employee and every task is created, assigned, and tracked automatically. You get a progress bar instead of a spreadsheet and a hope that nothing was missed.</p>
+    <h3>Project configuration</h3>
 
-    <p>If your offboarding needs are engineering-specific (deploy keys, code ownership, CI/CD access), the <a href="/templates/engineering-offboarding">Engineering Offboarding template</a> covers those additional steps.</p>
+    <p>Use a company-managed project, not Jira Service Management. Service Management adds request types and customer portals suited to support queues; an internal offboarding workflow needs a board with assignees and due dates, not a ticket intake form. Simplify the issue type scheme to two: Epic and Sub-task. Removing Story, Bug, and Task from the scheme prevents classification confusion when HR is confirming an NDA, not reviewing a pull request.</p>
+
+    <p>Create five Components in the project settings, one per department, each with a default assignee:</p>
+
+    <table class="workflow-table">
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>Default assignee</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>IT</strong></td>
+          <td>IT manager</td>
+        </tr>
+        <tr>
+          <td><strong>HR</strong></td>
+          <td>HR business partner</td>
+        </tr>
+        <tr>
+          <td><strong>Legal</strong></td>
+          <td>General counsel or designee</td>
+        </tr>
+        <tr>
+          <td><strong>Security</strong></td>
+          <td>IT security lead</td>
+        </tr>
+        <tr>
+          <td><strong>Manager</strong></td>
+          <td>Direct manager of the departing employee</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>When you set a sub-task's Component, Jira assigns it to that Component's default assignee automatically. No per-task manual assignment.</p>
+
+    <h3>Epic structure per departure</h3>
+
+    <p>One Epic per departing employee, named "Offboarding — [First Last] — [Last Day]". Set the Epic's start date five business days before the last day — that is when manager knowledge-transfer tasks should begin. Set the due date 30 days after the last day, because some legal and compliance tasks do not close until then.</p>
+
+    <h3>Due-date scheme</h3>
+
+    <p>Set each sub-task's due date relative to the Epic's last-day date:</p>
+
+    <ul>
+      <li><strong>IT and Security:</strong> Last day. Access revocation has no grace period — every day of lingering credentials after departure is unnecessary exposure.</li>
+      <li><strong>HR:</strong> Last day + 3 business days. Final payroll, benefits termination, and HRIS updates have external deadlines but not the same urgency as live credentials.</li>
+      <li><strong>Legal:</strong> Last day + 5 business days. NDA confirmation and litigation-hold review often involve outside counsel and take time to route.</li>
+      <li><strong>Manager (knowledge transfer):</strong> Last day &minus; 5 business days. KT completed before departure, not scrambled in the final afternoon.</li>
+    </ul>
+
+    <h3>Automation</h3>
+
+    <p>Jira's built-in automation rules can spawn the full sub-task set when a new offboarding Epic opens. Trigger: "When issue created" with condition "Issue type = Epic, Project = OFFB". Add one "Create sub-task" action per checklist item — task name, Component, and due-date expression (e.g., <code>{{issue.dueDate.minusDays(5)}}</code> for knowledge transfer) hardcoded in the rule. One rule, one trigger, 15–20 actions. Without it, whoever opens the Epic creates each sub-task manually every time someone leaves.</p>
+
+    <p>Once you have built this out — the Epic-per-employee structure, the five Components with default assignees, and the due-date offsets per department — the <a href="/templates/general-offboarding">General Offboarding template</a> in TeamOps (PPLX Software, our app) ships that same structure pre-wired. It creates the per-department sub-tasks with the Component assignments and timing above already configured, so the automation step is already done. Free for teams up to 10.</p>
+
+    <div class="article-cta">
+      <p>TeamOps runs this workflow inside Jira — pre-wired Components, timing, and sub-task creation. <a href="https://marketplace.atlassian.com/apps/522828381" class="cta-button" target="_blank" rel="noopener">Install free (up to 10 users)</a></p>
+    </div>
 
     <h2>Frequently asked questions</h2>
-
-    <h3>What should an employee offboarding checklist in Jira include?</h3>
-    <p>A complete offboarding checklist covers five departments: IT (disable SSO, revoke SaaS access, rotate shared credentials, collect hardware), HR (final payroll, benefits termination, exit interview, HRIS update), legal (NDA confirmation, IP assignment, litigation hold, data retention), security (revoke SSH keys, invalidate access tokens, audit recent data exports), and the manager (reassign work and run a knowledge transfer). The tasks that get skipped are usually the security and legal ones, because they do not feel urgent.</p>
 
     <h3>How do you revoke Jira access when someone leaves?</h3>
     <p>Disable the employee's SSO or identity-provider account first (Okta, Azure AD, Google Workspace), since most Jira access is granted through SSO and disabling it cascades. Then remove the user directly in Jira and Atlassian admin so any non-SSO access is closed, and walk the SSO audit log to confirm nothing was missed. Do this on or before the last day.</p>
@@ -275,19 +315,8 @@
     <h3>What is the difference between an offboarding checklist and an offboarding workflow in Jira?</h3>
     <p>A checklist is the list of tasks that must happen when someone leaves. A workflow is how those tasks get created, assigned, sequenced by due date, and tracked to completion. In Jira, a checklist alone lives in a document or a Slack thread; a workflow turns it into assigned issues with owners and deadlines so nothing depends on someone remembering.</p>
 
-    <h3>When should IT and security offboarding tasks be completed?</h3>
-    <p>IT and security tasks should be done on or before the employee's last day, because every hour of lingering access after departure is unnecessary risk. HR and legal tasks can extend a few days after, since they involve paperwork with their own deadlines rather than live credentials.</p>
-
-    <h3>Why do companies use Jira for employee offboarding?</h3>
-    <p>Offboarding involves five departments working on different timelines for the same person, which is a coordination problem that needs a system of record. Jira gives every task an owner, a due date, and a status, so a manager sees a progress bar instead of trusting that a spreadsheet or a Slack thread caught everything.</p>
-
-    <div class="article-cta">
-      <p>TeamOps handles this inside Jira. <a href="https://marketplace.atlassian.com/apps/522828381">Free for up to 10 users.</a></p>
-    </div>
-
-  
     <div class="callout related-guides">
-      <p><strong>Related guides:</strong> <a href="/blog/employee-offboarding-security">The Security Tasks Everyone Forgets During Offboarding</a> &middot; <a href="/templates">Free Jira templates</a></p>
+      <p><strong>Related guides:</strong> <a href="/blog/employee-offboarding-security">The Security Tasks Everyone Forgets During Offboarding</a> &middot; <a href="/blog/jira-offboarding-template">Jira Offboarding Template</a> &middot; <a href="/templates">Free Jira templates</a></p>
     </div>
   </article>
 </main>
