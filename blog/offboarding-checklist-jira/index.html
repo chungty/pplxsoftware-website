@@ -31,7 +31,7 @@
 <meta name="twitter:description" content="Department checklist and Jira project setup for employee offboarding — IT, HR, legal, security, and manager tasks with timing that enforces itself.">
 
 <meta name="article:published_time" content="2026-04-06">
-<meta name="article:modified_time" content="2026-09-21">
+<meta name="article:modified_time" content="2026-10-12">
 <meta name="author" content="Thomas Chung">
 <meta name="keywords" content="jira offboarding workflow, offboarding checklist jira, employee offboarding jira, jira offboarding checklist, IT offboarding checklist jira">
 
@@ -50,7 +50,7 @@
     "name": "PPLX Software"
   },
   "datePublished": "2026-04-06",
-  "dateModified": "2026-09-21",
+  "dateModified": "2026-10-12",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://pplxsoftware.com/blog/offboarding-checklist-jira"
@@ -81,10 +81,10 @@
     },
     {
       "@type": "Question",
-      "name": "When should I add a new checklist item to the offboarding automation rule vs. creating the task manually?",
+      "name": "How do you offboard a Jira admin without losing site admin access?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Add it to the rule when the task applies to every offboarding — hardware collection, SSO disable, exit interview, final payroll. Create it manually when it applies to a specific departure: equity paperwork only fires for employees with unvested shares; a litigation-hold task only fires when Legal confirms an open matter. Keep all recurring items in a single rule rather than splitting them across multiple rules on the same Issue created trigger — Jira Automation does not deduplicate sub-tasks created by two rules, and the resulting duplicates are invisible until someone notices the Epic has twice as many sub-tasks as expected."
+        "text": "Before disabling the account, open Atlassian Admin → Users and filter by 'Site admin' role. If the departing employee appears there, promote a replacement to site admin first — not just project admin or Jira admin, which do not grant access to the Atlassian Admin panel. Have the replacement confirm they can reach Atlassian Admin under their own credentials before disabling the outgoing account. Also verify the replacement has 'Manage project' permission in the offboarding project if the departing employee owned the automation rules — otherwise the rules become uneditable until a site admin reassigns them."
       }
     },
     {
@@ -131,6 +131,13 @@
 .workflow-table th { text-align: left; padding: 10px 14px; background: rgba(96, 165, 250, 0.08); color: var(--gray-400); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid rgba(255,255,255,0.08); }
 .workflow-table td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; color: var(--gray-300); }
 .workflow-table tr:last-child td { border-bottom: none; }
+.blueprint-table { width: 100%; border-collapse: collapse; margin: 24px 0 32px; font-size: 0.85rem; }
+.blueprint-table th { text-align: left; padding: 9px 12px; background: rgba(96, 165, 250, 0.08); color: var(--gray-400); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.blueprint-table td { padding: 9px 12px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; color: var(--gray-300); line-height: 1.5; }
+.blueprint-table tr:last-child td { border-bottom: none; }
+.blueprint-table code { font-size: 0.78rem; background: rgba(255,255,255,0.06); padding: 1px 5px; border-radius: 3px; color: #93c5fd; white-space: nowrap; }
+.blueprint-table .comp-badge { display: inline-block; padding: 1px 7px; border-radius: 8px; font-size: 0.72rem; font-weight: 500; background: rgba(255,255,255,0.06); color: var(--gray-400); }
+.blueprint-table .note-cell { font-size: 0.8rem; color: var(--gray-500); }
 </style>
 </head>
 <body>
@@ -165,7 +172,7 @@
       <span>&bull;</span>
       <span>April 6, 2026</span>
       <span>&bull;</span>
-      <span>Updated September 2026</span>
+      <span>Updated October 2026</span>
       <span>&bull;</span>
       <span>9 min read</span>
       <span class="tag">Offboarding</span>
@@ -327,6 +334,183 @@
 
     <p>Jira Cloud Automation can spawn the full Task set the moment a new offboarding Epic opens. Rule structure: trigger <em>Issue created</em>, condition <em>Issue type = Epic AND Project = OFFB</em>, then one <em>Create issue</em> action per checklist item with Issue Type = Task, parent set to the triggering Epic, the Component, and a due-date smart-value expression — <code>{{issue.dueDate}}</code> for last-day tasks, <code>{{issue.dueDate.plusDays(3)}}</code> for HR, <code>{{issue.dueDate.plusDays(5)}}</code> for Legal, <code>{{issue.dueDate.minusDays(5)}}</code> for manager KT. One rule, one trigger, 15–20 actions. Without it, whoever opens the Epic creates each Task manually every time someone leaves.</p>
 
+    <p>Add the actions in this order — Legal first, IT last. The litigation-hold task must exist before IT disables the account; creating it last means a fast IT admin can close the account before Legal has even opened the task.</p>
+
+    <table class="blueprint-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Issue Summary (paste into "Create issue" action)</th>
+          <th>Component</th>
+          <th>Due smart value</th>
+          <th>Config note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Initiate litigation hold review</td>
+          <td><span class="comp-badge">Legal</span></td>
+          <td><code>{{issue.dueDate}}</code></td>
+          <td class="note-cell">Create first — IT account disable must wait until Legal clears this task</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Confirm NDA and non-compete on file</td>
+          <td><span class="comp-badge">Legal</span></td>
+          <td><code>{{issue.dueDate.plusDays(5)}}</code></td>
+          <td class="note-cell"></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Issue IP assignment confirmation</td>
+          <td><span class="comp-badge">Legal</span></td>
+          <td><code>{{issue.dueDate.plusDays(5)}}</code></td>
+          <td class="note-cell"></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Process equity and vesting paperwork</td>
+          <td><span class="comp-badge">Legal</span></td>
+          <td><code>{{issue.dueDate.plusDays(5)}}</code></td>
+          <td class="note-cell">Add to rule only if equity applies to all departures; create manually otherwise</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Confirm data retention compliance</td>
+          <td><span class="comp-badge">Legal</span></td>
+          <td><code>{{issue.dueDate.plusDays(5)}}</code></td>
+          <td class="note-cell">GDPR: offboarding Epic itself is an employee record — note in Epic description before archiving project</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Identify and reassign open Jira issues</td>
+          <td><span class="comp-badge">Manager</span></td>
+          <td><code>{{issue.dueDate.minusDays(5)}}</code></td>
+          <td class="note-cell">Run <code>assignee = "name" AND statusCategory != Done</code> before account disable — <code>currentUser()</code> queries break after deactivation</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Conduct knowledge transfer session</td>
+          <td><span class="comp-badge">Manager</span></td>
+          <td><code>{{issue.dueDate.minusDays(5)}}</code></td>
+          <td class="note-cell">Confluence KT page must be created and linked before account is deactivated</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Transfer Confluence page ownership</td>
+          <td><span class="comp-badge">Manager</span></td>
+          <td><code>{{issue.dueDate.minusDays(3)}}</code></td>
+          <td class="note-cell">Bulk transfer via Profile → Content → Change owner; requires site admin if account is already deactivated</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Update sprint capacity and reassign 1:1 reports</td>
+          <td><span class="comp-badge">Manager</span></td>
+          <td><code>{{issue.dueDate}}</code></td>
+          <td class="note-cell">Remove from active sprint; subtract story points from capacity figure</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Audit recent file downloads and data exports</td>
+          <td><span class="comp-badge">Security</span></td>
+          <td><code>{{issue.dueDate}}</code></td>
+          <td class="note-cell">Record outcome in task description: "nothing anomalous" or link to Confluence investigation note</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Remove from privileged access and admin groups</td>
+          <td><span class="comp-badge">Security</span></td>
+          <td><code>{{issue.dueDate}}</code></td>
+          <td class="note-cell">Add "is blocked by" link to task 12 — privileged group removal depends on SSO cut first</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>Disable SSO / IdP account</td>
+          <td><span class="comp-badge">IT</span></td>
+          <td><code>{{issue.dueDate}}</code></td>
+          <td class="note-cell">Step 1 of IT sequence — add "blocks" links to tasks 13, 15, and 16 so assignees see the dependency</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>Revoke email access and set forwarding</td>
+          <td><span class="comp-badge">IT</span></td>
+          <td><code>{{issue.dueDate}}</code></td>
+          <td class="note-cell"></td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td>Deactivate VPN credentials and device certificates</td>
+          <td><span class="comp-badge">IT</span></td>
+          <td><code>{{issue.dueDate}}</code></td>
+          <td class="note-cell"></td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>Deactivate Jira and Confluence account in Atlassian Admin</td>
+          <td><span class="comp-badge">IT</span></td>
+          <td><code>{{issue.dueDate}}</code></td>
+          <td class="note-cell">Deactivate, don't delete — deletion removes assignee and reporter names from all issues site-wide</td>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td>Revoke remaining SaaS access (Slack, GitHub, Figma, AWS)</td>
+          <td><span class="comp-badge">IT</span></td>
+          <td><code>{{issue.dueDate}}</code></td>
+          <td class="note-cell">Walk SSO audit log; non-SSO tools need manual revocation separately</td>
+        </tr>
+        <tr>
+          <td>17</td>
+          <td>Revoke SSH keys and invalidate personal access tokens</td>
+          <td><span class="comp-badge">Security</span></td>
+          <td><code>{{issue.dueDate}}</code></td>
+          <td class="note-cell">Log revocation date in description — audit trail if a breach investigation asks when access closed</td>
+        </tr>
+        <tr>
+          <td>18</td>
+          <td>Rotate shared credentials the employee had access to</td>
+          <td><span class="comp-badge">IT</span></td>
+          <td><code>{{issue.dueDate}}</code></td>
+          <td class="note-cell">Shared service accounts, team passwords, secrets vault entries</td>
+        </tr>
+        <tr>
+          <td>19</td>
+          <td>Collect hardware (laptop, badge, YubiKeys, hotspot)</td>
+          <td><span class="comp-badge">IT</span></td>
+          <td><code>{{issue.dueDate}}</code></td>
+          <td class="note-cell">List each item by serial number in description for asset audit</td>
+        </tr>
+        <tr>
+          <td>20</td>
+          <td>Process final payroll including PTO payout</td>
+          <td><span class="comp-badge">HR</span></td>
+          <td><code>{{issue.dueDate.plusDays(3)}}</code></td>
+          <td class="note-cell">Override due date to jurisdiction's legal deadline — California requires same-day for involuntary termination</td>
+        </tr>
+        <tr>
+          <td>21</td>
+          <td>Terminate benefits and send COBRA notice</td>
+          <td><span class="comp-badge">HR</span></td>
+          <td><code>{{issue.dueDate.plusDays(29)}}</code></td>
+          <td class="note-cell">US federal law: 30 days from qualifying event; use <code>plusDays(29)</code> as the safe deadline</td>
+        </tr>
+        <tr>
+          <td>22</td>
+          <td>Update HRIS termination date, type, and rehire eligibility</td>
+          <td><span class="comp-badge">HR</span></td>
+          <td><code>{{issue.dueDate.plusDays(3)}}</code></td>
+          <td class="note-cell">Verify SCIM sync propagated — some connectors provision on hire but skip automatic deprovisioning</td>
+        </tr>
+        <tr>
+          <td>23</td>
+          <td>Send separation letter</td>
+          <td><span class="comp-badge">HR</span></td>
+          <td><code>{{issue.dueDate.plusDays(5)}}</code></td>
+          <td class="note-cell">If severance applies: track document state with labels (<code>drafted</code> → <code>sent</code> → <code>signed</code>) rather than status transitions</td>
+        </tr>
+      </tbody>
+    </table>
+
     <p>Before relying on the rule in a real departure, test it against a staging instance or a separate sandbox project. Create a test Epic with due date 14 days out, confirm all sub-tasks appear within 30 seconds, and verify each due date matches the expected offset. The most common failure is a field mismatch: the smart value <code>{{issue.dueDate}}</code> references Jira's internal "Due date" field, but some company-managed project configurations expose it as "End date" — if the due-date offset actions produce blank dates instead of calculated ones, check which field name your project uses under Project Settings → Fields and update the smart-value token to match.</p>
 
     <h3>Closing the Epic automatically</h3>
@@ -356,8 +540,8 @@
     <h3>What Jira permissions does the offboarding Epic owner need?</h3>
     <p>Create Issues and Edit Issues in the offboarding project, plus Manage Components if you're configuring the department Components or their default assignees. The auto-assign behavior on each Component requires no extra permission — Jira resolves the default assignee when the Component field is set. Building the automation rule requires Manage Project or a Jira automation admin role in the project.</p>
 
-    <h3>When should I add a new checklist item to the automation rule vs. creating the task manually?</h3>
-    <p>Add it to the rule when the task applies to every offboarding — hardware collection, SSO disable, exit interview, final payroll. Create it manually when it applies to a specific departure: equity paperwork only fires for employees with unvested shares; a litigation-hold task only fires when Legal confirms an open matter. A manual task for a specific case is faster than building conditional rule branches for an edge case. Keep recurring items in one rule rather than splitting them across multiple rules on the same <em>Issue created</em> trigger — Jira Automation does not deduplicate sub-tasks created by two rules, and the resulting duplicates are invisible until someone notices the Epic has twice as many sub-tasks as expected.</p>
+    <h3>How do you offboard a Jira admin without losing site admin access?</h3>
+    <p>Before disabling the account, open Atlassian Admin → Users and filter by "Site admin" role. If the departing employee appears there, promote a replacement to site admin first — not just project admin or Jira admin, which do not grant access to the Atlassian Admin panel. Have the replacement confirm they can reach Atlassian Admin under their own credentials before you disable the outgoing account. The same check applies to automation rules: if the departing employee built and owns the offboarding automation, verify the replacement has "Manage project" permission in the project before account disable, or the rules become uneditable until a site admin reassigns them.</p>
 
     <h3>Can I track onboarding and offboarding in the same Jira project?</h3>
     <p>Yes, but label them distinctly (<code>onboarding</code> vs <code>offboarding</code> Epic labels) and use Component filtering for each department's view. At scale the shared project blurs &mdash; IT sees access-grant tasks alongside revoke tasks in the same board column. The cleaner split is two projects (HR-ONBOARD and HR-OFFBOARD), each with its own Component set and automation rule. Use Jira issue links to cross-reference them when a departing employee's access list becomes the baseline for a replacement hire's provisioning.</p>
