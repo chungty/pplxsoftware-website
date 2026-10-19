@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PYNC13TQKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PYNC13TQKF');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlassian PTO: Setting Up Leave Requests in Jira</title>
+<meta name="description" content="How to build a PTO request and approval workflow in Jira: the project structure, custom fields, 4-status workflow, and automation rule for manager routing.">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://pplxsoftware.com/blog/atlassian-pto">
+
+<meta property="og:title" content="Atlassian PTO: Setting Up Leave Requests in Jira">
+<meta property="og:description" content="How to build a PTO request and approval workflow in Jira: the project structure, custom fields, 4-status workflow, and automation rule for manager routing.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://pplxsoftware.com/blog/atlassian-pto">
+<meta property="og:image" content="https://pplxsoftware.com/assets/og/og-blog.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pplxsoftware.com/assets/og/og-blog.png">
+<meta property="og:site_name" content="TeamOps Blog | PPLX Software">
+
+<meta name="twitter:title" content="Atlassian PTO: Setting Up Leave Requests in Jira">
+<meta name="twitter:description" content="How to build a PTO request and approval workflow in Jira: project setup, custom fields, a 4-status workflow, and the automation rule that routes requests to each manager.">
+
+<meta name="article:published_time" content="2026-10-19">
+<meta name="author" content="Thomas Chung">
+<meta name="keywords" content="atlassian pto, jira pto tracking, jira leave request workflow, jira time off approval, jira pto management">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Atlassian PTO: Setting Up Leave Requests in Jira",
+  "description": "How to build a PTO request and approval workflow in Jira: project setup, custom fields, a 4-status workflow, and the automation rule that routes requests to each manager.",
+  "author": {
+    "@type": "Person",
+    "name": "Thomas Chung"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "PPLX Software"
+  },
+  "datePublished": "2026-10-19",
+  "dateModified": "2026-10-19",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pplxsoftware.com/blog/atlassian-pto"
+  }
+}
+</script>
+
+<link rel="stylesheet" href="/styles.css">
+<style>
+.article-wrapper { position: relative; z-index: 1; padding-top: 100px; padding-bottom: 80px; }
+.article-content { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.article-breadcrumb { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 24px; }
+.article-breadcrumb a { color: var(--gray-400); text-decoration: none; transition: color var(--transition); }
+.article-breadcrumb a:hover { color: var(--blue); }
+.article-content h1 { font-size: clamp(1.75rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 16px; }
+.article-meta { color: var(--gray-400); font-size: 0.9rem; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.article-meta .tag { background: var(--blue-glow); color: var(--blue); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
+.article-content h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; margin-top: 48px; margin-bottom: 16px; padding-top: 32px; border-top: 1px solid rgba(255, 255, 255, 0.06); border-bottom: none; }
+.article-content h2:first-of-type { border-top: none; padding-top: 0; }
+.article-content h3 { font-size: 1.15rem; font-weight: 600; margin-top: 32px; margin-bottom: 12px; color: var(--gray-300); }
+.article-content p { color: var(--gray-300); line-height: 1.8; margin-bottom: 18px; font-size: 1.05rem; }
+.article-content ul, .article-content ol { color: var(--gray-300); margin-bottom: 18px; padding-left: 24px; }
+.article-content li { margin-bottom: 10px; line-height: 1.7; font-size: 1.05rem; }
+.article-content strong { color: var(--white); font-weight: 600; }
+.article-content a { color: var(--blue); text-decoration: none; transition: color var(--transition); }
+.article-content a:hover { color: #93c5fd; text-decoration: underline; }
+.callout { background: var(--navy-light); border-left: 3px solid var(--blue); border-radius: var(--radius-sm); padding: 20px 24px; margin: 28px 0; }
+.callout p { margin-bottom: 0; font-size: 0.95rem; }
+.callout-warning { border-left-color: #fbbf24; }
+.callout-success { border-left-color: var(--green); }
+.article-cta { background: linear-gradient(135deg, var(--navy-light) 0%, rgba(96, 165, 250, 0.06) 100%); border: 1px solid rgba(96, 165, 250, 0.15); border-radius: var(--radius); padding: 32px; margin: 48px 0 24px; text-align: center; }
+.article-cta h3 { color: var(--white); font-size: 1.3rem; margin-bottom: 8px; margin-top: 0; }
+.article-cta p { font-size: 0.95rem; margin-bottom: 20px; }
+.article-content .cta-button, .cta-button { display: inline-block; background: var(--blue); color: var(--navy); padding: 12px 28px; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: background var(--transition), transform var(--transition); }
+.cta-button:hover { background: #93c5fd; color: var(--navy) !important; transform: translateY(-1px); text-decoration: none; }
+.steps-table { width: 100%; border-collapse: collapse; margin: 24px 0 32px; font-size: 0.9rem; }
+.steps-table th { text-align: left; padding: 10px 14px; background: rgba(96, 165, 250, 0.08); color: var(--gray-400); font-weight: 600; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.steps-table td { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; color: var(--gray-300); line-height: 1.5; }
+.steps-table tr:last-child td { border-bottom: none; }
+code { background: rgba(96,165,250,0.1); color: #93c5fd; padding: 2px 6px; border-radius: 4px; font-size: 0.88em; font-family: monospace; }
+</style>
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand" aria-label="PPLX Software Home"><div class="nav-logo">T</div>TeamOps</a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/docs">Docs</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="https://marketplace.atlassian.com/apps/522828381" class="nav-cta" target="_blank" rel="noopener">Install Free</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="article-wrapper">
+  <article class="article-content">
+    <div class="article-breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/blog">Blog</a> &rsaquo; Atlassian PTO
+    </div>
+
+    <h1>Atlassian PTO: Setting Up Leave Requests in Jira</h1>
+
+    <div class="article-meta">
+      <span>Thomas Chung</span>
+      <span>&bull;</span>
+      <span>October 19, 2026</span>
+      <span>&bull;</span>
+      <span>8 min read</span>
+      <span class="tag">Leave Management</span>
+      <span class="tag">Jira</span>
+    </div>
+
+    <div class="callout">
+      <p><strong>TL;DR:</strong> Managing PTO in Jira requires three things: a dedicated HR-OPS project with a Time-Off-Request issue type, a 4-status approval workflow (Submitted &rarr; Manager Review &rarr; Approved / Rejected), and one Jira Automation rule that routes each request to the reporter's manager. The automation rule is the piece most teams get wrong — it depends on how manager relationships are stored in your Atlassian directory. TeamOps, our app (PPLX Software), is the worked example at the automation section; the setup works without it.</p>
+    </div>
+
+    <p>Atlassian's Jira handles PTO tracking the same way it handles everything else: through issues, workflows, and automation rules. That's both its strength and its friction. There's no dedicated leave calendar in base Jira, no approval inbox, and no out-of-the-box way to show who's out next week. What Jira does have is enough flexibility to build all of that yourself — if you set it up correctly from the start.</p>
+
+    <p>This is the configuration that works past the first 20 employees without requiring a Confluence spreadsheet alongside it.</p>
+
+    <h2>Project and issue type setup</h2>
+
+    <p>PTO requests should live in a project separate from engineering or product work. Mixing them creates two problems: leave requests surface in sprint planning views, and the statuses engineers use (In Sprint, Code Review, Blocked) have no meaning for an HR approval flow.</p>
+
+    <p>Create a new Scrum-style project named <strong>HR Operations</strong> with the key <strong>HROPS</strong>. Then go to Project Settings &rarr; Issue Types and add a new type called <strong>Time-Off-Request</strong>. Use the built-in "Support Request" icon (green). This is not a Task, not a Story — it's a purpose-specific issue type that won't contaminate velocity charts or backlog reports.</p>
+
+    <p>Under Project Settings &rarr; Fields, add these custom fields to the Time-Off-Request screen only:</p>
+
+    <table class="steps-table">
+      <thead>
+        <tr>
+          <th>Field name</th>
+          <th>Type</th>
+          <th>Options / note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Start Date</strong></td>
+          <td>Date picker</td>
+          <td>First day of absence. Different from "Created" date — make it required.</td>
+        </tr>
+        <tr>
+          <td><strong>End Date</strong></td>
+          <td>Date picker</td>
+          <td>Last day of absence. Validate End Date &ge; Start Date via automation, not on the field itself.</td>
+        </tr>
+        <tr>
+          <td><strong>Leave Type</strong></td>
+          <td>Select list (single)</td>
+          <td>Options: Annual Leave, Sick Leave, Parental Leave, Unpaid Leave, Bereavement. Add others later; don't over-engineer at setup.</td>
+        </tr>
+        <tr>
+          <td><strong>Total Days</strong></td>
+          <td>Number field</td>
+          <td>Filled by the requester — Jira can't auto-calculate business days between dates without a scripting plugin. Keep it manual for now.</td>
+        </tr>
+        <tr>
+          <td><strong>Manager</strong></td>
+          <td>User picker (single)</td>
+          <td>The person who approves this request. Populated by automation (see below), but must exist as a field for the automation to write to.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Don't add a "Return Date" field — it's always End Date + 1 business day, and a separate field creates a data consistency problem when someone changes their end date after submitting.</p>
+
+    <h2>The approval workflow</h2>
+
+    <p>Go to Project Settings &rarr; Workflows &rarr; Create new workflow named <strong>Leave Approval</strong>. Four statuses cover the full lifecycle without adding noise:</p>
+
+    <ul>
+      <li><strong>Submitted</strong> (initial status) — the requester created the issue and it's pending routing</li>
+      <li><strong>Manager Review</strong> — routed to the manager, awaiting decision</li>
+      <li><strong>Approved</strong> (terminal) — leave confirmed</li>
+      <li><strong>Rejected</strong> (terminal) — leave denied, requester notified</li>
+    </ul>
+
+    <p>Set up four transitions:</p>
+
+    <ol>
+      <li>Submitted &rarr; Manager Review (any user, triggered by automation)</li>
+      <li>Manager Review &rarr; Approved (restricted to Jira group <code>hr-managers</code>)</li>
+      <li>Manager Review &rarr; Rejected (restricted to <code>hr-managers</code>)</li>
+      <li>Rejected &rarr; Submitted (any user, allows resubmission with corrections)</li>
+    </ol>
+
+    <div class="callout callout-warning">
+      <p><strong>Permission gotcha:</strong> Do not give the standard <code>jira-users</code> group permission on the Approved or Rejected transitions. Without a restriction, employees can approve their own requests on their first day in Jira — a common first-week incident when onboarding non-technical staff into the system.</p>
+    </div>
+
+    <p>Assign the Leave Approval workflow to the Time-Off-Request issue type only. Your engineering tasks and other issue types keep their existing workflows unaffected.</p>
+
+    <h2>Automation rule: route to manager on submission</h2>
+
+    <p>The most useful automation rule for PTO in Jira runs on every new Time-Off-Request submission. Go to Project Settings &rarr; Automation &rarr; Create rule.</p>
+
+    <p><strong>Trigger:</strong> Issue created (or status changed to Submitted if you allow draft saving)</p>
+
+    <p><strong>Conditions:</strong> Issue type = Time-Off-Request</p>
+
+    <p><strong>Actions (in order):</strong></p>
+
+    <ol>
+      <li>Edit issue → set <strong>Manager</strong> field to <code>{{issue.reporter.manager}}</code> — this requires manager relationships configured in your Atlassian organization directory under admin.atlassian.com &rarr; Directory &rarr; Managed accounts. If that's not set up, use a lookup table automation instead (see note below).</li>
+      <li>Edit issue → set <strong>Assignee</strong> to <code>{{issue.Manager}}</code></li>
+      <li>Transition issue to <strong>Manager Review</strong></li>
+      <li>Send email to <code>{{issue.assignee}}</code> with subject "PTO request from {{issue.reporter.displayName}} — please review"</li>
+    </ol>
+
+    <p>If your Atlassian directory doesn't have manager relationships populated, the <code>{{issue.reporter.manager}}</code> smart value returns empty, and the assignee write silently fails. The workaround is a lookup automation that reads a custom "Manager Mapping" issue in HROPS — a single issue with a table in its description matching each employee to their manager user ID. Updating that issue when org chart changes happen is manual, but it's the only option in base Jira without a user management plugin.</p>
+
+    <h3>Confirmation email to the requester</h3>
+
+    <p>Add a second rule triggered by status transition to Approved or Rejected. Action: send email to <code>{{issue.reporter}}</code> with leave details from the Start Date, End Date, and Leave Type fields. Include the decision in the subject line. Requesters who only get a Jira notification miss it if they've muted Jira emails; a separate email from Automation arrives as a distinct sender and has a higher open rate.</p>
+
+    <h2>Making approved PTO visible to the team</h2>
+
+    <p>Base Jira has no leave calendar. The workaround is a saved Issue Navigator filter shared with the whole team.</p>
+
+    <p>Create a filter with this JQL:</p>
+
+    <p><code>project = HROPS AND issuetype = "Time-Off-Request" AND status = Approved AND "Start Date" &gt;= startOfMonth() ORDER BY "Start Date" ASC</code></p>
+
+    <p>Save it as "Team PTO — current month" and share it with the <code>jira-users</code> group. Everyone with Jira access can open Issue Navigator, load the saved filter, and see who's approved to be out. Switch <code>startOfMonth()</code> to <code>startOfWeek()</code> for a week-ahead view.</p>
+
+    <p>For a visual calendar view, open the HROPS board and select <strong>Calendar</strong> from the board view toggle (available in Jira Cloud's board view for both team-managed and company-managed projects). The Calendar view shows issues on a date field you pick in the board's Calendar settings — set it to your Start Date custom field so each approved request appears on the day the absence begins rather than the day it ends. Filter the calendar to "Status = Approved" to hide pending requests. Weekly view shows day-by-day coverage gaps, which is faster to read than the Issue Navigator list when you're checking sprint capacity.</p>
+
+    <h2>Where the Jira Automation approach reaches its limit</h2>
+
+    <p>The setup above works well for orgs with stable manager relationships and under about 50 employees. Two things break it in practice:</p>
+
+    <p><strong>Org chart changes.</strong> When someone's manager changes, the automation still routes new requests to the old manager until you update the Atlassian directory or the lookup mapping table. There's no webhook in Jira that fires on user attribute changes — you have to catch the manager change separately and update the routing. Teams that go through a reorg typically discover this two weeks later when requests pile up unreviewed in a departed manager's queue.</p>
+
+    <p><strong>Multi-level approval.</strong> If HR needs to confirm after the manager approves, you need a fifth status (HR Review), a third approval transition, a second automation rule, and a separate <code>hr-staff</code> permission group. Each layer doubles the maintenance surface. By the time you add a second approver, the automation rule set has drifted from whatever someone documented in Confluence six months ago.</p>
+
+    <p>The HR-OPS project, the Time-Off-Request issue type, the Manager field, and the Submitted &rarr; Approved workflow you just built are exactly the structure TeamOps creates automatically on install — with the manager mapping stored in the app rather than in the Atlassian directory, so an org-chart change updates the routing without touching a single automation rule. For teams that hit the org-change problem before they have bandwidth to debug automation, that's the specific thing it removes.</p>
+
+    <div class="article-cta">
+      <p>If rebuilding the automation after a reorg sounds familiar: TeamOps handles the manager mapping inside Jira so the approval workflow keeps working when the org changes. <a href="https://marketplace.atlassian.com/apps/522828381" class="cta-button" target="_blank" rel="noopener">Free for up to 10 users</a></p>
+    </div>
+
+    <div class="callout related-guides">
+      <p><strong>Related guides:</strong> <a href="/blog/track-time-off-jira">How to Track Time Off in Jira Without Creating 200 Issues</a> &middot; <a href="/blog/jira-leave-management-guide">Leave Management in Jira: The Complete Guide</a> &middot; <a href="/blog/pto-tracking-capacity-planning">PTO Tracking and Capacity Planning</a> &middot; <a href="/templates">Free Jira onboarding and leave templates</a></p>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="nav-logo">T</div>PPLX Software</div>
+    <ul class="footer-links">
+      <li><a href="https://marketplace.atlassian.com/apps/522828381" target="_blank" rel="noopener">Marketplace</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/docs">Documentation</a></li>
+      <li><a href="/templates">Templates</a></li>
+      <li><a href="/comparison">Compare</a></li>
+      <li><a href="/whats-new">What's New</a></li>
+      <li><a href="/roadmap">Roadmap</a></li>
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/security">Security</a></li>
+      <li><a href="/support">Support</a></li>
+    </ul>
+    <div class="footer-copy">&copy; 2026 PPLX Software. All rights reserved. TeamOps runs entirely on Atlassian's Forge platform.</div>
+  </div>
+</footer>
+
+</body>
+</html>
