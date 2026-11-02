@@ -31,7 +31,7 @@
 <meta name="twitter:description" content="Department checklist and Jira project setup for employee offboarding — IT, HR, legal, security, and manager tasks with timing that enforces itself.">
 
 <meta name="article:published_time" content="2026-04-06">
-<meta name="article:modified_time" content="2026-10-12">
+<meta name="article:modified_time" content="2026-11-02">
 <meta name="author" content="Thomas Chung">
 <meta name="keywords" content="jira offboarding workflow, offboarding checklist jira, employee offboarding jira, jira offboarding checklist, IT offboarding checklist jira">
 
@@ -50,7 +50,7 @@
     "name": "PPLX Software"
   },
   "datePublished": "2026-04-06",
-  "dateModified": "2026-10-12",
+  "dateModified": "2026-11-02",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://pplxsoftware.com/blog/offboarding-checklist-jira"
@@ -172,7 +172,7 @@
       <span>&bull;</span>
       <span>April 6, 2026</span>
       <span>&bull;</span>
-      <span>Updated October 2026</span>
+      <span>Updated November 2026</span>
       <span>&bull;</span>
       <span>9 min read</span>
       <span class="tag">Offboarding</span>
@@ -304,6 +304,16 @@
         </tr>
       </tbody>
     </table>
+
+    <h2>Voluntary vs. involuntary departure</h2>
+
+    <p>The timing table above assumes you have at least five business days of notice. The same automation fires for both departure types, but the due-date calculations land differently.</p>
+
+    <p><strong>Voluntary resignation (standard notice period):</strong> Create the offboarding Epic the day you receive notice &mdash; not the last day. If the employee gives two weeks and you set the Epic due date to their last day, manager KT tasks calculate to <code>dueDate &minus; 5 business days</code> from the final day, so they appear on the board with time to act. IT and Security tasks sit in To Do with a future due date until the final week, which is correct. The most common error is creating the Epic on the last day rather than the notice date &mdash; every task arrives immediately overdue. Document when to open the Epic in your HR runbook: day of notice, not day of departure.</p>
+
+    <p><strong>Involuntary departure:</strong> The Epic is typically created on or before the day of termination. Manager KT tasks will calculate to <code>today &minus; 5 business days</code> and appear immediately overdue, which is the right signal &mdash; KT starts now. One constraint specific to involuntary departures: do not assign KT tasks to the departing employee before the separation conversation has occurred. The offboarding Epic and its tasks are visible to Jira project members; creating them prematurely discloses the termination before it happens.</p>
+
+    <p>The litigation-hold check is non-negotiable for involuntary departures. An employee who is escorted off-site may have Confluence pages, email, or access logs relevant to a future dispute. Before IT disables anything, run <code>project = OFFB AND summary ~ "litigation" AND statusCategory != Done ORDER BY due ASC</code> to confirm that task exists and is not closed. The automation creates it as task 1 in the rule order precisely for this reason, but a fast IT admin can work through the queue without checking it. Make that JQL filter a named saved filter accessible to IT and mark it in the IT runbook as a pre-requisite for account disable in any involuntary departure.</p>
 
     <h2>Setting up the Jira offboarding workflow</h2>
 
@@ -516,6 +526,21 @@
     <h3>Closing the Epic automatically</h3>
 
     <p>Add a second rule: trigger <em>All sub-issues moved to Done</em>, condition <em>Issue type = Epic AND project = OFFB</em>, action <em>Transition issue to Done</em>. Without it the Epic stays open indefinitely after every task resolves — the manual close is the step that gets skipped. Chain a second action to <em>Edit issue → Labels → add</em> with the smart value <code>closed-{{now.format("yyyy-MM-dd")}}</code>. The label makes quarterly audit queries unambiguous: <code>project = OFFB AND issuetype = Epic AND labels = "closed-2026-*"</code> returns every completed offboarding in the year without relying on Jira's status-change history.</p>
+
+    <h3>When the departure date changes</h3>
+
+    <p>The automation rule fires once, at Epic creation. If the Epic due date later changes &mdash; a resignation date extended by mutual agreement, a notice period shortened &mdash; the child task due dates do not recalculate. Jira Automation sets fixed values at creation; it does not maintain a live expression link between parent and child due dates.</p>
+
+    <p>Build a second rule to handle this. Trigger: "Field value changed" &rarr; "Due date" &rarr; filter: Issue type = Epic AND project = OFFB. For each child issue (via "For each" &rarr; "Linked issues" &rarr; "Sub-tasks"), add a condition "Status category is not Done" to skip closed tasks, then edit the due date using the parent's updated due date and the offset for that Component:</p>
+
+    <ul>
+      <li>Component = IT or Security: <code>{{issue.parent.dueDate}}</code></li>
+      <li>Component = HR: <code>{{issue.parent.dueDate.plusDays(3)}}</code></li>
+      <li>Component = Legal: <code>{{issue.parent.dueDate.plusDays(5)}}</code></li>
+      <li>Component = Manager: <code>{{issue.parent.dueDate.minusDays(5)}}</code></li>
+    </ul>
+
+    <p>One branch per Component in the "For each" action. Without this rule, a two-week extension in a negotiated departure means all 23 tasks still show the original due dates. The overdue filter produces false positives, and the escalation queue &mdash; <code>project = OFFB AND due &lt; -2d AND statusCategory != Done</code> &mdash; fills with items that are not actually late.</p>
 
     <h3>Saved filters for working visibility</h3>
 
